@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './App.css'
+import API_BASE_URL from './config/api'
 import AdminSurveys from './pages/AdminSurveys'
 import BudgetSelector from './components/BudgetSelector'
 import HeightSlider from './components/HeightSlider'
@@ -102,7 +103,7 @@ function App() {
         heightCategory = '<130'
       }
 
-      const response = await fetch('/api/calculate-price', {
+      const response = await fetch(`${API_BASE_URL}/api/calculate-price`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -169,7 +170,7 @@ function App() {
         heightCategory = '<130'
       }
 
-      const response = await fetch('/api/calculate-price', {
+      const response = await fetch(`${API_BASE_URL}/api/calculate-price`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -226,7 +227,7 @@ function App() {
         heightCategory = '<130'
       }
 
-      const response = await fetch('/api/calculate-price', {
+      const response = await fetch(`${API_BASE_URL}/api/calculate-price`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

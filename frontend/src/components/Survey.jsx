@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
+import API_BASE_URL from '../config/api'
 import './Survey.css'
 
 function Survey({ onConfirm, onBack }) {
@@ -85,7 +86,7 @@ function Survey({ onConfirm, onBack }) {
     }))
 
     // Send to backend (non-blocking)
-    fetch('/api/survey', {
+    fetch(`${API_BASE_URL}/api/survey`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

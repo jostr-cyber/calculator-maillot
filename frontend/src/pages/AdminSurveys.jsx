@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
+import API_BASE_URL from '../config/api'
 import '../styles/AdminSurveys.css'
 
 function AdminSurveys() {
@@ -27,7 +28,7 @@ function AdminSurveys() {
       setLoading(true)
       setError(null)
 
-      let url = '/api/admin/surveys'
+      let url = `${API_BASE_URL}/api/admin/surveys`
       const params = new URLSearchParams()
       if (start) params.append('startDate', start)
       if (end) params.append('endDate', end)
@@ -79,7 +80,7 @@ function AdminSurveys() {
     try {
       setExporting(true)
 
-      let url = '/api/admin/surveys/export'
+      let url = `${API_BASE_URL}/api/admin/surveys/export`
       const params = new URLSearchParams()
       if (startDate) params.append('startDate', startDate)
       if (endDate) params.append('endDate', endDate)
