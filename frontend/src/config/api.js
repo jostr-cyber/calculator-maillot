@@ -1,11 +1,11 @@
 // API configuration
-// This allows the frontend to use different API URLs in different environments
+// Uses Vercel serverless functions or custom backend URL
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || (
-  // Development: use proxy or localhost
+  // Development: use localhost backend
   import.meta.env.DEV ? 'http://localhost:8000' :
-  // Production: use environment variable or root-relative path
-  '/api'
+  // Production: use Vercel API routes (no prefix needed, same origin)
+  ''
 )
 
 export default API_BASE_URL
