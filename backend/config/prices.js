@@ -19,7 +19,7 @@ const LEVEL_MAPPING = {
 
 async function initializePrices() {
   return new Promise((resolve, reject) => {
-    const csvPath = path.join(__dirname, '../../Prices.csv');
+    const csvPath = path.join(__dirname, '../Prices.csv');
     console.log('Looking for CSV at:', csvPath);
     const prices = {};
     let levelHeaders = [];
