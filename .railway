@@ -1,0 +1,13 @@
+{
+  "build": {
+    "builder": "nix",
+    "nixpacks": {
+      "providers": ["nodejs"]
+    }
+  },
+  "deploy": {
+    "startCommand": "cd backend && npm start",
+    "restartPolicyMaxRetries": 10,
+    "restartPolicyCondition": "on-failure"
+  }
+}
