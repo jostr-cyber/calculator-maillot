@@ -1,22 +1,21 @@
-# Backend service built from monorepo root
 FROM node:18-alpine
 
 WORKDIR /app
 
-# Copy backend package files
-COPY backend/package*.json ./
+# Copy all backend files
+COPY backend/package.json ./
+COPY backend/package-lock.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm install --production
 
-# Copy backend source code
+# Copy backend application files
+COPY backend/server.js ./
 COPY backend/config ./config
 COPY backend/utils ./utils
-COPY backend/server.js ./
-
-# Copy Prices.csv (try root first, fallback to backend)
-COPY Prices.csv ./Prices.csv
+COPY backend/Prices.csv ./
 
 EXPOSE 8000
 
+# Start the server
 CMD ["node", "server.js"]
