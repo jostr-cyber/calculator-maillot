@@ -1,0 +1,146 @@
+.email-confirmation-wrapper {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.email-confirmation-wrapper h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.email-confirmation-description {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.email-display-section {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+  border: 1px solid #e0e0e0;
+}
+
+.email-display {
+  margin: 0 0 1.5rem 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.email-input-section {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+  border: 1px solid #e0e0e0;
+}
+
+.email-input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 0.5rem;
+  font-family: inherit;
+}
+
+.email-input:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+.email-error {
+  color: #d32f2f;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  margin-top: -0.25rem;
+}
+
+.email-input-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.email-input-actions button {
+  flex: 1;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.actions button {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.actions .btn-primary {
+  background-color: #4CAF50;
+  color: white;
+  flex: 1;
+  max-width: 300px;
+}
+
+.actions .btn-primary:hover {
+  background-color: #45a049;
+}
+
+.actions .btn-secondary {
+  background-color: #f44336;
+  color: white;
+  flex: 1;
+  max-width: 300px;
+}
+
+.actions .btn-secondary:hover {
+  background-color: #da190b;
+}
+
+@media (max-width: 768px) {
+  .email-confirmation-wrapper {
+    padding: 1.5rem;
+  }
+
+  .email-confirmation-wrapper h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .email-confirmation-description {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .actions button {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .email-input-actions {
+    flex-direction: column;
+  }
+
+  .email-input-actions button {
+    width: 100%;
+  }
+}

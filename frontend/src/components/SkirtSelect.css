@@ -1,0 +1,82 @@
+.skirt-select {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.skirt-select h2 {
+  color: #990099;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.select-container {
+  margin-bottom: 25px;
+}
+
+.select-field {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 15px;
+  border: 2px solid #990099;
+  border-radius: 5px;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.select-field:focus {
+  outline: none;
+  border-color: #990099;
+  box-shadow: 0 0 0 3px rgba(153, 0, 153, 0.1);
+}
+
+.select-field option {
+  padding: 10px;
+  color: #333;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-primary,
+.btn-secondary {
+  flex: 1;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.btn-primary {
+  background-color: #990099;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #7a006f;
+  transform: translateY(-2px);
+}
+
+.btn-primary:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background-color: #d0d0d0;
+  transform: translateY(-2px);
+}

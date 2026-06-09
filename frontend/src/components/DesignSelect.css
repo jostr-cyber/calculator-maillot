@@ -1,0 +1,57 @@
+.design-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.design-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  padding: 15px;
+  background: #f9f0ff;
+  border-radius: 5px;
+  border-left: 4px solid #990099;
+  transition: background-color 0.2s;
+}
+
+.design-option:hover {
+  background-color: #f0e0ff;
+}
+
+.design-option input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: #990099;
+  flex-shrink: 0;
+}
+
+.design-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.design-title {
+  color: #333;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.design-description {
+  color: #666;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.design-discount {
+  color: #990099;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 2px;
+}

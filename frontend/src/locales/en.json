@@ -1,0 +1,296 @@
+{
+  "app": {
+    "title": "Leotard Calculator",
+    "currency": "EUR"
+  },
+  "buttons": {
+    "continue": "Continue",
+    "back": "Back",
+    "next": "Next",
+    "save": "Save",
+    "finish": "Finish",
+    "spin": "🎯 SPIN",
+    "spinning": "🔄 Spinning...",
+    "spun": "✓ Already spun",
+    "applyFilter": "Apply Filter",
+    "export": "⬇️ Export JSON",
+    "exporting": "⏳ Exporting...",
+    "submit": "Submit",
+    "recalculate": "🔄 Recalculate",
+    "orderWhatsApp": "💬 Order a leotard!"
+  },
+  "steps": {
+    "budget": "Select a price range",
+    "height": "Select your height (cm)",
+    "design": "Design",
+    "sleeves": "How many sleeves?",
+    "skirt": "Skirt",
+    "decorativeElements": "Additional Elements",
+    "aerography": "Leotard Painting, Aerography",
+    "combinaison": "Leotard Type",
+    "urgency": "Urgency",
+    "survey": "🎯 Survey",
+    "wheel": "🎡 Wheel of Fortune",
+    "result": "Price Calculation"
+  },
+  "budget": {
+    "elite": {
+      "title": "Up to 800€",
+      "description": ""
+    },
+    "standard": {
+      "title": "Up to 400€",
+      "description": ""
+    },
+    "economy": {
+      "title": "Up to 200€",
+      "description": ""
+    }
+  },
+  "height": {
+    "label": "cm",
+    "min": "90 cm",
+    "max": "180 cm",
+    "info": "Select your height"
+  },
+  "design": {
+    "our": {
+      "title": "Our Design",
+      "description": "completed by studio artist"
+    },
+    "artist": {
+      "description": "includes judge recommendations"
+    },
+    "requirements": {
+      "description": "considers leotard requirements"
+    },
+    "basePrice": "(included in base price, +0 euro)",
+    "your": {
+      "title": "Your Layout:",
+      "ai": "AI generation",
+      "photo": "photo of leotard from internet",
+      "copy": "ready-made layout",
+      "discount": "discount to base leotard price - 5%"
+    }
+  },
+  "sleeves": {
+    "label": "Select option...",
+    "none": "No sleeves",
+    "one": "One sleeve",
+    "two": "Two sleeves"
+  },
+  "skirt": {
+    "label": "Select option...",
+    "none": "No skirt",
+    "front": "Skirt in front",
+    "back": "Skirt in back",
+    "both": "Skirt in front and back"
+  },
+  "decorativeElements": {
+    "label": "Select option...",
+    "feathers": "Feathers",
+    "fringe": "Fringe",
+    "flowers": "Volumetric flowers",
+    "other": "Other",
+    "nothing": "Nothing"
+  },
+  "aerography": {
+    "label": "Select option...",
+    "drawing": "Drawing (character, object, building, etc.)",
+    "nothing": "Nothing"
+  },
+  "combinaison": {
+    "label": "Select option...",
+    "leotard": "Standard leotard",
+    "combinaison": "Full body leotard"
+  },
+  "urgency": {
+    "info": "Select manufacturing timeframe...",
+    "standard": {
+      "title": "Standard Order",
+      "time": "7-14 days",
+      "price": "+0 euro"
+    },
+    "expedited": {
+      "title": "Expedited Order",
+      "time": "up to 5 days",
+      "price": "+10% to price"
+    },
+    "note": "💡 Urgency surcharges..."
+  },
+  "premiumStones": {
+    "swarovski": "Swarovski Stones",
+    "premium": "Premium Stones",
+    "none": "None"
+  },
+  "shoulderStrap": {
+    "label": "Select option...",
+    "stripe": "Decorative Stripe",
+    "stones": "Stones",
+    "pearls": "Pearls",
+    "none": "None"
+  },
+  "details": {
+    "label": "Wishes and preferences",
+    "placeholder": "Describe what you would like in your leotard"
+  },
+  "additions": {
+    "label": "Optional additions",
+    "shoulder": "Shoulder strap",
+    "stones": "Premium stones",
+    "warning": "⚠️ Adding selected options may increase the cost"
+  },
+  "survey": {
+    "intro": "Calculation is almost ready. Please take a brief survey...",
+    "howFound": {
+      "question": "How did you find out about us?",
+      "socialMedia": "Social media",
+      "realLife": "Saw leotards in real life",
+      "random": "Randomly",
+      "friends": "Friends recommended",
+      "other": "Other"
+    },
+    "importance": {
+      "question": "What is most important to you in a leotard?",
+      "price": "Price",
+      "deadline": "Manufacturing deadline",
+      "delivery": "Fast delivery",
+      "design": "Beautiful design",
+      "wowEffect": "Wow-effect from leotard",
+      "fit": "Good fit on figure",
+      "daughter": "Most importantly, if the gymnast likes it",
+      "score": "Opportunity to get higher artistry score due to music, type and design",
+      "other": "Other"
+    },
+    "otherInfluence": {
+      "question": "What else, besides the above, can influence the choice of workshop?",
+      "placeholder": "Write your opinion here...",
+      "optional": "(optional field)"
+    },
+    "age": {
+      "question": "Your age?",
+      "range1": "18-25",
+      "range2": "26-35",
+      "range3": "36-45",
+      "range4": "46+"
+    },
+    "whoYouAre": {
+      "question": "Tell us a bit about yourself",
+      "mother": "Mother of a gymnast",
+      "coach": "Coach",
+      "judge": "Judge",
+      "other": "Other"
+    },
+    "email": {
+      "question": "Enter your email address",
+      "placeholder": "example@email.com"
+    },
+    "validations": {
+      "selectOne": "Please select at least one option",
+      "selectOneOption": "Please select one option",
+      "enterEmail": "Please enter your email",
+      "validEmail": "Please enter a valid email address"
+    }
+  },
+  "wheel": {
+    "description": "Try your luck and discover what discount you will get",
+    "result": "🎉 You won a discount: {discount}%",
+    "resultAmount": "Discount applied: {amount} EUR"
+  },
+  "priceBreakdown": {
+    "title": "Price Calculation",
+    "completed": "Custom calculation completed",
+    "warning": {
+      "header": "⚠️ Price exceeds selected budget",
+      "text": "Final price {price} {currency} exceeds your budget...",
+      "recommendation": "Recommended minimum discount {percent}%..."
+    },
+    "success": {
+      "header": "🎉 Wheel of Fortune discount applied!",
+      "text": "Discount {percent}% saved you {amount} {currency}"
+    },
+    "breakdown": {
+      "header": "📋 Breakdown by components:",
+      "basePrice": "Base price:",
+      "designDiscount": "Discount for your layout/photo (5%):",
+      "discounts": "🎁 Discounts:",
+      "sleeves": "Sleeves:",
+      "noSleeves": "No sleeves",
+      "skirtFront": "Skirt in front",
+      "skirtBack": "Skirt in back",
+      "skirtBoth": "Skirt in front and back",
+      "decorativeElements": "Additional elements:",
+      "noDecorative": "No elements",
+      "aerography": "Leotard painting, aerography:",
+      "noAerography": "No aerography",
+      "modelType": "Model type:",
+      "standardLeotard": "Standard leotard",
+      "withStraps": "With straps",
+      "urgency": "Urgency:",
+      "standard": "Standard",
+      "urgent": "Urgent",
+      "surcharges": "📈 Surcharges:",
+      "heightModifier": "Height modifier ({modifier}%):",
+      "discountLabel": "Discount:",
+      "wheelDiscount": "🎁 Wheel of Fortune discount ({percent}%):"
+    },
+    "finalPrice": "💰 Final price:",
+    "disclaimer": "This is a preliminary calculation. Final price may be clarified after discussing details."
+  },
+  "admin": {
+    "title": "📊 Survey Results",
+    "subtitle": "Export and analyze customer responses",
+    "error": "❌ {error}",
+    "filters": {
+      "title": "🔍 Filters",
+      "startDate": "Start date:",
+      "endDate": "End date:",
+      "apply": "Apply Filter"
+    },
+    "stats": {
+      "total": "Total surveys:",
+      "shown": "Shown:"
+    },
+    "loading": "⏳ Loading surveys...",
+    "empty": {
+      "title": "📭 No surveys to display",
+      "hint": "Try changing date filters"
+    },
+    "table": {
+      "email": "Email",
+      "date": "Date",
+      "age": "Age",
+      "importance": "Importance",
+      "howFound": "How Found",
+      "notes": "Notes"
+    },
+    "footer": "💡 Click on email to send a message..."
+  },
+  "emailConfirmation": {
+    "title": "Confirm Your Email",
+    "description": "Your calculation has been sent to the email address you provided so you can present the discount to the seamstress. If you are not sure you entered the correct email, please verify it again or click Next.",
+    "placeholder": "Enter your email",
+    "changeEmail": "Change email",
+    "invalidEmail": "Please enter a valid email address"
+  },
+  "contactPreference": {
+    "title": "Preferred Contact Method",
+    "description": "We will contact you within 1-2 days to clarify details and agree on your leotard design. Please indicate your preferred contact method.",
+    "telegram": "Telegram",
+    "whatsapp": "WhatsApp",
+    "viber": "Viber",
+    "other": "Other method",
+    "placeholders": {
+      "telegram": "Enter username or phone number",
+      "whatsapp": "Enter phone number",
+      "viber": "Enter phone number",
+      "other": "Describe how to contact you"
+    },
+    "required": "Please select a contact method and provide your contact information"
+  },
+  "errors": {
+    "priceCalculation": "Failed to calculate price",
+    "survey": "Error processing survey",
+    "surveys": "Error retrieving surveys"
+  }
+}

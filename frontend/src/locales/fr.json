@@ -1,0 +1,296 @@
+{
+  "app": {
+    "title": "Calculatrice de Justaucorps",
+    "currency": "EUR"
+  },
+  "buttons": {
+    "continue": "Continuer",
+    "back": "Retour",
+    "next": "Suivant",
+    "save": "Enregistrer",
+    "finish": "Terminer",
+    "spin": "🎯 TOURNER",
+    "spinning": "🔄 Rotation...",
+    "spun": "✓ Déjà tourné",
+    "applyFilter": "Appliquer le Filtre",
+    "export": "⬇️ Exporter JSON",
+    "exporting": "⏳ Exportation...",
+    "submit": "Soumettre",
+    "recalculate": "🔄 Recalculer",
+    "orderWhatsApp": "💬 Je veux commander un justaucorps!"
+  },
+  "steps": {
+    "budget": "Sélectionnez une gamme de prix",
+    "height": "Sélectionnez votre taille (cm)",
+    "design": "Design",
+    "sleeves": "Combien de manches?",
+    "skirt": "Jupe",
+    "decorativeElements": "Éléments Additionnels",
+    "aerography": "Peinture de Justaucorps, Aérographie",
+    "combinaison": "Type de Modèle",
+    "urgency": "Urgence",
+    "survey": "🎯 Sondage",
+    "wheel": "🎡 Roue de la Fortune",
+    "result": "Calcul du Prix"
+  },
+  "budget": {
+    "elite": {
+      "title": "Jusqu'à 800€",
+      "description": ""
+    },
+    "standard": {
+      "title": "Jusqu'à 400€",
+      "description": ""
+    },
+    "economy": {
+      "title": "Jusqu'à 200€",
+      "description": ""
+    }
+  },
+  "height": {
+    "label": "cm",
+    "min": "90 cm",
+    "max": "180 cm",
+    "info": "Sélectionnez votre taille"
+  },
+  "design": {
+    "our": {
+      "title": "Notre Design",
+      "description": "complété par artiste de studio"
+    },
+    "artist": {
+      "description": "inclut les recommandations du jury"
+    },
+    "requirements": {
+      "description": "considère les exigences du justaucorps"
+    },
+    "basePrice": "(inclus dans le prix de base, +0 euro)",
+    "your": {
+      "title": "Votre Mise en Page:",
+      "ai": "génération par IA",
+      "photo": "photo de justaucorps d'internet",
+      "copy": "mise en page prête",
+      "discount": "remise au prix de base du justaucorps - 5%"
+    }
+  },
+  "sleeves": {
+    "label": "Sélectionnez une option...",
+    "none": "Sans manches",
+    "one": "Une manche",
+    "two": "Deux manches"
+  },
+  "skirt": {
+    "label": "Sélectionnez une option...",
+    "none": "Sans jupe",
+    "front": "Jupe avant",
+    "back": "Jupe arrière",
+    "both": "Jupe avant et arrière"
+  },
+  "decorativeElements": {
+    "label": "Sélectionnez une option...",
+    "feathers": "Plumes",
+    "fringe": "Franges",
+    "flowers": "Fleurs volumétriques",
+    "other": "Autre",
+    "nothing": "Rien"
+  },
+  "aerography": {
+    "label": "Sélectionnez une option...",
+    "drawing": "Dessin (personnage, objet, bâtiment, etc.)",
+    "nothing": "Rien"
+  },
+  "combinaison": {
+    "label": "Sélectionnez une option...",
+    "leotard": "Justaucorps standard",
+    "combinaison": "Combinaison"
+  },
+  "urgency": {
+    "info": "Sélectionnez le délai de fabrication...",
+    "standard": {
+      "title": "Commande Standard",
+      "time": "7-14 jours",
+      "price": "+0 euro"
+    },
+    "expedited": {
+      "title": "Commande Accélérée",
+      "time": "jusqu'à 5 jours",
+      "price": "+10% au prix"
+    },
+    "note": "💡 Suppléments pour urgence..."
+  },
+  "premiumStones": {
+    "swarovski": "Pierres Swarovski",
+    "premium": "Pierres Premium",
+    "none": "Aucun"
+  },
+  "shoulderStrap": {
+    "label": "Sélectionnez une option...",
+    "stripe": "Bande Décorative",
+    "stones": "Pierres",
+    "pearls": "Perles",
+    "none": "Aucun"
+  },
+  "details": {
+    "label": "Souhaits et préférences",
+    "placeholder": "Décrivez ce que vous aimeriez dans votre justaucorps"
+  },
+  "additions": {
+    "label": "Additions optionnelles",
+    "shoulder": "Élément décoratif sur l'épaule",
+    "stones": "Pierres premium",
+    "warning": "⚠️ L'ajout d'options sélectionnées peut augmenter le coût"
+  },
+  "survey": {
+    "intro": "Le calcul est presque prêt. Veuillez répondre à un court sondage...",
+    "howFound": {
+      "question": "Comment nous avez-vous découverts?",
+      "socialMedia": "Réseaux sociaux",
+      "realLife": "J'ai vu des justaucorps dans la vraie vie",
+      "random": "Aléatoirement",
+      "friends": "Amis recommandés",
+      "other": "Autre"
+    },
+    "importance": {
+      "question": "Qu'est-ce qui est le plus important pour vous dans un justaucorps?",
+      "price": "Prix",
+      "deadline": "Délai de fabrication",
+      "delivery": "Livraison rapide",
+      "design": "Beau design",
+      "wowEffect": "Effet wow du justaucorps",
+      "fit": "Bon ajustement",
+      "daughter": "L'essentiel est que la gymnaste aime",
+      "score": "Possibilité d'obtenir une note plus élevée en artistique",
+      "other": "Autre"
+    },
+    "otherInfluence": {
+      "question": "Qu'est-ce d'autre, en plus de ce qui précède, peut influencer le choix de l'atelier?",
+      "placeholder": "Écrivez votre avis ici...",
+      "optional": "(champ facultatif)"
+    },
+    "age": {
+      "question": "Votre âge?",
+      "range1": "18-25",
+      "range2": "26-35",
+      "range3": "36-45",
+      "range4": "46+"
+    },
+    "whoYouAre": {
+      "question": "Parlez-nous un peu de vous",
+      "mother": "Mère d'une gymnaste",
+      "coach": "Entraîneur",
+      "judge": "Juge",
+      "other": "Autre"
+    },
+    "email": {
+      "question": "Entrez votre adresse email",
+      "placeholder": "exemple@email.com"
+    },
+    "validations": {
+      "selectOne": "Veuillez sélectionner au moins une option",
+      "selectOneOption": "Veuillez sélectionner une option",
+      "enterEmail": "Veuillez entrer votre email",
+      "validEmail": "Veuillez entrer une adresse email valide"
+    }
+  },
+  "wheel": {
+    "description": "Tentez votre chance et découvrez quelle remise vous obtiendrez",
+    "result": "🎉 Vous avez gagné une remise: {discount}%!",
+    "resultAmount": "Remise appliquée: {amount} EUR"
+  },
+  "priceBreakdown": {
+    "title": "Calcul du Prix",
+    "completed": "Calcul personnalisé terminé",
+    "warning": {
+      "header": "⚠️ Le prix dépasse le budget sélectionné",
+      "text": "Le prix final {price} {currency} dépasse votre budget...",
+      "recommendation": "Remise minimale recommandée {percent}%..."
+    },
+    "success": {
+      "header": "🎉 Remise de la Roue de la Fortune appliquée!",
+      "text": "La remise {percent}% vous a économisé {amount} {currency}"
+    },
+    "breakdown": {
+      "header": "📋 Ventilation par composants:",
+      "basePrice": "Prix de base:",
+      "designDiscount": "Remise pour votre mise en page/photo (5%):",
+      "discounts": "🎁 Remises:",
+      "sleeves": "Manches:",
+      "noSleeves": "Sans manches",
+      "skirtFront": "Jupe avant",
+      "skirtBack": "Jupe arrière",
+      "skirtBoth": "Jupe avant et arrière",
+      "decorativeElements": "Éléments additionnels:",
+      "noDecorative": "Sans éléments",
+      "aerography": "Peinture de justaucorps, aérographie:",
+      "noAerography": "Sans aérographie",
+      "modelType": "Type de modèle:",
+      "standardLeotard": "Justaucorps standard",
+      "withStraps": "Avec bretelles",
+      "urgency": "Urgence:",
+      "standard": "Standard",
+      "urgent": "Urgent",
+      "surcharges": "📈 Suppléments:",
+      "heightModifier": "Modificateur de taille ({modifier}%):",
+      "discountLabel": "Remise:",
+      "wheelDiscount": "🎁 Remise de la Roue ({percent}%):"
+    },
+    "finalPrice": "💰 Prix final:",
+    "disclaimer": "Ceci est un calcul préliminaire. Le prix final peut être clarifié après discussion des détails."
+  },
+  "admin": {
+    "title": "📊 Résultats du Sondage",
+    "subtitle": "Exporter et analyser les réponses des clients",
+    "error": "❌ {error}",
+    "filters": {
+      "title": "🔍 Filtres",
+      "startDate": "Date de début:",
+      "endDate": "Date de fin:",
+      "apply": "Appliquer le Filtre"
+    },
+    "stats": {
+      "total": "Total des sondages:",
+      "shown": "Affichés:"
+    },
+    "loading": "⏳ Chargement des sondages...",
+    "empty": {
+      "title": "📭 Aucun sondage à afficher",
+      "hint": "Essayez de modifier les filtres de date"
+    },
+    "table": {
+      "email": "Email",
+      "date": "Date",
+      "age": "Âge",
+      "importance": "Importance",
+      "howFound": "Comment trouvé",
+      "notes": "Notes"
+    },
+    "footer": "💡 Cliquez sur l'email pour envoyer un message..."
+  },
+  "emailConfirmation": {
+    "title": "Confirmez votre email",
+    "description": "Votre calcul a été envoyé à l'adresse email que vous avez fournie afin que vous puissiez présenter la remise à la couturière. Si vous n'êtes pas sûr d'avoir entré le bon email, veuillez le vérifier à nouveau ou cliquez sur Suivant.",
+    "placeholder": "Entrez votre email",
+    "changeEmail": "Changer l'email",
+    "invalidEmail": "Veuillez entrer une adresse email valide"
+  },
+  "contactPreference": {
+    "title": "Méthode de Contact Préférée",
+    "description": "Nous vous contacterons dans 1-2 jours pour clarifier les détails et convenir de la conception de votre justaucorps. Veuillez indiquer votre méthode de contact préférée.",
+    "telegram": "Telegram",
+    "whatsapp": "WhatsApp",
+    "viber": "Viber",
+    "other": "Autre méthode",
+    "placeholders": {
+      "telegram": "Entrez le nom d'utilisateur ou le numéro de téléphone",
+      "whatsapp": "Entrez le numéro de téléphone",
+      "viber": "Entrez le numéro de téléphone",
+      "other": "Décrivez comment vous contacter"
+    },
+    "required": "Veuillez sélectionner une méthode de contact et fournir vos informations de contact"
+  },
+  "errors": {
+    "priceCalculation": "Erreur lors du calcul du prix",
+    "survey": "Erreur lors du traitement du sondage",
+    "surveys": "Erreur lors de la récupération des sondages"
+  }
+}

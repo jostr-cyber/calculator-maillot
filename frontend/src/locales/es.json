@@ -1,0 +1,296 @@
+{
+  "app": {
+    "title": "Calculadora de Maillots",
+    "currency": "EUR"
+  },
+  "buttons": {
+    "continue": "Continuar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "save": "Guardar",
+    "finish": "Finalizar",
+    "spin": "🎯 GIRAR",
+    "spinning": "🔄 Girando...",
+    "spun": "✓ Ya girado",
+    "applyFilter": "Aplicar Filtro",
+    "export": "⬇️ Exportar JSON",
+    "exporting": "⏳ Exportando...",
+    "submit": "Enviar",
+    "recalculate": "🔄 Recalcular",
+    "orderWhatsApp": "💬 ¡Quiero pedir este maillot!"
+  },
+  "steps": {
+    "budget": "Selecciona un rango de precio",
+    "height": "Selecciona la altura de la gymnasta (cm)",
+    "design": "Diseño",
+    "sleeves": "¿Cuántas mangas?",
+    "skirt": "Falda",
+    "decorativeElements": "Elementos Adicionales",
+    "aerography": "Aerografía y pintura",
+    "combinaison": "Tipo de Maillot",
+    "urgency": "Urgencia",
+    "survey": "🎯 Encuesta",
+    "wheel": "🎡 Ruleta de la Fortuna",
+    "result": "Cálculo de Precio"
+  },
+  "budget": {
+    "elite": {
+      "title": "Hasta 800€",
+      "description": ""
+    },
+    "standard": {
+      "title": "Hasta 400€",
+      "description": ""
+    },
+    "economy": {
+      "title": "Hasta 200€",
+      "description": ""
+    }
+  },
+  "height": {
+    "label": "cm",
+    "min": "90 cm",
+    "max": "180 cm",
+    "info": "Selecciona tu altura"
+  },
+  "design": {
+    "our": {
+      "title": "Nuestro diseño",
+      "description": "Diseñado por nuestro estudio"
+    },
+    "artist": {
+      "description": "Incluye recomendaciones de jueces"
+    },
+    "requirements": {
+      "description": "Adaptado a las normas de competición"
+    },
+    "basePrice": "(incluido en precio base, +0 euro)",
+    "your": {
+      "title": "Tu Diseño:",
+      "ai": "* Diseño generado por IA",
+      "photo": "* Foto o inspiración de Internet",
+      "copy": "* Diseño ya preparado",
+      "discount": "Descuento del 5% sobre el precio base"
+    }
+  },
+  "sleeves": {
+    "label": "Selecciona opción...",
+    "none": "Sin mangas",
+    "one": "Una manga",
+    "two": "Dos mangas"
+  },
+  "skirt": {
+    "label": "Selecciona opción...",
+    "none": "Sin falda",
+    "front": "Falda delantera",
+    "back": "Falda trasera",
+    "both": "Falda delantera y trasera"
+  },
+  "decorativeElements": {
+    "label": "Selecciona opción...",
+    "feathers": "Plumas",
+    "fringe": "Flecos",
+    "flowers": "Flores en relieve",
+    "other": "Otro",
+    "nothing": "Nada"
+  },
+  "aerography": {
+    "label": "Selecciona opción...",
+    "drawing": "Dibujo (personaje, objeto, edificio, etc.)",
+    "nothing": "Nada"
+  },
+  "combinaison": {
+    "label": "Selecciona opción...",
+    "leotard": "Maillot estándar",
+    "combinaison": "Maillot de cuerpo entero"
+  },
+  "urgency": {
+    "info": "Selecciona el plazo de confección",
+    "standard": {
+      "title": "Pedido Estándar",
+      "time": "7-14 días",
+      "price": "sin recargo"
+    },
+    "expedited": {
+      "title": "Pedido Acelerado",
+      "time": "hasta 5 días",
+      "price": "+10% al precio"
+    },
+    "note": "💡 Recargos por urgencia..."
+  },
+  "premiumStones": {
+    "swarovski": "Piedras Swarovski",
+    "premium": "Piedras Premium",
+    "none": "Ninguno"
+  },
+  "shoulderStrap": {
+    "label": "Selecciona opción...",
+    "stripe": "Franja Decorativa",
+    "stones": "Piedras",
+    "pearls": "Perlas",
+    "none": "Ninguno"
+  },
+  "details": {
+    "label": "Deseos y preferencias",
+    "placeholder": "Describe lo que te gustaría en tu maillot"
+  },
+  "additions": {
+    "label": "Adiciones opcionales",
+    "shoulder": "Correa de hombro",
+    "stones": "Piedras premium",
+    "warning": "⚠️ Agregar opciones seleccionadas puede aumentar el costo"
+  },
+  "survey": {
+    "intro": "El cálculo está casi listo. Por favor, responde una breve encuesta...",
+    "howFound": {
+      "question": "¿Cómo nos conociste?",
+      "socialMedia": "Redes sociales",
+      "realLife": "Vi maillots en la vida real",
+      "random": "Al azar",
+      "friends": "Amigos recomendaron",
+      "other": "Otro"
+    },
+    "importance": {
+      "question": "¿Qué es lo más importante para ti en un maillot?",
+      "price": "Precio",
+      "deadline": "Plazo de fabricación",
+      "delivery": "Entrega rápida",
+      "design": "Diseño hermoso",
+      "wowEffect": "Efecto wow del maillot",
+      "fit": "Buen ajuste",
+      "daughter": "Lo más importante es que le guste a la gimnasta",
+      "score": "Posibilidad de obtener puntuación más alta por artística",
+      "other": "Otro"
+    },
+    "otherInfluence": {
+      "question": "¿Qué más, además de lo anterior, puede influir en la elección del taller?",
+      "placeholder": "Escribe tu opinión aquí...",
+      "optional": "(campo opcional)"
+    },
+    "age": {
+      "question": "¿Tu edad?",
+      "range1": "18-25",
+      "range2": "26-35",
+      "range3": "36-45",
+      "range4": "46+"
+    },
+    "whoYouAre": {
+      "question": "Cuéntanos un poco sobre ti",
+      "mother": "Madre de una gimnasta",
+      "coach": "Entrenador",
+      "judge": "Juez",
+      "other": "Otro"
+    },
+    "email": {
+      "question": "Ingresa tu dirección de correo electrónico",
+      "placeholder": "ejemplo@email.com"
+    },
+    "validations": {
+      "selectOne": "Por favor selecciona al menos una opción",
+      "selectOneOption": "Por favor selecciona una opción",
+      "enterEmail": "Por favor ingresa tu email",
+      "validEmail": "Por favor ingresa una dirección de email válida"
+    }
+  },
+  "wheel": {
+    "description": "Prueba tu suerte y descubre qué descuento obtendrás",
+    "result": "🎉 ¡Ganaste un descuento: {discount}%!",
+    "resultAmount": "Descuento aplicado: {amount} EUR"
+  },
+  "priceBreakdown": {
+    "title": "Cálculo de Precio",
+    "completed": "Precio estimado de tu maillot",
+    "warning": {
+      "header": "⚠️ El precio excede el presupuesto seleccionado",
+      "text": "El precio final {price} {currency} excede tu presupuesto...",
+      "recommendation": "Descuento mínimo recomendado {percent}%..."
+    },
+    "success": {
+      "header": "🎉 ¡Descuento de la Ruleta de la Fortuna aplicado!",
+      "text": "El descuento {percent}% te ahorró {amount} {currency}"
+    },
+    "breakdown": {
+      "header": "📋 Desglose por componentes:",
+      "basePrice": "Precio base:",
+      "designDiscount": "Descuento por tu diseño/foto (5%):",
+      "discounts": "🎁 Descuentos:",
+      "sleeves": "Mangas:",
+      "noSleeves": "Sin mangas",
+      "skirtFront": "Falda al frente",
+      "skirtBack": "Falda atrás",
+      "skirtBoth": "Falda al frente y atrás",
+      "decorativeElements": "Elementos adicionales:",
+      "noDecorative": "Sin elementos",
+      "aerography": "Pintura de maillot, aerografía:",
+      "noAerography": "Sin aerografía",
+      "modelType": "Tipo de modelo:",
+      "standardLeotard": "Maillot estándar",
+      "withStraps": "Con breteles",
+      "urgency": "Urgencia:",
+      "standard": "Estándar",
+      "urgent": "Urgente",
+      "surcharges": "📈 Recargos:",
+      "heightModifier": "Modificador de altura ({modifier}%):",
+      "discountLabel": "Descuento:",
+      "wheelDiscount": "🎁 Descuento de la Ruleta ({percent}%):"
+    },
+    "finalPrice": "💰 Precio final:",
+    "disclaimer": "Este es un cálculo preliminar. El precio final puede aclararse después de discutir detalles."
+  },
+  "admin": {
+    "title": "📊 Resultados de Encuesta",
+    "subtitle": "Exportar y analizar respuestas de clientes",
+    "error": "❌ {error}",
+    "filters": {
+      "title": "🔍 Filtros",
+      "startDate": "Fecha de inicio:",
+      "endDate": "Fecha de fin:",
+      "apply": "Aplicar Filtro"
+    },
+    "stats": {
+      "total": "Total de encuestas:",
+      "shown": "Mostrado:"
+    },
+    "loading": "⏳ Cargando encuestas...",
+    "empty": {
+      "title": "📭 Sin encuestas para mostrar",
+      "hint": "Intenta cambiar los filtros de fecha"
+    },
+    "table": {
+      "email": "Correo",
+      "date": "Fecha",
+      "age": "Edad",
+      "importance": "Importancia",
+      "howFound": "Cómo nos conociste",
+      "notes": "Notas"
+    },
+    "footer": "💡 Haz clic en el email para enviar un mensaje..."
+  },
+  "emailConfirmation": {
+    "title": "Confirma tu correo electrónico",
+    "description": "Tu cálculo ha sido enviado a la dirección de correo que proporcionaste para que puedas presentar el descuento a la costurera. Si no estás seguro de haber ingresado el correo correcto, verifícalo nuevamente o haz clic en Siguiente.",
+    "placeholder": "Ingresa tu correo electrónico",
+    "changeEmail": "Cambiar correo electrónico",
+    "invalidEmail": "Por favor ingresa una dirección de correo válida"
+  },
+  "contactPreference": {
+    "title": "Método de Contacto Preferido",
+    "description": "Nos pondremos en contacto contigo en 1-2 días para aclarar detalles y acordar el diseño de tu maillot. Por favor indica tu método de contacto preferido.",
+    "telegram": "Telegram",
+    "whatsapp": "WhatsApp",
+    "viber": "Viber",
+    "other": "Otro método",
+    "placeholders": {
+      "telegram": "Ingresa usuario o número de teléfono",
+      "whatsapp": "Ingresa número de teléfono",
+      "viber": "Ingresa número de teléfono",
+      "other": "Describe cómo contactarte"
+    },
+    "required": "Por favor selecciona un método de contacto y proporciona tu información de contacto"
+  },
+  "errors": {
+    "priceCalculation": "Error al calcular el precio",
+    "survey": "Error al procesar la encuesta",
+    "surveys": "Error al recuperar encuestas"
+  }
+}

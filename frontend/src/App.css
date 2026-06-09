@@ -1,0 +1,156 @@
+.app {
+  min-height: 100vh;
+  background-image: url('/swarovski-bg.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Bokeh блеск эффект с белыми светлыми тонами */
+.app::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(255, 200, 255, 0.3) 0%, transparent 45%),
+    radial-gradient(circle at 30% 80%, rgba(255, 220, 255, 0.25) 0%, transparent 40%),
+    radial-gradient(circle at 90% 15%, rgba(255, 255, 255, 0.35) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Декоративные кристаллы внизу (отключено) */
+.app::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  background: transparent;
+  border-top: none;
+  pointer-events: none;
+  z-index: 1;
+  display: none;
+}
+
+.container {
+  background: white;
+  border-radius: 10px;
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+  position: relative;
+  z-index: 10;
+}
+
+h1 {
+  text-align: center;
+  color: #7a3d7a;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+.error {
+  background: #ff6b6b;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.btn-primary,
+.btn-secondary {
+  flex: 1;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: #A855A8;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #7a3d7a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(168, 85, 168, 0.4);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background: #d0d0d0;
+  transform: translateY(-2px);
+}
+
+/* Декоративные кристаллы */
+.crystals {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.3));
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}

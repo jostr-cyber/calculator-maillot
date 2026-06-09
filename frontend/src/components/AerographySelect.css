@@ -1,0 +1,138 @@
+.custom-input-container {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  border-left: 4px solid #990099;
+}
+
+.custom-input-container label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.custom-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #990099;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.custom-textarea:focus {
+  outline: none;
+  border-color: #c9a3d0;
+  box-shadow: 0 0 0 3px rgba(153, 0, 153, 0.1);
+}
+
+.custom-textarea::placeholder {
+  color: #999;
+}
+
+.select-wrapper {
+  padding: 30px 20px;
+  background: white;
+  border-radius: 8px;
+}
+
+.select-wrapper h2 {
+  color: #990099;
+  margin-bottom: 30px;
+  font-size: 22px;
+}
+
+.checkboxes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f9f0ff;
+  border-radius: 5px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.checkbox-label:hover {
+  background-color: #f0e0ff;
+}
+
+.checkbox-label.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.checkbox-label.disabled:hover {
+  background-color: #f9f0ff;
+}
+
+.checkbox-input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #990099;
+}
+
+.checkbox-input:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.checkbox-text {
+  font-size: 15px;
+  color: #333;
+  font-weight: 500;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn-primary,
+.btn-secondary {
+  flex: 1;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background-color: #990099;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #7a006f;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background-color: #d0d0d0;
+  transform: translateY(-2px);
+}

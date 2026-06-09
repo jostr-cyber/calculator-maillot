@@ -1,0 +1,76 @@
+=== LEOTARD CALCULATOR - RECENT FIXES ===
+
+1. BUDGET LEVEL MAPPING (FIXED)
+   - File: frontend/src/App.jsx
+   - Changed: '400': 'Advanced' → '400': 'Standard'
+   - Reason: Consistency with CSV and backend naming
+
+2. BACKEND LEVEL MAPPING (FIXED)
+   - File: backend/config/prices.js
+   - Changed: All references to 'Advanced' → 'Standard' in LEVEL_MAPPING
+   - Reason: CSV uses 'Standart' which should map to 'Standard', not 'Advanced'
+
+3. AEROGRAPHY MULTIPLE SELECTIONS (FIXED)
+   - File: backend/config/prices.js
+   - Changed: Single price lookup → Handles multiple comma-separated selections
+   - Maps: 'tint' → 'Аэрография тонировка'
+   - Maps: 'gradient' → 'Аэрография переход нескольких цветов'  
+   - Maps: 'volumetric' → 'Аэрография объемный рисунок'
+   - Reason: AerographySelect component sends multiple selections
+
+4. DECORATIVE ELEMENTS MULTIPLE SELECTIONS (FIXED)
+   - File: backend/config/prices.js
+   - Changed: Single price lookup → Handles multiple comma-separated selections
+   - Maps: 'feathers' → 'Декоративные элементы перья'
+   - Maps: 'belt' → 'Декоративные  элементы имитация ремня с кнопками'
+   - Maps: 'fringe' → 'Декоративные элементы бахрома'
+   - Maps: 'flowers' → 'Декоративные элементы цветы'
+   - Maps: 'other' → 'Декоративные элементы другое'
+   - Reason: DecorativeElementsSelect component sends multiple selections
+
+5. SHOULDER ELEMENTS MAPPING (FIXED)
+   - File: backend/config/prices.js
+   - Changed: 'Подвесы (бретели)' → 'Подвесы' to match CSV key
+   - Reason: CSV uses 'Подвесы' not 'Подвесы (бретели)'
+
+6. URGENCY SURCHARGE HANDLING (FIXED)
+   - File: backend/config/prices.js
+   - Changed: Single key lookup → Handles different urgency levels
+   - Maps: 'urgent' → 'Срочный заказ (3 дня)'
+   - Maps: 'accelerated' → 'Ускоренный заказ (5 дней)'
+   - Reason: UrgencySelect has two different options with different prices
+
+=== PENDING ISSUES ===
+
+CSV FILE CONSISTENCY:
+The Prices.csv file should be updated to match the UI labels for better maintainability:
+- Line 24: 'Аэрография объемный рисунок' should be renamed to 'Рисунок (персонаж, предмет, здание и т.д.)'
+- Line 21: 'Подвесы' should be renamed to 'Подвесы (бретели, свисающие на предплечье)'
+
+This will require:
+1. Updating the CSV when the file lock is released
+2. Updating the backend mappings to use the new CSV keys
+
+=== TESTING RECOMMENDATIONS ===
+
+1. Test multiple selections in:
+   - Decorative Elements (combine feathers + fringe, etc.)
+   - Aerography (combine tint + gradient, etc.)
+   - Shoulder Elements (combine decorated_shoulder + wing, etc.)
+   - Premium Stones (combine small-100 + sew-10, etc.)
+
+2. Test discount application:
+   - No sleeves should trigger 5% discount
+   - No skirt should trigger 5% discount
+   - No decorative elements should trigger 5% discount
+   - Customer design should trigger 20% discount
+
+3. Test urgency pricing:
+   - Standard order: 0% surcharge
+   - Accelerated order: 10% surcharge
+   - Urgent order: 30-40% surcharge (depending on level)
+
+4. Test all budget levels:
+   - Elite (€500 base, 20% height modifier for 170+)
+   - Standard (€250 base, 10% height modifier for 150-170)
+   - Economy (€150 base, 5% height modifier for 150-170)

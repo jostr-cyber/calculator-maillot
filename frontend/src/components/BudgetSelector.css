@@ -1,0 +1,55 @@
+.budget-selector h2 {
+  color: #990099;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.budget-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.budget-option {
+  padding: 15px 20px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.budget-option:hover {
+  border-color: #990099;
+  background: #f9f0ff;
+  transform: translateX(5px);
+}
+
+.budget-label {
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+}
+
+.budget-description {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.4;
+  margin-top: 6px;
+}
+
+@media (max-width: 600px) {
+  .budget-selector h2 {
+    font-size: 18px;
+  }
+
+  .budget-option {
+    padding: 12px 16px;
+  }
+
+  .budget-label {
+    font-size: 14px;
+  }
+}

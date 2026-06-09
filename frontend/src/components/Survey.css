@@ -1,0 +1,386 @@
+.survey-wrapper {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.survey-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.survey-header h2 {
+  color: #990099;
+  font-size: 24px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.survey-intro {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.survey-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.survey-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.survey-question {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.mandatory-indicator {
+  color: #ff6b6b;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Checkbox styling */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 15px;
+  background: #f9f0ff;
+  border-radius: 5px;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 10px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  user-select: none;
+}
+
+.checkbox-group label:hover {
+  background-color: #f0e0ff;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #990099;
+  flex-shrink: 0;
+}
+
+.checkbox-group span {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Radio button styling */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 15px;
+  background: #f9f0ff;
+  border-radius: 5px;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 10px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  user-select: none;
+}
+
+.radio-group label:hover {
+  background-color: #f0e0ff;
+}
+
+.radio-group input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #990099;
+  flex-shrink: 0;
+}
+
+.radio-group span {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Input styling */
+.survey-input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 14px;
+  border: 2px solid #990099;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  color: #333;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.survey-input:focus {
+  outline: none;
+  border-color: #990099;
+  box-shadow: 0 0 0 3px rgba(153, 0, 153, 0.1);
+}
+
+.survey-input::placeholder {
+  color: #999;
+}
+
+/* Textarea styling */
+.survey-textarea {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 14px;
+  border: 2px solid #990099;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  resize: vertical;
+  box-sizing: border-box;
+  color: #333;
+  min-height: 100px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.survey-textarea:focus {
+  outline: none;
+  border-color: #990099;
+  box-shadow: 0 0 0 3px rgba(153, 0, 153, 0.1);
+}
+
+.survey-textarea::placeholder {
+  color: #999;
+}
+
+/* Optional field note */
+.optional-note {
+  font-size: 12px;
+  color: #999;
+  font-style: italic;
+  margin: 0;
+  margin-top: 5px;
+}
+
+/* Validation error styling */
+.validation-error {
+  color: #ff6b6b;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 12px;
+  background: #fff5f5;
+  border: 1px solid #ff6b6b;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+/* Survey actions */
+.survey-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.survey-actions button {
+  flex: 1;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.2s;
+}
+
+.survey-actions .btn-primary {
+  background-color: #990099;
+  color: white;
+}
+
+.survey-actions .btn-primary:hover:not(:disabled) {
+  background-color: #7a006f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(153, 0, 153, 0.3);
+}
+
+.survey-actions .btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.survey-actions .btn-secondary {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.survey-actions .btn-secondary:hover {
+  background-color: #d0d0d0;
+  transform: translateY(-2px);
+}
+
+/* Image grid for Q6 (future implementation) */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 15px;
+  background: #f9f0ff;
+  border-radius: 5px;
+}
+
+.image-item {
+  position: relative;
+  cursor: pointer;
+  border-radius: 5px;
+  overflow: hidden;
+  aspect-ratio: 1;
+  border: 3px solid transparent;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.image-item:hover {
+  border-color: #990099;
+  transform: scale(1.05);
+}
+
+.image-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-item.selected {
+  border-color: #990099;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px #990099;
+}
+
+.image-item-checkbox {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #990099;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .survey-wrapper {
+    max-width: 100%;
+  }
+
+  .survey-header h2 {
+    font-size: 20px;
+  }
+
+  .survey-intro {
+    font-size: 13px;
+  }
+
+  .survey-question {
+    font-size: 14px;
+  }
+
+  .checkbox-group,
+  .radio-group {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .checkbox-group label,
+  .radio-group label {
+    padding: 8px 8px;
+  }
+
+  .checkbox-group span,
+  .radio-group span {
+    font-size: 13px;
+  }
+
+  .survey-textarea {
+    font-size: 13px;
+    padding: 10px 12px;
+    min-height: 80px;
+  }
+
+  .validation-error {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+
+  .optional-note {
+    font-size: 11px;
+  }
+
+  .survey-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .survey-actions button {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .survey-header h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .survey-intro {
+    font-size: 12px;
+  }
+
+  .survey-form {
+    gap: 20px;
+  }
+
+  .checkbox-group,
+  .radio-group {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .image-item {
+    aspect-ratio: 1;
+  }
+}

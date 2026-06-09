@@ -1,0 +1,147 @@
+.wheel-of-fortune {
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #E8D4E8 0%, #D9B8E0 100%);
+  border-radius: 10px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.wheel-of-fortune h3 {
+  font-size: 24px;
+  color: #990099;
+  margin-bottom: 10px;
+}
+
+.wheel-description {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.wheel-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  perspective: 1000px;
+}
+
+.wheel-canvas {
+  width: 300px;
+  height: 300px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s linear;
+}
+
+.wheel-controls {
+  margin: 30px 0 20px 0;
+}
+
+.spin-button {
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  background: #990099;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(153, 0, 153, 0.3);
+}
+
+.spin-button:hover:not(:disabled) {
+  background: #770077;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(153, 0, 153, 0.4);
+}
+
+.spin-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.spin-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(153, 0, 153, 0.2);
+}
+
+.result-display {
+  background: white;
+  border: 2px solid #FFD700;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-text {
+  font-size: 20px;
+  color: #990099;
+  margin-bottom: 10px;
+}
+
+.result-text strong {
+  font-size: 28px;
+  color: #ff6b6b;
+}
+
+.result-amount {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Size variations */
+.wheel-of-fortune.small {
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.wheel-of-fortune.large {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .wheel-of-fortune {
+    padding: 20px 15px;
+  }
+
+  .wheel-of-fortune h3 {
+    font-size: 20px;
+  }
+
+  .wheel-canvas {
+    width: 250px;
+    height: 250px;
+  }
+
+  .spin-button {
+    padding: 12px 30px;
+    font-size: 16px;
+  }
+
+  .result-text {
+    font-size: 18px;
+  }
+
+  .result-text strong {
+    font-size: 24px;
+  }
+}

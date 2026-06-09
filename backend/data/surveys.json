@@ -1,0 +1,507 @@
+{
+  "surveys": [
+    {
+      "id": "7f5521fad701mmmikagb",
+      "timestamp": "2026-03-11T20:50:57.131Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "social_media"
+      ],
+      "importance": "gymnast_preference",
+      "age": "36-45",
+      "whoYouAre": [
+        "judge"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "2597abcac997mmmioxli",
+      "timestamp": "2026-03-11T20:54:33.750Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "real_life"
+      ],
+      "importance": "wow_effect",
+      "age": "36-45",
+      "whoYouAre": [
+        "other"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "67d4306537dbmmmkst5z",
+      "timestamp": "2026-03-11T21:53:33.863Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "friends"
+      ],
+      "importance": "gymnast_preference",
+      "age": "26-35",
+      "whoYouAre": [
+        "coach"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "92e7fc47add1mmmlfuw1",
+      "timestamp": "2026-03-11T22:11:29.185Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "friends"
+      ],
+      "importance": "good_fit",
+      "age": "26-35",
+      "whoYouAre": [
+        "judge"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "b24f3a8a5bbbmmmlj8ly",
+      "timestamp": "2026-03-11T22:14:06.935Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "social_media"
+      ],
+      "importance": "fast_delivery",
+      "age": "26-35",
+      "whoYouAre": [
+        "judge"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "2ecfe461325cmmmloz5t",
+      "timestamp": "2026-03-11T22:18:34.625Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "friends"
+      ],
+      "importance": "fast_delivery",
+      "age": "26-35",
+      "whoYouAre": [
+        "mom"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "1cde50214766mmmlu6t4",
+      "timestamp": "2026-03-11T22:22:37.816Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "friends"
+      ],
+      "importance": "wow_effect",
+      "age": "26-35",
+      "whoYouAre": [
+        "judge"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "ebacc0f84635mmmlvedi",
+      "timestamp": "2026-03-11T22:23:34.278Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "friends"
+      ],
+      "importance": "good_fit",
+      "age": "26-35",
+      "whoYouAre": [
+        "judge"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "920fb6c0a331mmmlx8jp",
+      "timestamp": "2026-03-11T22:25:00.037Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "real_life"
+      ],
+      "importance": "manufacturing_time",
+      "age": "26-35",
+      "whoYouAre": [
+        "judge"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "345293881cccmmmm45or",
+      "timestamp": "2026-03-11T22:30:22.923Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "friends"
+      ],
+      "importance": "fast_delivery",
+      "age": "18-25",
+      "whoYouAre": [
+        "judge"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "026304991c18mmnbi5g6",
+      "timestamp": "2026-03-12T10:21:06.198Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "friends"
+      ],
+      "importance": "good_fit",
+      "age": "26-35",
+      "whoYouAre": [
+        "judge"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "32acf632edb8mmoq4gcj",
+      "timestamp": "2026-03-13T09:58:07.555Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "other"
+      ],
+      "importance": "beautiful_design",
+      "age": "36-45",
+      "whoYouAre": [
+        "other"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "170dabaa2d99mmoqslet",
+      "timestamp": "2026-03-13T10:16:53.861Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "random"
+      ],
+      "importance": "good_fit",
+      "age": "18-25",
+      "whoYouAre": [
+        "mom"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "15ef6735bf36mmoskv25",
+      "timestamp": "2026-03-13T11:06:52.349Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "random"
+      ],
+      "importance": "manufacturing_time",
+      "age": "26-35",
+      "whoYouAre": [
+        "judge"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "2693108cdd55mmotc1n8",
+      "timestamp": "2026-03-13T11:28:00.596Z",
+      "email": "user@example.com",
+      "howFound": [
+        "social_media",
+        "real_life"
+      ],
+      "importance": "manufacturing_time",
+      "age": "18-25",
+      "whoYouAre": [
+        "mom"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "67a22da527bcmmotx78j",
+      "timestamp": "2026-03-13T11:44:27.619Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "random"
+      ],
+      "importance": "fast_delivery",
+      "age": "36-45",
+      "whoYouAre": [
+        "judge"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "f043ba41971cmmotzg7r",
+      "timestamp": "2026-03-13T11:46:12.567Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "real_life"
+      ],
+      "importance": "wow_effect",
+      "age": "36-45",
+      "whoYouAre": [
+        "judge"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "70e16005e9c0mmoufjdv",
+      "timestamp": "2026-03-13T11:58:43.171Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "real_life"
+      ],
+      "importance": "manufacturing_time",
+      "age": "18-25",
+      "whoYouAre": [
+        "coach"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "8cef63e9f08fmmoumuic",
+      "timestamp": "2026-03-13T12:04:24.180Z",
+      "email": "auser@test.com",
+      "howFound": [
+        "social_media",
+        "real_life",
+        "random",
+        "friends",
+        "other"
+      ],
+      "importance": "price",
+      "age": "46+",
+      "whoYouAre": [
+        "mom",
+        "coach",
+        "judge",
+        "other"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "433f2467a6eemmousv0m",
+      "timestamp": "2026-03-13T12:09:04.774Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "random"
+      ],
+      "importance": "good_fit",
+      "age": "36-45",
+      "whoYouAre": [
+        "judge"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "aa2b236670f4mq6h8bhx",
+      "timestamp": "2026-06-09T10:08:09.525Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "real_life"
+      ],
+      "importance": "price",
+      "age": "36-45",
+      "whoYouAre": [
+        "mom"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "62f0a068c409mq6h9lzi",
+      "timestamp": "2026-06-09T10:09:09.774Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "friends"
+      ],
+      "importance": "gymnast_preference",
+      "age": "36-45",
+      "whoYouAre": [
+        "other"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "05e9ed4044cdmq6hvcmq",
+      "timestamp": "2026-06-09T10:26:04.082Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "social_media"
+      ],
+      "importance": "manufacturing_time",
+      "age": "18-25",
+      "whoYouAre": [
+        "mom"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "bacc3ecbbcccmq6hxdxz",
+      "timestamp": "2026-06-09T10:27:39.095Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "friends"
+      ],
+      "importance": "wow_effect",
+      "age": "18-25",
+      "whoYouAre": [
+        "coach"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "9409ffb42b41mq6i0cxq",
+      "timestamp": "2026-06-09T10:29:57.758Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "other"
+      ],
+      "importance": "good_fit",
+      "age": "26-35",
+      "whoYouAre": [
+        "judge"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "26dc570a0760mq6i3b7f",
+      "timestamp": "2026-06-09T10:32:15.483Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "friends"
+      ],
+      "importance": "beautiful_design",
+      "age": "36-45",
+      "whoYouAre": [
+        "other"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "a307e107f6a4mq6i88e6",
+      "timestamp": "2026-06-09T10:36:05.118Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "real_life"
+      ],
+      "importance": "good_fit",
+      "age": "18-25",
+      "whoYouAre": [
+        "judge"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "0d495a221ademq6iah2b",
+      "timestamp": "2026-06-09T10:37:49.667Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "friends"
+      ],
+      "importance": "gymnast_preference",
+      "age": "26-35",
+      "whoYouAre": [
+        "judge"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "a7c1967ad985mq6ie9dy",
+      "timestamp": "2026-06-09T10:40:46.342Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "friends"
+      ],
+      "importance": "fast_delivery",
+      "age": "18-25",
+      "whoYouAre": [
+        "judge"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "bf1ceada9e86mq6ieztg",
+      "timestamp": "2026-06-09T10:41:20.596Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "real_life"
+      ],
+      "importance": "beautiful_design",
+      "age": "26-35",
+      "whoYouAre": [
+        "mom"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "63375b2209bcmq6igul1",
+      "timestamp": "2026-06-09T10:42:47.125Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "friends"
+      ],
+      "importance": "wow_effect",
+      "age": "18-25",
+      "whoYouAre": [
+        "judge"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "84ee4cf2ace8mq6ik8uu",
+      "timestamp": "2026-06-09T10:45:25.590Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "social_media"
+      ],
+      "importance": "good_fit",
+      "age": "46+",
+      "whoYouAre": [
+        "other"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    },
+    {
+      "id": "eb1f702c33e7mq6iml9c",
+      "timestamp": "2026-06-09T10:47:14.976Z",
+      "email": "aaargaka@gmail.com",
+      "howFound": [
+        "social_media"
+      ],
+      "importance": "wow_effect",
+      "age": "18-25",
+      "whoYouAre": [
+        "coach"
+      ],
+      "otherInfluence": "",
+      "favoriteLeotards": []
+    }
+  ]
+}
