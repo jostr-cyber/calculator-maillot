@@ -4,13 +4,13 @@
 export const calculatePriceLocal = (config) => {
   let basePrice = 150; // Base price for simple leotard
 
-  // Height modifier
+  // Height surcharge (percentage added to base price)
   const heightCategory = config.height || '150-170';
   const heightModifiers = {
-    '<130': 0.85,
-    '130-150': 0.95,
-    '150-170': 1.0,
-    '170+': 1.1
+    '<130': 1.0,      // 0% surcharge
+    '130-150': 1.05,  // +5% surcharge
+    '150-170': 1.1,   // +10% surcharge
+    '170+': 1.2       // +20% surcharge
   };
   basePrice *= heightModifiers[heightCategory] || 1.0;
 
