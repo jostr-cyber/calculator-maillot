@@ -83,8 +83,8 @@
   },
   "design": {
     "our": {
-      "title": "Notre Design",
-      "description": "complété par artiste de studio"
+      "title": "J'ai besoin d'un design",
+      "description": "Développement de design à partir de zéro selon vos préférences"
     },
     "artist": {
       "description": "inclut les recommandations du jury"
@@ -362,7 +362,7 @@
     "required": "Veuillez sélectionner une méthode de contact et fournir vos informations de contact"
   },
   "summary": {
-    "title": "Votre sélection actuelle et prix basés sur les étapes précédentes",
+    "title": "Votre sélection actuelle basée sur les étapes précédentes",
     "currentEstimate": "Estimation actuelle",
     "complexity": "Complexité",
     "noSelections": "Aucune sélection pour le moment"

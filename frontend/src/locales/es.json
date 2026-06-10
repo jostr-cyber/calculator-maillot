@@ -101,8 +101,8 @@
   },
   "design": {
     "our": {
-      "title": "Nuestro diseño",
-      "description": "Diseñado por nuestro estudio"
+      "title": "Necesito un diseño",
+      "description": "Desarrollo de diseño desde cero según tus preferencias"
     },
     "artist": {
       "description": "Incluye recomendaciones de jueces"
@@ -362,7 +362,7 @@
     "required": "Por favor selecciona un método de contacto y proporciona tu información de contacto"
   },
   "summary": {
-    "title": "Tu selección actual y precio basado en pasos anteriores",
+    "title": "Tu selección actual basada en pasos anteriores",
     "currentEstimate": "Estimación actual",
     "complexity": "Complejidad",
     "noSelections": "Sin selecciones aún"
