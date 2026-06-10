@@ -141,6 +141,8 @@
   color: #666;
   margin-bottom: 6px;
   line-height: 1.4;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .design-option-discount {
