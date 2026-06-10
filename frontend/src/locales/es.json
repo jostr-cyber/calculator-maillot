@@ -3,6 +3,10 @@
     "title": "Calculadora de Maillots",
     "currency": "EUR"
   },
+  "intro": {
+    "description": "Calcula el costo de tu maillot personalizado en unos pocos pasos simples",
+    "startButton": "Comenzar cálculo"
+  },
   "buttons": {
     "continue": "Continuar",
     "back": "Atrás",

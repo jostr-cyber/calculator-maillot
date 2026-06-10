@@ -3,6 +3,10 @@
     "title": "Calculatrice de Justaucorps",
     "currency": "EUR"
   },
+  "intro": {
+    "description": "Calculez le coût de votre justaucorps personnalisé en quelques étapes simples",
+    "startButton": "Commencer le calcul"
+  },
   "buttons": {
     "continue": "Continuer",
     "back": "Retour",

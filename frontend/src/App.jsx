@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './App.css'
 import API_BASE_URL from './config/api'
 import AdminSurveys from './pages/AdminSurveys'
+import Intro from './components/Intro'
 import BudgetSelector from './components/BudgetSelector'
 import HeightSlider from './components/HeightSlider'
 import SleevesSelect from './components/SleevesSelect'
@@ -62,7 +63,7 @@ function App() {
   const { t } = useTranslation()
 
   // Main configuration state
-  const [step, setStep] = useState('height')
+  const [step, setStep] = useState('intro')
   const [selectedBudget, setSelectedBudget] = useState(null)
   const [height, setHeight] = useState(150)
   const [heightCategory, setHeightCategory] = useState('150-170')
@@ -93,8 +94,9 @@ function App() {
   const [contactMethod, setContactMethod] = useState('')
   const [contactValue, setContactValue] = useState('')
 
-  // Step order: height -> designSource -> sleeves -> skirt -> decorativeElements -> aerography -> combinaison -> urgency -> budget (for comparison) -> survey -> result
+  // Step order: intro -> height -> designSource -> sleeves -> skirt -> decorativeElements -> aerography -> combinaison -> urgency -> budget (for comparison) -> survey -> result
   const steps = [
+    'intro',
     'height',
     'designSource',
     'sleeves',
@@ -190,6 +192,10 @@ function App() {
     } finally {
       setLoading(false)
     }
+  }
+
+  const handleIntroStart = () => {
+    setStep('height')
   }
 
   const handleBudgetSelect = (budgetValue) => {
@@ -396,7 +402,7 @@ function App() {
     setCurrentPrice(null)
     setComplexity(null)
     setEstimatedCrystals(0)
-    setStep('height')
+    setStep('intro')
   }
 
   // Check if admin route
@@ -420,14 +426,18 @@ function App() {
 
   return (
     <div className="app">
-      <LanguageSwitcher />
-      <div className="container">
-        <h1>{t('app.title')}</h1>
+      {step === 'intro' ? (
+        <Intro onStart={handleIntroStart} />
+      ) : (
+        <>
+          <LanguageSwitcher />
+          <div className="container">
+            <h1>{t('app.title')}</h1>
 
-        {error && <div className="error">{t('errors.priceCalculation')}: {error}</div>}
-        {loading && <div className="loading">{t('loading') || 'Loading...'}</div>}
+            {error && <div className="error">{t('errors.priceCalculation')}: {error}</div>}
+            {loading && <div className="loading">{t('loading') || 'Loading...'}</div>}
 
-        {step === 'height' && (
+            {step === 'height' && (
           <HeightSlider
             value={height}
             onHeightChange={handleHeightChange}
@@ -558,7 +568,9 @@ function App() {
             onBack={handleBack}
           />
         )}
-      </div>
+          </div>
+        </>
+      )}
     </div>
   )
 }
