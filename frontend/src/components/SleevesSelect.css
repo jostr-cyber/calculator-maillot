@@ -98,6 +98,14 @@
   margin-top: 24px;
 }
 
+.gallery-title {
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -319,6 +327,11 @@
     padding: 16px;
     margin-top: 16px;
     margin-bottom: 24px;
+  }
+
+  .gallery-title {
+    font-size: 16px;
+    margin-bottom: 16px;
   }
 
   .gallery-grid {

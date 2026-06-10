@@ -86,6 +86,7 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
 
       {/* Images Gallery */}
       <div className="sleeves-gallery">
+        <h3 className="gallery-title">{t('sleeves.galleryTitle')}</h3>
         <div className="gallery-grid">
           {sleeves.map(sleeve => (
             <div key={sleeve.value} className="gallery-item">

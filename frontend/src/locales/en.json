@@ -121,6 +121,7 @@
   },
   "sleeves": {
     "label": "Select option...",
+    "galleryTitle": "Examples of our leotards with and without sleeves",
     "none": "No sleeves",
     "noneDesc": "Classic style",
     "noneImg": "Example without sleeves",

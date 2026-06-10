@@ -121,6 +121,7 @@
   },
   "sleeves": {
     "label": "Selecciona opción...",
+    "galleryTitle": "Ejemplos de nuestros maillots con y sin mangas",
     "none": "Sin mangas",
     "noneDesc": "Estilo clásico",
     "noneImg": "Ejemplo sin mangas",
