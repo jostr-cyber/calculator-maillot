@@ -14,6 +14,29 @@ export const calculatePriceLocal = (config) => {
   };
   basePrice *= heightModifiers[heightCategory] || 1.0;
 
+  // Design source adjustment (applied to base price BEFORE adding options)
+  let designAdjustment = 0;
+  let adjustmentType = 'none'; // 'discount', 'surcharge', or 'none'
+
+  if (config.designSource === 'own-design') {
+    // Customer provides their own design: -5% discount
+    designAdjustment = basePrice * 0.05;
+    adjustmentType = 'discount';
+  } else if (config.designSource === 'inspiration-photos') {
+    // Customer provides reference photos: no adjustment
+    designAdjustment = 0;
+    adjustmentType = 'none';
+  } else if (config.designSource === 'custom-design') {
+    // Studio designs from scratch: +10% surcharge
+    designAdjustment = basePrice * 0.10;
+    adjustmentType = 'surcharge';
+  }
+
+  // Apply design adjustment to base price first
+  basePrice = adjustmentType === 'discount'
+    ? basePrice - designAdjustment
+    : basePrice + designAdjustment;
+
   // Sleeves
   if (config.sleeves === 1) basePrice += 40;
   if (config.sleeves === 2) basePrice += 80;
@@ -41,27 +64,7 @@ export const calculatePriceLocal = (config) => {
   // Combinaison (full suit)
   if (config.combinaison === 'full') basePrice += 80;
 
-  // Design source adjustment (based on designSource step)
-  let designAdjustment = 0;
-  let adjustmentType = 'none'; // 'discount', 'surcharge', or 'none'
-
-  if (config.designSource === 'own-design') {
-    // Customer provides their own design: -5% discount
-    designAdjustment = basePrice * 0.05;
-    adjustmentType = 'discount';
-  } else if (config.designSource === 'inspiration-photos') {
-    // Customer provides reference photos: no adjustment
-    designAdjustment = 0;
-    adjustmentType = 'none';
-  } else if (config.designSource === 'custom-design') {
-    // Studio designs from scratch: +10% surcharge
-    designAdjustment = basePrice * 0.10;
-    adjustmentType = 'surcharge';
-  }
-
-  const finalPrice = Math.round((adjustmentType === 'discount'
-    ? basePrice - designAdjustment
-    : basePrice + designAdjustment) * 100) / 100;
+  const finalPrice = Math.round(basePrice * 100) / 100;
 
   return {
     finalPrice: finalPrice,
