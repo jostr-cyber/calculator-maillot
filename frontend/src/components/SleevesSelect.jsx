@@ -6,6 +6,7 @@ import './SleevesSelect.css'
 function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, currentPrice, complexity }) {
   const { t } = useTranslation()
   const [selected, setSelected] = useState(value !== null && value !== '' ? value : 0)
+  const [openedImage, setOpenedImage] = useState(null)
 
   const sleeves = [
     {
@@ -47,6 +48,14 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
     onContinue()
   }
 
+  const handleImageClick = (image) => {
+    setOpenedImage(image)
+  }
+
+  const closeModal = () => {
+    setOpenedImage(null)
+  }
+
   return (
     <div className="sleeves-select">
       <h2>{t('steps.sleeves')}</h2>
@@ -80,12 +89,28 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
         <div className="gallery-grid">
           {sleeves.map(sleeve => (
             <div key={sleeve.value} className="gallery-item">
-              <img src={sleeve.image} alt={t(sleeve.imageKey)} className="gallery-image" />
+              <img
+                src={sleeve.image}
+                alt={t(sleeve.imageKey)}
+                className="gallery-image"
+                onClick={() => handleImageClick(sleeve.image)}
+                style={{ cursor: 'pointer' }}
+              />
               <p className="gallery-label">{t(sleeve.imageKey)}</p>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Image Modal */}
+      {openedImage && (
+        <div className="image-modal" onClick={closeModal}>
+          <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="image-modal-close" onClick={closeModal}>✕</button>
+            <img src={openedImage} alt="Full size" className="image-modal-image" />
+          </div>
+        </div>
+      )}
 
       {config && currentPrice && complexity && (
         <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
