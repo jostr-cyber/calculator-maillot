@@ -52,6 +52,7 @@
     "aerography": "Peinture de Justaucorps, Aérographie",
     "combinaison": "Type de Modèle",
     "urgency": "Urgence",
+    "rhinestone": "Avez-vous besoin de strass?",
     "survey": "🎯 Sondage",
     "wheel": "🎡 Roue de la Fortune",
     "result": "Calcul du Prix"
@@ -179,6 +180,18 @@
       "price": "+10% au prix"
     },
     "note": "💡 Suppléments pour urgence..."
+  },
+  "rhinestone": {
+    "none": "Sans strass",
+    "noneDesc": "Style classique sans décoration",
+    "minimal": "Ensemble minimal de pierres collées et cousues",
+    "minimalDesc": "Petite quantité de décoration",
+    "standard": "Ensemble standard de pierres collées et cousues",
+    "standardDesc": "Quantité optimale de décoration",
+    "maximum": "Ensemble maximum de pierres collées et cousues",
+    "maximumDesc": "Décoration généreuse sur toute la surface",
+    "premium": "Mélange de pierres collées et cousues classe Premium",
+    "premiumDesc": "Décoration de luxe avec matériaux premium"
   },
   "premiumStones": {
     "swarovski": "Pierres Swarovski",

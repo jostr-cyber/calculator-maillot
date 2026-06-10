@@ -58,6 +58,12 @@ export const calculatePriceLocal = (config) => {
   // Aerography (fixed amounts)
   if (config.aerography && config.aerography !== 'nothing') finalPrice += 120;
 
+  // Rhinestones (fixed amounts)
+  if (config.rhinestone === 'minimal') finalPrice += 30;
+  if (config.rhinestone === 'standard') finalPrice += 70;
+  if (config.rhinestone === 'maximum') finalPrice += 120;
+  if (config.rhinestone === 'premium') finalPrice += 200;
+
   // Premium stones (fixed amounts)
   if (config.premiumStones === 'swarovski') finalPrice += 200;
   if (config.premiumStones === 'premium') finalPrice += 150;
@@ -83,6 +89,7 @@ export const calculatePriceLocal = (config) => {
       skirt: config.skirt === 'both' ? 30 : (config.skirt === 'front' || config.skirt === 'back' ? 15 : 0),
       decorativeElements: (config.decorativeElements && config.decorativeElements !== 'none' ? config.decorativeElements.split(',').filter(e => e).length * 60 : 0),
       aerography: (config.aerography !== 'nothing' ? 120 : 0),
+      rhinestone: (config.rhinestone === 'minimal' ? 30 : (config.rhinestone === 'standard' ? 70 : (config.rhinestone === 'maximum' ? 120 : (config.rhinestone === 'premium' ? 200 : 0)))),
       premiumStones: (config.premiumStones === 'swarovski' ? 200 : (config.premiumStones === 'premium' ? 150 : 0))
     }
   };

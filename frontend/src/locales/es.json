@@ -52,6 +52,7 @@
     "aerography": "Aerografía y pintura",
     "combinaison": "Tipo de Maillot",
     "urgency": "Urgencia",
+    "rhinestone": "¿Necesita diamantes de imitación?",
     "survey": "🎯 Encuesta",
     "wheel": "🎡 Ruleta de la Fortuna",
     "result": "Cálculo de Precio"
@@ -179,6 +180,18 @@
       "price": "+10% al precio"
     },
     "note": "💡 Recargos por urgencia..."
+  },
+  "rhinestone": {
+    "none": "Sin diamantes",
+    "noneDesc": "Estilo clásico sin adornos",
+    "minimal": "Conjunto mínimo de piedras pegadas y cosidas",
+    "minimalDesc": "Pequeña cantidad de adornos",
+    "standard": "Conjunto estándar de piedras pegadas y cosidas",
+    "standardDesc": "Cantidad óptima de adornos",
+    "maximum": "Conjunto máximo de piedras pegadas y cosidas",
+    "maximumDesc": "Decoración generosa en toda la superficie",
+    "premium": "Mezcla de piedras pegadas y cosidas clase Premium",
+    "premiumDesc": "Decoración de lujo con materiales premium"
   },
   "premiumStones": {
     "swarovski": "Piedras Swarovski",

@@ -52,6 +52,7 @@
     "aerography": "Leotard Painting, Aerography",
     "combinaison": "Leotard Type",
     "urgency": "Urgency",
+    "rhinestone": "Do you need rhinestones?",
     "survey": "🎯 Survey",
     "wheel": "🎡 Wheel of Fortune",
     "result": "Price Calculation"
@@ -179,6 +180,18 @@
       "price": "+10% to price"
     },
     "note": "💡 Urgency surcharges..."
+  },
+  "rhinestone": {
+    "none": "No rhinestones",
+    "noneDesc": "Classic style without decorations",
+    "minimal": "Minimal set of glued and sewn stones",
+    "minimalDesc": "Small amount of decorations",
+    "standard": "Standard set of glued and sewn stones",
+    "standardDesc": "Optimal amount of decorations",
+    "maximum": "Maximum set of glued and sewn stones",
+    "maximumDesc": "Generous decoration throughout",
+    "premium": "Mix of premium glued and sewn stones",
+    "premiumDesc": "Luxury decoration with premium materials"
   },
   "premiumStones": {
     "swarovski": "Swarovski Stones",

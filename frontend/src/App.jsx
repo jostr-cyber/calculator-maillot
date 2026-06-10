@@ -12,6 +12,7 @@ import DecorativeElementsSelect from './components/DecorativeElementsSelect'
 import AerographySelect from './components/AerographySelect'
 import CombinaisionSelect from './components/CombinaisionSelect'
 import UrgencySelect from './components/UrgencySelect'
+import RhinestoneSelect from './components/RhinestoneSelect'
 import DesignSourceSelect from './components/DesignSourceSelect'
 import Survey from './components/Survey'
 import WheelOfFortune from './components/WheelOfFortune'
@@ -79,6 +80,7 @@ function App() {
   const [combinaison, setCombinaison] = useState('')
   const [premiumStones, setPremiumStones] = useState('')
   const [urgency, setUrgency] = useState('')
+  const [rhinestone, setRhinestone] = useState('')
 
   // Price and results state
   const [currentPrice, setCurrentPrice] = useState(null)
@@ -96,7 +98,7 @@ function App() {
   const [contactMethod, setContactMethod] = useState('')
   const [contactValue, setContactValue] = useState('')
 
-  // Step order: intro -> height -> designSource -> sleeves -> skirt -> decorativeElements -> aerography -> combinaison -> urgency -> budget (for comparison) -> survey -> budgetSlider -> result
+  // Step order: intro -> height -> designSource -> sleeves -> skirt -> decorativeElements -> aerography -> combinaison -> urgency -> rhinestone -> budget (for comparison) -> survey -> budgetSlider -> result
   const steps = [
     'intro',
     'height',
@@ -107,6 +109,7 @@ function App() {
     'aerography',
     'combinaison',
     'urgency',
+    'rhinestone',
     'budget',
     'survey',
     'budgetSlider',
@@ -131,6 +134,7 @@ function App() {
       combinaison: combinaison || 'standard',
       premiumStones: premiumStones || 'none',
       urgency: urgency || 'none',
+      rhinestone: rhinestone || 'none',
       design: design || 'our-design'
     }
 
@@ -158,6 +162,7 @@ function App() {
       combinaison: combinaison || 'standard',
       premiumStones: premiumStones || 'none',
       urgency: urgencyVal || 'none',
+      rhinestone: rhinestone || 'none',
       design: design || 'our-design'
     }
 
@@ -258,6 +263,7 @@ function App() {
         combinaison: combinaison || 'standard',
         premiumStones: premiumStones || 'none',
         urgency: urgency || 'none',
+        rhinestone: rhinestone || 'none',
         design: design || 'our-design',
         designSource: designSource || 'our-design'
       }
@@ -293,6 +299,7 @@ function App() {
         combinaison: combinaison || 'standard',
         premiumStones: premiumStones || 'none',
         urgency: urgencyVal || 'none',
+        rhinestone: rhinestone || 'none',
         design: design || 'our-design',
         designSource: designSource || 'our-design'
       }
@@ -496,8 +503,20 @@ function App() {
           <UrgencySelect
             onConfirm={(val) => {
               setUrgency(val)
-              setStep('budgetSlider')
+              setStep('rhinestone')
             }}
+            onBack={handleBack}
+            config={config}
+            currentPrice={currentPrice}
+            complexity={complexity}
+          />
+        )}
+
+        {step === 'rhinestone' && (
+          <RhinestoneSelect
+            value={rhinestone}
+            onRhinestoneChange={setRhinestone}
+            onContinue={() => setStep('budget')}
             onBack={handleBack}
             config={config}
             currentPrice={currentPrice}
