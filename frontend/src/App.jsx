@@ -524,7 +524,7 @@ function App() {
             selectedBudget={selectedBudget}
             onCustomizeAgain={handleReset}
             onReducePrice={() => {
-              alert('Would you like to reduce your selection to lower the price? Click Customize again to adjust your options.');
+              alert(t('actionButtons.reducePrice.message') || 'Would you like to reduce your selection to lower the price? Click Customize again to adjust your options.');
             }}
           />
         )}

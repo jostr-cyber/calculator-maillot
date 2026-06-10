@@ -376,7 +376,10 @@
     "sendPhotos": "📸 Envoyer des photos d'inspiration",
     "discuss": "💬 Discuter sur WhatsApp",
     "customize": "🎨 Personnaliser à nouveau",
-    "reducePrice": "💰 Réduire le prix"
+    "reducePrice": {
+      "label": "💰 Réduire le prix",
+      "message": "Souhaitez-vous réduire votre sélection pour baisser le prix? Cliquez sur 'Personnaliser à nouveau' pour ajuster vos options."
+    }
   },
   "errors": {
     "priceCalculation": "Erreur lors du calcul du prix",

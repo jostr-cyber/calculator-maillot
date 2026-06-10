@@ -266,7 +266,7 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
           {t('actionButtons.customize') || '🎨 Customize again'}
         </button>
         <button className="btn-secondary btn-action" onClick={onReducePrice}>
-          {t('actionButtons.reducePrice') || '💰 Reduce the price'}
+          {t('actionButtons.reducePrice.label') || '💰 Reduce the price'}
         </button>
       </div>
     </div>
