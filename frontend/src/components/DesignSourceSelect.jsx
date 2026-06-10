@@ -7,13 +7,6 @@ function DesignSourceSelect({ onConfirm, onBack, config, currentPrice, complexit
   const { t } = useTranslation()
   const [selected, setSelected] = useState('')
 
-  // Gallery examples of our leotards
-  const galleryExamples = [
-    { id: 'example-1', title: 'Пример 1' },
-    { id: 'example-2', title: 'Пример 2' },
-    { id: 'example-3', title: 'Пример 3' }
-  ]
-
   const options = [
     {
       value: 'own-design',
@@ -51,24 +44,6 @@ function DesignSourceSelect({ onConfirm, onBack, config, currentPrice, complexit
       {config && currentPrice && complexity && (
         <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
       )}
-
-      <p className="design-source-description">{t('designSource.description')}</p>
-
-      {/* Gallery of our leotard examples */}
-      <div className="gallery-section">
-        <h3>{t('result.similarDesigns') || 'Наши примеры купальников'}</h3>
-        <div className="gallery-examples">
-          {galleryExamples.map(item => (
-            <div key={item.id} className="gallery-example-item">
-              <div className="gallery-example-image">
-                {/* Photo will be uploaded here */}
-                <span>🎭</span>
-              </div>
-              <p className="gallery-example-title">{item.title}</p>
-            </div>
-          ))}
-        </div>
-      </div>
 
       <div className="design-options-group">
         {options.map(opt => (
