@@ -79,18 +79,18 @@
     "description": "Tell us about your design idea",
     "ownDesign": {
       "title": "I already have my own design",
-      "desc": "Ready-made layout or development",
+      "desc": "Ready sketch or draft",
       "discount": "Discount: -5%"
     },
     "inspirationPhotos": {
-      "title": "I have inspiration photos",
-      "desc": "Examples, ideas, references",
+      "title": "I have references from the Internet",
+      "desc": "Photo examples, ideas",
       "discount": "Discount: none"
     },
     "customDesign": {
-      "title": "I need a completely new design",
-      "desc": "Full development from scratch",
-      "discount": "Possible additional design fee"
+      "title": "I need a design",
+      "desc": "Development of your leotard design from scratch by our artist. Taking into account the recommendations of the judge in rhythmic gymnastics. Checking the design for compliance with the Rules of your country.\n*An additional fee may be required for a complex design",
+      "discount": "Possible additional fee for complex design"
     }
   },
   "height": {

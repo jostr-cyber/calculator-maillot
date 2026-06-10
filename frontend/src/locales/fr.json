@@ -105,18 +105,18 @@
     "description": "Parlez-nous de votre idée de design",
     "ownDesign": {
       "title": "J'ai déjà mon propre design",
-      "desc": "Design prêt ou en cours de développement",
+      "desc": "Esquisse ou brouillon prêt",
       "discount": "Remise: -5%"
     },
     "inspirationPhotos": {
-      "title": "J'ai des photos d'inspiration",
-      "desc": "Exemples, idées, références",
+      "title": "J'ai des références d'Internet",
+      "desc": "Exemples de photos, idées",
       "discount": "Remise: aucune"
     },
     "customDesign": {
-      "title": "J'ai besoin d'un design complètement nouveau",
-      "desc": "Développement complet à partir de zéro",
-      "discount": "Frais de design possibles"
+      "title": "J'ai besoin d'un design",
+      "desc": "Développement de votre design de justaucorps à partir de zéro par notre artiste. En tenant compte des recommandations du juge en gymnastique rythmique. Vérification du design pour conformité aux Règles de votre pays.\n*Des frais supplémentaires peuvent être requis pour un design complexe",
+      "discount": "Frais supplémentaires possibles pour design complexe"
     }
   },
   "sleeves": {

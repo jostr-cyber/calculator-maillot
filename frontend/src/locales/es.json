@@ -79,18 +79,18 @@
     "description": "Cuéntanos sobre tu idea de diseño",
     "ownDesign": {
       "title": "Ya tengo mi propio diseño",
-      "desc": "Diseño listo o en desarrollo",
+      "desc": "Boceto o borrador listo",
       "discount": "Descuento: -5%"
     },
     "inspirationPhotos": {
-      "title": "Tengo fotos de inspiración",
-      "desc": "Ejemplos, ideas, referencias",
+      "title": "Tengo referencias de Internet",
+      "desc": "Ejemplos de fotos, ideas",
       "discount": "Descuento: ninguno"
     },
     "customDesign": {
-      "title": "Necesito un diseño completamente nuevo",
-      "desc": "Desarrollo completo desde cero",
-      "discount": "Posible cargo adicional de diseño"
+      "title": "Necesito un diseño",
+      "desc": "Desarrollo de tu diseño de maillot desde cero por nuestro artista. Teniendo en cuenta las recomendaciones del juez de gimnasia rítmica. Verificación del diseño para cumplir con las Reglas de tu país.\n*Puede requerirse una tarifa adicional por un diseño complejo",
+      "discount": "Posible cargo adicional por diseño complejo"
     }
   },
   "height": {
