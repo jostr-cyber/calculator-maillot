@@ -64,7 +64,6 @@ function SkirtSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
             <div className="skirt-card-content">
               <div className="skirt-icon">{option.icon}</div>
               <div className="skirt-label">{t(option.labelKey)}</div>
-              <div className="skirt-desc">{t(option.descKey)}</div>
             </div>
           </label>
         ))}
