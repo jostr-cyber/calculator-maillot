@@ -13,19 +13,29 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
       value: 0,
       icon: '👕',
       labelKey: 'sleeves.none',
-      descKey: 'sleeves.noneDesc'
+      descKey: 'sleeves.noneDesc',
+      image: '🎭'
     },
     {
       value: 1,
       icon: '🦾',
       labelKey: 'sleeves.one',
-      descKey: 'sleeves.oneDesc'
+      descKey: 'sleeves.oneDesc',
+      image: '🎭'
     },
     {
       value: 2,
       icon: '💪',
       labelKey: 'sleeves.two',
-      descKey: 'sleeves.twoDesc'
+      descKey: 'sleeves.twoDesc',
+      image: '🎭'
+    },
+    {
+      value: 3,
+      icon: '🎀',
+      labelKey: 'sleeves.straps',
+      descKey: 'sleeves.strapsDesc',
+      image: '🎭'
     }
   ]
 
@@ -42,10 +52,7 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
         <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
       )}
 
-      {config && complexity && (
-        <DesignsPreview config={config} complexity={complexity} />
-      )}
-
+      {/* Selection Options */}
       <div className="sleeves-grid">
         {sleeves.map(sleeve => (
           <label
@@ -68,6 +75,24 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
           </label>
         ))}
       </div>
+
+      {/* Images Gallery */}
+      <div className="sleeves-gallery">
+        <div className="gallery-grid">
+          {sleeves.map(sleeve => (
+            <div key={sleeve.value} className="gallery-item">
+              <div className="gallery-image-placeholder">
+                <span>{sleeve.image}</span>
+              </div>
+              <p className="gallery-label">{t(sleeve.labelKey)}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {config && complexity && (
+        <DesignsPreview config={config} complexity={complexity} />
+      )}
 
       <div className="actions">
         <button onClick={handleContinue} className="btn-primary">

@@ -126,7 +126,9 @@
     "one": "Una manga",
     "oneDesc": "Diseño asimétrico",
     "two": "Dos mangas",
-    "twoDesc": "Cobertura completa"
+    "twoDesc": "Cobertura completa",
+    "straps": "Con tirantes",
+    "strapsDesc": "Con tirantes decorativos"
   },
   "skirt": {
     "label": "Selecciona opción...",

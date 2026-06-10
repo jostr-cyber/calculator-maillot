@@ -126,7 +126,9 @@
     "one": "One sleeve",
     "oneDesc": "Asymmetrical design",
     "two": "Two sleeves",
-    "twoDesc": "Full coverage"
+    "twoDesc": "Full coverage",
+    "straps": "With straps",
+    "strapsDesc": "With decorative straps"
   },
   "skirt": {
     "label": "Select option...",

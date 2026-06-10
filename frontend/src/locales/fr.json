@@ -126,7 +126,9 @@
     "one": "Une manche",
     "oneDesc": "Design asymétrique",
     "two": "Deux manches",
-    "twoDesc": "Couverture complète"
+    "twoDesc": "Couverture complète",
+    "straps": "Avec bretelles",
+    "strapsDesc": "Avec bretelles décoratives"
   },
   "skirt": {
     "label": "Sélectionnez une option...",
