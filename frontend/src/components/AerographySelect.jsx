@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import ConfigurationSummary from './ConfigurationSummary'
+import DesignsPreview from './DesignsPreview'
 import './AerographySelect.css'
 
 function AerographySelect({ onConfirm, onBack, config, currentPrice, complexity }) {
@@ -21,6 +22,9 @@ function AerographySelect({ onConfirm, onBack, config, currentPrice, complexity 
       <h2>{t('steps.aerography')}</h2>
       {config && currentPrice && complexity && (
         <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
+      )}
+      {config && complexity && (
+        <DesignsPreview config={config} complexity={complexity} />
       )}
       <div className="options-group">
         {options.map(opt => (

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import ConfigurationSummary from './ConfigurationSummary'
+import DesignsPreview from './DesignsPreview'
 import './DecorativeElementsSelect.css'
 
 function DecorativeElementsSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
@@ -50,6 +51,9 @@ function DecorativeElementsSelect({ onConfirm, onBack, config, currentPrice, com
       <h2>{t('steps.decorativeElements')}</h2>
       {config && currentPrice && complexity && (
         <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
+      )}
+      {config && complexity && (
+        <DesignsPreview config={config} complexity={complexity} />
       )}
       <div className="options-group">
         {options.map(opt => {

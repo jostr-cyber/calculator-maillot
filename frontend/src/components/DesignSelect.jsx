@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import ConfigurationSummary from './ConfigurationSummary'
+import DesignsPreview from './DesignsPreview'
 import './SelectCommon.css'
 import './DesignSelect.css'
 
@@ -14,6 +15,10 @@ function DesignSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
 
       {config && currentPrice && complexity && (
         <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
+      )}
+
+      {config && complexity && (
+        <DesignsPreview config={config} complexity={complexity} />
       )}
 
       <div className="design-container">

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import ConfigurationSummary from './ConfigurationSummary'
+import DesignsPreview from './DesignsPreview'
 import './SelectCommon.css'
 
 function CombinaisionSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
@@ -17,6 +18,9 @@ function CombinaisionSelect({ onConfirm, onBack, config, currentPrice, complexit
       <h2>{t('steps.combinaison')}</h2>
       {config && currentPrice && complexity && (
         <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
+      )}
+      {config && complexity && (
+        <DesignsPreview config={config} complexity={complexity} />
       )}
       <div className="options-group">
         {options.map(opt => (
