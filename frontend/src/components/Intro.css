@@ -64,24 +64,22 @@
 
 .intro-image {
   width: 100%;
-  max-width: 320px;
-  aspect-ratio: 1;
+  max-width: 420px;
 }
 
 .intro-image-content {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  border: 3px solid white;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
   display: block;
 }
 
 .intro-image:hover .intro-image-content {
-  transform: scale(1.05);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  transform: scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
 }
 
 .intro-description {
@@ -151,11 +149,11 @@
   }
 
   .intro-image {
-    max-width: 280px;
+    max-width: 360px;
   }
 
   .intro-image-content {
-    border-radius: 16px;
+    border-radius: 12px;
   }
 
   .intro-description {
@@ -187,11 +185,11 @@
   }
 
   .intro-image {
-    max-width: 240px;
+    max-width: 280px;
   }
 
   .intro-image-content {
-    border-radius: 16px;
+    border-radius: 12px;
   }
 
   .intro-description {
