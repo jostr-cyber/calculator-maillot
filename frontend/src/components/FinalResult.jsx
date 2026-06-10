@@ -88,6 +88,9 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
             <span className="price-label">{t('result.estimatedPrice') || 'Estimated price'}</span>
             <span className="price-amount">{priceResult.finalPrice} €</span>
           </div>
+          <p className="price-disclaimer">
+            {t('priceBreakdown.disclaimer') || '*This is a preliminary calculation. Final price may be clarified after discussing details.'}
+          </p>
         </div>
 
         {/* Budget Comparison Section */}

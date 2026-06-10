@@ -48,15 +48,24 @@
 
 .price-label {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 700;
   opacity: 0.95;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  color: white;
 }
 
 .price-amount {
   font-size: 44px;
   font-weight: 700;
+}
+
+.price-disclaimer {
+  margin: 16px 0 0 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.5;
+  font-weight: 500;
 }
 
 /* Budget Comparison Section */
@@ -573,6 +582,11 @@
 
   .price-amount {
     font-size: 36px;
+  }
+
+  .price-disclaimer {
+    font-size: 11px;
+    margin-top: 12px;
   }
 
   .complexity-display {
