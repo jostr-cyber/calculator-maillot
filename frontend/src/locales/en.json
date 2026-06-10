@@ -19,11 +19,14 @@
     "recalculate": "🔄 Recalculate",
     "orderWhatsApp": "💬 Order a leotard!",
     "reducePrice": "💰 Reduce the price",
-    "orderThis": "Order this leotard"
+    "orderThis": "Order this leotard",
+    "customizeAgain": "🎨 Customize again",
+    "reduceThePrice": "💰 Reduce the price"
   },
   "steps": {
     "budget": "Select a price range",
     "height": "Select your height (cm)",
+    "designSource": "Design Source",
     "design": "Design",
     "sleeves": "How many sleeves?",
     "skirt": "Skirt",
@@ -52,6 +55,24 @@
     "unknown": {
       "title": "I don't know yet",
       "desc": "No budget limit"
+    }
+  },
+  "designSource": {
+    "description": "Tell us about your design idea",
+    "ownDesign": {
+      "title": "I already have my own design",
+      "desc": "Ready-made layout or development",
+      "discount": "Discount: -5%"
+    },
+    "inspirationPhotos": {
+      "title": "I have inspiration photos",
+      "desc": "Examples, ideas, references",
+      "discount": "Discount: none"
+    },
+    "customDesign": {
+      "title": "I need a completely new design",
+      "desc": "Full development from scratch",
+      "discount": "Possible additional design fee"
     }
   },
   "height": {
@@ -83,8 +104,11 @@
   "sleeves": {
     "label": "Select option...",
     "none": "No sleeves",
+    "noneDesc": "Classic style",
     "one": "One sleeve",
-    "two": "Two sleeves"
+    "oneDesc": "Asymmetrical design",
+    "two": "Two sleeves",
+    "twoDesc": "Full coverage"
   },
   "skirt": {
     "label": "Select option...",
@@ -307,6 +331,24 @@
       "other": "Describe how to contact you"
     },
     "required": "Please select a contact method and provide your contact information"
+  },
+  "summary": {
+    "title": "Your selection",
+    "currentEstimate": "Current estimate",
+    "complexity": "Complexity",
+    "noSelections": "No selections yet"
+  },
+  "result": {
+    "title": "Your Custom Leotard",
+    "subtitle": "Ready to order?",
+    "estimatedPrice": "Estimated price",
+    "complexity": "Complexity level",
+    "productionTime": "Production time",
+    "estimatedCrystals": "Estimated crystals",
+    "designSource": "Design source",
+    "selectedOptions": "Selected options",
+    "noOptions": "No extra options selected",
+    "discountApplied": "Discount applied"
   },
   "errors": {
     "priceCalculation": "Failed to calculate price",

@@ -1,0 +1,142 @@
+.configuration-summary {
+  background: linear-gradient(135deg, #f5f3ff 0%, #faf8ff 100%);
+  border: 1px solid #e8e0ff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(147, 51, 234, 0.08);
+}
+
+.summary-header {
+  margin-bottom: 12px;
+}
+
+.summary-header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b21a8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.summary-items {
+  margin-bottom: 12px;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 13px;
+  color: #4c1d95;
+  line-height: 1.4;
+}
+
+.summary-item.empty {
+  color: #9b7fbf;
+  font-style: italic;
+}
+
+.summary-checkmark {
+  color: #7c3aed;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.summary-text {
+  flex: 1;
+}
+
+.summary-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid #e0d5ff;
+  gap: 12px;
+}
+
+.current-price {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.price-label {
+  font-size: 11px;
+  color: #7c3aed;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.price-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #7c3aed;
+}
+
+.complexity-indicator {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-end;
+}
+
+.complexity-label {
+  font-size: 11px;
+  color: #7c3aed;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.complexity-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.complexity-simple {
+  background-color: #dbeafe;
+  color: #0c4a6e;
+}
+
+.complexity-advanced {
+  background-color: #fef3c7;
+  color: #78350f;
+}
+
+.complexity-luxury {
+  background-color: #ede9fe;
+  color: #5b21b6;
+}
+
+@media (max-width: 600px) {
+  .configuration-summary {
+    padding: 12px;
+    margin-bottom: 16px;
+  }
+
+  .summary-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .complexity-indicator {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .current-price {
+    width: 100%;
+  }
+
+  .price-value {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,53 @@
+import React from 'react'
+import { useTranslation } from '../hooks/useTranslation'
+import { formatConfigurationSummary } from '../utilities/calculationUtils'
+import './ConfigurationSummary.css'
+
+function ConfigurationSummary({ config, currentPrice, complexity }) {
+  const { t } = useTranslation()
+
+  const summary = formatConfigurationSummary(config)
+
+  return (
+    <div className="configuration-summary">
+      <div className="summary-header">
+        <h3>{t('summary.title') || 'Your selection'}</h3>
+      </div>
+
+      <div className="summary-items">
+        {summary.length > 0 ? (
+          summary.map((item, index) => (
+            <div key={index} className="summary-item">
+              <span className="summary-checkmark">✓</span>
+              <span className="summary-text">{item}</span>
+            </div>
+          ))
+        ) : (
+          <div className="summary-item empty">
+            <span>{t('summary.noSelections') || 'No selections yet'}</span>
+          </div>
+        )}
+      </div>
+
+      <div className="summary-footer">
+        {currentPrice && (
+          <div className="current-price">
+            <span className="price-label">{t('summary.currentEstimate') || 'Current estimate'}</span>
+            <span className="price-value">{currentPrice} €</span>
+          </div>
+        )}
+
+        {complexity && (
+          <div className="complexity-indicator">
+            <span className="complexity-label">{t('summary.complexity') || 'Complexity'}</span>
+            <span className={`complexity-badge complexity-${complexity.level.toLowerCase()}`}>
+              {complexity.label}
+            </span>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+export default ConfigurationSummary

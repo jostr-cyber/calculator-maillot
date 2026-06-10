@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './App.css'
 import API_BASE_URL from './config/api'
 import AdminSurveys from './pages/AdminSurveys'
@@ -10,22 +10,14 @@ import DecorativeElementsSelect from './components/DecorativeElementsSelect'
 import AerographySelect from './components/AerographySelect'
 import CombinaisionSelect from './components/CombinaisionSelect'
 import UrgencySelect from './components/UrgencySelect'
-import DesignSourceSelect from './components/DesignSourceSelect'
 import DesignSelect from './components/DesignSelect'
 import Survey from './components/Survey'
 import WheelOfFortune from './components/WheelOfFortune'
-import FinalResult from './components/FinalResult'
 import PriceBreakdown from './components/PriceBreakdown'
 import EmailConfirmation from './components/EmailConfirmation'
 import ContactPreference from './components/ContactPreference'
 import { LanguageSwitcher } from './components/LanguageSwitcher'
 import { useTranslation } from './hooks/useTranslation'
-import {
-  calculateComplexity,
-  calculateEstimatedCrystals,
-  calculateCurrentPrice,
-  getProductionTime
-} from './utilities/calculationUtils'
 
 // Budget reference levels for comparison only - do NOT affect pricing
 const BUDGET_REFERENCE = {
@@ -61,15 +53,10 @@ const calculateBudgetComparison = (finalPrice, budgetRef) => {
 
 function App() {
   const { t } = useTranslation()
-
-  // Main configuration state
   const [step, setStep] = useState('budget')
-  const [selectedBudget, setSelectedBudget] = useState(null)
+  const [selectedBudget, setSelectedBudget] = useState(null) // Budget reference for comparison only
   const [height, setHeight] = useState(150)
-  const [heightCategory, setHeightCategory] = useState('150-170')
-  const [designSource, setDesignSource] = useState('')
-  const [design, setDesign] = useState('')
-  const [sleeves, setSleeves] = useState(0)
+  const [sleeves, setSleeves] = useState('')
   const [skirt, setSkirt] = useState('')
   const [decorativeElements, setDecorativeElements] = useState('')
   const [shoulder, setShoulder] = useState('')
@@ -77,14 +64,8 @@ function App() {
   const [combinaison, setCombinaison] = useState('')
   const [premiumStones, setPremiumStones] = useState('')
   const [urgency, setUrgency] = useState('')
-
-  // Price and results state
-  const [currentPrice, setCurrentPrice] = useState(null)
-  const [complexity, setComplexity] = useState(null)
-  const [estimatedCrystals, setEstimatedCrystals] = useState(0)
+  const [design, setDesign] = useState('')
   const [priceResult, setPriceResult] = useState(null)
-
-  // UI state
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [wheelDiscount, setWheelDiscount] = useState(0)
@@ -94,99 +75,18 @@ function App() {
   const [contactMethod, setContactMethod] = useState('')
   const [contactValue, setContactValue] = useState('')
 
-  // New step order: budget -> height -> designSource -> design -> sleeves -> skirt -> decorativeElements -> aerography -> combinaison -> urgency -> result
-  const steps = [
-    'budget',
-    'height',
-    'designSource',
-    'design',
-    'sleeves',
-    'skirt',
-    'decorativeElements',
-    'aerography',
-    'combinaison',
-    'urgency',
-    'survey',
-    'result',
-    'emailConfirmation',
-    'contactPreference'
-  ]
-
-  // Calculate current price whenever configuration changes
-  useEffect(() => {
-    if (step !== 'budget' && step !== 'height' && designSource) {
-      calculatePriceAsync()
-    }
-  }, [sleeves, skirt, decorativeElements, aerography, combinaison, urgency, design, designSource])
-
-  const calculatePriceAsync = async () => {
-    const config = {
-      height: heightCategory,
-      sleeves: sleeves || 0,
-      skirt: skirt || '',
-      decorativeElements: decorativeElements || 'nothing',
-      shoulder: shoulder || '',
-      aerography: aerography || 'nothing',
-      combinaison: combinaison || 'standard',
-      premiumStones: premiumStones || 'none',
-      urgency: urgency || 'none',
-      design: design || 'our-design'
-    }
-
-    try {
-      const response = await fetch(`${API_BASE_URL}/api/calculate-price`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(config)
-      })
-
-      if (response.ok) {
-        const data = await response.json()
-        setCurrentPrice(data.finalPrice)
-
-        // Calculate complexity and estimated crystals
-        const complexityLevel = calculateComplexity(config)
-        setComplexity(complexityLevel)
-
-        const crystals = calculateEstimatedCrystals(config)
-        setEstimatedCrystals(crystals)
-      }
-    } catch (err) {
-      console.error('Error calculating price:', err)
-    }
-  }
-
   const handleBudgetSelect = (budgetValue) => {
+    // Budget is for reference only, doesn't affect pricing
     setSelectedBudget(budgetValue)
     setStep('height')
   }
 
   const handleHeightChange = (heightValue) => {
     setHeight(heightValue)
-    // Calculate height category
-    if (heightValue >= 170) {
-      setHeightCategory('170+')
-    } else if (heightValue >= 150) {
-      setHeightCategory('150-170')
-    } else if (heightValue >= 130) {
-      setHeightCategory('130-150')
-    } else {
-      setHeightCategory('<130')
-    }
   }
 
   const handleHeightContinue = () => {
-    setStep('designSource')
-  }
-
-  const handleDesignSourceSelect = (source) => {
-    setDesignSource(source)
     setStep('design')
-  }
-
-  const handleDesignSelect = (designValue) => {
-    setDesign(designValue)
-    setStep('sleeves')
   }
 
   const handleSleevesChange = (sleevesValue) => {
@@ -198,6 +98,7 @@ function App() {
   }
 
   const handleBack = () => {
+    const steps = ['budget', 'height', 'design', 'sleeves', 'skirt', 'decorativeElements', 'aerography', 'combinaison', 'premiumStones', 'urgency', 'survey', 'wheelOfFortune', 'result', 'emailConfirmation', 'contactPreference']
     const currentIndex = steps.indexOf(step)
     if (currentIndex > 0) {
       setStep(steps[currentIndex - 1])
@@ -210,6 +111,17 @@ function App() {
     setError(null)
 
     try {
+      let heightCategory
+      if (height >= 170) {
+        heightCategory = '170+'
+      } else if (height >= 150) {
+        heightCategory = '150-170'
+      } else if (height >= 130) {
+        heightCategory = '130-150'
+      } else {
+        heightCategory = '<130'
+      }
+
       const response = await fetch(`${API_BASE_URL}/api/calculate-price`, {
         method: 'POST',
         headers: {
@@ -217,15 +129,82 @@ function App() {
         },
         body: JSON.stringify({
           height: heightCategory,
-          sleeves: sleeves || 0,
-          skirt: skirt || '',
-          decorativeElements: decorativeElements || 'nothing',
-          shoulder: shoulder || '',
-          aerography: aerography || 'nothing',
-          combinaison: combinaison || 'standard',
-          premiumStones: premiumStones || 'none',
-          urgency: urgency || 'none',
-          design: design || 'our-design'
+          sleeves: sleeves === '' ? 0 : parseInt(sleeves),
+          skirt,
+          decorativeElements,
+          shoulder,
+          aerography,
+          combinaison,
+          premiumStones,
+          urgency,
+          design
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to calculate price')
+      }
+
+      const data = await response.json()
+
+      // Debug logging
+      console.log('🔍 Price Calculation Result:', {
+        finalPrice: data.finalPrice,
+        selectedBudget: selectedBudget
+      })
+
+      // Calculate budget comparison
+      const budgetRef = BUDGET_REFERENCE[selectedBudget]
+      const comparison = calculateBudgetComparison(data.finalPrice, budgetRef)
+
+      // Add comparison info to result
+      data.budgetComparison = comparison
+
+      // Skip wheel of fortune - go directly to result
+      console.log('✅ Skipping wheel of fortune - going to result')
+      setPriceResult(data)
+      setStep('result')
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleDesignChangeFromResult = async (designValue) => {
+    // This function is called when returning from result and changing design
+    // It skips survey/wheel and directly calculates with the new design value
+    setLoading(true)
+    setError(null)
+
+    try {
+      let heightCategory
+      if (height >= 170) {
+        heightCategory = '170+'
+      } else if (height >= 150) {
+        heightCategory = '150-170'
+      } else if (height >= 130) {
+        heightCategory = '130-150'
+      } else {
+        heightCategory = '<130'
+      }
+
+      const response = await fetch(`${API_BASE_URL}/api/calculate-price`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          height: heightCategory,
+          sleeves: sleeves === '' ? 0 : parseInt(sleeves),
+          skirt,
+          decorativeElements,
+          shoulder,
+          aerography,
+          combinaison,
+          premiumStones,
+          urgency,
+          design: designValue
         })
       })
 
@@ -240,8 +219,11 @@ function App() {
       const comparison = calculateBudgetComparison(data.finalPrice, budgetRef)
       data.budgetComparison = comparison
 
+      // Skip survey and wheel, go directly to result with saved discount
+      console.log(`✅ Returning from result - skipping survey and wheel, applying saved discount ${wheelDiscount}%`)
       setPriceResult(data)
       setStep('result')
+      setReturnedFromResult(false)
     } catch (err) {
       setError(err.message)
     } finally {
@@ -254,6 +236,17 @@ function App() {
     setError(null)
 
     try {
+      let heightCategory
+      if (height >= 170) {
+        heightCategory = '170+'
+      } else if (height >= 150) {
+        heightCategory = '150-170'
+      } else if (height >= 130) {
+        heightCategory = '130-150'
+      } else {
+        heightCategory = '<130'
+      }
+
       const response = await fetch(`${API_BASE_URL}/api/calculate-price`, {
         method: 'POST',
         headers: {
@@ -261,15 +254,15 @@ function App() {
         },
         body: JSON.stringify({
           height: heightCategory,
-          sleeves: sleeves || 0,
-          skirt: skirt || '',
-          decorativeElements: decorativeElements || 'nothing',
-          shoulder: shoulder || '',
-          aerography: aerography || 'nothing',
-          combinaison: combinaison || 'standard',
-          premiumStones: premiumStones || 'none',
-          urgency: urgencyVal || 'none',
-          design: design || 'our-design'
+          sleeves: sleeves === '' ? 0 : parseInt(sleeves),
+          skirt,
+          decorativeElements,
+          shoulder,
+          aerography,
+          combinaison,
+          premiumStones,
+          urgency: urgencyVal,
+          design
         })
       })
 
@@ -284,6 +277,14 @@ function App() {
       const comparison = calculateBudgetComparison(data.finalPrice, budgetRef)
       data.budgetComparison = comparison
 
+      // Debug logging
+      console.log('🔍 Price Calculation Result:', {
+        finalPrice: data.finalPrice,
+        selectedBudget: selectedBudget
+      })
+
+      // Skip survey and go directly to result
+      console.log('✅ Skipping survey - going directly to result')
       setPriceResult(data)
       setStep('result')
       setReturnedFromResult(false)
@@ -303,9 +304,11 @@ function App() {
     setError(null)
 
     try {
+      // Store contact preferences
       setContactMethod(preferences.method)
       setContactValue(preferences.value)
 
+      // Send final order data to backend
       const orderData = {
         email: userEmail,
         contactMethod: preferences.method,
@@ -321,13 +324,23 @@ function App() {
         premiumStones,
         urgency,
         design,
-        designSource,
         priceResult,
         wheelDiscount,
         surveyAnswers
       }
 
+      // Log the data being sent
       console.log('📤 Sending order data:', orderData)
+
+      // Optional: Send to backend API
+      // const response = await fetch('/api/submit-order', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(orderData)
+      // })
+      // if (!response.ok) throw new Error('Failed to submit order')
+
+      // For now, just reset and go back to budget
       handleReset()
     } catch (err) {
       setError(err.message)
@@ -339,9 +352,7 @@ function App() {
   const handleReset = () => {
     setSelectedBudget(null)
     setHeight(150)
-    setDesignSource('')
-    setDesign('')
-    setSleeves(0)
+    setSleeves('')
     setSkirt('')
     setDecorativeElements('')
     setShoulder('')
@@ -349,36 +360,24 @@ function App() {
     setCombinaison('')
     setPremiumStones('')
     setUrgency('')
+    setDesign('')
     setPriceResult(null)
     setError(null)
+    // NOTE: Intentionally NOT clearing wheelDiscount here so it persists across "Start Over"
+    // Users keep their won discount even if they select a different budget
+    // setWheelDiscount(0)
+    setBudgetExceeded(false)
     setSurveyAnswers(null)
     setReturnedFromResult(false)
     setUserEmail('')
     setContactMethod('')
     setContactValue('')
-    setCurrentPrice(null)
-    setComplexity(null)
-    setEstimatedCrystals(0)
     setStep('budget')
   }
 
   // Check if admin route
   if (window.location.pathname === '/admin') {
     return <AdminSurveys />
-  }
-
-  const config = {
-    height: heightCategory,
-    sleeves,
-    skirt,
-    decorativeElements,
-    shoulder,
-    aerography,
-    combinaison,
-    premiumStones,
-    urgency,
-    design,
-    designSource
   }
 
   return (
@@ -388,108 +387,51 @@ function App() {
         <h1>{t('app.title')}</h1>
 
         {error && <div className="error">{t('errors.priceCalculation')}: {error}</div>}
-        {loading && <div className="loading">{t('loading') || 'Loading...'}</div>}
 
         {step === 'budget' && (
           <BudgetSelector onSelect={handleBudgetSelect} />
         )}
 
         {step === 'height' && (
-          <HeightSlider
-            value={height}
-            onHeightChange={handleHeightChange}
-            onContinue={handleHeightContinue}
-            onBack={handleBack}
-            config={config}
-            currentPrice={currentPrice}
-            complexity={complexity}
-          />
-        )}
-
-        {step === 'designSource' && (
-          <DesignSourceSelect
-            onConfirm={handleDesignSourceSelect}
-            onBack={handleBack}
-          />
-        )}
-
-        {step === 'design' && (
-          <DesignSelect
-            onConfirm={handleDesignSelect}
-            onBack={handleBack}
-            config={config}
-            currentPrice={currentPrice}
-            complexity={complexity}
-          />
+          <HeightSlider value={height} onHeightChange={handleHeightChange} onContinue={handleHeightContinue} onBack={handleBack} />
         )}
 
         {step === 'sleeves' && (
-          <SleevesSelect
-            value={sleeves}
-            onSleevesChange={handleSleevesChange}
-            onContinue={handleSleevesContinue}
-            onBack={handleBack}
-            config={config}
-            currentPrice={currentPrice}
-            complexity={complexity}
-          />
+          <SleevesSelect value={sleeves} onSleevesChange={handleSleevesChange} onContinue={handleSleevesContinue} onBack={handleBack} />
         )}
 
         {step === 'skirt' && (
-          <SkirtSelect
-            onConfirm={(val) => { setSkirt(val); setStep('decorativeElements') }}
-            onBack={handleBack}
-            config={config}
-            currentPrice={currentPrice}
-            complexity={complexity}
-          />
+          <SkirtSelect onConfirm={(val) => { setSkirt(val); setStep('decorativeElements') }} onBack={handleBack} />
         )}
 
         {step === 'decorativeElements' && (
-          <DecorativeElementsSelect
-            onConfirm={(val) => { setDecorativeElements(val); setStep('aerography') }}
-            onBack={handleBack}
-            config={config}
-            currentPrice={currentPrice}
-            complexity={complexity}
-          />
+          <DecorativeElementsSelect onConfirm={(val) => { setDecorativeElements(val); setStep('aerography') }} onBack={handleBack} />
         )}
 
         {step === 'aerography' && (
-          <AerographySelect
-            onConfirm={(val) => { setAerography(val); setStep('combinaison') }}
-            onBack={handleBack}
-            config={config}
-            currentPrice={currentPrice}
-            complexity={complexity}
-          />
+          <AerographySelect onConfirm={(val) => { setAerography(val); setStep('combinaison') }} onBack={handleBack} />
         )}
 
         {step === 'combinaison' && (
-          <CombinaisionSelect
-            onConfirm={(val) => {
-              setCombinaison(val)
-              setPremiumStones('none')
-              setStep('urgency')
-            }}
-            onBack={handleBack}
-            config={config}
-            currentPrice={currentPrice}
-            complexity={complexity}
-          />
+          <CombinaisionSelect onConfirm={(val) => {
+            setCombinaison(val)
+            setPremiumStones('none')
+            setStep('urgency')
+          }} onBack={handleBack} />
         )}
 
         {step === 'urgency' && (
-          <UrgencySelect
-            onConfirm={(val) => {
-              setUrgency(val)
-              handleCalculate(val)
-            }}
-            onBack={handleBack}
-            config={config}
-            currentPrice={currentPrice}
-            complexity={complexity}
-          />
+          <UrgencySelect onConfirm={(val) => {
+            setUrgency(val)
+            handleCalculate(val)
+          }} onBack={handleBack} />
+        )}
+
+        {step === 'design' && (
+          <DesignSelect onConfirm={(val) => {
+            setDesign(val)
+            setStep('sleeves')
+          }} onBack={handleBack} />
         )}
 
         {step === 'survey' && (
@@ -499,13 +441,25 @@ function App() {
           />
         )}
 
+        {/* Wheel of Fortune temporarily hidden */}
+        {/* {step === 'wheelOfFortune' && priceResult && (
+          <>
+            <WheelOfFortune
+              budget={budget}
+              currentPrice={priceResult.finalPrice}
+              onDiscountApplied={(discount) => {
+                setWheelDiscount(discount)
+                setStep('result')
+              }}
+              size={budgetExceeded ? 'large' : 'small'}
+            />
+          </>
+        )} */}
+
         {step === 'result' && priceResult && (
           <>
-            <FinalResult
-              priceResult={priceResult}
-              complexity={complexity}
-              estimatedCrystals={estimatedCrystals}
-              config={config}
+            <PriceBreakdown
+              data={priceResult}
               wheelDiscount={wheelDiscount}
             />
             <div className="actions">
@@ -513,7 +467,7 @@ function App() {
                 onClick={handleReset}
                 className="btn-secondary"
               >
-                {t('buttons.customizeAgain') || 'Customize again'}
+                {t('buttons.recalculate')}
               </button>
               <button
                 onClick={() => {
