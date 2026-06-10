@@ -2,78 +2,83 @@
 
 // Mock price calculation (no backend needed)
 export const calculatePriceLocal = (config) => {
-  let basePrice = 150; // Base price for simple leotard
+  const originalBasePrice = 150; // Base price for simple leotard
+  let finalPrice = originalBasePrice;
 
-  // Height surcharge (percentage added to base price)
+  // Height surcharge (percentage of original base price)
   const heightCategory = config.height || '150-170';
   const heightModifiers = {
-    '<130': 1.0,      // 0% surcharge
-    '130-150': 1.05,  // +5% surcharge
-    '150-170': 1.1,   // +10% surcharge
-    '170+': 1.2       // +20% surcharge
+    '<130': 0.0,      // 0% surcharge
+    '130-150': 0.05,  // +5% surcharge
+    '150-170': 0.1,   // +10% surcharge
+    '170+': 0.2       // +20% surcharge
   };
-  basePrice *= heightModifiers[heightCategory] || 1.0;
+  const heightSurcharge = originalBasePrice * (heightModifiers[heightCategory] || 0);
+  finalPrice += heightSurcharge;
 
-  // Design source adjustment (applied to base price BEFORE adding options)
+  // Design source adjustment (percentage of original base price, applied BEFORE adding fixed options)
   let designAdjustment = 0;
   let adjustmentType = 'none'; // 'discount', 'surcharge', or 'none'
 
   if (config.designSource === 'own-design') {
-    // Customer provides their own design: -5% discount
-    designAdjustment = basePrice * 0.05;
+    // Customer provides their own design: -5% discount of original base price
+    designAdjustment = originalBasePrice * 0.05;
     adjustmentType = 'discount';
   } else if (config.designSource === 'inspiration-photos') {
     // Customer provides reference photos: no adjustment
     designAdjustment = 0;
     adjustmentType = 'none';
   } else if (config.designSource === 'custom-design') {
-    // Studio designs from scratch: +10% surcharge
-    designAdjustment = basePrice * 0.10;
+    // Studio designs from scratch: +10% surcharge of original base price
+    designAdjustment = originalBasePrice * 0.10;
     adjustmentType = 'surcharge';
   }
 
-  // Apply design adjustment to base price first
-  basePrice = adjustmentType === 'discount'
-    ? basePrice - designAdjustment
-    : basePrice + designAdjustment;
+  // Apply design adjustment
+  finalPrice = adjustmentType === 'discount'
+    ? finalPrice - designAdjustment
+    : finalPrice + designAdjustment;
 
-  // Sleeves
-  if (config.sleeves === 1) basePrice += 15;
-  if (config.sleeves === 2) basePrice += 30;
-  if (config.sleeves === 3) basePrice += 10; // Straps (breteli)
+  // Sleeves (fixed amounts)
+  if (config.sleeves === 1) finalPrice += 15;
+  if (config.sleeves === 2) finalPrice += 30;
+  if (config.sleeves === 3) finalPrice += 10; // Straps (breteli)
 
-  // Skirt
-  if (config.skirt === 'front') basePrice += 15;
-  if (config.skirt === 'back') basePrice += 15;
-  if (config.skirt === 'both') basePrice += 30;
+  // Skirt (fixed amounts)
+  if (config.skirt === 'front') finalPrice += 15;
+  if (config.skirt === 'back') finalPrice += 15;
+  if (config.skirt === 'both') finalPrice += 30;
 
-  // Decorative elements
+  // Decorative elements (fixed amounts)
   if (config.decorativeElements && config.decorativeElements !== 'none') {
     const elements = config.decorativeElements.split(',').filter(e => e);
-    basePrice += elements.length * 60;
+    finalPrice += elements.length * 60;
   }
 
-  // Aerography
-  if (config.aerography && config.aerography !== 'nothing') basePrice += 120;
+  // Aerography (fixed amounts)
+  if (config.aerography && config.aerography !== 'nothing') finalPrice += 120;
 
-  // Premium stones
-  if (config.premiumStones === 'swarovski') basePrice += 200;
-  if (config.premiumStones === 'premium') basePrice += 150;
+  // Premium stones (fixed amounts)
+  if (config.premiumStones === 'swarovski') finalPrice += 200;
+  if (config.premiumStones === 'premium') finalPrice += 150;
 
-  // Urgency surcharge
-  if (config.urgency === 'accelerated') basePrice *= 1.15; // 15% surcharge
+  // Urgency surcharge (percentage of final price)
+  if (config.urgency === 'accelerated') finalPrice *= 1.15; // 15% surcharge
 
-  // Combinaison (full suit)
-  if (config.combinaison === 'full') basePrice += 80;
+  // Combinaison (full suit, fixed amount)
+  if (config.combinaison === 'full') finalPrice += 80;
 
-  const finalPrice = Math.round(basePrice * 100) / 100;
+  const roundedFinalPrice = Math.round(finalPrice * 100) / 100;
 
   return {
-    finalPrice: finalPrice,
-    basePrice: Math.round(basePrice * 100) / 100,
+    finalPrice: roundedFinalPrice,
+    basePrice: originalBasePrice,
+    heightSurcharge: Math.round(heightSurcharge * 100) / 100,
     designAdjustment: Math.round(designAdjustment * 100) / 100,
     adjustmentType: adjustmentType,
     breakdown: {
+      height: Math.round(heightSurcharge * 100) / 100,
+      design: Math.round(designAdjustment * 100) / 100,
       sleeves: config.sleeves === 1 ? 15 : (config.sleeves === 2 ? 30 : (config.sleeves === 3 ? 10 : 0)),
       skirt: config.skirt === 'both' ? 30 : (config.skirt === 'front' || config.skirt === 'back' ? 15 : 0),
       decorativeElements: (config.decorativeElements && config.decorativeElements !== 'none' ? config.decorativeElements.split(',').filter(e => e).length * 60 : 0),
