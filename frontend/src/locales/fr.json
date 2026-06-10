@@ -19,11 +19,14 @@
     "recalculate": "🔄 Recalculer",
     "orderWhatsApp": "💬 Je veux commander un justaucorps!",
     "reducePrice": "💰 Réduire le prix",
-    "orderThis": "Commander ce justaucorps"
+    "orderThis": "Commander ce justaucorps",
+    "customizeAgain": "🎨 Personnaliser à nouveau",
+    "reduceThePrice": "💰 Réduire le prix"
   },
   "steps": {
     "budget": "Sélectionnez une gamme de prix",
     "height": "Sélectionnez votre taille (cm)",
+    "designSource": "Source du Design",
     "design": "Design",
     "sleeves": "Combien de manches?",
     "skirt": "Jupe",
@@ -80,18 +83,43 @@
       "discount": "remise au prix de base du justaucorps - 5%"
     }
   },
+  "designSource": {
+    "description": "Parlez-nous de votre idée de design",
+    "ownDesign": {
+      "title": "J'ai déjà mon propre design",
+      "desc": "Design prêt ou en cours de développement",
+      "discount": "Remise: -5%"
+    },
+    "inspirationPhotos": {
+      "title": "J'ai des photos d'inspiration",
+      "desc": "Exemples, idées, références",
+      "discount": "Remise: aucune"
+    },
+    "customDesign": {
+      "title": "J'ai besoin d'un design complètement nouveau",
+      "desc": "Développement complet à partir de zéro",
+      "discount": "Frais de design possibles"
+    }
+  },
   "sleeves": {
     "label": "Sélectionnez une option...",
     "none": "Sans manches",
+    "noneDesc": "Style classique",
     "one": "Une manche",
-    "two": "Deux manches"
+    "oneDesc": "Design asymétrique",
+    "two": "Deux manches",
+    "twoDesc": "Couverture complète"
   },
   "skirt": {
     "label": "Sélectionnez une option...",
     "none": "Sans jupe",
+    "noneDesc": "Style classique",
     "front": "Jupe avant",
+    "frontDesc": "Vue avant élégante",
     "back": "Jupe arrière",
-    "both": "Jupe avant et arrière"
+    "backDesc": "Vue arrière mystérieuse",
+    "both": "Jupe avant et arrière",
+    "bothDesc": "Couverture complète"
   },
   "decorativeElements": {
     "label": "Sélectionnez une option...",
@@ -307,6 +335,24 @@
       "other": "Décrivez comment vous contacter"
     },
     "required": "Veuillez sélectionner une méthode de contact et fournir vos informations de contact"
+  },
+  "summary": {
+    "title": "Votre sélection",
+    "currentEstimate": "Estimation actuelle",
+    "complexity": "Complexité",
+    "noSelections": "Aucune sélection pour le moment"
+  },
+  "result": {
+    "title": "Votre Justaucorps Personnalisé",
+    "subtitle": "Prêt à commander?",
+    "estimatedPrice": "Prix estimé",
+    "complexity": "Niveau de complexité",
+    "productionTime": "Temps de production",
+    "estimatedCrystals": "Cristaux estimés",
+    "designSource": "Source du design",
+    "selectedOptions": "Options sélectionnées",
+    "noOptions": "Aucune option supplémentaire sélectionnée",
+    "discountApplied": "Remise appliquée"
   },
   "errors": {
     "priceCalculation": "Erreur lors du calcul du prix",

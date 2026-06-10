@@ -19,11 +19,14 @@
     "recalculate": "🔄 Recalcular",
     "orderWhatsApp": "💬 ¡Quiero pedir este maillot!",
     "reducePrice": "💰 Reducir el precio",
-    "orderThis": "Pedir este maillot"
+    "orderThis": "Pedir este maillot",
+    "customizeAgain": "🎨 Personalizar de nuevo",
+    "reduceThePrice": "💰 Reducir el precio"
   },
   "steps": {
     "budget": "Selecciona un rango de precio",
     "height": "Selecciona la altura de la gymnasta (cm)",
+    "designSource": "Fuente de Diseño",
     "design": "Diseño",
     "sleeves": "¿Cuántas mangas?",
     "skirt": "Falda",
@@ -52,6 +55,24 @@
     "unknown": {
       "title": "No sé aún",
       "desc": "Sin límite de presupuesto"
+    }
+  },
+  "designSource": {
+    "description": "Cuéntanos sobre tu idea de diseño",
+    "ownDesign": {
+      "title": "Ya tengo mi propio diseño",
+      "desc": "Diseño listo o en desarrollo",
+      "discount": "Descuento: -5%"
+    },
+    "inspirationPhotos": {
+      "title": "Tengo fotos de inspiración",
+      "desc": "Ejemplos, ideas, referencias",
+      "discount": "Descuento: ninguno"
+    },
+    "customDesign": {
+      "title": "Necesito un diseño completamente nuevo",
+      "desc": "Desarrollo completo desde cero",
+      "discount": "Posible cargo adicional de diseño"
     }
   },
   "height": {
@@ -83,15 +104,22 @@
   "sleeves": {
     "label": "Selecciona opción...",
     "none": "Sin mangas",
+    "noneDesc": "Estilo clásico",
     "one": "Una manga",
-    "two": "Dos mangas"
+    "oneDesc": "Diseño asimétrico",
+    "two": "Dos mangas",
+    "twoDesc": "Cobertura completa"
   },
   "skirt": {
     "label": "Selecciona opción...",
     "none": "Sin falda",
+    "noneDesc": "Estilo clásico",
     "front": "Falda delantera",
+    "frontDesc": "Vista delantera elegante",
     "back": "Falda trasera",
-    "both": "Falda delantera y trasera"
+    "backDesc": "Vista trasera misteriosa",
+    "both": "Falda delantera y trasera",
+    "bothDesc": "Cobertura completa"
   },
   "decorativeElements": {
     "label": "Selecciona opción...",
@@ -307,6 +335,24 @@
       "other": "Describe cómo contactarte"
     },
     "required": "Por favor selecciona un método de contacto y proporciona tu información de contacto"
+  },
+  "summary": {
+    "title": "Tu selección",
+    "currentEstimate": "Estimación actual",
+    "complexity": "Complejidad",
+    "noSelections": "Sin selecciones aún"
+  },
+  "result": {
+    "title": "Tu Maillot Personalizado",
+    "subtitle": "¿Listo para ordenar?",
+    "estimatedPrice": "Precio estimado",
+    "complexity": "Nivel de complejidad",
+    "productionTime": "Tiempo de producción",
+    "estimatedCrystals": "Cristales estimados",
+    "designSource": "Fuente de diseño",
+    "selectedOptions": "Opciones seleccionadas",
+    "noOptions": "Sin opciones adicionales seleccionadas",
+    "discountApplied": "Descuento aplicado"
   },
   "errors": {
     "priceCalculation": "Error al calcular el precio",

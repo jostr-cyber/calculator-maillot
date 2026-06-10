@@ -112,14 +112,12 @@ function App() {
     'contactPreference'
   ]
 
-  // Calculate current price whenever configuration changes
+  // Calculate current price whenever configuration changes (debounced)
   useEffect(() => {
-    if (step !== 'budget' && step !== 'height' && designSource) {
-      calculatePriceAsync()
+    if (step === 'budget' || step === 'height' || !designSource) {
+      return // Skip if not ready
     }
-  }, [sleeves, skirt, decorativeElements, aerography, combinaison, urgency, design, designSource])
 
-  const calculatePriceAsync = async () => {
     const config = {
       height: heightCategory,
       sleeves: sleeves || 0,
@@ -133,6 +131,41 @@ function App() {
       design: design || 'our-design'
     }
 
+    // Debounce API call
+    const timer = setTimeout(() => {
+      fetch(`${API_BASE_URL}/api/calculate-price`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(config)
+      })
+        .then(res => res.json())
+        .then(data => {
+          setCurrentPrice(data.finalPrice)
+          const complexityLevel = calculateComplexity(config)
+          setComplexity(complexityLevel)
+          const crystals = calculateEstimatedCrystals(config)
+          setEstimatedCrystals(crystals)
+        })
+        .catch(err => console.error('Error calculating price:', err))
+    }, 300)
+
+    return () => clearTimeout(timer)
+  }, [sleeves, skirt, decorativeElements, aerography, combinaison, urgency, design, designSource, step, heightCategory, shoulder, premiumStones])
+
+  const calculatePriceAsync = async (urgencyVal = urgency) => {
+    const config = {
+      height: heightCategory,
+      sleeves: sleeves || 0,
+      skirt: skirt || '',
+      decorativeElements: decorativeElements || 'nothing',
+      shoulder: shoulder || '',
+      aerography: aerography || 'nothing',
+      combinaison: combinaison || 'standard',
+      premiumStones: premiumStones || 'none',
+      urgency: urgencyVal || 'none',
+      design: design || 'our-design'
+    }
+
     try {
       const response = await fetch(`${API_BASE_URL}/api/calculate-price`, {
         method: 'POST',
@@ -140,19 +173,24 @@ function App() {
         body: JSON.stringify(config)
       })
 
-      if (response.ok) {
-        const data = await response.json()
-        setCurrentPrice(data.finalPrice)
-
-        // Calculate complexity and estimated crystals
-        const complexityLevel = calculateComplexity(config)
-        setComplexity(complexityLevel)
-
-        const crystals = calculateEstimatedCrystals(config)
-        setEstimatedCrystals(crystals)
+      if (!response.ok) {
+        throw new Error('Failed to calculate price')
       }
+
+      const data = await response.json()
+
+      // Calculate budget comparison
+      const budgetRef = BUDGET_REFERENCE[selectedBudget]
+      const comparison = calculateBudgetComparison(data.finalPrice, budgetRef)
+      data.budgetComparison = comparison
+
+      setPriceResult(data)
+      setStep('result')
+      setReturnedFromResult(false)
     } catch (err) {
-      console.error('Error calculating price:', err)
+      setError(err.message)
+    } finally {
+      setLoading(false)
     }
   }
 
