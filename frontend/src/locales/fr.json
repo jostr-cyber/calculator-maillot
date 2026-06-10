@@ -169,7 +169,9 @@
   "combinaison": {
     "label": "Sélectionnez une option...",
     "leotard": "Justaucorps standard",
-    "combinaison": "Combinaison"
+    "leotardDesc": "Justaucorps classique sans manches aux jambes",
+    "combinaison": "Combinaison",
+    "combinaisonDesc": "Costume complet avec manches et jambes"
   },
   "urgency": {
     "info": "Sélectionnez le délai de fabrication...",

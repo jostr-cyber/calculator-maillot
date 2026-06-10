@@ -169,7 +169,9 @@
   "combinaison": {
     "label": "Selecciona opción...",
     "leotard": "Maillot estándar",
-    "combinaison": "Maillot de cuerpo entero"
+    "leotardDesc": "Maillot clásico sin mangas en las piernas",
+    "combinaison": "Maillot de cuerpo entero",
+    "combinaisonDesc": "Traje completo con mangas y pantalones"
   },
   "urgency": {
     "info": "Selecciona el plazo de confección",

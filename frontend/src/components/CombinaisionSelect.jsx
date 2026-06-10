@@ -1,44 +1,54 @@
 import React, { useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import ConfigurationSummary from './ConfigurationSummary'
-import DesignsPreview from './DesignsPreview'
-import './SelectCommon.css'
+import './CombinaisionSelect.css'
 
 function CombinaisionSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
   const { t } = useTranslation()
   const [selected, setSelected] = useState('')
 
   const options = [
-    { value: 'standard', labelKey: 'combinaison.leotard' },
-    { value: 'full', labelKey: 'combinaison.combinaison' }
+    { value: 'standard', labelKey: 'combinaison.leotard', descKey: 'combinaison.leotardDesc' },
+    { value: 'full', labelKey: 'combinaison.combinaison', descKey: 'combinaison.combinaisonDesc' }
   ]
 
+  const handleContinue = () => {
+    onConfirm(selected)
+  }
+
   return (
-    <div className="select-wrapper">
+    <div className="combinaison-select">
       <h2>{t('steps.combinaison')}</h2>
-      {config && currentPrice && complexity && (
-        <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
-      )}
-      {config && complexity && (
-        <DesignsPreview config={config} complexity={complexity} />
-      )}
-      <div className="options-group">
-        {options.map(opt => (
-          <label key={opt.value} className="option-label">
+
+      {/* Selection Options */}
+      <div className="combinaison-grid">
+        {options.map(option => (
+          <label
+            key={option.value}
+            className={`combinaison-card ${selected === option.value ? 'selected' : ''}`}
+          >
             <input
               type="radio"
               name="combinaison"
-              value={opt.value}
-              checked={selected === opt.value}
+              value={option.value}
+              checked={selected === option.value}
               onChange={(e) => setSelected(e.target.value)}
               className="radio-input"
             />
-            <span className="option-text">{t(opt.labelKey)}</span>
+            <div className="combinaison-card-content">
+              <div className="combinaison-label">{t(option.labelKey)}</div>
+              <div className="combinaison-desc">{t(option.descKey)}</div>
+            </div>
           </label>
         ))}
       </div>
+
+      {config && currentPrice && complexity && (
+        <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
+      )}
+
       <div className="actions">
-        <button onClick={() => onConfirm(selected)} disabled={!selected} className="btn-primary">
+        <button onClick={handleContinue} className="btn-primary">
           {t('buttons.continue')}
         </button>
         <button onClick={onBack} className="btn-secondary">

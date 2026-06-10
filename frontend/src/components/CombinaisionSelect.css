@@ -1,0 +1,180 @@
+.combinaison-select h2 {
+  color: #7c3aed;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.combinaison-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-bottom: 32px;
+  margin-top: 24px;
+}
+
+.combinaison-card {
+  position: relative;
+  cursor: pointer;
+}
+
+.combinaison-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.combinaison-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 4px;
+  padding: 18px 20px;
+  border: 2px solid #e0d5ff;
+  border-radius: 12px;
+  background-color: #f9f8ff;
+  transition: all 0.3s ease;
+  min-height: auto;
+  text-align: left;
+}
+
+.combinaison-card:hover .combinaison-card-content {
+  border-color: #7c3aed;
+  background-color: #f5f3ff;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
+  transform: translateY(-2px);
+}
+
+.combinaison-card.selected .combinaison-card-content {
+  border-color: #7c3aed;
+  background-color: #f5f3ff;
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.15);
+}
+
+.combinaison-card.selected .combinaison-card-content::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  background-color: #7c3aed;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.combinaison-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+  display: block;
+}
+
+.combinaison-desc {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+  display: block;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.btn-primary,
+.btn-secondary {
+  flex: 1;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: #7c3aed;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #6d28d9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
+.btn-primary:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.btn-secondary:hover {
+  background: #d1d5db;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .combinaison-grid {
+    gap: 12px;
+  }
+
+  .combinaison-card-content {
+    padding: 16px;
+    gap: 3px;
+  }
+
+  .combinaison-label {
+    font-size: 14px;
+  }
+
+  .combinaison-desc {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 600px) {
+  .combinaison-select h2 {
+    font-size: 20px;
+  }
+
+  .combinaison-grid {
+    gap: 10px;
+  }
+
+  .combinaison-card-content {
+    padding: 14px;
+    gap: 3px;
+  }
+
+  .combinaison-label {
+    font-size: 13px;
+  }
+
+  .combinaison-desc {
+    font-size: 11px;
+  }
+
+  .actions {
+    flex-direction: column-reverse;
+  }
+}

@@ -169,7 +169,9 @@
   "combinaison": {
     "label": "Select option...",
     "leotard": "Standard leotard",
-    "combinaison": "Full body leotard"
+    "leotardDesc": "Classic leotard without sleeves on legs",
+    "combinaison": "Full body leotard",
+    "combinaisonDesc": "Full suit with sleeves and legs"
   },
   "urgency": {
     "info": "Select manufacturing timeframe...",
