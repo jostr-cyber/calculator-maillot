@@ -156,7 +156,11 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
         <div className="result-section recommendation-section">
           <div className="recommendation-content">
             <h3>{t('result.recommendation') || 'Our recommendation'}</h3>
-            <p className="recommendation-text">{recommendation}</p>
+            <p className="recommendation-text">
+              {typeof recommendation === 'string' && recommendation.includes('This')
+                ? '💡 Наша профессиональная рекомендация основана на вашем выборе параметров и сложности дизайна.'
+                : recommendation}
+            </p>
           </div>
         </div>
 
