@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import ConfigurationSummary from './ConfigurationSummary'
-import DesignsPreview from './DesignsPreview'
 import './SkirtSelect.css'
 
 function SkirtSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
@@ -13,25 +12,29 @@ function SkirtSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
       value: 'none',
       icon: '👗',
       labelKey: 'skirt.none',
-      descKey: 'skirt.noneDesc'
+      descKey: 'skirt.noneDesc',
+      image: '🎭'
     },
     {
       value: 'front',
       icon: '🎀',
       labelKey: 'skirt.front',
-      descKey: 'skirt.frontDesc'
+      descKey: 'skirt.frontDesc',
+      image: '🎭'
     },
     {
       value: 'back',
       icon: '💃',
       labelKey: 'skirt.back',
-      descKey: 'skirt.backDesc'
+      descKey: 'skirt.backDesc',
+      image: '🎭'
     },
     {
       value: 'both',
       icon: '✨',
       labelKey: 'skirt.both',
-      descKey: 'skirt.bothDesc'
+      descKey: 'skirt.bothDesc',
+      image: '🎭'
     }
   ]
 
@@ -43,14 +46,7 @@ function SkirtSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
     <div className="skirt-select">
       <h2>{t('steps.skirt')}</h2>
 
-      {config && currentPrice && complexity && (
-        <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
-      )}
-
-      {config && complexity && (
-        <DesignsPreview config={config} complexity={complexity} />
-      )}
-
+      {/* Selection Options */}
       <div className="skirt-grid">
         {skirtOptions.map(option => (
           <label
@@ -73,6 +69,24 @@ function SkirtSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
           </label>
         ))}
       </div>
+
+      {/* Images Gallery */}
+      <div className="skirt-gallery">
+        <div className="gallery-grid">
+          {skirtOptions.map(option => (
+            <div key={option.value} className="gallery-item">
+              <div className="gallery-image-placeholder">
+                <span>{option.image}</span>
+              </div>
+              <p className="gallery-label">{t(option.labelKey)}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {config && currentPrice && complexity && (
+        <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
+      )}
 
       <div className="actions">
         <button onClick={handleConfirm} className="btn-primary">
