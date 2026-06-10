@@ -11,7 +11,7 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
   const sleeves = [
     {
       value: 0,
-      icon: '👕',
+      iconImage: '/images/sleeve-bez.PNG',
       labelKey: 'sleeves.none',
       descKey: 'sleeves.noneDesc',
       imageKey: 'sleeves.noneImg',
@@ -19,7 +19,7 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
     },
     {
       value: 1,
-      icon: '🦾',
+      iconImage: '/images/sleeve-1.PNG',
       labelKey: 'sleeves.one',
       descKey: 'sleeves.oneDesc',
       imageKey: 'sleeves.oneImg',
@@ -27,7 +27,7 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
     },
     {
       value: 2,
-      icon: '💪',
+      iconImage: '/images/sleeve-2.PNG',
       labelKey: 'sleeves.two',
       descKey: 'sleeves.twoDesc',
       imageKey: 'sleeves.twoImg',
@@ -35,7 +35,7 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
     },
     {
       value: 3,
-      icon: '🎀',
+      iconImage: '/images/sleeve-breteli.PNG',
       labelKey: 'sleeves.straps',
       descKey: 'sleeves.strapsDesc',
       imageKey: 'sleeves.strapsImg',
@@ -76,7 +76,7 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
               className="radio-input"
             />
             <div className="sleeve-card-content">
-              <div className="sleeve-icon">{sleeve.icon}</div>
+              <img src={sleeve.iconImage} alt={t(sleeve.labelKey)} className="sleeve-icon" />
               <div className="sleeve-label">{t(sleeve.labelKey)}</div>
               <div className="sleeve-desc">{t(sleeve.descKey)}</div>
             </div>
