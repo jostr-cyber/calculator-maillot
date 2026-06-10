@@ -7,6 +7,15 @@
     "description": "Calculate the cost of your custom leotard in just a few simple steps",
     "startButton": "Start calculation"
   },
+  "complexity": {
+    "simple": "Simple",
+    "advanced": "Advanced",
+    "luxury": "Luxury"
+  },
+  "productionTime": {
+    "standard": "7-14 days",
+    "accelerated": "1-2 weeks"
+  },
   "buttons": {
     "continue": "Continue",
     "back": "Back",

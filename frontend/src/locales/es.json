@@ -7,6 +7,15 @@
     "description": "Calcula el costo de tu maillot personalizado en unos pocos pasos simples",
     "startButton": "Comenzar cálculo"
   },
+  "complexity": {
+    "simple": "Simple",
+    "advanced": "Avanzado",
+    "luxury": "Lujo"
+  },
+  "productionTime": {
+    "standard": "7-14 días",
+    "accelerated": "1-2 semanas"
+  },
   "buttons": {
     "continue": "Continuar",
     "back": "Atrás",

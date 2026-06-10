@@ -7,6 +7,15 @@
     "description": "Calculez le coût de votre justaucorps personnalisé en quelques étapes simples",
     "startButton": "Commencer le calcul"
   },
+  "complexity": {
+    "simple": "Simple",
+    "advanced": "Avancé",
+    "luxury": "Luxe"
+  },
+  "productionTime": {
+    "standard": "7-14 jours",
+    "accelerated": "1-2 semaines"
+  },
   "buttons": {
     "continue": "Continuer",
     "back": "Retour",

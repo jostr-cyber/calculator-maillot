@@ -41,7 +41,7 @@ function ConfigurationSummary({ config, currentPrice, complexity }) {
           <div className="complexity-indicator">
             <span className="complexity-label">{t('summary.complexity') || 'Complexity'}</span>
             <span className={`complexity-badge complexity-${complexity.level.toLowerCase()}`}>
-              {complexity.label}
+              {t(complexity.labelKey) || complexity.level}
             </span>
           </div>
         )}

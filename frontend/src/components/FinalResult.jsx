@@ -106,19 +106,19 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
             <div className="complexity-info">
               <span className="complexity-title">{t('result.complexity') || 'Complexity level'}</span>
               <span className={`complexity-level complexity-${complexity.level.toLowerCase()}`}>
-                {complexity.label}
+                {t(complexity.labelKey) || complexity.level}
               </span>
             </div>
             <div className="complexity-bar">
               <div className="complexity-scale">
-                <span className="scale-label">Simple</span>
+                <span className="scale-label">{t('complexity.simple') || 'Simple'}</span>
                 <div className="scale-track">
                   <div
                     className={`scale-indicator complexity-${complexity.level.toLowerCase()}`}
                     style={{ width: `${complexityPercentage}%` }}
                   ></div>
                 </div>
-                <span className="scale-label">Luxury</span>
+                <span className="scale-label">{t('complexity.luxury') || 'Luxury'}</span>
               </div>
             </div>
           </div>
@@ -131,7 +131,7 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
               <span className="detail-icon">⏱️</span>
               <div className="detail-content">
                 <span className="detail-label">{t('result.productionTime') || 'Production time'}</span>
-                <span className="detail-value">{productionTime}</span>
+                <span className="detail-value">{t(productionTime) || productionTime}</span>
               </div>
             </div>
             <div className="detail-item">

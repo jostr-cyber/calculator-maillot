@@ -95,47 +95,65 @@ export const calculateComplexity = (config) => {
 
   // Determine complexity level
   if (complexityScore === 0) {
-    return { level: 'Simple', score: 0, label: 'Simple' };
+    return { level: 'Simple', score: 0, labelKey: 'complexity.simple' };
   } else if (complexityScore <= 3) {
-    return { level: 'Simple', score: complexityScore, label: 'Simple' };
+    return { level: 'Simple', score: complexityScore, labelKey: 'complexity.simple' };
   } else if (complexityScore <= 6) {
-    return { level: 'Advanced', score: complexityScore, label: 'Advanced' };
+    return { level: 'Advanced', score: complexityScore, labelKey: 'complexity.advanced' };
   } else {
-    return { level: 'Luxury', score: complexityScore, label: 'Luxury' };
+    return { level: 'Luxury', score: complexityScore, labelKey: 'complexity.luxury' };
   }
 };
 
 // Calculate estimated number of crystals/stones
 export const calculateEstimatedCrystals = (config) => {
-  let baseStones = 800; // Base for simple design
+  // First determine complexity level
+  const complexity = calculateComplexity(config);
+
+  let baseStones;
+
+  // Set base stones based on complexity level
+  if (complexity.level === 'Simple') {
+    baseStones = 1000; // Simple: 1000-1500
+  } else if (complexity.level === 'Advanced') {
+    baseStones = 2000; // Advanced: 2000-3000
+  } else {
+    baseStones = 3000; // Luxury: 3000+
+  }
 
   // Add stones based on decorative elements
   if (config.decorativeElements && config.decorativeElements !== 'none') {
     const elements = config.decorativeElements.split(',');
-    baseStones += elements.length * 300; // Each element adds ~300 stones
+    baseStones += elements.length * 150; // Each element adds ~150 stones
   }
 
   // Add stones for aerography (aerography often includes crystals)
   if (config.aerography && config.aerography !== 'nothing') {
-    baseStones += 500; // Aerography adds ~500 stones
+    baseStones += 300; // Aerography adds ~300 stones
   }
 
   // Add stones for skirt
   if (config.skirt && config.skirt !== '') {
     if (config.skirt === 'both') {
-      baseStones += 400; // Front and back skirt
+      baseStones += 200; // Front and back skirt
     } else {
-      baseStones += 200; // Single skirt
+      baseStones += 100; // Single skirt
     }
   }
 
   // Add stones for premium stones option
   if (config.premiumStones && config.premiumStones !== 'none') {
-    baseStones += 600; // Premium stones significantly increase count
+    baseStones += 300; // Premium stones add more stones
   }
 
-  // Minimum is 800, maximum reasonable is around 5000
-  return Math.min(Math.max(baseStones, 800), 5000);
+  // Apply reasonable caps based on complexity
+  if (complexity.level === 'Simple') {
+    return Math.min(Math.max(baseStones, 1000), 1500);
+  } else if (complexity.level === 'Advanced') {
+    return Math.min(Math.max(baseStones, 2000), 3000);
+  } else {
+    return Math.max(baseStones, 3000); // Luxury can go higher
+  }
 };
 
 // Calculate current estimated price based on configuration
@@ -174,12 +192,12 @@ export const calculateCurrentPrice = async (config, apiUrl) => {
   }
 };
 
-// Get production time based on urgency
+// Get production time based on urgency - returns translation key
 export const getProductionTime = (urgency) => {
   if (urgency === 'accelerated') {
-    return '1–2 weeks';
+    return 'productionTime.accelerated';
   }
-  return '3–4 weeks';
+  return 'productionTime.standard';
 };
 
 // Get complexity percentage for visual display (0-100)

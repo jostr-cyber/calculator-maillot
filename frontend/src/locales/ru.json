@@ -7,6 +7,15 @@
     "description": "Рассчитайте стоимость вашего индивидуального купальника за несколько простых шагов",
     "startButton": "Начать расчет"
   },
+  "complexity": {
+    "simple": "Простой",
+    "advanced": "Средний",
+    "luxury": "Люкс"
+  },
+  "productionTime": {
+    "standard": "7-14 дней",
+    "accelerated": "1-2 недели"
+  },
   "buttons": {
     "continue": "Продолжить",
     "back": "Назад",
