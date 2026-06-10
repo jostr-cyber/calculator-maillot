@@ -107,10 +107,9 @@
 }
 
 .gallery-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  flex-wrap: nowrap;
-  width: 100%;
 }
 
 .gallery-item {
@@ -118,8 +117,6 @@
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  width: 25%;
-  flex-shrink: 0;
 }
 
 .gallery-image-placeholder {
