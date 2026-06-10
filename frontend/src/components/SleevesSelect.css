@@ -7,8 +7,8 @@
 
 .sleeves-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  grid-template-columns: 1fr;
+  gap: 14px;
   margin-bottom: 32px;
   margin-top: 24px;
 }
@@ -26,17 +26,17 @@
 
 .sleeve-card-content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 24px 16px;
+  justify-content: flex-start;
+  gap: 16px;
+  padding: 18px 20px;
   border: 2px solid #e0d5ff;
   border-radius: 12px;
   background-color: #f9f8ff;
   transition: all 0.3s ease;
-  min-height: 160px;
-  text-align: center;
+  min-height: auto;
+  text-align: left;
 }
 
 .sleeve-card:hover .sleeve-card-content {
@@ -70,21 +70,24 @@
 }
 
 .sleeve-icon {
-  font-size: 48px;
+  font-size: 40px;
   line-height: 1;
+  flex-shrink: 0;
 }
 
 .sleeve-label {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   color: #1a1a1a;
-  margin: 4px 0;
+  margin: 0 0 4px 0;
+  display: block;
 }
 
 .sleeve-desc {
   font-size: 12px;
   color: #666;
   line-height: 1.4;
+  display: block;
 }
 
 .actions {
@@ -137,18 +140,24 @@
 
 @media (max-width: 768px) {
   .sleeves-grid {
-    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 
   .sleeve-card-content {
-    min-height: 140px;
-    padding: 16px 12px;
-    gap: 8px;
+    padding: 16px;
+    gap: 14px;
   }
 
   .sleeve-icon {
-    font-size: 40px;
+    font-size: 36px;
+  }
+
+  .sleeve-label {
+    font-size: 14px;
+  }
+
+  .sleeve-desc {
+    font-size: 11px;
   }
 }
 
@@ -158,26 +167,20 @@
   }
 
   .sleeves-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
   }
 
   .sleeve-card-content {
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: auto;
-    text-align: left;
-    padding: 16px;
+    padding: 14px;
+    gap: 12px;
   }
 
   .sleeve-icon {
-    font-size: 36px;
-    flex-shrink: 0;
+    font-size: 32px;
   }
 
   .sleeve-label {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .sleeve-desc {

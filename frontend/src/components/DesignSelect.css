@@ -1,46 +1,55 @@
 .design-container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  gap: 14px;
+  margin-top: 24px;
+  margin-bottom: 32px;
 }
 
 .design-option {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 16px;
   cursor: pointer;
-  padding: 15px;
-  background: #f9f0ff;
-  border-radius: 5px;
-  border-left: 4px solid #990099;
-  transition: background-color 0.2s;
+  padding: 18px 20px;
+  background: #f9f8ff;
+  border-radius: 12px;
+  border: 2px solid #e0d5ff;
+  transition: all 0.3s ease;
 }
 
 .design-option:hover {
-  background-color: #f0e0ff;
+  background-color: #f5f3ff;
+  border-color: #7c3aed;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
+  transform: translateY(-2px);
 }
 
 .design-option input[type="radio"] {
   width: 20px;
   height: 20px;
+  min-width: 20px;
   margin-top: 2px;
   cursor: pointer;
-  accent-color: #990099;
+  accent-color: #7c3aed;
   flex-shrink: 0;
 }
 
 .design-content {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
+  flex: 1;
 }
 
 .design-title {
-  color: #333;
+  color: #1a1a1a;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
+}
+
+.design-option input[type="radio"]:checked + .design-content .design-title {
+  color: #7c3aed;
 }
 
 .design-description {
@@ -50,8 +59,55 @@
 }
 
 .design-discount {
-  color: #990099;
-  font-size: 13px;
+  color: #7c3aed;
+  font-size: 12px;
   font-weight: 600;
   margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+  .design-container {
+    gap: 12px;
+  }
+
+  .design-option {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .design-title {
+    font-size: 14px;
+  }
+
+  .design-description {
+    font-size: 12px;
+  }
+
+  .design-discount {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 600px) {
+  .design-container {
+    gap: 10px;
+  }
+
+  .design-option {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .design-input {
+    width: 18px;
+    height: 18px;
+  }
+
+  .design-title {
+    font-size: 13px;
+  }
+
+  .design-description {
+    font-size: 11px;
+  }
 }
