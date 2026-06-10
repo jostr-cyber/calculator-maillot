@@ -15,7 +15,7 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
       labelKey: 'sleeves.none',
       descKey: 'sleeves.noneDesc',
       imageKey: 'sleeves.noneImg',
-      image: '/images/3.PNG'
+      image: '/images/3b.PNG'
     },
     {
       value: 1,
@@ -23,7 +23,7 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
       labelKey: 'sleeves.one',
       descKey: 'sleeves.oneDesc',
       imageKey: 'sleeves.oneImg',
-      image: '/images/3b.PNG'
+      image: '/images/3.PNG'
     },
     {
       value: 2,
@@ -31,7 +31,7 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
       labelKey: 'sleeves.two',
       descKey: 'sleeves.twoDesc',
       imageKey: 'sleeves.twoImg',
-      image: '/images/3c.PNG'
+      image: '/images/4.PNG'
     },
     {
       value: 3,
@@ -39,7 +39,7 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
       labelKey: 'sleeves.straps',
       descKey: 'sleeves.strapsDesc',
       imageKey: 'sleeves.strapsImg',
-      image: '/images/4.PNG'
+      image: '/images/3c.PNG'
     }
   ]
 
