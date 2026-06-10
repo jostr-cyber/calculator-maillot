@@ -24,7 +24,9 @@
     "reduceThePrice": "💰 Reducir el precio",
     "sendPhotos": "📸 Enviar fotos de inspiración",
     "discussWhatsApp": "💬 Discutir detalles en WhatsApp",
-    "reduceThePriceBtn": "💰 Reducir el precio"
+    "reduceThePriceBtn": "💰 Reducir el precio",
+    "showExamples": "▶ Mostrar ejemplos",
+    "hideExamples": "▼ Ocultar ejemplos"
   },
   "steps": {
     "budget": "Selecciona un rango de precio",
@@ -359,7 +361,11 @@
     "budgetComparison": "Comparación con presupuesto",
     "budgetAbove": "{amount} EUR por encima de tu presupuesto seleccionado",
     "budgetBelow": "Por debajo de tu presupuesto seleccionado",
-    "recommendation": "Nuestra recomendación"
+    "recommendation": "Nuestra recomendación",
+    "whatWeWouldChange": "Qué cambiaríamos nosotros",
+    "valueForMoney": "Relación calidad-precio",
+    "similarDesigns": "Diseños similares",
+    "gallerySimilarityNote": "Las imágenes muestran diseños con complejidad y estilo similar"
   },
   "actionButtons": {
     "order": "💚 Pedir este maillot",

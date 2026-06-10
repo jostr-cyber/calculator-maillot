@@ -240,3 +240,211 @@ export const generateRecommendation = (config, complexity) => {
 
   return `${baseRecommendation}\n\n${tip}`;
 };
+
+// Generate atelier-style optimization suggestions with cost savings
+export const generateWhatWeWouldChange = (config, finalPrice) => {
+  const hasAerography = config.aerography && config.aerography !== 'nothing';
+  const hasDecorativeElements = config.decorativeElements && config.decorativeElements !== 'none';
+  const hasSkirt = config.skirt && config.skirt !== '' && config.skirt !== 'none';
+  const hasTwoSleeves = config.sleeves === 2;
+  const hasOneSleve = config.sleeves === 1;
+  const hasExpedited = config.urgency === 'accelerated';
+  const isPremiumStones = config.premiumStones && config.premiumStones !== 'none';
+
+  const suggestions = [];
+
+  // Analyze and suggest optimizations
+  if (hasTwoSleeves && hasDecorativeElements && hasAerography && hasExpedited) {
+    // Multiple expensive options - suggest reducing expedited first
+    const estimatedSavings = Math.round(finalPrice * 0.10); // ~10% for expedited
+    suggestions.push({
+      action: `we would keep the two sleeves and aerography, but choose standard delivery instead of expedited`,
+      savings: estimatedSavings,
+      rationale: "maintains visual impact while reducing rush fees"
+    });
+  } else if (hasTwoSleeves && hasDecorativeElements && hasAerography) {
+    // Very complex - suggest reducing decorative elements
+    const estimatedSavings = Math.round(finalPrice * 0.12); // ~12% for fewer elements
+    suggestions.push({
+      action: `we would keep the two sleeves and aerography but simplify decorative elements`,
+      savings: estimatedSavings,
+      rationale: "preserves the sophisticated design while optimizing cost"
+    });
+  } else if (hasAerography && hasExpedited && isPremiumStones) {
+    // Expensive combination - suggest removing premium stones
+    const estimatedSavings = Math.round(finalPrice * 0.15); // ~15% for premium stones
+    suggestions.push({
+      action: `we would keep the aerography and expedited order but use standard stones`,
+      savings: estimatedSavings,
+      rationale: "maintains quick turnaround and artistic elements without premium pricing"
+    });
+  } else if (hasTwoSleeves && hasExpedited && !hasAerography) {
+    // Sleeves + urgency without artistic touch - suggest adding aerography instead
+    const estimatedIncrease = Math.round(finalPrice * 0.18);
+    suggestions.push({
+      action: `we would add aerography to the design instead of maintaining both sleeves`,
+      increase: estimatedIncrease,
+      rationale: "aerography creates more visual impact for competitive performance"
+    });
+  } else if (hasExpedited && !hasAerography && !hasDecorativeElements) {
+    // Only expedited without decoration - suggest adding small details
+    const estimatedIncrease = Math.round(finalPrice * 0.08);
+    suggestions.push({
+      action: `we would add subtle aerography or decorative details to enhance visual appeal`,
+      increase: estimatedIncrease,
+      rationale: "small additions create more stage presence for minimal cost increase"
+    });
+  } else if (hasTwoSleeves && hasTwoSleeves && !hasAerography) {
+    // Full sleeves without aerography - suggest adding it
+    const estimatedIncrease = Math.round(finalPrice * 0.15);
+    suggestions.push({
+      action: `we would add aerography to complement the two-sleeve design`,
+      increase: estimatedIncrease,
+      rationale: "aerography creates visual balance with the sleeve complexity"
+    });
+  } else if (hasDecorativeElements && !hasAerography) {
+    // Decorative but no aerography - suggest adding it
+    const estimatedIncrease = Math.round(finalPrice * 0.14);
+    suggestions.push({
+      action: `we would add subtle aerography to tie together the decorative elements`,
+      increase: estimatedIncrease,
+      rationale: "creates cohesive artistic vision with existing 3D elements"
+    });
+  } else {
+    // Default suggestion
+    suggestions.push({
+      action: `we would preserve this configuration as it's well-balanced`,
+      savings: 0,
+      rationale: "this design offers good value for the complexity level"
+    });
+  }
+
+  const bestSuggestion = suggestions[0];
+  if (bestSuggestion.savings && bestSuggestion.savings > 0) {
+    return `If this were our own leotard, ${bestSuggestion.action}. This would save approximately €${bestSuggestion.savings}. Why? ${bestSuggestion.rationale}`;
+  } else if (bestSuggestion.increase && bestSuggestion.increase > 0) {
+    return `If this were our own leotard, ${bestSuggestion.action}. This would increase the price by approximately €${bestSuggestion.increase}. Why? ${bestSuggestion.rationale}`;
+  } else {
+    return `${bestSuggestion.action}. ${bestSuggestion.rationale}`;
+  }
+};
+
+// Calculate value-for-money rating (1-4 stars)
+// Based on complexity/price ratio, not absolute quality
+export const calculateValueForMoney = (config, finalPrice, complexity) => {
+  const complexityScore = complexity?.score || 0;
+  const pricePerUnit = finalPrice / Math.max(complexityScore, 1);
+
+  // Define rating tiers based on price point and complexity balance
+  let stars = 2; // Default balanced rating
+  let tier = 'balanced';
+  let label = '⭐⭐ Very balanced';
+  let description = 'Excellent balance of features and price';
+
+  // Budget tier (under €300)
+  if (finalPrice < 300) {
+    if (complexityScore >= 4) {
+      stars = 4;
+      tier = 'excellent';
+      label = '⭐⭐⭐⭐ Excellent value';
+      description = 'Maximum features for budget price';
+    } else if (complexityScore >= 2) {
+      stars = 3;
+      tier = 'very-good';
+      label = '⭐⭐⭐ Very good value';
+      description = 'Strong features for modest investment';
+    } else {
+      stars = 2;
+      tier = 'balanced';
+      label = '⭐⭐ Good starter option';
+      description = 'Simple elegance at accessible price';
+    }
+  }
+  // Mid tier (€300-€500)
+  else if (finalPrice < 500) {
+    if (complexityScore >= 6) {
+      stars = 4;
+      tier = 'luxury';
+      label = '⭐⭐⭐⭐ Maximum visual impact';
+      description = 'Rich features create strong stage presence';
+    } else if (complexityScore >= 4) {
+      stars = 3;
+      tier = 'premium';
+      label = '⭐⭐⭐ Premium balance';
+      description = 'Good sophistication level';
+    } else {
+      stars = 2;
+      tier = 'balanced';
+      label = '⭐⭐ Very balanced';
+      description = 'Solid mid-range choice';
+    }
+  }
+  // Premium tier (€500+)
+  else {
+    if (complexityScore >= 8) {
+      stars = 4;
+      tier = 'luxury';
+      label = '⭐⭐⭐⭐ Luxury level';
+      description = 'Premium features and exceptional craftsmanship';
+    } else if (complexityScore >= 6) {
+      stars = 3;
+      tier = 'premium';
+      label = '⭐⭐⭐ Maximum visual impact';
+      description = 'Significant investment in visual presence';
+    } else if (complexityScore >= 4) {
+      stars = 2;
+      tier = 'balanced';
+      label = '⭐⭐ Premium investment';
+      description = 'Higher price for moderate complexity';
+    } else {
+      stars = 1;
+      tier = 'expensive';
+      label = '⭐ High price for simplicity';
+      description = 'Consider simplifying to reduce costs';
+    }
+  }
+
+  return { stars, tier, label, description };
+};
+
+// Get similar designs gallery images based on configuration
+export const getMatchingSimilarDesigns = (config, complexity) => {
+  // This returns design IDs that should match gallery image metadata
+  // In a real implementation, this would query a database or match against gallery items
+  // For now, return IDs based on complexity and configuration patterns
+
+  const complexityLevel = complexity?.level?.toLowerCase() || 'advanced';
+  const hasAerography = config.aerography && config.aerography !== 'nothing';
+  const hasDecorativeElements = config.decorativeElements && config.decorativeElements !== 'none';
+  const sleevelevel = config.sleeves || 0;
+  const hasSkirt = config.skirt && config.skirt !== '' && config.skirt !== 'none';
+
+  // Pattern-matching gallery selection
+  // In production, these would be actual image IDs from your gallery
+  const galleryMatrix = {
+    'simple-no-decor': ['simple-001', 'simple-002', 'simple-003', 'simple-004', 'simple-005'],
+    'simple-with-decor': ['simple-decor-001', 'simple-decor-002', 'simple-decor-003', 'simple-decor-004'],
+    'advanced-balanced': ['advanced-001', 'advanced-002', 'advanced-003', 'advanced-004', 'advanced-005', 'advanced-006'],
+    'advanced-artistic': ['advanced-art-001', 'advanced-art-002', 'advanced-art-003', 'advanced-art-004', 'advanced-art-005'],
+    'luxury-complex': ['luxury-001', 'luxury-002', 'luxury-003', 'luxury-004', 'luxury-005', 'luxury-006', 'luxury-007', 'luxury-008'],
+    'luxury-minimal': ['luxury-min-001', 'luxury-min-002', 'luxury-min-003', 'luxury-min-004']
+  };
+
+  // Determine category based on complexity and config
+  let category = 'advanced-balanced';
+
+  if (complexityLevel === 'simple') {
+    category = hasDecorativeElements ? 'simple-with-decor' : 'simple-no-decor';
+  } else if (complexityLevel === 'advanced') {
+    category = hasAerography ? 'advanced-artistic' : 'advanced-balanced';
+  } else if (complexityLevel === 'luxury') {
+    category = (sleevelevel >= 2 && hasDecorativeElements && hasAerography) ? 'luxury-complex' : 'luxury-minimal';
+  }
+
+  return {
+    category,
+    designs: galleryMatrix[category] || galleryMatrix['advanced-balanced'],
+    previewCount: 3,
+    expandedCount: 6
+  };
+};

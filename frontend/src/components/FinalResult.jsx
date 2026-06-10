@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
-import { formatConfigurationSummary, getProductionTime, getComplexityPercentage, generateRecommendation } from '../utilities/calculationUtils'
+import { formatConfigurationSummary, getProductionTime, getComplexityPercentage, generateRecommendation, generateWhatWeWouldChange, calculateValueForMoney, getMatchingSimilarDesigns } from '../utilities/calculationUtils'
 import './FinalResult.css'
 
 function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheelDiscount, selectedBudget, onCustomizeAgain, onReducePrice }) {
   const { t } = useTranslation()
+  const [galleryExpanded, setGalleryExpanded] = useState(false)
   const summary = formatConfigurationSummary(config)
   const productionTime = getProductionTime(config.urgency)
   const complexityPercentage = getComplexityPercentage(complexity)
   const recommendation = generateRecommendation(config, complexity)
+  const whatWeWouldChange = generateWhatWeWouldChange(config, priceResult.finalPrice)
+  const valueForMoney = calculateValueForMoney(config, priceResult.finalPrice, complexity)
+  const similarDesigns = getMatchingSimilarDesigns(config, complexity)
 
   const BUDGET_LIMITS = {
     'under-250': 250,
@@ -154,6 +158,54 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
             <h3>{t('result.recommendation') || 'Our recommendation'}</h3>
             <p className="recommendation-text">{recommendation}</p>
           </div>
+        </div>
+
+        {/* What Would We Change Section */}
+        <div className="result-section what-we-would-change-section">
+          <div className="change-content">
+            <h3>{t('result.whatWeWouldChange') || 'What would we change?'}</h3>
+            <p className="change-text">💡 {whatWeWouldChange}</p>
+          </div>
+        </div>
+
+        {/* Value for Money Section */}
+        <div className="result-section value-for-money-section">
+          <div className="value-content">
+            <div className="value-header">
+              <span className="value-title">{t('result.valueForMoney') || 'Value for money'}</span>
+              <span className="value-rating">{valueForMoney.label}</span>
+            </div>
+            <p className="value-description">{valueForMoney.description}</p>
+          </div>
+        </div>
+
+        {/* Similar Designs Gallery Section */}
+        <div className="result-section similar-designs-section">
+          <div className="gallery-header">
+            <h3>{t('result.similarDesigns') || 'Similar designs'}</h3>
+            <button
+              className="gallery-toggle-btn"
+              onClick={() => setGalleryExpanded(!galleryExpanded)}
+            >
+              {galleryExpanded
+                ? (t('buttons.hideExamples') || '▼ Hide examples')
+                : (t('buttons.showExamples') || '▶ Show examples')}
+            </button>
+          </div>
+
+          <div className={`gallery-container ${galleryExpanded ? 'expanded' : 'preview'}`}>
+            <div className="gallery-grid">
+              {similarDesigns.designs.slice(0, galleryExpanded ? 9 : 3).map((designId, idx) => (
+                <div key={idx} className="gallery-item">
+                  <div className="gallery-image-placeholder">
+                    <span>🎭</span>
+                    <small>{designId}</small>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <p className="gallery-note">{t('result.gallerySimilarityNote') || 'Images show designs with similar complexity and style'}</p>
         </div>
 
         {/* Configuration Summary */}
