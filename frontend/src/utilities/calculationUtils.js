@@ -75,8 +75,8 @@ export const calculatePriceLocal = (config) => {
   if (config.premiumStones === 'swarovski') finalPrice += 200;
   if (config.premiumStones === 'premium') finalPrice += 150;
 
-  // Urgency surcharge (percentage of final price)
-  if (config.urgency === 'accelerated') finalPrice *= 1.15; // 15% surcharge
+  // Urgency surcharge (percentage of accumulated price up to this step)
+  if (config.urgency === 'accelerated') finalPrice *= 1.10; // 10% surcharge
 
   // Combinaison (full suit, fixed amount)
   if (config.combinaison === 'full') finalPrice += 50; // Комбинезон
