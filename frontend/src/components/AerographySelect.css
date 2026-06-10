@@ -1,60 +1,88 @@
-.select-wrapper {
-  width: 100%;
-}
-
-.select-wrapper h2 {
+.aerography-select h2 {
   color: #7c3aed;
   margin-bottom: 20px;
   font-size: 24px;
   font-weight: 600;
 }
 
-.options-group {
-  display: flex;
-  flex-direction: column;
+.aerography-grid {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 14px;
   margin-bottom: 32px;
   margin-top: 24px;
 }
 
-.option-label {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.aerography-card {
+  position: relative;
   cursor: pointer;
+}
+
+.aerography-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.aerography-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 4px;
   padding: 18px 20px;
   border: 2px solid #e0d5ff;
   border-radius: 12px;
   background-color: #f9f8ff;
   transition: all 0.3s ease;
-  position: relative;
+  min-height: auto;
+  text-align: left;
 }
 
-.option-label:hover {
+.aerography-card:hover .aerography-card-content {
   border-color: #7c3aed;
   background-color: #f5f3ff;
   box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
   transform: translateY(-2px);
 }
 
-.radio-input {
-  width: 20px;
-  height: 20px;
-  min-width: 20px;
-  cursor: pointer;
-  accent-color: #7c3aed;
-  margin: 0;
+.aerography-card.selected .aerography-card-content {
+  border-color: #7c3aed;
+  background-color: #f5f3ff;
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.15);
 }
 
-.option-text {
+.aerography-card.selected .aerography-card-content::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  background-color: #7c3aed;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.aerography-label {
   font-size: 15px;
+  font-weight: 600;
   color: #1a1a1a;
-  font-weight: 500;
+  margin: 0;
+  display: block;
 }
 
-.option-label input[type="radio"]:checked + .option-text {
-  color: #7c3aed;
-  font-weight: 600;
+.aerography-desc {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+  display: block;
+  margin: 0;
 }
 
 .actions {
@@ -67,13 +95,13 @@
 .btn-secondary {
   flex: 1;
   padding: 14px 24px;
-  font-size: 16px;
-  font-weight: 600;
   border: none;
   border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
   font-family: 'Montserrat', sans-serif;
+  transition: all 0.3s ease;
 }
 
 .btn-primary {
@@ -106,41 +134,44 @@
 }
 
 @media (max-width: 768px) {
-  .options-group {
+  .aerography-grid {
     gap: 12px;
   }
 
-  .option-label {
+  .aerography-card-content {
     padding: 16px;
-    gap: 14px;
+    gap: 3px;
   }
 
-  .option-text {
+  .aerography-label {
     font-size: 14px;
+  }
+
+  .aerography-desc {
+    font-size: 11px;
   }
 }
 
 @media (max-width: 600px) {
-  .select-wrapper h2 {
+  .aerography-select h2 {
     font-size: 20px;
   }
 
-  .options-group {
+  .aerography-grid {
     gap: 10px;
   }
 
-  .option-label {
+  .aerography-card-content {
     padding: 14px;
-    gap: 12px;
+    gap: 3px;
   }
 
-  .radio-input {
-    width: 18px;
-    height: 18px;
-  }
-
-  .option-text {
+  .aerography-label {
     font-size: 13px;
+  }
+
+  .aerography-desc {
+    font-size: 11px;
   }
 
   .actions {

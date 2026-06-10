@@ -49,14 +49,21 @@ export const calculatePriceLocal = (config) => {
   if (config.skirt === 'back') finalPrice += 15;
   if (config.skirt === 'both') finalPrice += 30;
 
-  // Decorative elements (fixed amounts)
+  // Decorative elements (fixed amounts per element)
   if (config.decorativeElements && config.decorativeElements !== 'none') {
-    const elements = config.decorativeElements.split(',').filter(e => e);
-    finalPrice += elements.length * 60;
+    const elements = config.decorativeElements.split(',').filter(e => e.trim());
+    elements.forEach(element => {
+      const el = element.trim();
+      if (el === 'feathers') finalPrice += 10;        // Перья
+      else if (el === 'fringe') finalPrice += 20;     // Бахрома
+      else if (el === 'flowers') finalPrice += 10;    // Объемные цветы
+      else if (el === 'other') finalPrice += 15;      // Другое
+    });
   }
 
   // Aerography (fixed amounts)
-  if (config.aerography && config.aerography !== 'nothing') finalPrice += 120;
+  if (config.aerography === 'drawing') finalPrice += 20;      // Рисунок
+  else if (config.aerography === 'aerography') finalPrice += 20; // Аэрография
 
   // Rhinestones (fixed amounts)
   if (config.rhinestone === 'minimal') finalPrice += 30;
@@ -72,7 +79,7 @@ export const calculatePriceLocal = (config) => {
   if (config.urgency === 'accelerated') finalPrice *= 1.15; // 15% surcharge
 
   // Combinaison (full suit, fixed amount)
-  if (config.combinaison === 'full') finalPrice += 80;
+  if (config.combinaison === 'full') finalPrice += 50; // Комбинезон
 
   const roundedFinalPrice = Math.round(finalPrice * 100) / 100;
 
@@ -87,9 +94,22 @@ export const calculatePriceLocal = (config) => {
       design: Math.round(designAdjustment * 100) / 100,
       sleeves: config.sleeves === 1 ? 15 : (config.sleeves === 2 ? 30 : (config.sleeves === 3 ? 10 : 0)),
       skirt: config.skirt === 'both' ? 30 : (config.skirt === 'front' || config.skirt === 'back' ? 15 : 0),
-      decorativeElements: (config.decorativeElements && config.decorativeElements !== 'none' ? config.decorativeElements.split(',').filter(e => e).length * 60 : 0),
-      aerography: (config.aerography !== 'nothing' ? 120 : 0),
+      decorativeElements: (() => {
+        if (!config.decorativeElements || config.decorativeElements === 'none') return 0;
+        let total = 0;
+        const elements = config.decorativeElements.split(',').filter(e => e.trim());
+        elements.forEach(el => {
+          const e = el.trim();
+          if (e === 'feathers') total += 10;
+          else if (e === 'fringe') total += 20;
+          else if (e === 'flowers') total += 10;
+          else if (e === 'other') total += 15;
+        });
+        return total;
+      })(),
+      aerography: config.aerography === 'drawing' ? 20 : (config.aerography === 'aerography' ? 20 : 0),
       rhinestone: (config.rhinestone === 'minimal' ? 30 : (config.rhinestone === 'standard' ? 70 : (config.rhinestone === 'maximum' ? 120 : (config.rhinestone === 'premium' ? 200 : 0)))),
+      combinaison: config.combinaison === 'full' ? 50 : 0,
       premiumStones: (config.premiumStones === 'swarovski' ? 200 : (config.premiumStones === 'premium' ? 150 : 0))
     }
   };

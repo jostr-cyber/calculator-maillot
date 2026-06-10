@@ -159,8 +159,12 @@
   },
   "aerography": {
     "label": "Sélectionnez une option...",
+    "nothing": "Rien",
+    "nothingDesc": "Aucune peinture ni aérographie",
     "drawing": "Dessin (personnage, objet, bâtiment, etc.)",
-    "nothing": "Rien"
+    "drawingDesc": "Petit élément avec dessin",
+    "aerography": "Aérographie",
+    "aerographyDesc": "Peinture requise sur une zone significative pour transition de couleurs"
   },
   "combinaison": {
     "label": "Sélectionnez une option...",
