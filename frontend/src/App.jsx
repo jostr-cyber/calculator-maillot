@@ -135,7 +135,8 @@ function App() {
       premiumStones: premiumStones || 'none',
       urgency: urgency || 'none',
       rhinestone: rhinestone || 'none',
-      design: design || 'our-design'
+      design: design || 'our-design',
+      designSource: designSource || 'inspiration-photos'
     }
 
     // Debounce price calculation
