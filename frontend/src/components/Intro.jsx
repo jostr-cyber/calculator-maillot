@@ -11,6 +11,7 @@ function Intro({ onStart }) {
         <h1 className="intro-title">
           {t('app.title') || 'Калькулятор стоимости купальника'}
         </h1>
+        <p className="intro-subtitle">в ателье RG LeotART</p>
 
         <div className="intro-image">
           <img

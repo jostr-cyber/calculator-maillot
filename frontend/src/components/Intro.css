@@ -52,6 +52,16 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.intro-subtitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: #7a3d7a;
+  margin: -24px 0 0 0;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
 .intro-image {
   width: 100%;
   max-width: 320px;
@@ -135,6 +145,11 @@
     font-size: 32px;
   }
 
+  .intro-subtitle {
+    font-size: 16px;
+    margin-top: -20px;
+  }
+
   .intro-image {
     max-width: 280px;
   }
@@ -164,6 +179,11 @@
 
   .intro-title {
     font-size: 26px;
+  }
+
+  .intro-subtitle {
+    font-size: 14px;
+    margin-top: -16px;
   }
 
   .intro-image {
