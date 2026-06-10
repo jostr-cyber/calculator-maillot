@@ -11,7 +11,6 @@ import AerographySelect from './components/AerographySelect'
 import CombinaisionSelect from './components/CombinaisionSelect'
 import UrgencySelect from './components/UrgencySelect'
 import DesignSourceSelect from './components/DesignSourceSelect'
-import DesignSelect from './components/DesignSelect'
 import Survey from './components/Survey'
 import WheelOfFortune from './components/WheelOfFortune'
 import FinalResult from './components/FinalResult'
@@ -94,11 +93,10 @@ function App() {
   const [contactMethod, setContactMethod] = useState('')
   const [contactValue, setContactValue] = useState('')
 
-  // Step order: height -> designSource -> design -> sleeves -> skirt -> decorativeElements -> aerography -> combinaison -> urgency -> budget (for comparison) -> survey -> result
+  // Step order: height -> designSource -> sleeves -> skirt -> decorativeElements -> aerography -> combinaison -> urgency -> budget (for comparison) -> survey -> result
   const steps = [
     'height',
     'designSource',
-    'design',
     'sleeves',
     'skirt',
     'decorativeElements',
@@ -219,7 +217,8 @@ function App() {
 
   const handleDesignSourceSelect = (source) => {
     setDesignSource(source)
-    setStep('design')
+    setDesign('our-design') // Default to our design
+    setStep('sleeves')
   }
 
   const handleDesignSelect = (designValue) => {
@@ -443,13 +442,6 @@ function App() {
         {step === 'designSource' && (
           <DesignSourceSelect
             onConfirm={handleDesignSourceSelect}
-            onBack={handleBack}
-          />
-        )}
-
-        {step === 'design' && (
-          <DesignSelect
-            onConfirm={handleDesignSelect}
             onBack={handleBack}
             config={config}
             currentPrice={currentPrice}

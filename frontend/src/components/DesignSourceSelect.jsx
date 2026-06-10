@@ -1,10 +1,21 @@
 import React, { useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
+import ConfigurationSummary from './ConfigurationSummary'
 import './DesignSourceSelect.css'
 
-function DesignSourceSelect({ onConfirm, onBack }) {
+function DesignSourceSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
   const { t } = useTranslation()
   const [selected, setSelected] = useState('')
+
+  // Gallery examples of our leotards
+  const galleryExamples = [
+    { id: 'example-1', title: 'Пример 1' },
+    { id: 'example-2', title: 'Пример 2' },
+    { id: 'example-3', title: 'Пример 3' },
+    { id: 'example-4', title: 'Пример 4' },
+    { id: 'example-5', title: 'Пример 5' },
+    { id: 'example-6', title: 'Пример 6' }
+  ]
 
   const options = [
     {
@@ -39,7 +50,28 @@ function DesignSourceSelect({ onConfirm, onBack }) {
   return (
     <div className="select-wrapper">
       <h2>{t('steps.designSource')}</h2>
+
+      {config && currentPrice && complexity && (
+        <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
+      )}
+
       <p className="design-source-description">{t('designSource.description')}</p>
+
+      {/* Gallery of our leotard examples */}
+      <div className="gallery-section">
+        <h3>{t('result.similarDesigns') || 'Наши примеры купальников'}</h3>
+        <div className="gallery-examples">
+          {galleryExamples.map(item => (
+            <div key={item.id} className="gallery-example-item">
+              <div className="gallery-example-image">
+                {/* Photo will be uploaded here */}
+                <span>🎭</span>
+              </div>
+              <p className="gallery-example-title">{item.title}</p>
+            </div>
+          ))}
+        </div>
+      </div>
 
       <div className="design-options-group">
         {options.map(opt => (
