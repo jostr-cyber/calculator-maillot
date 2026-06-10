@@ -38,8 +38,9 @@ export const calculatePriceLocal = (config) => {
     : basePrice + designAdjustment;
 
   // Sleeves
-  if (config.sleeves === 1) basePrice += 40;
-  if (config.sleeves === 2) basePrice += 80;
+  if (config.sleeves === 1) basePrice += 15;
+  if (config.sleeves === 2) basePrice += 30;
+  if (config.sleeves === 3) basePrice += 10; // Straps (breteli)
 
   // Skirt
   if (config.skirt === 'front') basePrice += 15;
@@ -73,7 +74,7 @@ export const calculatePriceLocal = (config) => {
     designAdjustment: Math.round(designAdjustment * 100) / 100,
     adjustmentType: adjustmentType,
     breakdown: {
-      sleeves: config.sleeves > 0 ? config.sleeves * 40 : 0,
+      sleeves: config.sleeves === 1 ? 15 : (config.sleeves === 2 ? 30 : (config.sleeves === 3 ? 10 : 0)),
       skirt: config.skirt === 'both' ? 30 : (config.skirt === 'front' || config.skirt === 'back' ? 15 : 0),
       decorativeElements: (config.decorativeElements && config.decorativeElements !== 'none' ? config.decorativeElements.split(',').filter(e => e).length * 60 : 0),
       aerography: (config.aerography !== 'nothing' ? 120 : 0),
