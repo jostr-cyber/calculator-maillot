@@ -110,6 +110,7 @@
   display: flex;
   gap: 16px;
   flex-wrap: nowrap;
+  overflow-x: auto;
 }
 
 .gallery-item {
@@ -117,7 +118,7 @@
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  flex: 1;
+  flex: 0 0 calc(25% - 12px);
   min-width: 0;
 }
 
