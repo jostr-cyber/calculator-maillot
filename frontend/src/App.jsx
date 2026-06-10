@@ -4,6 +4,7 @@ import API_BASE_URL from './config/api'
 import AdminSurveys from './pages/AdminSurveys'
 import Intro from './components/Intro'
 import BudgetSelector from './components/BudgetSelector'
+import BudgetSlider from './components/BudgetSlider'
 import HeightSlider from './components/HeightSlider'
 import SleevesSelect from './components/SleevesSelect'
 import SkirtSelect from './components/SkirtSelect'
@@ -95,7 +96,7 @@ function App() {
   const [contactMethod, setContactMethod] = useState('')
   const [contactValue, setContactValue] = useState('')
 
-  // Step order: intro -> height -> designSource -> sleeves -> skirt -> decorativeElements -> aerography -> combinaison -> urgency -> budget (for comparison) -> survey -> result
+  // Step order: intro -> height -> designSource -> sleeves -> skirt -> decorativeElements -> aerography -> combinaison -> urgency -> budget (for comparison) -> survey -> budgetSlider -> result
   const steps = [
     'intro',
     'height',
@@ -108,6 +109,7 @@ function App() {
     'urgency',
     'budget',
     'survey',
+    'budgetSlider',
     'result',
     'emailConfirmation',
     'contactPreference'
@@ -494,7 +496,7 @@ function App() {
           <UrgencySelect
             onConfirm={(val) => {
               setUrgency(val)
-              handleCalculate(val)
+              setStep('budgetSlider')
             }}
             onBack={handleBack}
             config={config}
@@ -511,6 +513,18 @@ function App() {
           <Survey
             onConfirm={handleSurveyConfirm}
             onBack={handleBack}
+          />
+        )}
+
+        {step === 'budgetSlider' && (
+          <BudgetSlider
+            value={selectedBudget}
+            onBudgetChange={setSelectedBudget}
+            onContinue={() => handleCalculate(urgency)}
+            onBack={handleBack}
+            config={config}
+            currentPrice={currentPrice}
+            complexity={complexity}
           />
         )}
 
