@@ -250,38 +250,12 @@ function App() {
 
   const handleSurveyConfirm = async (answers) => {
     setSurveyAnswers(answers)
-    setLoading(true)
     setError(null)
 
     try {
-      const config = {
-        height: heightCategory,
-        sleeves: sleeves || 0,
-        skirt: skirt || '',
-        decorativeElements: decorativeElements || 'nothing',
-        shoulder: shoulder || '',
-        aerography: aerography || 'nothing',
-        combinaison: combinaison || 'standard',
-        premiumStones: premiumStones || 'none',
-        urgency: urgency || 'none',
-        rhinestone: rhinestone || 'none',
-        design: design || 'our-design',
-        designSource: designSource || 'our-design'
-      }
-
-      const data = calculatePriceLocal(config)
-
-      // Calculate budget comparison
-      const budgetRef = BUDGET_REFERENCE[selectedBudget]
-      const comparison = calculateBudgetComparison(data.finalPrice, budgetRef)
-      data.budgetComparison = comparison
-
-      setPriceResult(data)
-      setStep('result')
+      setStep('budgetSlider')
     } catch (err) {
       setError(err.message)
-    } finally {
-      setLoading(false)
     }
   }
 
