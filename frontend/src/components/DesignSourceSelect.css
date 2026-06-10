@@ -125,6 +125,13 @@
   justify-content: center;
 }
 
+.design-option-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
 .design-option-text {
   flex: 1;
 }

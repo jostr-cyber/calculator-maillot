@@ -13,21 +13,21 @@ function DesignSourceSelect({ onConfirm, onBack, config, currentPrice, complexit
       titleKey: 'designSource.ownDesign.title',
       descKey: 'designSource.ownDesign.desc',
       discountKey: 'designSource.ownDesign.discount',
-      icon: '✓'
+      image: '/images/design-done.PNG'
     },
     {
       value: 'inspiration-photos',
       titleKey: 'designSource.inspirationPhotos.title',
       descKey: 'designSource.inspirationPhotos.desc',
       discountKey: 'designSource.inspirationPhotos.discount',
-      icon: '📷'
+      image: '/images/design-reference.PNG'
     },
     {
       value: 'custom-design',
       titleKey: 'designSource.customDesign.title',
       descKey: 'designSource.customDesign.desc',
       discountKey: 'designSource.customDesign.discount',
-      icon: '✨'
+      image: '/images/design-artist.PNG'
     }
   ]
 
@@ -57,7 +57,7 @@ function DesignSourceSelect({ onConfirm, onBack, config, currentPrice, complexit
               className="radio-input"
             />
             <div className="design-option-content">
-              <div className="design-option-icon">{opt.icon}</div>
+              <img src={opt.image} alt={t(opt.titleKey)} className="design-option-image" />
               <div className="design-option-text">
                 <div className="design-option-title">{t(opt.titleKey)}</div>
                 <div className="design-option-desc">{t(opt.descKey)}</div>
