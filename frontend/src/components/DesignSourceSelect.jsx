@@ -11,10 +11,7 @@ function DesignSourceSelect({ onConfirm, onBack, config, currentPrice, complexit
   const galleryExamples = [
     { id: 'example-1', title: 'Пример 1' },
     { id: 'example-2', title: 'Пример 2' },
-    { id: 'example-3', title: 'Пример 3' },
-    { id: 'example-4', title: 'Пример 4' },
-    { id: 'example-5', title: 'Пример 5' },
-    { id: 'example-6', title: 'Пример 6' }
+    { id: 'example-3', title: 'Пример 3' }
   ]
 
   const options = [
