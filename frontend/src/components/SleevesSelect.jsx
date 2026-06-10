@@ -48,10 +48,6 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
     <div className="sleeves-select">
       <h2>{t('steps.sleeves')}</h2>
 
-      {config && currentPrice && complexity && (
-        <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
-      )}
-
       {/* Selection Options */}
       <div className="sleeves-grid">
         {sleeves.map(sleeve => (
@@ -92,6 +88,10 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
 
       {config && complexity && (
         <DesignsPreview config={config} complexity={complexity} />
+      )}
+
+      {config && currentPrice && complexity && (
+        <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
       )}
 
       <div className="actions">
