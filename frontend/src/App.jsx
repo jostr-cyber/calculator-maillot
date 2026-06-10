@@ -98,7 +98,7 @@ function App() {
   const [contactMethod, setContactMethod] = useState('')
   const [contactValue, setContactValue] = useState('')
 
-  // Step order: intro -> height -> designSource -> sleeves -> skirt -> decorativeElements -> aerography -> combinaison -> urgency -> rhinestone -> budget (for comparison) -> survey -> budgetSlider -> result
+  // Step order: intro -> height -> designSource -> sleeves -> skirt -> decorativeElements -> aerography -> combinaison -> urgency -> rhinestone -> budget (slider) -> survey -> result
   const steps = [
     'intro',
     'height',
@@ -112,7 +112,6 @@ function App() {
     'rhinestone',
     'budget',
     'survey',
-    'budgetSlider',
     'result',
     'emailConfirmation',
     'contactPreference'
@@ -250,12 +249,38 @@ function App() {
 
   const handleSurveyConfirm = async (answers) => {
     setSurveyAnswers(answers)
+    setLoading(true)
     setError(null)
 
     try {
-      setStep('budgetSlider')
+      const config = {
+        height: heightCategory,
+        sleeves: sleeves || 0,
+        skirt: skirt || '',
+        decorativeElements: decorativeElements || 'nothing',
+        shoulder: shoulder || '',
+        aerography: aerography || 'nothing',
+        combinaison: combinaison || 'standard',
+        premiumStones: premiumStones || 'none',
+        urgency: urgency || 'none',
+        rhinestone: rhinestone || 'none',
+        design: design || 'our-design',
+        designSource: designSource || 'our-design'
+      }
+
+      const data = calculatePriceLocal(config)
+
+      // Calculate budget comparison
+      const budgetRef = BUDGET_REFERENCE[selectedBudget]
+      const comparison = calculateBudgetComparison(data.finalPrice, budgetRef)
+      data.budgetComparison = comparison
+
+      setPriceResult(data)
+      setStep('result')
     } catch (err) {
       setError(err.message)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -500,25 +525,21 @@ function App() {
         )}
 
         {step === 'budget' && (
-          <BudgetSelector onSelect={handleBudgetSelect} />
+          <BudgetSlider
+            value={selectedBudget}
+            onBudgetChange={setSelectedBudget}
+            onContinue={() => setStep('survey')}
+            onBack={handleBack}
+            config={config}
+            currentPrice={currentPrice}
+            complexity={complexity}
+          />
         )}
 
         {step === 'survey' && (
           <Survey
             onConfirm={handleSurveyConfirm}
             onBack={handleBack}
-          />
-        )}
-
-        {step === 'budgetSlider' && (
-          <BudgetSlider
-            value={selectedBudget}
-            onBudgetChange={setSelectedBudget}
-            onContinue={() => handleCalculate(urgency)}
-            onBack={handleBack}
-            config={config}
-            currentPrice={currentPrice}
-            complexity={complexity}
           />
         )}
 
