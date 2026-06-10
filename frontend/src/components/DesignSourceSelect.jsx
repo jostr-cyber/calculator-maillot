@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
-import ConfigurationSummary from './ConfigurationSummary'
 import './DesignSourceSelect.css'
 
-function DesignSourceSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
+function DesignSourceSelect({ onConfirm, onBack }) {
   const { t } = useTranslation()
   const [selected, setSelected] = useState('')
 
@@ -50,10 +49,6 @@ function DesignSourceSelect({ onConfirm, onBack, config, currentPrice, complexit
   return (
     <div className="select-wrapper">
       <h2>{t('steps.designSource')}</h2>
-
-      {config && currentPrice && complexity && (
-        <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
-      )}
 
       <p className="design-source-description">{t('designSource.description')}</p>
 

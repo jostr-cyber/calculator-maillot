@@ -428,9 +428,6 @@ function App() {
           <DesignSourceSelect
             onConfirm={handleDesignSourceSelect}
             onBack={handleBack}
-            config={config}
-            currentPrice={currentPrice}
-            complexity={complexity}
           />
         )}
 
