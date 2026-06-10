@@ -31,7 +31,7 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
       labelKey: 'sleeves.two',
       descKey: 'sleeves.twoDesc',
       imageKey: 'sleeves.twoImg',
-      image: '/images/3.PNG'
+      image: '/images/3-gallery.PNG'
     },
     {
       value: 3,
