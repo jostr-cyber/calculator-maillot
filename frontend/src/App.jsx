@@ -14,8 +14,6 @@ import CombinaisionSelect from './components/CombinaisionSelect'
 import UrgencySelect from './components/UrgencySelect'
 import RhinestoneSelect from './components/RhinestoneSelect'
 import DesignSourceSelect from './components/DesignSourceSelect'
-import Survey from './components/Survey'
-import WheelOfFortune from './components/WheelOfFortune'
 import FinalResult from './components/FinalResult'
 import PriceBreakdown from './components/PriceBreakdown'
 import EmailConfirmation from './components/EmailConfirmation'
@@ -92,13 +90,12 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [wheelDiscount, setWheelDiscount] = useState(0)
-  const [surveyAnswers, setSurveyAnswers] = useState(null)
   const [returnedFromResult, setReturnedFromResult] = useState(false)
   const [userEmail, setUserEmail] = useState('')
   const [contactMethod, setContactMethod] = useState('')
   const [contactValue, setContactValue] = useState('')
 
-  // Step order: intro -> height -> designSource -> sleeves -> skirt -> decorativeElements -> aerography -> combinaison -> urgency -> rhinestone -> budget (slider) -> survey -> result
+  // Step order: intro -> height -> designSource -> sleeves -> skirt -> decorativeElements -> aerography -> combinaison -> urgency -> rhinestone -> budget (slider) -> result
   const steps = [
     'intro',
     'height',
@@ -111,7 +108,6 @@ function App() {
     'urgency',
     'rhinestone',
     'budget',
-    'survey',
     'result',
     'emailConfirmation',
     'contactPreference'
@@ -247,42 +243,6 @@ function App() {
     }
   }
 
-  const handleSurveyConfirm = async (answers) => {
-    setSurveyAnswers(answers)
-    setLoading(true)
-    setError(null)
-
-    try {
-      const config = {
-        height: heightCategory,
-        sleeves: sleeves || 0,
-        skirt: skirt || '',
-        decorativeElements: decorativeElements || 'nothing',
-        shoulder: shoulder || '',
-        aerography: aerography || 'nothing',
-        combinaison: combinaison || 'standard',
-        premiumStones: premiumStones || 'none',
-        urgency: urgency || 'none',
-        rhinestone: rhinestone || 'none',
-        design: design || 'our-design',
-        designSource: designSource || 'our-design'
-      }
-
-      const data = calculatePriceLocal(config)
-
-      // Calculate budget comparison
-      const budgetRef = BUDGET_REFERENCE[selectedBudget]
-      const comparison = calculateBudgetComparison(data.finalPrice, budgetRef)
-      data.budgetComparison = comparison
-
-      setPriceResult(data)
-      setStep('result')
-    } catch (err) {
-      setError(err.message)
-    } finally {
-      setLoading(false)
-    }
-  }
 
   const handleCalculate = async (urgencyVal = urgency) => {
     setLoading(true)
@@ -350,8 +310,7 @@ function App() {
         design,
         designSource,
         priceResult,
-        wheelDiscount,
-        surveyAnswers
+        wheelDiscount
       }
 
       console.log('📤 Sending order data:', orderData)
@@ -378,7 +337,6 @@ function App() {
     setUrgency('')
     setPriceResult(null)
     setError(null)
-    setSurveyAnswers(null)
     setReturnedFromResult(false)
     setUserEmail('')
     setContactMethod('')
@@ -528,18 +486,11 @@ function App() {
           <BudgetSlider
             value={selectedBudget}
             onBudgetChange={setSelectedBudget}
-            onContinue={() => setStep('survey')}
+            onContinue={() => handleCalculate(urgency)}
             onBack={handleBack}
             config={config}
             currentPrice={currentPrice}
             complexity={complexity}
-          />
-        )}
-
-        {step === 'survey' && (
-          <Survey
-            onConfirm={handleSurveyConfirm}
-            onBack={handleBack}
           />
         )}
 
