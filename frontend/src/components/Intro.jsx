@@ -9,7 +9,7 @@ function Intro({ onStart }) {
     <div className="intro-container">
       <div className="intro-content">
         <h1 className="intro-title">
-          {t('app.title') || 'Калькулятор стоимости купальника'}
+          LeotART КАЛЬКУЛЯТОР
         </h1>
         <p className="intro-subtitle">в ателье RG LeotART</p>
 
