@@ -26,10 +26,10 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
       'own-design': t('designSource.ownDesign.title'),
       'inspiration-photos': t('designSource.inspirationPhotos.title'),
       'custom-design': t('designSource.customDesign.title'),
-      'our-design': t('designSource.ownDesign.title'),
+      'our-design': t('designSource.ownDesign.title') || t('design.our.title'),
       'customer-design': t('designSource.customDesign.title')
     }
-    return designSourceMap[config.design] || config.design
+    return designSourceMap[config.designSource] || designSourceMap[config.design] || config.design
   }
 
   const getBudgetComparison = () => {
@@ -164,7 +164,14 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
         <div className="result-section what-we-would-change-section">
           <div className="change-content">
             <h3>{t('result.whatWeWouldChange') || 'What would we change?'}</h3>
-            <p className="change-text">💡 {whatWeWouldChange}</p>
+            <p className="change-text">
+              💡 {whatWeWouldChange.key && whatWeWouldChange.savings > 0
+                ? t(`result.whatWeWouldChangeOptions.${whatWeWouldChange.key}`, { savings: whatWeWouldChange.savings })
+                : whatWeWouldChange.key && whatWeWouldChange.increase > 0
+                ? t(`result.whatWeWouldChangeOptions.${whatWeWouldChange.key}`, { increase: whatWeWouldChange.increase })
+                : t(`result.whatWeWouldChangeOptions.${whatWeWouldChange.key}`)
+              }
+            </p>
           </div>
         </div>
 
@@ -173,9 +180,9 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
           <div className="value-content">
             <div className="value-header">
               <span className="value-title">{t('result.valueForMoney') || 'Value for money'}</span>
-              <span className="value-rating">{valueForMoney.label}</span>
+              <span className="value-rating">{t(`result.valueRatings.${valueForMoney.labelKey}`)}</span>
             </div>
-            <p className="value-description">{valueForMoney.description}</p>
+            <p className="value-description">{t(`result.valueRatings.${valueForMoney.descriptionKey}`)}</p>
           </div>
         </div>
 
@@ -216,7 +223,7 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
               summary.map((item, index) => (
                 <div key={index} className="option-item">
                   <span className="option-checkmark">✓</span>
-                  <span className="option-name">{item}</span>
+                  <span className="option-name">{typeof item === 'string' ? item : t(item.key)}</span>
                 </div>
               ))
             ) : (

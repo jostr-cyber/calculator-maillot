@@ -129,55 +129,55 @@ export const getComplexityPercentage = (complexity) => {
   return scores[complexity.level] || 25;
 };
 
-// Format configuration for display
+// Format configuration for display - returns translation keys
 export const formatConfigurationSummary = (config) => {
   const summary = [];
 
   // Design
   if (config.design === 'our-design') {
-    summary.push('Our design');
+    summary.push({ key: 'design.our.title', type: 'design' });
   } else if (config.design === 'customer-design') {
-    summary.push('Your own design');
+    summary.push({ key: 'design.your.title', type: 'design' });
   }
 
   // Sleeves
   if (config.sleeves === 1) {
-    summary.push('One sleeve');
+    summary.push({ key: 'sleeves.one', type: 'sleeves' });
   } else if (config.sleeves === 2) {
-    summary.push('Two sleeves');
+    summary.push({ key: 'sleeves.two', type: 'sleeves' });
   }
 
   // Skirt
   if (config.skirt === 'front') {
-    summary.push('Front skirt');
+    summary.push({ key: 'skirt.front', type: 'skirt' });
   } else if (config.skirt === 'back') {
-    summary.push('Back skirt');
+    summary.push({ key: 'skirt.back', type: 'skirt' });
   } else if (config.skirt === 'both') {
-    summary.push('Front and back skirt');
+    summary.push({ key: 'skirt.both', type: 'skirt' });
   }
 
   // Decorative elements
   if (config.decorativeElements && config.decorativeElements !== 'none') {
     const elements = config.decorativeElements.split(',');
     elements.forEach(el => {
-      const labels = {
-        'feathers': 'Feathers',
-        'fringe': 'Fringe',
-        'flowers': 'Volumetric flowers',
-        'other': 'Other decorations'
+      const keyMap = {
+        'feathers': 'decorativeElements.feathers',
+        'fringe': 'decorativeElements.fringe',
+        'flowers': 'decorativeElements.flowers',
+        'other': 'decorativeElements.other'
       };
-      if (labels[el]) summary.push(labels[el]);
+      if (keyMap[el]) summary.push({ key: keyMap[el], type: 'decorative' });
     });
   }
 
   // Aerography
   if (config.aerography && config.aerography !== 'nothing') {
-    summary.push('Airbrush / painted elements');
+    summary.push({ key: 'aerography.drawing', type: 'aerography' });
   }
 
   // Urgency
   if (config.urgency === 'accelerated') {
-    summary.push('Express order');
+    summary.push({ key: 'urgency.expedited.title', type: 'urgency' });
   }
 
   return summary;
@@ -258,75 +258,60 @@ export const generateWhatWeWouldChange = (config, finalPrice) => {
     // Multiple expensive options - suggest reducing expedited first
     const estimatedSavings = Math.round(finalPrice * 0.10); // ~10% for expedited
     suggestions.push({
-      action: `we would keep the two sleeves and aerography, but choose standard delivery instead of expedited`,
-      savings: estimatedSavings,
-      rationale: "maintains visual impact while reducing rush fees"
+      key: 'keepSleevesAirbrush',
+      savings: estimatedSavings
     });
   } else if (hasTwoSleeves && hasDecorativeElements && hasAerography) {
     // Very complex - suggest reducing decorative elements
     const estimatedSavings = Math.round(finalPrice * 0.12); // ~12% for fewer elements
     suggestions.push({
-      action: `we would keep the two sleeves and aerography but simplify decorative elements`,
-      savings: estimatedSavings,
-      rationale: "preserves the sophisticated design while optimizing cost"
+      key: 'keepAerographySimplifyDecor',
+      savings: estimatedSavings
     });
   } else if (hasAerography && hasExpedited && isPremiumStones) {
     // Expensive combination - suggest removing premium stones
     const estimatedSavings = Math.round(finalPrice * 0.15); // ~15% for premium stones
     suggestions.push({
-      action: `we would keep the aerography and expedited order but use standard stones`,
-      savings: estimatedSavings,
-      rationale: "maintains quick turnaround and artistic elements without premium pricing"
+      key: 'keepAerographySimplifyDecor',
+      savings: estimatedSavings
     });
   } else if (hasTwoSleeves && hasExpedited && !hasAerography) {
     // Sleeves + urgency without artistic touch - suggest adding aerography instead
     const estimatedIncrease = Math.round(finalPrice * 0.18);
     suggestions.push({
-      action: `we would add aerography to the design instead of maintaining both sleeves`,
-      increase: estimatedIncrease,
-      rationale: "aerography creates more visual impact for competitive performance"
+      key: 'addAerography',
+      increase: estimatedIncrease
     });
   } else if (hasExpedited && !hasAerography && !hasDecorativeElements) {
     // Only expedited without decoration - suggest adding small details
     const estimatedIncrease = Math.round(finalPrice * 0.08);
     suggestions.push({
-      action: `we would add subtle aerography or decorative details to enhance visual appeal`,
-      increase: estimatedIncrease,
-      rationale: "small additions create more stage presence for minimal cost increase"
+      key: 'addSubtleDetails',
+      increase: estimatedIncrease
     });
   } else if (hasTwoSleeves && hasTwoSleeves && !hasAerography) {
     // Full sleeves without aerography - suggest adding it
     const estimatedIncrease = Math.round(finalPrice * 0.15);
     suggestions.push({
-      action: `we would add aerography to complement the two-sleeve design`,
-      increase: estimatedIncrease,
-      rationale: "aerography creates visual balance with the sleeve complexity"
+      key: 'addAerography',
+      increase: estimatedIncrease
     });
   } else if (hasDecorativeElements && !hasAerography) {
     // Decorative but no aerography - suggest adding it
     const estimatedIncrease = Math.round(finalPrice * 0.14);
     suggestions.push({
-      action: `we would add subtle aerography to tie together the decorative elements`,
-      increase: estimatedIncrease,
-      rationale: "creates cohesive artistic vision with existing 3D elements"
+      key: 'addAerography',
+      increase: estimatedIncrease
     });
   } else {
     // Default suggestion
     suggestions.push({
-      action: `we would preserve this configuration as it's well-balanced`,
-      savings: 0,
-      rationale: "this design offers good value for the complexity level"
+      key: 'preserveWellBalanced',
+      savings: 0
     });
   }
 
-  const bestSuggestion = suggestions[0];
-  if (bestSuggestion.savings && bestSuggestion.savings > 0) {
-    return `If this were our own leotard, ${bestSuggestion.action}. This would save approximately €${bestSuggestion.savings}. Why? ${bestSuggestion.rationale}`;
-  } else if (bestSuggestion.increase && bestSuggestion.increase > 0) {
-    return `If this were our own leotard, ${bestSuggestion.action}. This would increase the price by approximately €${bestSuggestion.increase}. Why? ${bestSuggestion.rationale}`;
-  } else {
-    return `${bestSuggestion.action}. ${bestSuggestion.rationale}`;
-  }
+  return suggestions[0];
 };
 
 // Calculate value-for-money rating (1-4 stars)
@@ -338,26 +323,26 @@ export const calculateValueForMoney = (config, finalPrice, complexity) => {
   // Define rating tiers based on price point and complexity balance
   let stars = 2; // Default balanced rating
   let tier = 'balanced';
-  let label = '⭐⭐ Very balanced';
-  let description = 'Excellent balance of features and price';
+  let labelKey = 'veryBalanced';
+  let descriptionKey = 'veryBalancedDesc';
 
   // Budget tier (under €300)
   if (finalPrice < 300) {
     if (complexityScore >= 4) {
       stars = 4;
       tier = 'excellent';
-      label = '⭐⭐⭐⭐ Excellent value';
-      description = 'Maximum features for budget price';
+      labelKey = 'excellentValue';
+      descriptionKey = 'excellentValueDesc';
     } else if (complexityScore >= 2) {
       stars = 3;
       tier = 'very-good';
-      label = '⭐⭐⭐ Very good value';
-      description = 'Strong features for modest investment';
+      labelKey = 'maximumImpact';
+      descriptionKey = 'maximumImpactDesc';
     } else {
       stars = 2;
       tier = 'balanced';
-      label = '⭐⭐ Good starter option';
-      description = 'Simple elegance at accessible price';
+      labelKey = 'veryBalanced';
+      descriptionKey = 'veryBalancedDesc';
     }
   }
   // Mid tier (€300-€500)
@@ -365,18 +350,18 @@ export const calculateValueForMoney = (config, finalPrice, complexity) => {
     if (complexityScore >= 6) {
       stars = 4;
       tier = 'luxury';
-      label = '⭐⭐⭐⭐ Maximum visual impact';
-      description = 'Rich features create strong stage presence';
+      labelKey = 'maximumImpact';
+      descriptionKey = 'maximumImpactDesc';
     } else if (complexityScore >= 4) {
       stars = 3;
       tier = 'premium';
-      label = '⭐⭐⭐ Premium balance';
-      description = 'Good sophistication level';
+      labelKey = 'premium';
+      descriptionKey = 'premiumDesc';
     } else {
       stars = 2;
       tier = 'balanced';
-      label = '⭐⭐ Very balanced';
-      description = 'Solid mid-range choice';
+      labelKey = 'veryBalanced';
+      descriptionKey = 'veryBalancedDesc';
     }
   }
   // Premium tier (€500+)
@@ -384,27 +369,27 @@ export const calculateValueForMoney = (config, finalPrice, complexity) => {
     if (complexityScore >= 8) {
       stars = 4;
       tier = 'luxury';
-      label = '⭐⭐⭐⭐ Luxury level';
-      description = 'Premium features and exceptional craftsmanship';
+      labelKey = 'luxury';
+      descriptionKey = 'luxuryDesc';
     } else if (complexityScore >= 6) {
       stars = 3;
       tier = 'premium';
-      label = '⭐⭐⭐ Maximum visual impact';
-      description = 'Significant investment in visual presence';
+      labelKey = 'maximumImpact';
+      descriptionKey = 'maximumImpactDesc';
     } else if (complexityScore >= 4) {
       stars = 2;
       tier = 'balanced';
-      label = '⭐⭐ Premium investment';
-      description = 'Higher price for moderate complexity';
+      labelKey = 'premium';
+      descriptionKey = 'premiumDesc';
     } else {
       stars = 1;
       tier = 'expensive';
-      label = '⭐ High price for simplicity';
-      description = 'Consider simplifying to reduce costs';
+      labelKey = 'excellentValue';
+      descriptionKey = 'excellentValueDesc';
     }
   }
 
-  return { stars, tier, label, description };
+  return { stars, tier, labelKey, descriptionKey };
 };
 
 // Get similar designs gallery images based on configuration
