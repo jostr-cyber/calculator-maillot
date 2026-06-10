@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import ConfigurationSummary from './ConfigurationSummary'
-import DesignsPreview from './DesignsPreview'
 import './DecorativeElementsSelect.css'
 
 function DecorativeElementsSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
@@ -9,11 +8,11 @@ function DecorativeElementsSelect({ onConfirm, onBack, config, currentPrice, com
   const [selected, setSelected] = useState([])
 
   const options = [
-    { value: 'feathers', labelKey: 'decorativeElements.feathers' },
-    { value: 'fringe', labelKey: 'decorativeElements.fringe' },
-    { value: 'flowers', labelKey: 'decorativeElements.flowers' },
-    { value: 'other', labelKey: 'decorativeElements.other' },
-    { value: 'nothing', labelKey: 'decorativeElements.nothing' }
+    { value: 'feathers', labelKey: 'decorativeElements.feathers', icon: '🪶', image: '🎭' },
+    { value: 'fringe', labelKey: 'decorativeElements.fringe', icon: '✂️', image: '🎭' },
+    { value: 'flowers', labelKey: 'decorativeElements.flowers', icon: '🌸', image: '🎭' },
+    { value: 'other', labelKey: 'decorativeElements.other', icon: '✨', image: '🎭' },
+    { value: 'nothing', labelKey: 'decorativeElements.nothing', icon: '🚫', image: '🎭' }
   ]
 
   const handleToggle = (value) => {
@@ -47,14 +46,10 @@ function DecorativeElementsSelect({ onConfirm, onBack, config, currentPrice, com
   }
 
   return (
-    <div className="select-wrapper">
+    <div className="decorative-select">
       <h2>{t('steps.decorativeElements')}</h2>
-      {config && currentPrice && complexity && (
-        <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
-      )}
-      {config && complexity && (
-        <DesignsPreview config={config} complexity={complexity} />
-      )}
+
+      {/* Selection Options */}
       <div className="options-group">
         {options.map(opt => {
           // Determine if this checkbox should be disabled
@@ -64,7 +59,10 @@ function DecorativeElementsSelect({ onConfirm, onBack, config, currentPrice, com
                             (!isNothing && hasNothingSelected)
 
           return (
-            <label key={opt.value} className={`option-label ${isDisabled ? 'disabled' : ''}`}>
+            <label
+              key={opt.value}
+              className={`option-card ${selected.includes(opt.value) ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`}
+            >
               <input
                 type="checkbox"
                 checked={selected.includes(opt.value)}
@@ -72,11 +70,32 @@ function DecorativeElementsSelect({ onConfirm, onBack, config, currentPrice, com
                 className="checkbox-input"
                 disabled={isDisabled}
               />
-              <span className="option-text">{t(opt.labelKey)}</span>
+              <div className="option-card-content">
+                <div className="option-icon">{opt.icon}</div>
+                <div className="option-text">{t(opt.labelKey)}</div>
+              </div>
             </label>
           )
         })}
       </div>
+
+      {/* Images Gallery */}
+      <div className="decorative-gallery">
+        <div className="gallery-grid">
+          {options.map(opt => (
+            <div key={opt.value} className="gallery-item">
+              <div className="gallery-image-placeholder">
+                <span>{opt.image}</span>
+              </div>
+              <p className="gallery-label">{t(opt.labelKey)}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {config && currentPrice && complexity && (
+        <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
+      )}
 
       <div className="actions">
         <button onClick={handleConfirm} className="btn-primary">

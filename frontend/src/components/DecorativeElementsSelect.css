@@ -1,136 +1,129 @@
-.select-wrapper {
+.decorative-select {
   width: 100%;
 }
 
-.select-wrapper h2 {
+.decorative-select h2 {
   color: #7c3aed;
   margin-bottom: 20px;
   font-size: 24px;
   font-weight: 600;
 }
 
-.select-container {
-  margin-bottom: 25px;
-}
-
 .options-group {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 14px;
   margin-bottom: 32px;
   margin-top: 24px;
 }
 
-.option-label {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.option-card {
+  position: relative;
   cursor: pointer;
+}
+
+.option-card input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.option-card-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
   padding: 18px 20px;
   border: 2px solid #e0d5ff;
   border-radius: 12px;
   background-color: #f9f8ff;
   transition: all 0.3s ease;
-  position: relative;
+  text-align: left;
 }
 
-.option-label:hover {
+.option-card:hover .option-card-content {
   border-color: #7c3aed;
   background-color: #f5f3ff;
   box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
   transform: translateY(-2px);
 }
 
-.option-label.disabled {
+.option-card.selected .option-card-content {
+  border-color: #7c3aed;
+  background-color: #f5f3ff;
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.15);
+}
+
+.option-card.disabled .option-card-content {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.option-label.disabled:hover {
+.option-card.disabled:hover .option-card-content {
   border-color: #e0d5ff;
   background-color: #f9f8ff;
   transform: none;
 }
 
 .checkbox-input {
-  width: 20px;
-  height: 20px;
-  min-width: 20px;
+  position: absolute;
+  opacity: 0;
   cursor: pointer;
-  accent-color: #7c3aed;
-  margin: 0;
 }
 
-.checkbox-input:disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
+.option-icon {
+  font-size: 36px;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
 .option-text {
   font-size: 15px;
-  color: #1a1a1a;
-  font-weight: 500;
-}
-
-.option-label input[type="checkbox"]:checked + .option-text {
-  color: #7c3aed;
-  font-weight: 600;
-}
-
-.select-field {
-  width: 100%;
-  padding: 12px 15px;
-  font-size: 15px;
-  border: 2px solid #7c3aed;
-  border-radius: 8px;
-  background-color: white;
-  color: #333;
-  cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.select-field:focus {
-  outline: none;
-  border-color: #7c3aed;
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
-}
-
-.custom-input-container {
-  background: #f9f8ff;
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  border: 1px solid #e0d5ff;
-}
-
-.custom-input-container label {
-  display: block;
-  margin-bottom: 10px;
   font-weight: 600;
   color: #1a1a1a;
-  font-size: 14px;
 }
 
-.custom-textarea {
+.decorative-gallery {
+  background: linear-gradient(135deg, #f5e6f0 0%, #e8d4ff 100%);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+  margin-top: 24px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.gallery-image-placeholder {
   width: 100%;
-  padding: 12px;
-  font-size: 14px;
-  border: 2px solid #e0d5ff;
+  aspect-ratio: 1;
+  background: white;
   border-radius: 8px;
-  font-family: 'Montserrat', sans-serif;
-  resize: vertical;
-  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-label {
+  font-size: 12px;
+  font-weight: 600;
   color: #333;
-}
-
-.custom-textarea:focus {
-  outline: none;
-  border-color: #7c3aed;
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
-}
-
-.custom-textarea::placeholder {
-  color: #999;
+  margin: 0;
+  text-align: center;
+  line-height: 1.3;
 }
 
 .actions {
@@ -186,18 +179,35 @@
     gap: 12px;
   }
 
-  .option-label {
+  .option-card-content {
     padding: 16px;
     gap: 14px;
+  }
+
+  .option-icon {
+    font-size: 32px;
   }
 
   .option-text {
     font-size: 14px;
   }
+
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .gallery-image-placeholder {
+    font-size: 40px;
+  }
+
+  .gallery-label {
+    font-size: 11px;
+  }
 }
 
 @media (max-width: 600px) {
-  .select-wrapper h2 {
+  .decorative-select h2 {
     font-size: 20px;
   }
 
@@ -205,18 +215,36 @@
     gap: 10px;
   }
 
-  .option-label {
+  .option-card-content {
     padding: 14px;
     gap: 12px;
   }
 
-  .checkbox-input {
-    width: 18px;
-    height: 18px;
+  .option-icon {
+    font-size: 28px;
   }
 
   .option-text {
     font-size: 13px;
+  }
+
+  .decorative-gallery {
+    padding: 16px;
+    margin-top: 16px;
+    margin-bottom: 24px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .gallery-image-placeholder {
+    font-size: 36px;
+  }
+
+  .gallery-label {
+    font-size: 10px;
   }
 
   .actions {
