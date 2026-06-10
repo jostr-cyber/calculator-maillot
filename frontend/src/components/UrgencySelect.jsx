@@ -3,7 +3,7 @@ import { useTranslation } from '../hooks/useTranslation'
 import './SelectCommon.css'
 import './UrgencySelect.css'
 
-function UrgencySelect({ budget, onConfirm, onBack }) {
+function UrgencySelect({ onConfirm, onBack }) {
   const { t } = useTranslation()
   const [selected, setSelected] = useState('none')
 

@@ -14,25 +14,25 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack }) {
   return (
     <div className="sleeves-select">
       <h2>{t('steps.sleeves')}</h2>
-      <select
-        value={value}
-        onChange={(e) => {
-          const val = e.target.value
-          onSleevesChange(val === '' ? '' : parseInt(val))
-        }}
-        className="select"
-      >
-        <option value="">{t('sleeves.label')}</option>
+      <div className="options-group">
         {sleeves.map(sleeve => (
-          <option key={sleeve.value} value={sleeve.value}>
-            {t(sleeve.labelKey)}
-          </option>
+          <label key={sleeve.value} className="option-label">
+            <input
+              type="radio"
+              name="sleeves"
+              value={sleeve.value}
+              checked={value === sleeve.value}
+              onChange={(e) => onSleevesChange(parseInt(e.target.value))}
+              className="radio-input"
+            />
+            <span className="option-text">{t(sleeve.labelKey)}</span>
+          </label>
         ))}
-      </select>
+      </div>
       <div className="actions">
         <button
           onClick={onContinue}
-          disabled={value === ''}
+          disabled={value === '' || value === null}
           className="btn-primary"
         >
           {t('buttons.continue')}

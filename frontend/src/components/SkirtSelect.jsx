@@ -20,22 +20,23 @@ function SkirtSelect({ onConfirm, onBack }) {
   return (
     <div className="skirt-select">
       <h2>{t('steps.skirt')}</h2>
-      <div className="select-container">
-        <select
-          value={skirtOption}
-          onChange={(e) => setSkirtOption(e.target.value)}
-          className="select-field"
-        >
-          <option value="">{t('skirt.label')}</option>
-          {skirtOptions.map(option => (
-            <option key={option.value} value={option.value}>
-              {t(option.labelKey)}
-            </option>
-          ))}
-        </select>
+      <div className="options-group">
+        {skirtOptions.map(option => (
+          <label key={option.value} className="option-label">
+            <input
+              type="radio"
+              name="skirt"
+              value={option.value}
+              checked={skirtOption === option.value}
+              onChange={(e) => setSkirtOption(e.target.value)}
+              className="radio-input"
+            />
+            <span className="option-text">{t(option.labelKey)}</span>
+          </label>
+        ))}
       </div>
       <div className="actions">
-        <button onClick={handleConfirm} className="btn-primary">
+        <button onClick={handleConfirm} disabled={!skirtOption} className="btn-primary">
           {t('buttons.continue')}
         </button>
         <button onClick={onBack} className="btn-secondary">

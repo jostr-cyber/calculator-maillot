@@ -47,7 +47,7 @@ function DecorativeElementsSelect({ onConfirm, onBack }) {
   return (
     <div className="select-wrapper">
       <h2>{t('steps.decorativeElements')}</h2>
-      <div className="checkboxes-container">
+      <div className="options-group">
         {options.map(opt => {
           // Determine if this checkbox should be disabled
           const isNothing = opt.value === 'nothing'
@@ -56,7 +56,7 @@ function DecorativeElementsSelect({ onConfirm, onBack }) {
                             (!isNothing && hasNothingSelected)
 
           return (
-            <label key={opt.value} className={`checkbox-label ${isDisabled ? 'disabled' : ''}`}>
+            <label key={opt.value} className={`option-label ${isDisabled ? 'disabled' : ''}`}>
               <input
                 type="checkbox"
                 checked={selected.includes(opt.value)}
@@ -64,7 +64,7 @@ function DecorativeElementsSelect({ onConfirm, onBack }) {
                 className="checkbox-input"
                 disabled={isDisabled}
               />
-              <span className="checkbox-text">{t(opt.labelKey)}</span>
+              <span className="option-text">{t(opt.labelKey)}</span>
             </label>
           )
         })}

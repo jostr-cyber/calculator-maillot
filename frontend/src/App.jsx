@@ -421,7 +421,7 @@ function App() {
         )}
 
         {step === 'urgency' && (
-          <UrgencySelect budget={budget} onConfirm={(val) => {
+          <UrgencySelect onConfirm={(val) => {
             setUrgency(val)
             handleCalculate(val)
           }} onBack={handleBack} />

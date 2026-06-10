@@ -14,20 +14,23 @@ function CombinaisionSelect({ onConfirm, onBack }) {
   return (
     <div className="select-wrapper">
       <h2>{t('steps.combinaison')}</h2>
-      <div className="select-container">
-        <select
-          value={selected}
-          onChange={(e) => setSelected(e.target.value)}
-          className="select-field"
-        >
-          <option value="">{t('combinaison.label')}</option>
-          {options.map(opt => (
-            <option key={opt.value} value={opt.value}>{t(opt.labelKey)}</option>
-          ))}
-        </select>
+      <div className="options-group">
+        {options.map(opt => (
+          <label key={opt.value} className="option-label">
+            <input
+              type="radio"
+              name="combinaison"
+              value={opt.value}
+              checked={selected === opt.value}
+              onChange={(e) => setSelected(e.target.value)}
+              className="radio-input"
+            />
+            <span className="option-text">{t(opt.labelKey)}</span>
+          </label>
+        ))}
       </div>
       <div className="actions">
-        <button onClick={() => onConfirm(selected)} className="btn-primary">
+        <button onClick={() => onConfirm(selected)} disabled={!selected} className="btn-primary">
           {t('buttons.continue')}
         </button>
         <button onClick={onBack} className="btn-secondary">
