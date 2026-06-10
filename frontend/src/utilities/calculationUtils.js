@@ -1,5 +1,68 @@
 // Utility functions for leotard calculator
 
+// Mock price calculation (no backend needed)
+export const calculatePriceLocal = (config) => {
+  let basePrice = 150; // Base price for simple leotard
+
+  // Height modifier
+  const heightCategory = config.height || '150-170';
+  const heightModifiers = {
+    '<130': 0.85,
+    '130-150': 0.95,
+    '150-170': 1.0,
+    '170+': 1.1
+  };
+  basePrice *= heightModifiers[heightCategory] || 1.0;
+
+  // Sleeves
+  if (config.sleeves === 1) basePrice += 40;
+  if (config.sleeves === 2) basePrice += 80;
+
+  // Skirt
+  if (config.skirt === 'front' || config.skirt === 'back') basePrice += 50;
+  if (config.skirt === 'both') basePrice += 100;
+
+  // Decorative elements
+  if (config.decorativeElements && config.decorativeElements !== 'none') {
+    const elements = config.decorativeElements.split(',').filter(e => e);
+    basePrice += elements.length * 60;
+  }
+
+  // Aerography
+  if (config.aerography && config.aerography !== 'nothing') basePrice += 120;
+
+  // Premium stones
+  if (config.premiumStones === 'swarovski') basePrice += 200;
+  if (config.premiumStones === 'premium') basePrice += 150;
+
+  // Urgency surcharge
+  if (config.urgency === 'accelerated') basePrice *= 1.15; // 15% surcharge
+
+  // Combinaison (full suit)
+  if (config.combinaison === 'full') basePrice += 80;
+
+  // Design source discount (if customer provides design)
+  let designDiscount = 0;
+  if (config.designSource === 'own-design') {
+    designDiscount = basePrice * 0.05; // 5% discount
+  }
+
+  const finalPrice = Math.round((basePrice - designDiscount) * 100) / 100;
+
+  return {
+    finalPrice: finalPrice,
+    basePrice: Math.round(basePrice * 100) / 100,
+    designDiscount: Math.round(designDiscount * 100) / 100,
+    breakdown: {
+      sleeves: config.sleeves > 0 ? config.sleeves * 40 : 0,
+      skirt: config.skirt === 'both' ? 100 : (config.skirt ? 50 : 0),
+      decorativeElements: (config.decorativeElements && config.decorativeElements !== 'none' ? config.decorativeElements.split(',').filter(e => e).length * 60 : 0),
+      aerography: (config.aerography !== 'nothing' ? 120 : 0),
+      premiumStones: (config.premiumStones === 'swarovski' ? 200 : (config.premiumStones === 'premium' ? 150 : 0))
+    }
+  };
+};
+
 // Calculate complexity level based on selected options
 export const calculateComplexity = (config) => {
   let complexityScore = 0;

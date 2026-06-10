@@ -24,6 +24,7 @@ import {
   calculateComplexity,
   calculateEstimatedCrystals,
   calculateCurrentPrice,
+  calculatePriceLocal,
   getProductionTime
 } from './utilities/calculationUtils'
 
@@ -131,22 +132,14 @@ function App() {
       design: design || 'our-design'
     }
 
-    // Debounce API call
+    // Debounce price calculation
     const timer = setTimeout(() => {
-      fetch(`${API_BASE_URL}/api/calculate-price`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(config)
-      })
-        .then(res => res.json())
-        .then(data => {
-          setCurrentPrice(data.finalPrice)
-          const complexityLevel = calculateComplexity(config)
-          setComplexity(complexityLevel)
-          const crystals = calculateEstimatedCrystals(config)
-          setEstimatedCrystals(crystals)
-        })
-        .catch(err => console.error('Error calculating price:', err))
+      const data = calculatePriceLocal(config)
+      setCurrentPrice(data.finalPrice)
+      const complexityLevel = calculateComplexity(config)
+      setComplexity(complexityLevel)
+      const crystals = calculateEstimatedCrystals(config)
+      setEstimatedCrystals(crystals)
     }, 300)
 
     return () => clearTimeout(timer)
@@ -253,30 +246,21 @@ function App() {
     setError(null)
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/calculate-price`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          height: heightCategory,
-          sleeves: sleeves || 0,
-          skirt: skirt || '',
-          decorativeElements: decorativeElements || 'nothing',
-          shoulder: shoulder || '',
-          aerography: aerography || 'nothing',
-          combinaison: combinaison || 'standard',
-          premiumStones: premiumStones || 'none',
-          urgency: urgency || 'none',
-          design: design || 'our-design'
-        })
-      })
-
-      if (!response.ok) {
-        throw new Error('Failed to calculate price')
+      const config = {
+        height: heightCategory,
+        sleeves: sleeves || 0,
+        skirt: skirt || '',
+        decorativeElements: decorativeElements || 'nothing',
+        shoulder: shoulder || '',
+        aerography: aerography || 'nothing',
+        combinaison: combinaison || 'standard',
+        premiumStones: premiumStones || 'none',
+        urgency: urgency || 'none',
+        design: design || 'our-design',
+        designSource: designSource || 'our-design'
       }
 
-      const data = await response.json()
+      const data = calculatePriceLocal(config)
 
       // Calculate budget comparison
       const budgetRef = BUDGET_REFERENCE[selectedBudget]
@@ -297,30 +281,21 @@ function App() {
     setError(null)
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/calculate-price`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          height: heightCategory,
-          sleeves: sleeves || 0,
-          skirt: skirt || '',
-          decorativeElements: decorativeElements || 'nothing',
-          shoulder: shoulder || '',
-          aerography: aerography || 'nothing',
-          combinaison: combinaison || 'standard',
-          premiumStones: premiumStones || 'none',
-          urgency: urgencyVal || 'none',
-          design: design || 'our-design'
-        })
-      })
-
-      if (!response.ok) {
-        throw new Error('Failed to calculate price')
+      const config = {
+        height: heightCategory,
+        sleeves: sleeves || 0,
+        skirt: skirt || '',
+        decorativeElements: decorativeElements || 'nothing',
+        shoulder: shoulder || '',
+        aerography: aerography || 'nothing',
+        combinaison: combinaison || 'standard',
+        premiumStones: premiumStones || 'none',
+        urgency: urgencyVal || 'none',
+        design: design || 'our-design',
+        designSource: designSource || 'our-design'
       }
 
-      const data = await response.json()
+      const data = calculatePriceLocal(config)
 
       // Calculate budget comparison
       const budgetRef = BUDGET_REFERENCE[selectedBudget]
