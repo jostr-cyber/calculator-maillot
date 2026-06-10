@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
+import ConfigurationSummary from './ConfigurationSummary'
 import './SelectCommon.css'
 import './UrgencySelect.css'
 
-function UrgencySelect({ onConfirm, onBack }) {
+function UrgencySelect({ onConfirm, onBack, config, currentPrice, complexity }) {
   const { t } = useTranslation()
   const [selected, setSelected] = useState('none')
 
@@ -23,6 +24,10 @@ function UrgencySelect({ onConfirm, onBack }) {
   return (
     <div className="select-wrapper">
       <h2>{t('steps.urgency')}</h2>
+
+      {config && currentPrice && complexity && (
+        <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
+      )}
 
       <div className="urgency-info">
         <p>{t('urgency.info')}</p>

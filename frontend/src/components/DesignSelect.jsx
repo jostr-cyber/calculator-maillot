@@ -1,15 +1,20 @@
 import React, { useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
+import ConfigurationSummary from './ConfigurationSummary'
 import './SelectCommon.css'
 import './DesignSelect.css'
 
-function DesignSelect({ onConfirm, onBack }) {
+function DesignSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
   const { t } = useTranslation()
   const [selected, setSelected] = useState('our-design')
 
   return (
     <div className="select-wrapper">
       <h2>{t('steps.design')}</h2>
+
+      {config && currentPrice && complexity && (
+        <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
+      )}
 
       <div className="design-container">
         <label className="design-option">

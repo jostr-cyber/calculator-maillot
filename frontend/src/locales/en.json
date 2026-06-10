@@ -113,9 +113,13 @@
   "skirt": {
     "label": "Select option...",
     "none": "No skirt",
+    "noneDesc": "Classic style",
     "front": "Skirt in front",
+    "frontDesc": "Elegant front view",
     "back": "Skirt in back",
-    "both": "Skirt in front and back"
+    "backDesc": "Mysterious back view",
+    "both": "Skirt in front and back",
+    "bothDesc": "Full coverage"
   },
   "decorativeElements": {
     "label": "Select option...",

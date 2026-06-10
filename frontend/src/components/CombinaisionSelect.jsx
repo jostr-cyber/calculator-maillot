@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
+import ConfigurationSummary from './ConfigurationSummary'
 import './SelectCommon.css'
 
-function CombinaisionSelect({ onConfirm, onBack }) {
+function CombinaisionSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
   const { t } = useTranslation()
   const [selected, setSelected] = useState('')
 
@@ -14,6 +15,9 @@ function CombinaisionSelect({ onConfirm, onBack }) {
   return (
     <div className="select-wrapper">
       <h2>{t('steps.combinaison')}</h2>
+      {config && currentPrice && complexity && (
+        <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
+      )}
       <div className="options-group">
         {options.map(opt => (
           <label key={opt.value} className="option-label">

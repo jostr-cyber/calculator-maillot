@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
+import ConfigurationSummary from './ConfigurationSummary'
 import './DecorativeElementsSelect.css'
 
-function DecorativeElementsSelect({ onConfirm, onBack }) {
+function DecorativeElementsSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
   const { t } = useTranslation()
   const [selected, setSelected] = useState([])
 
@@ -47,6 +48,9 @@ function DecorativeElementsSelect({ onConfirm, onBack }) {
   return (
     <div className="select-wrapper">
       <h2>{t('steps.decorativeElements')}</h2>
+      {config && currentPrice && complexity && (
+        <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
+      )}
       <div className="options-group">
         {options.map(opt => {
           // Determine if this checkbox should be disabled
