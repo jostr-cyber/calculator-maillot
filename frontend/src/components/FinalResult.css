@@ -59,6 +59,42 @@
   font-weight: 700;
 }
 
+/* Budget Comparison Section */
+.budget-comparison-section {
+  border-left: 4px solid;
+}
+
+.budget-comparison-section.budget-above {
+  border-left-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+.budget-comparison-section.budget-below {
+  border-left-color: #10b981;
+  background-color: #f0fdf4;
+}
+
+.budget-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.budget-label {
+  font-size: 12px;
+  color: #7c3aed;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.budget-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
 /* Complexity Section */
 .complexity-section {
   background-color: #f5f3ff;
@@ -281,11 +317,70 @@
   font-weight: 600;
 }
 
+/* Recommendation Section */
+.recommendation-section {
+  background-color: #f0f9ff;
+  border-color: #c7d2fe;
+  border-left: 4px solid #7c3aed;
+}
+
+.recommendation-section h3 {
+  margin: 0 0 12px 0;
+  font-size: 12px;
+  color: #7c3aed;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.recommendation-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4c1d95;
+}
+
 /* Actions */
 .result-actions {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+}
+
+.btn-action {
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.btn-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary.btn-action {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+  color: white;
+}
+
+.btn-primary.btn-action:hover {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+}
+
+.btn-secondary.btn-action {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  border: 1px solid #e5e7eb;
+}
+
+.btn-secondary.btn-action:hover {
+  background-color: #e5e7eb;
+  border-color: #d1d5db;
 }
 
 .btn-order {

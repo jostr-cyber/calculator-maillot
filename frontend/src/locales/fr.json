@@ -21,7 +21,10 @@
     "reducePrice": "💰 Réduire le prix",
     "orderThis": "Commander ce justaucorps",
     "customizeAgain": "🎨 Personnaliser à nouveau",
-    "reduceThePrice": "💰 Réduire le prix"
+    "reduceThePrice": "💰 Réduire le prix",
+    "sendPhotos": "📸 Envoyer des photos d'inspiration",
+    "discussWhatsApp": "💬 Discuter les détails sur WhatsApp",
+    "reduceThePriceBtn": "💰 Réduire le prix"
   },
   "steps": {
     "budget": "Sélectionnez une gamme de prix",
@@ -352,7 +355,18 @@
     "designSource": "Source du design",
     "selectedOptions": "Options sélectionnées",
     "noOptions": "Aucune option supplémentaire sélectionnée",
-    "discountApplied": "Remise appliquée"
+    "discountApplied": "Remise appliquée",
+    "budgetComparison": "Comparaison avec le budget",
+    "budgetAbove": "{amount} EUR au-dessus de votre budget sélectionné",
+    "budgetBelow": "En dessous de votre budget sélectionné",
+    "recommendation": "Notre recommandation"
+  },
+  "actionButtons": {
+    "order": "💚 Commander ce justaucorps",
+    "sendPhotos": "📸 Envoyer des photos d'inspiration",
+    "discuss": "💬 Discuter sur WhatsApp",
+    "customize": "🎨 Personnaliser à nouveau",
+    "reducePrice": "💰 Réduire le prix"
   },
   "errors": {
     "priceCalculation": "Erreur lors du calcul du prix",

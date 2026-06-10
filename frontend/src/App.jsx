@@ -538,31 +538,18 @@ function App() {
         )}
 
         {step === 'result' && priceResult && (
-          <>
-            <FinalResult
-              priceResult={priceResult}
-              complexity={complexity}
-              estimatedCrystals={estimatedCrystals}
-              config={config}
-              wheelDiscount={wheelDiscount}
-            />
-            <div className="actions">
-              <button
-                onClick={handleReset}
-                className="btn-secondary"
-              >
-                {t('buttons.customizeAgain') || 'Customize again'}
-              </button>
-              <button
-                onClick={() => {
-                  window.open('https://wa.me/34670770024?text=I%20want%20to%20order%20a%20leotard', '_blank')
-                }}
-                className="btn-primary"
-              >
-                {t('buttons.orderWhatsApp')}
-              </button>
-            </div>
-          </>
+          <FinalResult
+            priceResult={priceResult}
+            complexity={complexity}
+            estimatedCrystals={estimatedCrystals}
+            config={config}
+            wheelDiscount={wheelDiscount}
+            selectedBudget={selectedBudget}
+            onCustomizeAgain={handleReset}
+            onReducePrice={() => {
+              alert('Would you like to reduce your selection to lower the price? Click Customize again to adjust your options.');
+            }}
+          />
         )}
 
         {step === 'emailConfirmation' && (

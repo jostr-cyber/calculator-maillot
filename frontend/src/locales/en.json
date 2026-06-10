@@ -21,7 +21,10 @@
     "reducePrice": "💰 Reduce the price",
     "orderThis": "Order this leotard",
     "customizeAgain": "🎨 Customize again",
-    "reduceThePrice": "💰 Reduce the price"
+    "reduceThePrice": "💰 Reduce the price",
+    "sendPhotos": "📸 Send inspiration photos",
+    "discussWhatsApp": "💬 Discuss details on WhatsApp",
+    "reduceThePriceBtn": "💰 Reduce the price"
   },
   "steps": {
     "budget": "Select a price range",
@@ -352,7 +355,18 @@
     "designSource": "Design source",
     "selectedOptions": "Selected options",
     "noOptions": "No extra options selected",
-    "discountApplied": "Discount applied"
+    "discountApplied": "Discount applied",
+    "budgetComparison": "Budget comparison",
+    "budgetAbove": "{amount} EUR above your selected budget",
+    "budgetBelow": "Below your selected budget",
+    "recommendation": "Our recommendation"
+  },
+  "actionButtons": {
+    "order": "💚 Order this leotard",
+    "sendPhotos": "📸 Send inspiration photos",
+    "discuss": "💬 Discuss details on WhatsApp",
+    "customize": "🎨 Customize again",
+    "reducePrice": "💰 Reduce the price"
   },
   "errors": {
     "priceCalculation": "Failed to calculate price",

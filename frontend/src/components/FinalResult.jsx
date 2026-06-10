@@ -1,13 +1,21 @@
 import React from 'react'
 import { useTranslation } from '../hooks/useTranslation'
-import { formatConfigurationSummary, getProductionTime, getComplexityPercentage } from '../utilities/calculationUtils'
+import { formatConfigurationSummary, getProductionTime, getComplexityPercentage, generateRecommendation } from '../utilities/calculationUtils'
 import './FinalResult.css'
 
-function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheelDiscount }) {
+function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheelDiscount, selectedBudget, onCustomizeAgain, onReducePrice }) {
   const { t } = useTranslation()
   const summary = formatConfigurationSummary(config)
   const productionTime = getProductionTime(config.urgency)
   const complexityPercentage = getComplexityPercentage(complexity)
+  const recommendation = generateRecommendation(config, complexity)
+
+  const BUDGET_LIMITS = {
+    'under-250': 250,
+    'around-400': 400,
+    'around-800': 800,
+    'unknown': null
+  }
 
   const getDesignSourceLabel = () => {
     const designSourceMap = {
@@ -18,6 +26,48 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
       'customer-design': t('designSource.customDesign.title')
     }
     return designSourceMap[config.design] || config.design
+  }
+
+  const getBudgetComparison = () => {
+    if (!selectedBudget || selectedBudget === 'unknown') {
+      return null
+    }
+
+    const budgetLimit = BUDGET_LIMITS[selectedBudget]
+    if (!budgetLimit) return null
+
+    const difference = priceResult.finalPrice - budgetLimit
+    if (difference > 0) {
+      return {
+        status: 'above',
+        amount: Math.round(difference),
+        label: t('result.budgetAbove', { amount: Math.round(difference) }) || `${Math.round(difference)} EUR above budget`
+      }
+    } else if (difference < 0) {
+      return {
+        status: 'below',
+        amount: Math.round(Math.abs(difference)),
+        label: t('result.budgetBelow') || 'Below your budget'
+      }
+    }
+    return null
+  }
+
+  const budgetComparison = getBudgetComparison()
+
+  const handleWhatsAppOrder = () => {
+    const text = encodeURIComponent(`Hello! I want to order a leotard with the following configuration:\n\nPrice: €${priceResult.finalPrice}\n\nPlease help me with the next steps.`)
+    window.open(`https://wa.me/34670770024?text=${text}`, '_blank')
+  }
+
+  const handleSendPhotos = () => {
+    const text = encodeURIComponent(`Hello! I have inspiration photos for a leotard I'd like to order. Please let me know how I can send them to you.`)
+    window.open(`https://wa.me/34670770024?text=${text}`, '_blank')
+  }
+
+  const handleDiscussDetails = () => {
+    const text = encodeURIComponent(`Hello! I'd like to discuss the details of my leotard configuration. My estimated price is €${priceResult.finalPrice}.`)
+    window.open(`https://wa.me/34670770024?text=${text}`, '_blank')
   }
 
   return (
@@ -35,6 +85,16 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
             <span className="price-amount">{priceResult.finalPrice} €</span>
           </div>
         </div>
+
+        {/* Budget Comparison Section */}
+        {budgetComparison && (
+          <div className={`result-section budget-comparison-section budget-${budgetComparison.status}`}>
+            <div className="budget-item">
+              <span className="budget-label">{t('result.budgetComparison') || 'Budget comparison'}</span>
+              <span className="budget-value">{budgetComparison.label}</span>
+            </div>
+          </div>
+        )}
 
         {/* Complexity Section */}
         <div className="result-section complexity-section">
@@ -88,6 +148,14 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
           </div>
         </div>
 
+        {/* Recommendation Section */}
+        <div className="result-section recommendation-section">
+          <div className="recommendation-content">
+            <h3>{t('result.recommendation') || 'Our recommendation'}</h3>
+            <p className="recommendation-text">{recommendation}</p>
+          </div>
+        </div>
+
         {/* Configuration Summary */}
         <div className="result-section summary-section">
           <h3>{t('result.selectedOptions') || 'Selected options'}</h3>
@@ -120,13 +188,22 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
         )}
       </div>
 
-      {/* CTA Buttons */}
+      {/* CTA Buttons - Multi-action */}
       <div className="result-actions">
-        <button className="btn-primary btn-order">
-          {t('buttons.orderWhatsApp') || 'Order a leotard!'}
+        <button className="btn-primary btn-action" onClick={handleWhatsAppOrder}>
+          {t('actionButtons.order') || '💚 Order this leotard'}
         </button>
-        <button className="btn-secondary btn-customize">
-          {t('buttons.customizeAgain') || 'Customize again'}
+        <button className="btn-secondary btn-action" onClick={handleSendPhotos}>
+          {t('actionButtons.sendPhotos') || '📸 Send inspiration photos'}
+        </button>
+        <button className="btn-secondary btn-action" onClick={handleDiscussDetails}>
+          {t('actionButtons.discuss') || '💬 Discuss on WhatsApp'}
+        </button>
+        <button className="btn-secondary btn-action" onClick={onCustomizeAgain}>
+          {t('actionButtons.customize') || '🎨 Customize again'}
+        </button>
+        <button className="btn-secondary btn-action" onClick={onReducePrice}>
+          {t('actionButtons.reducePrice') || '💰 Reduce the price'}
         </button>
       </div>
     </div>

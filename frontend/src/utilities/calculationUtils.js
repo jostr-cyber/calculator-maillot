@@ -182,3 +182,61 @@ export const formatConfigurationSummary = (config) => {
 
   return summary;
 };
+
+// Generate smart personalized recommendation based on configuration
+export const generateRecommendation = (config, complexity) => {
+  const hasAerography = config.aerography && config.aerography !== 'nothing';
+  const hasDecorativeElements = config.decorativeElements && config.decorativeElements !== 'none';
+  const hasSkirt = config.skirt && config.skirt !== '' && config.skirt !== 'none';
+  const hasTwoSleeves = config.sleeves === 2;
+  const hasExpedited = config.urgency === 'accelerated';
+  const isPremiumStones = config.premiumStones && config.premiumStones !== 'none';
+
+  const recommendations = {
+    simple: [
+      "✨ This is a clean, elegant leotard configuration. Perfect for competitions where simplicity and grace are valued.",
+      "💡 Tip: Adding aerography or 3D elements would create more stage presence without overwhelming the design.",
+      "🎯 Great choice for gymnasts who prefer a streamlined look with classic appeal."
+    ],
+    advanced: [
+      "✨ This configuration creates a balanced leotard with good stage visibility. The combination of elements works well together.",
+      "💡 Tip: This level of complexity is ideal for national competitions where visual impact matters.",
+      "🎯 Your selection shows attention to detail while maintaining an elegant appearance."
+    ],
+    luxury: [
+      "✨ This is a luxury-level leotard with strong stage presence. The multiple elements create a premium, eye-catching design.",
+      "💡 Consider: This configuration will definitely stand out at competitions and make a bold statement.",
+      "🎯 Perfect for athletes who want to make a powerful visual impression."
+    ]
+  };
+
+  const specificTips = [];
+
+  // Aerography-specific tips
+  if (hasAerography && hasDecorativeElements) {
+    specificTips.push("The combination of aerography with 3D elements creates exceptional visual depth and stage presence.");
+  } else if (hasAerography && !hasDecorativeElements) {
+    specificTips.push("The aerography will create beautiful visual interest. Consider adding 3D elements if you want to increase impact further.");
+  }
+
+  // Price optimization tips
+  if (hasTwoSleeves && hasDecorativeElements && hasAerography) {
+    specificTips.push("To reduce costs: Consider keeping aerography and reducing decorative elements, or reducing sleeves to one.");
+  }
+
+  // Urgency tip
+  if (hasExpedited) {
+    specificTips.push("⚡ Your expedited order will be completed quickly while maintaining premium quality.");
+  }
+
+  // Premium stones tip
+  if (isPremiumStones) {
+    specificTips.push("💎 Premium stones will add exceptional sparkle and luxury feel under stage lighting.");
+  }
+
+  const complexityLevel = complexity?.level?.toLowerCase() || 'advanced';
+  const baseRecommendation = recommendations[complexityLevel]?.[0] || recommendations.advanced[0];
+  const tip = specificTips.length > 0 ? specificTips[0] : (recommendations[complexityLevel]?.[1] || recommendations.advanced[1]);
+
+  return `${baseRecommendation}\n\n${tip}`;
+};

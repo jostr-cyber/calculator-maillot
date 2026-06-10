@@ -21,7 +21,10 @@
     "reducePrice": "💰 Снизить цену",
     "orderThis": "Заказать этот купальник",
     "customizeAgain": "🎨 Настроить снова",
-    "reduceThePrice": "💰 Снизить цену"
+    "reduceThePrice": "💰 Снизить цену",
+    "sendPhotos": "📸 Отправить фото вдохновения",
+    "discussWhatsApp": "💬 Обсудить детали в WhatsApp",
+    "reduceThePriceBtn": "💰 Снизить цену"
   },
   "steps": {
     "budget": "Выберите ценовой диапазон",
@@ -352,7 +355,18 @@
     "designSource": "Источник дизайна",
     "selectedOptions": "Выбранные опции",
     "noOptions": "Без дополнительных опций",
-    "discountApplied": "Скидка применена"
+    "discountApplied": "Скидка применена",
+    "budgetComparison": "Сравнение с бюджетом",
+    "budgetAbove": "На {amount} EUR выше выбранного бюджета",
+    "budgetBelow": "Ниже выбранного бюджета",
+    "recommendation": "Наша рекомендация"
+  },
+  "actionButtons": {
+    "order": "💚 Заказать этот купальник",
+    "sendPhotos": "📸 Отправить фото вдохновения",
+    "discuss": "💬 Обсудить детали в WhatsApp",
+    "customize": "🎨 Настроить снова",
+    "reducePrice": "💰 Снизить цену"
   },
   "errors": {
     "priceCalculation": "Ошибка при расчете цены",

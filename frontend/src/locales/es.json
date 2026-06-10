@@ -21,7 +21,10 @@
     "reducePrice": "💰 Reducir el precio",
     "orderThis": "Pedir este maillot",
     "customizeAgain": "🎨 Personalizar de nuevo",
-    "reduceThePrice": "💰 Reducir el precio"
+    "reduceThePrice": "💰 Reducir el precio",
+    "sendPhotos": "📸 Enviar fotos de inspiración",
+    "discussWhatsApp": "💬 Discutir detalles en WhatsApp",
+    "reduceThePriceBtn": "💰 Reducir el precio"
   },
   "steps": {
     "budget": "Selecciona un rango de precio",
@@ -352,7 +355,18 @@
     "designSource": "Fuente de diseño",
     "selectedOptions": "Opciones seleccionadas",
     "noOptions": "Sin opciones adicionales seleccionadas",
-    "discountApplied": "Descuento aplicado"
+    "discountApplied": "Descuento aplicado",
+    "budgetComparison": "Comparación con presupuesto",
+    "budgetAbove": "{amount} EUR por encima de tu presupuesto seleccionado",
+    "budgetBelow": "Por debajo de tu presupuesto seleccionado",
+    "recommendation": "Nuestra recomendación"
+  },
+  "actionButtons": {
+    "order": "💚 Pedir este maillot",
+    "sendPhotos": "📸 Enviar fotos de inspiración",
+    "discuss": "💬 Discutir detalles en WhatsApp",
+    "customize": "🎨 Personalizar de nuevo",
+    "reducePrice": "💰 Reducir el precio"
   },
   "errors": {
     "priceCalculation": "Error al calcular el precio",
