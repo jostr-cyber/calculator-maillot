@@ -362,7 +362,7 @@
     "required": "Por favor selecciona un método de contacto y proporciona tu información de contacto"
   },
   "summary": {
-    "title": "Tu selección",
+    "title": "Tu selección actual y precio basado en pasos anteriores",
     "currentEstimate": "Estimación actual",
     "complexity": "Complejidad",
     "noSelections": "Sin selecciones aún"

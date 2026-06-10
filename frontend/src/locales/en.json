@@ -362,7 +362,7 @@
     "required": "Please select a contact method and provide your contact information"
   },
   "summary": {
-    "title": "Your selection",
+    "title": "Your current selection and price based on previous steps",
     "currentEstimate": "Current estimate",
     "complexity": "Complexity",
     "noSelections": "No selections yet"
