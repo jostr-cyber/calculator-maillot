@@ -50,47 +50,52 @@ function BudgetSlider({ value, onBudgetChange, onContinue, onBack, config, curre
     <div className="budget-slider">
       <h2>{t('steps.budget')}</h2>
 
+      {/* Selection Block */}
+      <div className="budget-selection-block">
+        <div className="slider-container">
+          <div className="budget-display">
+            {selected === 'undecided' ? t('budget.undecided') : `€${selected}+`}
+          </div>
+          <input
+            type="range"
+            min="0"
+            max={budgetSteps.length - 1}
+            value={sliderValue}
+            onChange={(e) => handleSliderChange(parseInt(e.target.value))}
+            className="slider"
+          />
+          <div className="slider-labels">
+            <span>{budgetSteps[0].label}</span>
+            <span>{budgetSteps[budgetSteps.length - 1].label}</span>
+          </div>
+        </div>
+
+        <div className="budget-options">
+          {budgetSteps.map((step, index) => (
+            <button
+              key={step.value}
+              onClick={() => handleSliderChange(index)}
+              className={`budget-option ${selected === step.value ? 'selected' : ''}`}
+            >
+              {step.label === '800+' ? '800+' : `€${step.label}`}
+            </button>
+          ))}
+        </div>
+
+        <button
+          onClick={handleUndecided}
+          className={`budget-undecided ${selected === 'undecided' ? 'selected' : ''}`}
+        >
+          {t('budget.undecided')}
+        </button>
+      </div>
+
+      {/* Configuration Summary */}
       {config && currentPrice && complexity && (
         <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
       )}
 
-      <div className="slider-container">
-        <div className="budget-display">
-          {selected === 'undecided' ? t('budget.undecided') : `€${selected}+`}
-        </div>
-        <input
-          type="range"
-          min="0"
-          max={budgetSteps.length - 1}
-          value={sliderValue}
-          onChange={(e) => handleSliderChange(parseInt(e.target.value))}
-          className="slider"
-        />
-        <div className="slider-labels">
-          <span>{budgetSteps[0].label}</span>
-          <span>{budgetSteps[budgetSteps.length - 1].label}</span>
-        </div>
-      </div>
-
-      <div className="budget-options">
-        {budgetSteps.map((step, index) => (
-          <button
-            key={step.value}
-            onClick={() => handleSliderChange(index)}
-            className={`budget-option ${selected === step.value ? 'selected' : ''}`}
-          >
-            {step.label === '800+' ? '800+' : `€${step.label}`}
-          </button>
-        ))}
-      </div>
-
-      <button
-        onClick={handleUndecided}
-        className={`budget-undecided ${selected === 'undecided' ? 'selected' : ''}`}
-      >
-        {t('budget.undecided')}
-      </button>
-
+      {/* Actions */}
       <div className="actions">
         <button onClick={handleContinue} className="btn-primary">
           {t('buttons.continue')}

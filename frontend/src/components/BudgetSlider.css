@@ -5,8 +5,17 @@
   font-weight: 600;
 }
 
+.budget-selection-block {
+  background-color: #f9f8ff;
+  border: 2px solid #e0d5ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 24px;
+  margin-bottom: 32px;
+}
+
 .slider-container {
-  margin: 24px 0 32px 0;
+  margin-bottom: 24px;
 }
 
 .budget-display {
@@ -78,7 +87,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 8px;
-  margin: 24px 0 32px 0;
+  margin-bottom: 16px;
 }
 
 .budget-option {
@@ -115,10 +124,9 @@
 .budget-undecided {
   width: 100%;
   padding: 16px;
-  margin-bottom: 24px;
   border: 2px solid #e0d5ff;
   border-radius: 12px;
-  background-color: #f9f8ff;
+  background-color: white;
   color: #333;
   font-size: 15px;
   font-weight: 600;
@@ -189,6 +197,10 @@
 }
 
 @media (max-width: 768px) {
+  .budget-selection-block {
+    padding: 16px;
+  }
+
   .budget-display {
     font-size: 28px;
   }
@@ -196,6 +208,7 @@
   .budget-options {
     grid-template-columns: repeat(4, 1fr);
     gap: 6px;
+    margin-bottom: 12px;
   }
 
   .budget-option {
@@ -216,19 +229,25 @@
     margin-bottom: 16px;
   }
 
+  .budget-selection-block {
+    padding: 14px;
+    margin-top: 16px;
+    margin-bottom: 24px;
+  }
+
   .budget-display {
     font-size: 24px;
     margin-bottom: 16px;
   }
 
   .slider-container {
-    margin: 16px 0 20px 0;
+    margin-bottom: 16px;
   }
 
   .budget-options {
     grid-template-columns: repeat(3, 1fr);
     gap: 6px;
-    margin: 16px 0 20px 0;
+    margin-bottom: 12px;
   }
 
   .budget-option {
@@ -240,7 +259,6 @@
   .budget-undecided {
     font-size: 13px;
     padding: 12px;
-    margin-bottom: 20px;
   }
 
   .actions {
