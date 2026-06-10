@@ -19,17 +19,42 @@ import ContactPreference from './components/ContactPreference'
 import { LanguageSwitcher } from './components/LanguageSwitcher'
 import { useTranslation } from './hooks/useTranslation'
 
-const BUDGET_LEVELS = {
-  'unknown': 'Elite',
-  '800': 'Elite',
-  '400': 'Standard',
-  '200': 'Economy'
+// Budget reference levels for comparison only - do NOT affect pricing
+const BUDGET_REFERENCE = {
+  'under-250': { limit: 250, key: 'under-250' },
+  'around-400': { limit: 400, key: 'around-400' },
+  'around-800': { limit: 800, key: 'around-800' },
+  'unknown': { limit: null, key: 'unknown' }
+}
+
+// Helper function to calculate budget comparison message
+const calculateBudgetComparison = (finalPrice, budgetRef) => {
+  if (!budgetRef || budgetRef.limit === null) {
+    return {
+      type: 'unknown',
+      message: null
+    }
+  }
+
+  const excess = finalPrice - budgetRef.limit
+  if (excess > 0) {
+    return {
+      type: 'exceeded',
+      message: excess > 0 ? `by ${Math.round(excess)}` : null,
+      excessAmount: excess
+    }
+  } else {
+    return {
+      type: 'under',
+      message: null
+    }
+  }
 }
 
 function App() {
   const { t } = useTranslation()
   const [step, setStep] = useState('budget')
-  const [budget, setBudget] = useState(null)
+  const [selectedBudget, setSelectedBudget] = useState(null) // Budget reference for comparison only
   const [height, setHeight] = useState(150)
   const [sleeves, setSleeves] = useState('')
   const [skirt, setSkirt] = useState('')
@@ -44,7 +69,6 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [wheelDiscount, setWheelDiscount] = useState(0)
-  const [budgetExceeded, setBudgetExceeded] = useState(false)
   const [surveyAnswers, setSurveyAnswers] = useState(null)
   const [returnedFromResult, setReturnedFromResult] = useState(false)
   const [userEmail, setUserEmail] = useState('')
@@ -52,7 +76,8 @@ function App() {
   const [contactValue, setContactValue] = useState('')
 
   const handleBudgetSelect = (budgetValue) => {
-    setBudget(budgetValue)
+    // Budget is for reference only, doesn't affect pricing
+    setSelectedBudget(budgetValue)
     setStep('height')
   }
 
@@ -73,11 +98,7 @@ function App() {
   }
 
   const handleBack = () => {
-    let steps = ['budget', 'height', 'design', 'sleeves', 'skirt', 'decorativeElements', 'aerography', 'combinaison', 'premiumStones', 'urgency', 'survey', 'wheelOfFortune', 'result', 'emailConfirmation', 'contactPreference']
-    // Skip premiumStones step if budget is 400 or 200
-    if (budget === '400' || budget === '200') {
-      steps = steps.filter(s => s !== 'premiumStones')
-    }
+    const steps = ['budget', 'height', 'design', 'sleeves', 'skirt', 'decorativeElements', 'aerography', 'combinaison', 'premiumStones', 'urgency', 'survey', 'wheelOfFortune', 'result', 'emailConfirmation', 'contactPreference']
     const currentIndex = steps.indexOf(step)
     if (currentIndex > 0) {
       setStep(steps[currentIndex - 1])
@@ -90,8 +111,6 @@ function App() {
     setError(null)
 
     try {
-      const level = BUDGET_LEVELS[budget]
-
       let heightCategory
       if (height >= 170) {
         heightCategory = '170+'
@@ -109,7 +128,6 @@ function App() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          level,
           height: heightCategory,
           sleeves: sleeves === '' ? 0 : parseInt(sleeves),
           skirt,
@@ -119,8 +137,7 @@ function App() {
           combinaison,
           premiumStones,
           urgency,
-          design,
-          budget
+          design
         })
       })
 
@@ -133,14 +150,18 @@ function App() {
       // Debug logging
       console.log('🔍 Price Calculation Result:', {
         finalPrice: data.finalPrice,
-        budgetExceeded: data.budgetExceeded,
-        excessAmount: data.excessAmount,
-        selectedBudget: budget
+        selectedBudget: selectedBudget
       })
+
+      // Calculate budget comparison
+      const budgetRef = BUDGET_REFERENCE[selectedBudget]
+      const comparison = calculateBudgetComparison(data.finalPrice, budgetRef)
+
+      // Add comparison info to result
+      data.budgetComparison = comparison
 
       // Skip wheel of fortune - go directly to result
       console.log('✅ Skipping wheel of fortune - going to result')
-      setBudgetExceeded(data.budgetExceeded)
       setPriceResult(data)
       setStep('result')
     } catch (err) {
@@ -157,8 +178,6 @@ function App() {
     setError(null)
 
     try {
-      const level = BUDGET_LEVELS[budget]
-
       let heightCategory
       if (height >= 170) {
         heightCategory = '170+'
@@ -176,7 +195,6 @@ function App() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          level,
           height: heightCategory,
           sleeves: sleeves === '' ? 0 : parseInt(sleeves),
           skirt,
@@ -186,8 +204,7 @@ function App() {
           combinaison,
           premiumStones,
           urgency,
-          design: designValue,
-          budget
+          design: designValue
         })
       })
 
@@ -196,6 +213,11 @@ function App() {
       }
 
       const data = await response.json()
+
+      // Calculate budget comparison
+      const budgetRef = BUDGET_REFERENCE[selectedBudget]
+      const comparison = calculateBudgetComparison(data.finalPrice, budgetRef)
+      data.budgetComparison = comparison
 
       // Skip survey and wheel, go directly to result with saved discount
       console.log(`✅ Returning from result - skipping survey and wheel, applying saved discount ${wheelDiscount}%`)
@@ -214,8 +236,6 @@ function App() {
     setError(null)
 
     try {
-      const level = BUDGET_LEVELS[budget]
-
       let heightCategory
       if (height >= 170) {
         heightCategory = '170+'
@@ -233,7 +253,6 @@ function App() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          level,
           height: heightCategory,
           sleeves: sleeves === '' ? 0 : parseInt(sleeves),
           skirt,
@@ -243,8 +262,7 @@ function App() {
           combinaison,
           premiumStones,
           urgency: urgencyVal,
-          design,
-          budget
+          design
         })
       })
 
@@ -254,17 +272,19 @@ function App() {
 
       const data = await response.json()
 
+      // Calculate budget comparison
+      const budgetRef = BUDGET_REFERENCE[selectedBudget]
+      const comparison = calculateBudgetComparison(data.finalPrice, budgetRef)
+      data.budgetComparison = comparison
+
       // Debug logging
       console.log('🔍 Price Calculation Result:', {
         finalPrice: data.finalPrice,
-        budgetExceeded: data.budgetExceeded,
-        excessAmount: data.excessAmount,
-        selectedBudget: budget
+        selectedBudget: selectedBudget
       })
 
       // Skip survey and go directly to result
       console.log('✅ Skipping survey - going directly to result')
-      setBudgetExceeded(data.budgetExceeded)
       setPriceResult(data)
       setStep('result')
       setReturnedFromResult(false)
@@ -293,7 +313,7 @@ function App() {
         email: userEmail,
         contactMethod: preferences.method,
         contactValue: preferences.value,
-        budget,
+        selectedBudget,
         height,
         sleeves,
         skirt,
@@ -330,7 +350,7 @@ function App() {
   }
 
   const handleReset = () => {
-    setBudget(null)
+    setSelectedBudget(null)
     setHeight(150)
     setSleeves('')
     setSkirt('')

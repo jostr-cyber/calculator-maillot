@@ -17,7 +17,9 @@
     "exporting": "⏳ Exportation...",
     "submit": "Soumettre",
     "recalculate": "🔄 Recalculer",
-    "orderWhatsApp": "💬 Je veux commander un justaucorps!"
+    "orderWhatsApp": "💬 Je veux commander un justaucorps!",
+    "reducePrice": "💰 Réduire le prix",
+    "orderThis": "Commander ce justaucorps"
   },
   "steps": {
     "budget": "Sélectionnez une gamme de prix",
@@ -34,17 +36,22 @@
     "result": "Calcul du Prix"
   },
   "budget": {
-    "elite": {
-      "title": "Jusqu'à 800€",
-      "description": ""
+    "note": "Le budget est juste une référence pour la comparaison. Le prix dépend uniquement des options sélectionnées.",
+    "around800": {
+      "title": "Environ 800€",
+      "desc": "Justaucorps premium avec toutes les options"
     },
-    "standard": {
-      "title": "Jusqu'à 400€",
-      "description": ""
+    "around400": {
+      "title": "Environ 400€",
+      "desc": "Justaucorps standard avec quelques options"
     },
-    "economy": {
-      "title": "Jusqu'à 200€",
-      "description": ""
+    "under250": {
+      "title": "Jusqu'à 250€",
+      "desc": "Justaucorps basique sans extras"
+    },
+    "unknown": {
+      "title": "Je ne sais pas encore",
+      "desc": "Sans limite de budget"
     }
   },
   "height": {
@@ -191,6 +198,19 @@
       "enterEmail": "Veuillez entrer votre email",
       "validEmail": "Veuillez entrer une adresse email valide"
     }
+  },
+  "budgetComparison": {
+    "estimatedPrice": "Prix estimé:",
+    "above": "Votre configuration est au-dessus de votre budget sélectionné",
+    "aboveBy": "Votre configuration est au-dessus de votre budget sélectionné de {amount} EUR",
+    "below": "Votre configuration est en dessous de votre budget sélectionné",
+    "noComparison": ""
+  },
+  "priceReduction": {
+    "title": "Façons de réduire le prix",
+    "save": "économiser",
+    "remove": "Supprimer",
+    "choose": "Choisir"
   },
   "wheel": {
     "description": "Tentez votre chance et découvrez quelle remise vous obtiendrez",

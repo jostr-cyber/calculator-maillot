@@ -1,9 +1,6 @@
-// Простые данные цен (упрощенная версия)
-const PRICES = {
-  'Elite': { base: 500 },
-  'Standard': { base: 250 },
-  'Economy': { base: 150 }
-};
+// Base price - always the same regardless of budget selection
+// Budget only serves as a reference point for comparison, not for pricing
+const BASE_PRICE = 250;
 
 const HEIGHT_MODIFIERS = {
   '170+': 0.20,
@@ -31,7 +28,6 @@ export default function handler(req, res) {
 
   try {
     const {
-      level = 'Standard',
       height = '150-170',
       sleeves = 0,
       skirt = '',
@@ -41,11 +37,11 @@ export default function handler(req, res) {
       premiumStones = '',
       urgency = '',
       design = '',
-      budget = null
+      shoulder = ''
     } = req.body;
 
-    // Базовая цена
-    let basePrice = PRICES[level]?.base || 250;
+    // Base price is always the same - budget doesn't affect pricing
+    const basePrice = BASE_PRICE;
 
     // Модификатор по росту
     const heightMod = HEIGHT_MODIFIERS[height] || 0;
@@ -74,14 +70,9 @@ export default function handler(req, res) {
       urgencySurcharge = price * OPTION_PRICES['urgency'];
     }
 
-    // Финальная цена
+    // Final price
     const totalPrice = price - discount + urgencySurcharge;
     const finalPrice = Math.round(totalPrice);
-
-    // Проверка бюджета
-    const budgetMap = { '800': 800, '400': 400, '200': 200 };
-    const budgetLimit = budget ? budgetMap[budget] : null;
-    const budgetExceeded = budgetLimit ? finalPrice > budgetLimit : false;
 
     res.status(200).json({
       finalPrice,
@@ -94,12 +85,10 @@ export default function handler(req, res) {
       aerography,
       combinaison,
       premiumStones,
+      shoulder,
       urgency,
       design,
-      budget,
       currency: 'EUR',
-      budgetExceeded,
-      excessAmount: budgetExceeded ? finalPrice - budgetLimit : 0,
       discount,
       urgencySurcharge
     });

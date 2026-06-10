@@ -17,7 +17,9 @@
     "exporting": "⏳ Exportando...",
     "submit": "Enviar",
     "recalculate": "🔄 Recalcular",
-    "orderWhatsApp": "💬 ¡Quiero pedir este maillot!"
+    "orderWhatsApp": "💬 ¡Quiero pedir este maillot!",
+    "reducePrice": "💰 Reducir el precio",
+    "orderThis": "Pedir este maillot"
   },
   "steps": {
     "budget": "Selecciona un rango de precio",
@@ -34,17 +36,22 @@
     "result": "Cálculo de Precio"
   },
   "budget": {
-    "elite": {
-      "title": "Hasta 800€",
-      "description": ""
+    "note": "El presupuesto es solo una referencia para comparación. El precio depende solo de las opciones seleccionadas.",
+    "around800": {
+      "title": "Alrededor de 800€",
+      "desc": "Maillot premium con todas las opciones"
     },
-    "standard": {
-      "title": "Hasta 400€",
-      "description": ""
+    "around400": {
+      "title": "Alrededor de 400€",
+      "desc": "Maillot estándar con algunas opciones"
     },
-    "economy": {
-      "title": "Hasta 200€",
-      "description": ""
+    "under250": {
+      "title": "Hasta 250€",
+      "desc": "Maillot básico sin extras"
+    },
+    "unknown": {
+      "title": "No sé aún",
+      "desc": "Sin límite de presupuesto"
     }
   },
   "height": {
@@ -191,6 +198,19 @@
       "enterEmail": "Por favor ingresa tu email",
       "validEmail": "Por favor ingresa una dirección de email válida"
     }
+  },
+  "budgetComparison": {
+    "estimatedPrice": "Precio estimado:",
+    "above": "Tu configuración está por encima de tu presupuesto seleccionado",
+    "aboveBy": "Tu configuración está por encima de tu presupuesto seleccionado por {amount} EUR",
+    "below": "Tu configuración está por debajo de tu presupuesto seleccionado",
+    "noComparison": ""
+  },
+  "priceReduction": {
+    "title": "Formas de reducir el precio",
+    "save": "ahorrar",
+    "remove": "Eliminar",
+    "choose": "Elegir"
   },
   "wheel": {
     "description": "Prueba tu suerte y descubre qué descuento obtendrás",

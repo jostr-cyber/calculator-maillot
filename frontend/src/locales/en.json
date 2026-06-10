@@ -17,7 +17,9 @@
     "exporting": "⏳ Exporting...",
     "submit": "Submit",
     "recalculate": "🔄 Recalculate",
-    "orderWhatsApp": "💬 Order a leotard!"
+    "orderWhatsApp": "💬 Order a leotard!",
+    "reducePrice": "💰 Reduce the price",
+    "orderThis": "Order this leotard"
   },
   "steps": {
     "budget": "Select a price range",
@@ -34,17 +36,22 @@
     "result": "Price Calculation"
   },
   "budget": {
-    "elite": {
-      "title": "Up to 800€",
-      "description": ""
+    "note": "Budget is just a reference for comparison. The price depends only on selected options.",
+    "around800": {
+      "title": "Around 800€",
+      "desc": "Premium leotard with all options"
     },
-    "standard": {
-      "title": "Up to 400€",
-      "description": ""
+    "around400": {
+      "title": "Around 400€",
+      "desc": "Standard leotard with some options"
     },
-    "economy": {
-      "title": "Up to 200€",
-      "description": ""
+    "under250": {
+      "title": "Up to 250€",
+      "desc": "Basic leotard without extras"
+    },
+    "unknown": {
+      "title": "I don't know yet",
+      "desc": "No budget limit"
     }
   },
   "height": {
@@ -191,6 +198,19 @@
       "enterEmail": "Please enter your email",
       "validEmail": "Please enter a valid email address"
     }
+  },
+  "budgetComparison": {
+    "estimatedPrice": "Estimated price:",
+    "above": "Your configuration is above your selected budget",
+    "aboveBy": "Your configuration is above your selected budget by {amount} EUR",
+    "below": "Your configuration is below your selected budget",
+    "noComparison": ""
+  },
+  "priceReduction": {
+    "title": "Ways to reduce the price",
+    "save": "save",
+    "remove": "Remove",
+    "choose": "Choose"
   },
   "wheel": {
     "description": "Try your luck and discover what discount you will get",
