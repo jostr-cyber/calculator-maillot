@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import ConfigurationSummary from './ConfigurationSummary'
-import DesignsPreview from './DesignsPreview'
 import './SleevesSelect.css'
 
 function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, currentPrice, complexity }) {
@@ -85,10 +84,6 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
           ))}
         </div>
       </div>
-
-      {config && complexity && (
-        <DesignsPreview config={config} complexity={complexity} />
-      )}
 
       {config && currentPrice && complexity && (
         <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
