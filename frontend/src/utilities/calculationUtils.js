@@ -41,18 +41,33 @@ export const calculatePriceLocal = (config) => {
   // Combinaison (full suit)
   if (config.combinaison === 'full') basePrice += 80;
 
-  // Design source discount (if customer provides design)
-  let designDiscount = 0;
+  // Design source adjustment (based on designSource step)
+  let designAdjustment = 0;
+  let adjustmentType = 'none'; // 'discount', 'surcharge', or 'none'
+
   if (config.designSource === 'own-design') {
-    designDiscount = basePrice * 0.05; // 5% discount
+    // Customer provides their own design: -5% discount
+    designAdjustment = basePrice * 0.05;
+    adjustmentType = 'discount';
+  } else if (config.designSource === 'inspiration-photos') {
+    // Customer provides reference photos: no adjustment
+    designAdjustment = 0;
+    adjustmentType = 'none';
+  } else if (config.designSource === 'custom-design') {
+    // Studio designs from scratch: +10% surcharge
+    designAdjustment = basePrice * 0.10;
+    adjustmentType = 'surcharge';
   }
 
-  const finalPrice = Math.round((basePrice - designDiscount) * 100) / 100;
+  const finalPrice = Math.round((adjustmentType === 'discount'
+    ? basePrice - designAdjustment
+    : basePrice + designAdjustment) * 100) / 100;
 
   return {
     finalPrice: finalPrice,
     basePrice: Math.round(basePrice * 100) / 100,
-    designDiscount: Math.round(designDiscount * 100) / 100,
+    designAdjustment: Math.round(designAdjustment * 100) / 100,
+    adjustmentType: adjustmentType,
     breakdown: {
       sleeves: config.sleeves > 0 ? config.sleeves * 40 : 0,
       skirt: config.skirt === 'both' ? 100 : (config.skirt ? 50 : 0),
