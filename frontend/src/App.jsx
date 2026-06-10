@@ -94,9 +94,8 @@ function App() {
   const [contactMethod, setContactMethod] = useState('')
   const [contactValue, setContactValue] = useState('')
 
-  // New step order: budget -> height -> designSource -> design -> sleeves -> skirt -> decorativeElements -> aerography -> combinaison -> urgency -> result
+  // Step order: height -> designSource -> design -> sleeves -> skirt -> decorativeElements -> aerography -> combinaison -> urgency -> budget (for comparison) -> survey -> result
   const steps = [
-    'budget',
     'height',
     'designSource',
     'design',
@@ -106,6 +105,7 @@ function App() {
     'aerography',
     'combinaison',
     'urgency',
+    'budget',
     'survey',
     'result',
     'emailConfirmation',
@@ -196,7 +196,7 @@ function App() {
 
   const handleBudgetSelect = (budgetValue) => {
     setSelectedBudget(budgetValue)
-    setStep('height')
+    setStep('survey')
   }
 
   const handleHeightChange = (heightValue) => {
@@ -428,10 +428,6 @@ function App() {
         {error && <div className="error">{t('errors.priceCalculation')}: {error}</div>}
         {loading && <div className="loading">{t('loading') || 'Loading...'}</div>}
 
-        {step === 'budget' && (
-          <BudgetSelector onSelect={handleBudgetSelect} />
-        )}
-
         {step === 'height' && (
           <HeightSlider
             value={height}
@@ -528,6 +524,10 @@ function App() {
             currentPrice={currentPrice}
             complexity={complexity}
           />
+        )}
+
+        {step === 'budget' && (
+          <BudgetSelector onSelect={handleBudgetSelect} />
         )}
 
         {step === 'survey' && (
