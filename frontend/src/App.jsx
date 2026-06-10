@@ -63,7 +63,7 @@ function App() {
   const { t } = useTranslation()
 
   // Main configuration state
-  const [step, setStep] = useState('budget')
+  const [step, setStep] = useState('height')
   const [selectedBudget, setSelectedBudget] = useState(null)
   const [height, setHeight] = useState(150)
   const [heightCategory, setHeightCategory] = useState('150-170')
@@ -397,7 +397,7 @@ function App() {
     setCurrentPrice(null)
     setComplexity(null)
     setEstimatedCrystals(0)
-    setStep('budget')
+    setStep('height')
   }
 
   // Check if admin route
