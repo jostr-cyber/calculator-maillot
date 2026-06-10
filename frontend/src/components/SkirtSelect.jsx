@@ -10,31 +10,31 @@ function SkirtSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
   const skirtOptions = [
     {
       value: 'none',
-      icon: '👗',
+      iconImage: '/images/skirt-bez.PNG',
       labelKey: 'skirt.none',
       descKey: 'skirt.noneDesc',
-      image: '🎭'
+      image: '/images/skirt-bez.PNG'
     },
     {
       value: 'front',
-      icon: '🎀',
+      iconImage: '/images/skirt-front.PNG',
       labelKey: 'skirt.front',
       descKey: 'skirt.frontDesc',
-      image: '🎭'
+      image: '/images/skirt-front.PNG'
     },
     {
       value: 'back',
-      icon: '💃',
+      iconImage: '/images/skirt-back.PNG',
       labelKey: 'skirt.back',
       descKey: 'skirt.backDesc',
-      image: '🎭'
+      image: '/images/skirt-back.PNG'
     },
     {
       value: 'both',
-      icon: '✨',
+      iconImage: '/images/skirt-both.PNG',
       labelKey: 'skirt.both',
       descKey: 'skirt.bothDesc',
-      image: '🎭'
+      image: '/images/skirt-both.PNG'
     }
   ]
 
@@ -62,7 +62,7 @@ function SkirtSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
               className="radio-input"
             />
             <div className="skirt-card-content">
-              <div className="skirt-icon">{option.icon}</div>
+              <img src={option.iconImage} alt={t(option.labelKey)} className="skirt-icon" />
               <div className="skirt-label">{t(option.labelKey)}</div>
             </div>
           </label>
@@ -71,12 +71,15 @@ function SkirtSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
 
       {/* Images Gallery */}
       <div className="skirt-gallery">
+        <h3 className="gallery-title">{t('skirt.galleryTitle')}</h3>
         <div className="gallery-grid">
           {skirtOptions.map(option => (
             <div key={option.value} className="gallery-item">
-              <div className="gallery-image-placeholder">
-                <span>{option.image}</span>
-              </div>
+              <img
+                src={option.image}
+                alt={t(option.labelKey)}
+                className="gallery-image"
+              />
               <p className="gallery-label">{t(option.labelKey)}</p>
             </div>
           ))}

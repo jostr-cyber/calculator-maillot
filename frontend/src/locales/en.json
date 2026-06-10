@@ -136,6 +136,7 @@
     "strapsImg": "Example with straps"
   },
   "skirt": {
+    "galleryTitle": "Skirt Examples",
     "label": "Select option...",
     "none": "No skirt",
     "noneDesc": "Classic style",

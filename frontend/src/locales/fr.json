@@ -136,6 +136,7 @@
     "strapsImg": "Exemple avec bretelles"
   },
   "skirt": {
+    "galleryTitle": "Exemples de Jupes",
     "label": "Sélectionnez une option...",
     "none": "Sans jupe",
     "noneDesc": "Style classique",

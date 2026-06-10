@@ -53,8 +53,9 @@
 }
 
 .skirt-icon {
-  font-size: 36px;
-  line-height: 1;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
   flex-shrink: 0;
 }
 
@@ -76,22 +77,38 @@
 .skirt-gallery {
   background: linear-gradient(135deg, #f5e6f0 0%, #e8d4ff 100%);
   border-radius: 12px;
-  padding: 24px;
+  padding: 20px 16px;
   margin-bottom: 32px;
   margin-top: 24px;
+  box-sizing: border-box;
+}
+
+.gallery-title {
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  text-align: center;
 }
 
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr 1fr !important;
+  grid-auto-flow: row !important;
+  grid-template-rows: 1fr !important;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .gallery-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .gallery-image-placeholder {
@@ -104,6 +121,20 @@
   justify-content: center;
   font-size: 48px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .gallery-label {
@@ -166,7 +197,8 @@
   }
 
   .skirt-icon {
-    font-size: 32px;
+    width: 45px;
+    height: 45px;
   }
 
   .skirt-label {
@@ -175,15 +207,6 @@
 
   .skirt-desc {
     font-size: 11px;
-  }
-
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-
-  .gallery-image-placeholder {
-    font-size: 40px;
   }
 
   .gallery-label {
@@ -206,7 +229,8 @@
   }
 
   .skirt-icon {
-    font-size: 28px;
+    width: 40px;
+    height: 40px;
   }
 
   .skirt-label {
@@ -223,13 +247,13 @@
     margin-bottom: 24px;
   }
 
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+  .gallery-title {
+    font-size: 16px;
+    margin-bottom: 16px;
   }
 
-  .gallery-image-placeholder {
-    font-size: 36px;
+  .gallery-grid {
+    gap: 10px;
   }
 
   .gallery-label {
