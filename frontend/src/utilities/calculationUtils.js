@@ -42,8 +42,9 @@ export const calculatePriceLocal = (config) => {
   if (config.sleeves === 2) basePrice += 80;
 
   // Skirt
-  if (config.skirt === 'front' || config.skirt === 'back') basePrice += 50;
-  if (config.skirt === 'both') basePrice += 100;
+  if (config.skirt === 'front') basePrice += 15;
+  if (config.skirt === 'back') basePrice += 15;
+  if (config.skirt === 'both') basePrice += 30;
 
   // Decorative elements
   if (config.decorativeElements && config.decorativeElements !== 'none') {
@@ -73,7 +74,7 @@ export const calculatePriceLocal = (config) => {
     adjustmentType: adjustmentType,
     breakdown: {
       sleeves: config.sleeves > 0 ? config.sleeves * 40 : 0,
-      skirt: config.skirt === 'both' ? 100 : (config.skirt ? 50 : 0),
+      skirt: config.skirt === 'both' ? 30 : (config.skirt === 'front' || config.skirt === 'back' ? 15 : 0),
       decorativeElements: (config.decorativeElements && config.decorativeElements !== 'none' ? config.decorativeElements.split(',').filter(e => e).length * 60 : 0),
       aerography: (config.aerography !== 'nothing' ? 120 : 0),
       premiumStones: (config.premiumStones === 'swarovski' ? 200 : (config.premiumStones === 'premium' ? 150 : 0))
