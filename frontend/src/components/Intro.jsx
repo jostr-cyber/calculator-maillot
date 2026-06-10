@@ -11,11 +11,10 @@ function Intro({ onStart }) {
         <h1 className="intro-title">
           LeotART КАЛЬКУЛЯТОР
         </h1>
-        <p className="intro-subtitle">в ателье RG LeotART</p>
 
         <div className="intro-image">
           <img
-            src="/images/1.PNG"
+            src="/images/2.PNG"
             alt="Примеры купальников"
             className="intro-image-content"
           />
