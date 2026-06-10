@@ -108,8 +108,10 @@
 }
 
 .gallery-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr 1fr !important;
+  grid-auto-flow: row !important;
+  grid-template-rows: 1fr !important;
   gap: 12px;
   width: 100%;
   box-sizing: border-box;
@@ -122,6 +124,7 @@
   gap: 8px;
   box-sizing: border-box;
   min-width: 0;
+  overflow: hidden;
 }
 
 .gallery-image-placeholder {
@@ -138,8 +141,7 @@
 
 .gallery-image {
   width: 100%;
-  height: auto;
-  max-height: 150px;
+  height: 100px;
   object-fit: contain;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
