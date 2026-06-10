@@ -15,7 +15,7 @@ function Intro({ onStart }) {
 
         <div className="intro-image">
           <img
-            src="/images/intro-leotards.png"
+            src="/images/1.PNG"
             alt="Примеры купальников"
             className="intro-image-content"
           />
