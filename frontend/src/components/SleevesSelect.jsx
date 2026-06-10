@@ -10,20 +10,20 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
 
   const sleeves = [
     {
-      value: 3,
-      icon: '🎀',
-      labelKey: 'sleeves.straps',
-      descKey: 'sleeves.strapsDesc',
-      imageKey: 'sleeves.strapsImg',
-      image: '/images/4.PNG'
-    },
-    {
       value: 0,
       icon: '👕',
       labelKey: 'sleeves.none',
       descKey: 'sleeves.noneDesc',
       imageKey: 'sleeves.noneImg',
       image: '/images/3.PNG'
+    },
+    {
+      value: 1,
+      icon: '🦾',
+      labelKey: 'sleeves.one',
+      descKey: 'sleeves.oneDesc',
+      imageKey: 'sleeves.oneImg',
+      image: '/images/3b.PNG'
     },
     {
       value: 2,
@@ -34,12 +34,12 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
       image: '/images/3c.PNG'
     },
     {
-      value: 1,
-      icon: '🦾',
-      labelKey: 'sleeves.one',
-      descKey: 'sleeves.oneDesc',
-      imageKey: 'sleeves.oneImg',
-      image: '/images/3b.PNG'
+      value: 3,
+      icon: '🎀',
+      labelKey: 'sleeves.straps',
+      descKey: 'sleeves.strapsDesc',
+      imageKey: 'sleeves.strapsImg',
+      image: '/images/4.PNG'
     }
   ]
 
