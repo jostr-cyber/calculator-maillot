@@ -123,12 +123,16 @@
     "label": "Select option...",
     "none": "No sleeves",
     "noneDesc": "Classic style",
+    "noneImg": "Example without sleeves",
     "one": "One sleeve",
     "oneDesc": "Asymmetrical design",
+    "oneImg": "Example with one sleeve",
     "two": "Two sleeves",
     "twoDesc": "Full coverage",
+    "twoImg": "Example with two sleeves",
     "straps": "With straps",
-    "strapsDesc": "With decorative straps"
+    "strapsDesc": "With decorative straps",
+    "strapsImg": "Example with straps"
   },
   "skirt": {
     "label": "Select option...",

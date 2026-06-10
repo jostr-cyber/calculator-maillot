@@ -123,12 +123,16 @@
     "label": "Selecciona opción...",
     "none": "Sin mangas",
     "noneDesc": "Estilo clásico",
+    "noneImg": "Ejemplo sin mangas",
     "one": "Una manga",
     "oneDesc": "Diseño asimétrico",
+    "oneImg": "Ejemplo con una manga",
     "two": "Dos mangas",
     "twoDesc": "Cobertura completa",
+    "twoImg": "Ejemplo con dos mangas",
     "straps": "Con tirantes",
-    "strapsDesc": "Con tirantes decorativos"
+    "strapsDesc": "Con tirantes decorativos",
+    "strapsImg": "Ejemplo con tirantes"
   },
   "skirt": {
     "label": "Selecciona opción...",

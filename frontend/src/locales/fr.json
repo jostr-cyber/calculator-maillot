@@ -123,12 +123,16 @@
     "label": "Sélectionnez une option...",
     "none": "Sans manches",
     "noneDesc": "Style classique",
+    "noneImg": "Exemple sans manches",
     "one": "Une manche",
     "oneDesc": "Design asymétrique",
+    "oneImg": "Exemple avec une manche",
     "two": "Deux manches",
     "twoDesc": "Couverture complète",
+    "twoImg": "Exemple avec deux manches",
     "straps": "Avec bretelles",
-    "strapsDesc": "Avec bretelles décoratives"
+    "strapsDesc": "Avec bretelles décoratives",
+    "strapsImg": "Exemple avec bretelles"
   },
   "skirt": {
     "label": "Sélectionnez une option...",

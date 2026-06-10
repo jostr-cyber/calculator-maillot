@@ -13,28 +13,32 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
       icon: '👕',
       labelKey: 'sleeves.none',
       descKey: 'sleeves.noneDesc',
-      image: '🎭'
+      imageKey: 'sleeves.noneImg',
+      image: '/images/3.PNG'
     },
     {
       value: 1,
       icon: '🦾',
       labelKey: 'sleeves.one',
       descKey: 'sleeves.oneDesc',
-      image: '🎭'
+      imageKey: 'sleeves.oneImg',
+      image: '/images/3b.PNG'
     },
     {
       value: 2,
       icon: '💪',
       labelKey: 'sleeves.two',
       descKey: 'sleeves.twoDesc',
-      image: '🎭'
+      imageKey: 'sleeves.twoImg',
+      image: '/images/3c.PNG'
     },
     {
       value: 3,
       icon: '🎀',
       labelKey: 'sleeves.straps',
       descKey: 'sleeves.strapsDesc',
-      image: '🎭'
+      imageKey: 'sleeves.strapsImg',
+      image: '/images/4.PNG'
     }
   ]
 
@@ -76,10 +80,8 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
         <div className="gallery-grid">
           {sleeves.map(sleeve => (
             <div key={sleeve.value} className="gallery-item">
-              <div className="gallery-image-placeholder">
-                <span>{sleeve.image}</span>
-              </div>
-              <p className="gallery-label">{t(sleeve.labelKey)}</p>
+              <img src={sleeve.image} alt={t(sleeve.imageKey)} className="gallery-image" />
+              <p className="gallery-label">{t(sleeve.imageKey)}</p>
             </div>
           ))}
         </div>
