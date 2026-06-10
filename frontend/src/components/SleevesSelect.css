@@ -217,15 +217,6 @@
     font-size: 11px;
   }
 
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-
-  .gallery-image-placeholder {
-    font-size: 40px;
-  }
-
   .gallery-label {
     font-size: 12px;
   }
@@ -331,12 +322,7 @@
   }
 
   .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-  }
-
-  .gallery-image-placeholder {
-    font-size: 36px;
   }
 
   .gallery-label {
