@@ -58,6 +58,7 @@
   },
   "budget": {
     "note": "Le budget est juste une référence pour la comparaison. Le prix dépend uniquement des options sélectionnées.",
+    "undecided": "Toujours indécis",
     "around800": {
       "title": "Environ 800€",
       "desc": "Justaucorps premium avec toutes les options"

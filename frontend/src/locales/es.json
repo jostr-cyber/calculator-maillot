@@ -58,6 +58,7 @@
   },
   "budget": {
     "note": "El presupuesto es solo una referencia para comparación. El precio depende solo de las opciones seleccionadas.",
+    "undecided": "Aún decidiendo",
     "around800": {
       "title": "Alrededor de 800€",
       "desc": "Maillot premium con todas las opciones"

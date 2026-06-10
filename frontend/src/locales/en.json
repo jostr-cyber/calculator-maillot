@@ -58,6 +58,7 @@
   },
   "budget": {
     "note": "Budget is just a reference for comparison. The price depends only on selected options.",
+    "undecided": "Still deciding",
     "around800": {
       "title": "Around 800€",
       "desc": "Premium leotard with all options"
