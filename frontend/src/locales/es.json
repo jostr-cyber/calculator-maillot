@@ -43,7 +43,7 @@
   },
   "steps": {
     "budget": "Selecciona un rango de precio",
-    "height": "Selecciona la altura de la gymnasta (cm)",
+    "height": "Indica la altura de la gimnasta (cm)",
     "designSource": "Diseño",
     "design": "Diseño",
     "sleeves": "¿Cuántas mangas?",
