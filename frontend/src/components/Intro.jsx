@@ -13,9 +13,11 @@ function Intro({ onStart }) {
         </h1>
 
         <div className="intro-image">
-          <div className="intro-image-placeholder">
-            <span>🎭</span>
-          </div>
+          <img
+            src="/images/IMG_3246.PNG"
+            alt="Примеры купальников"
+            className="intro-image-content"
+          />
         </div>
 
         <p className="intro-description">
