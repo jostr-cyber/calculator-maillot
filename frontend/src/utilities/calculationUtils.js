@@ -89,41 +89,66 @@ export const calculatePriceLocal = (config) => {
 };
 
 // Calculate complexity level based on selected options
+// Simple: no sleeves, no skirt, no decorative elements, no aerography
+// Advanced/Medium: one sleeve, one skirt, one decorative element
+// Luxury/Complex: two sleeves, full skirt, aerography, many decorative elements
 export const calculateComplexity = (config) => {
   let complexityScore = 0;
 
-  // Base score for sleeves
+  // Sleeves scoring
+  // 0 (none): 0 points (simple)
+  // 1 (one): 1 point (medium)
+  // 2 (two): 2 points (complex)
+  // 3 (straps): 1 point (medium)
   if (config.sleeves === 1) complexityScore += 1;
   if (config.sleeves === 2) complexityScore += 2;
+  if (config.sleeves === 3) complexityScore += 1; // Straps are medium complexity
 
-  // Base score for skirt
-  if (config.skirt && config.skirt !== '') complexityScore += 1;
-  if (config.skirt === 'both') complexityScore += 1;
-
-  // Score for decorative elements
-  if (config.decorativeElements && config.decorativeElements !== 'none') {
-    const elements = config.decorativeElements.split(',');
-    complexityScore += elements.length;
+  // Skirt scoring
+  // none: 0 points (simple)
+  // front or back: 1 point (medium)
+  // both: 2 points (complex)
+  if (config.skirt === 'front' || config.skirt === 'back') {
+    complexityScore += 1;
+  } else if (config.skirt === 'both') {
+    complexityScore += 2;
   }
 
-  // Score for aerography
-  if (config.aerography && config.aerography !== 'nothing') complexityScore += 2;
+  // Decorative elements scoring
+  // none: 0 points (simple)
+  // 1 element: 1 point (medium)
+  // 2+ elements: 2 points (complex)
+  if (config.decorativeElements && config.decorativeElements !== 'none') {
+    const elements = config.decorativeElements.split(',').filter(e => e);
+    if (elements.length === 1) {
+      complexityScore += 1;
+    } else if (elements.length >= 2) {
+      complexityScore += 2;
+    }
+  }
 
-  // Score for premium stones
-  if (config.premiumStones && config.premiumStones !== 'none') complexityScore += 1;
+  // Aerography scoring
+  // nothing: 0 points (simple)
+  // yes: 2 points (complex)
+  if (config.aerography && config.aerography !== 'nothing') {
+    complexityScore += 2;
+  }
 
-  // Score for urgency (indicates high complexity request)
-  if (config.urgency && config.urgency !== 'none') complexityScore += 1;
+  // Premium stones scoring (adds 1 point but doesn't make it complex alone)
+  if (config.premiumStones && config.premiumStones !== 'none') {
+    complexityScore += 1;
+  }
 
-  // Score for custom design
-  if (config.design === 'customer-design') complexityScore += 1;
+  // Custom design scoring (doesn't affect complexity directly, as it's about design process)
+  // Design source doesn't add to complexity
 
   // Determine complexity level
+  // Simple: score 0
+  // Advanced (Medium): score 1-3
+  // Luxury (Complex): score 4+
   if (complexityScore === 0) {
     return { level: 'Simple', score: 0, labelKey: 'complexity.simple' };
   } else if (complexityScore <= 3) {
-    return { level: 'Simple', score: complexityScore, labelKey: 'complexity.simple' };
-  } else if (complexityScore <= 6) {
     return { level: 'Advanced', score: complexityScore, labelKey: 'complexity.advanced' };
   } else {
     return { level: 'Luxury', score: complexityScore, labelKey: 'complexity.luxury' };
