@@ -8,7 +8,7 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
   const [showReducePriceModal, setShowReducePriceModal] = useState(false)
   const summary = formatConfigurationSummary(config)
 
-  // Budget limits for comparison
+  // Budget limits for mapping numeric values
   const BUDGET_LIMITS = {
     'under-250': 250,
     'around-400': 400,
@@ -16,12 +16,33 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
     'unknown': null
   }
 
+  // Helper function to map numeric budget values to category keys
+  const mapBudgetValueToKey = (value) => {
+    if (!value || value === 'undecided' || value === 'unknown') {
+      return 'unknown'
+    }
+    if (value === 'plus' || value >= 800) {
+      return 'around-800'
+    }
+    if (value >= 400) {
+      return 'around-400'
+    }
+    if (value <= 250) {
+      return 'under-250'
+    }
+    return 'unknown'
+  }
+
   // Calculate budget excess
   const getBudgetExcess = () => {
-    if (!selectedBudget || selectedBudget === 'unknown' || !BUDGET_LIMITS[selectedBudget]) {
+    if (!selectedBudget || selectedBudget === 'undecided') {
       return null
     }
-    const budgetLimit = BUDGET_LIMITS[selectedBudget]
+    const budgetKey = mapBudgetValueToKey(selectedBudget)
+    if (budgetKey === 'unknown' || !BUDGET_LIMITS[budgetKey]) {
+      return null
+    }
+    const budgetLimit = BUDGET_LIMITS[budgetKey]
     const excess = priceResult.finalPrice - budgetLimit
     return excess > 0 ? Math.round(excess) : null
   }

@@ -36,6 +36,23 @@ const BUDGET_REFERENCE = {
   'unknown': { limit: null, key: 'unknown' }
 }
 
+// Helper function to convert numeric budget values to BUDGET_REFERENCE keys
+const mapBudgetValueToKey = (value) => {
+  if (!value || value === 'undecided' || value === 'unknown') {
+    return 'unknown'
+  }
+  if (value === 'plus' || value >= 800) {
+    return 'around-800'
+  }
+  if (value >= 400) {
+    return 'around-400'
+  }
+  if (value <= 250) {
+    return 'under-250'
+  }
+  return 'unknown'
+}
+
 // Helper function to calculate budget comparison message
 const calculateBudgetComparison = (finalPrice, budgetRef) => {
   if (!budgetRef || budgetRef.limit === null) {
@@ -244,7 +261,7 @@ function App() {
   }
 
 
-  const handleCalculate = async (urgencyVal = urgency) => {
+  const handleCalculate = async (urgencyVal = urgency, budgetVal = null) => {
     setLoading(true)
     setError(null)
 
@@ -266,8 +283,10 @@ function App() {
 
       const data = calculatePriceLocal(config)
 
-      // Calculate budget comparison
-      const budgetRef = BUDGET_REFERENCE[selectedBudget]
+      // Calculate budget comparison using passed budget value or current state
+      const budgetToUse = budgetVal !== null ? budgetVal : selectedBudget
+      const budgetKey = mapBudgetValueToKey(budgetToUse)
+      const budgetRef = BUDGET_REFERENCE[budgetKey]
       const comparison = calculateBudgetComparison(data.finalPrice, budgetRef)
       data.budgetComparison = comparison
 
@@ -486,7 +505,10 @@ function App() {
           <BudgetSlider
             value={selectedBudget}
             onBudgetChange={setSelectedBudget}
-            onContinue={() => handleCalculate(urgency)}
+            onContinue={(selectedBudgetValue) => {
+              setSelectedBudget(selectedBudgetValue)
+              setTimeout(() => handleCalculate(urgency, selectedBudgetValue), 0)
+            }}
             onBack={handleBack}
             config={config}
             currentPrice={currentPrice}

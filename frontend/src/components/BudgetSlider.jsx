@@ -39,7 +39,7 @@ function BudgetSlider({ value, onBudgetChange, onContinue, onBack, config, curre
 
   const handleContinue = () => {
     onBudgetChange(selected)
-    onContinue()
+    onContinue(selected)
   }
 
   // Find current index for slider
