@@ -145,7 +145,7 @@ function App() {
     }, 300)
 
     return () => clearTimeout(timer)
-  }, [sleeves, skirt, decorativeElements, aerography, combinaison, urgency, design, designSource, step, heightCategory, shoulder, premiumStones])
+  }, [sleeves, skirt, decorativeElements, aerography, combinaison, urgency, design, designSource, step, heightCategory, shoulder, premiumStones, rhinestone])
 
   const calculatePriceAsync = async (urgencyVal = urgency) => {
     const config = {
