@@ -288,7 +288,16 @@
     "exceedInfo": "Your desired budget has been exceeded by",
     "recommendation": "To reduce the cost of the leotard, we recommend changing some of your selected parameters:",
     "noBudgetComparison": "If you would like to reduce the price, here are some ways you can do it:",
-    "noRecommendations": "No possible cost reductions with current parameters"
+    "noRecommendations": "No possible cost reductions with current parameters",
+    "recommendations": {
+      "rhinestoneRemoveAll": "Remove all rhinestones",
+      "rhinestoneMinimal": "Remove rhinestones and use minimal set",
+      "rhinestoneStandard": "Replace maximum rhinestones with standard set",
+      "rhinestoneMaximum": "Replace premium rhinestones with standard set",
+      "urgencyStandard": "Change from expedited to standard production time",
+      "decorativeElements": "Remove decorative elements",
+      "aerography": "Remove aerography/painting"
+    }
   },
   "wheel": {
     "description": "Try your luck and discover what discount you will get",

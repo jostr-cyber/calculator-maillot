@@ -288,7 +288,16 @@
     "exceedInfo": "Tu presupuesto deseado se ha excedido por",
     "recommendation": "Para reducir el costo del maillot, recomendamos cambiar algunos de los parámetros seleccionados:",
     "noBudgetComparison": "Si deseas reducir el precio, aquí hay algunas formas en que puedes hacerlo:",
-    "noRecommendations": "Sin reducciones de costo posibles con los parámetros actuales"
+    "noRecommendations": "Sin reducciones de costo posibles con los parámetros actuales",
+    "recommendations": {
+      "rhinestoneRemoveAll": "Eliminar todos los cristales",
+      "rhinestoneMinimal": "Eliminar cristales y usar conjunto mínimo",
+      "rhinestoneStandard": "Reemplazar cristales máximos con conjunto estándar",
+      "rhinestoneMaximum": "Reemplazar cristales premium con conjunto estándar",
+      "urgencyStandard": "Cambiar de entrega acelerada a estándar",
+      "decorativeElements": "Eliminar elementos decorativos",
+      "aerography": "Eliminar pintura/aerografía"
+    }
   },
   "wheel": {
     "description": "Prueba tu suerte y descubre qué descuento obtendrás",

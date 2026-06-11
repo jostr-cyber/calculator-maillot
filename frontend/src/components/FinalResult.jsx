@@ -33,10 +33,10 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
     // Priority 1: Rhinestones
     if (config.rhinestone && config.rhinestone !== 'none') {
       const rhinestoneMap = {
-        'premium': { savings: 200, label: 'Replace premium stones with standard stones (-200 €)' },
-        'maximum': { savings: 120, label: 'Replace maximum stones with standard stones (-120 €)' },
-        'standard': { savings: 70, label: 'Replace standard stones with minimal set (-70 €)' },
-        'minimal': { savings: 30, label: 'Remove all rhinestones (-30 €)' }
+        'premium': { savings: 200, labelKey: 'priceReduction.recommendations.rhinestoneMaximum' },
+        'maximum': { savings: 120, labelKey: 'priceReduction.recommendations.rhinestoneStandard' },
+        'standard': { savings: 70, labelKey: 'priceReduction.recommendations.rhinestoneMinimal' },
+        'minimal': { savings: 30, labelKey: 'priceReduction.recommendations.rhinestoneRemoveAll' }
       }
       if (rhinestoneMap[config.rhinestone]) {
         recommendations.push({
@@ -47,13 +47,13 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
       }
     }
 
-    // Priority 2: Urgency (expedited to standard)
+    // Priority 2: Urgency (accelerated to standard)
     if (config.urgency && config.urgency === 'accelerated') {
       recommendations.push({
         priority: 2,
         param: 'urgency',
         savings: Math.round(priceResult.finalPrice * 0.1), // 10% surcharge
-        label: 'Change from expedited to standard production time (save 10%)'
+        labelKey: 'priceReduction.recommendations.urgencyStandard'
       })
     }
 
@@ -73,7 +73,7 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
           priority: 3,
           param: 'decorativeElements',
           savings: savings,
-          label: `Remove decorative elements (-${savings} €)`
+          labelKey: 'priceReduction.recommendations.decorativeElements'
         })
       }
     }
@@ -84,7 +84,7 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
         priority: 4,
         param: 'aerography',
         savings: 20,
-        label: 'Remove aerography/painting (-20 €)'
+        labelKey: 'priceReduction.recommendations.aerography'
       })
     }
 
@@ -211,7 +211,7 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
                   <div key={index} className="reduction-item">
                     <div className="reduction-label">
                       <span className="reduction-priority">#{reduction.priority}</span>
-                      <span className="reduction-text">{reduction.label}</span>
+                      <span className="reduction-text">{t(reduction.labelKey)}</span>
                     </div>
                     <span className="reduction-savings">-{reduction.savings} €</span>
                   </div>

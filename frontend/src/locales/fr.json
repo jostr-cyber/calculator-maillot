@@ -288,7 +288,16 @@
     "exceedInfo": "Votre budget souhaité a été dépassé de",
     "recommendation": "Pour réduire le coût du maillot, nous vous recommandons de modifier certains des paramètres sélectionnés:",
     "noBudgetComparison": "Si vous souhaitez réduire le prix, voici quelques façons de le faire:",
-    "noRecommendations": "Aucune réduction de coût possible avec les paramètres actuels"
+    "noRecommendations": "Aucune réduction de coût possible avec les paramètres actuels",
+    "recommendations": {
+      "rhinestoneRemoveAll": "Supprimer tous les strass",
+      "rhinestoneMinimal": "Supprimer les strass et utiliser l'ensemble minimal",
+      "rhinestoneStandard": "Remplacer les strass maximaux par l'ensemble standard",
+      "rhinestoneMaximum": "Remplacer les strass premium par l'ensemble standard",
+      "urgencyStandard": "Passer de la livraison accélérée à la livraison standard",
+      "decorativeElements": "Supprimer les éléments décoratifs",
+      "aerography": "Supprimer la peinture/aérographie"
+    }
   },
   "wheel": {
     "description": "Tentez votre chance et découvrez quelle remise vous obtiendrez",
