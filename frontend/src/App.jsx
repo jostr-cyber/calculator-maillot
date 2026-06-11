@@ -115,7 +115,7 @@ function App() {
 
   // Calculate current price whenever configuration changes (debounced)
   useEffect(() => {
-    if (step === 'budget' || step === 'height' || !designSource) {
+    if (step === 'height' || !designSource) {
       return // Skip if not ready
     }
 
