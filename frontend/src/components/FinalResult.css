@@ -675,6 +675,14 @@
   line-height: 1.4;
 }
 
+.reduction-new-price {
+  display: block;
+  font-size: 12px;
+  color: #7c3aed;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
 .reduction-savings {
   font-size: 14px;
   font-weight: 700;

@@ -285,6 +285,7 @@
     "save": "save",
     "remove": "Remove",
     "choose": "Choose",
+    "newPrice": "New price",
     "exceedInfo": "Your desired budget has been exceeded by",
     "recommendation": "To reduce the cost of the leotard, we recommend changing some of your selected parameters:",
     "noBudgetComparison": "If you would like to reduce the price, here are some ways you can do it:",

@@ -229,15 +229,22 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
 
             <div className="reduction-list">
               {priceReductions.length > 0 ? (
-                priceReductions.map((reduction, index) => (
-                  <div key={index} className="reduction-item">
-                    <div className="reduction-label">
-                      <span className="reduction-priority">#{reduction.priority}</span>
-                      <span className="reduction-text">{t(reduction.labelKey)}</span>
+                priceReductions.map((reduction, index) => {
+                  const newPrice = priceResult.finalPrice - reduction.savings
+                  return (
+                    <div key={index} className="reduction-item">
+                      <div className="reduction-label">
+                        <span className="reduction-priority">#{reduction.priority}</span>
+                        <span className="reduction-text">
+                          {t(reduction.labelKey)}
+                          <br />
+                          <span className="reduction-new-price">{t('priceReduction.newPrice') || 'New price'}: {newPrice} €</span>
+                        </span>
+                      </div>
+                      <span className="reduction-savings">-{reduction.savings} €</span>
                     </div>
-                    <span className="reduction-savings">-{reduction.savings} €</span>
-                  </div>
-                ))
+                  )
+                })
               ) : (
                 <p className="no-recommendations">{t('priceReduction.noRecommendations') || 'No further reductions available'}</p>
               )}
