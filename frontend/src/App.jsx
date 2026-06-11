@@ -289,6 +289,7 @@ function App() {
       const budgetRef = BUDGET_REFERENCE[budgetKey]
       const comparison = calculateBudgetComparison(data.finalPrice, budgetRef)
       data.budgetComparison = comparison
+      console.log('💰 Budget Comparison:', { budgetVal, selectedBudget, budgetToUse, budgetKey, budgetRef, finalPrice: data.finalPrice, comparison })
 
       setPriceResult(data)
       setStep('result')

@@ -44,6 +44,7 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
     }
     const budgetLimit = BUDGET_LIMITS[budgetKey]
     const excess = priceResult.finalPrice - budgetLimit
+    console.log('🔍 Budget Debug:', { selectedBudget, budgetKey, budgetLimit, finalPrice: priceResult.finalPrice, excess })
     return excess > 0 ? Math.round(excess) : null
   }
 
