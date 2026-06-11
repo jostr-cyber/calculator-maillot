@@ -116,8 +116,11 @@ function App() {
   // Calculate current price whenever configuration changes (debounced)
   useEffect(() => {
     if (step === 'budget' || step === 'height' || !designSource) {
+      console.log('⏭️ Skipping price calculation: step=', step, 'designSource=', designSource)
       return // Skip if not ready
     }
+
+    console.log('🔧 Calculating price: designSource=', designSource, 'height=', heightCategory, 'step=', step)
 
     const config = {
       height: heightCategory,
@@ -131,12 +134,15 @@ function App() {
       urgency: urgency || 'none',
       rhinestone: rhinestone || 'none',
       design: design || 'our-design',
-      designSource: designSource || 'inspiration-photos'
+      designSource: designSource
     }
+
+    console.log('📋 Config:', config)
 
     // Debounce price calculation
     const timer = setTimeout(() => {
       const data = calculatePriceLocal(config)
+      console.log('💰 Price result:', data)
       setCurrentPrice(data.finalPrice)
       const complexityLevel = calculateComplexity(config)
       setComplexity(complexityLevel)
