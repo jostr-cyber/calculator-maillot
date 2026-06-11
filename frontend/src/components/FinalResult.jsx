@@ -67,6 +67,12 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
   const priceReductions = generatePriceReductions()
 
   const handleReducePrice = () => {
+    console.log('🔍 Reduce Price Modal Debug:')
+    console.log('  selectedBudget:', selectedBudget)
+    console.log('  priceResult:', priceResult)
+    console.log('  config:', config)
+    console.log('  budgetExcess:', budgetExcess)
+    console.log('  priceReductions:', priceReductions)
     setShowReducePriceModal(true)
   }
 
