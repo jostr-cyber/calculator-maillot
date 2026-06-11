@@ -285,9 +285,9 @@
     "save": "ahorrar",
     "remove": "Eliminar",
     "choose": "Elegir",
-    "exceedInfo": "Tu presupuesto deseado se excedió por",
+    "exceedInfo": "Tu presupuesto deseado se ha excedido por",
     "recommendation": "Para reducir el costo del maillot, recomendamos cambiar algunos de los parámetros seleccionados:",
-    "noBudgetComparison": "Si deseas reducir el precio, aquí hay formas recomendadas para hacerlo:",
+    "noBudgetComparison": "Si deseas reducir el precio, aquí hay algunas formas en que puedes hacerlo:",
     "noRecommendations": "Sin reducciones de costo posibles con los parámetros actuales"
   },
   "wheel": {

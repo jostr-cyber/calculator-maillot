@@ -285,9 +285,9 @@
     "save": "save",
     "remove": "Remove",
     "choose": "Choose",
-    "exceedInfo": "Your desired budget exceeded by",
+    "exceedInfo": "Your desired budget has been exceeded by",
     "recommendation": "To reduce the cost of the leotard, we recommend changing some of your selected parameters:",
-    "noBudgetComparison": "If you would like to reduce the price, here are recommended ways to do so:",
+    "noBudgetComparison": "If you would like to reduce the price, here are some ways you can do it:",
     "noRecommendations": "No possible cost reductions with current parameters"
   },
   "wheel": {
