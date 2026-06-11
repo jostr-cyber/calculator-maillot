@@ -44,7 +44,7 @@ const mapBudgetValueToKey = (value) => {
   if (value === 'plus' || value >= 800) {
     return 'around-800'
   }
-  if (value >= 400) {
+  if (value >= 300) {
     return 'around-400'
   }
   if (value <= 250) {
