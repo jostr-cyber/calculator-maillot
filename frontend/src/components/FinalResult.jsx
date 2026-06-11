@@ -33,10 +33,10 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
     // Priority 1: Rhinestones
     if (config.rhinestone && config.rhinestone !== 'none') {
       const rhinestoneMap = {
-        'premium': { savings: 200, label: 'Remove premium stones and use standard stones' },
-        'maximum': { savings: 120, label: 'Remove maximum stones and use standard stones' },
-        'standard': { savings: 70, label: 'Remove stones and use minimal set' },
-        'minimal': { savings: 30, label: 'Remove all rhinestones' }
+        'premium': { savings: 200, label: 'Replace premium stones with standard stones (-200 €)' },
+        'maximum': { savings: 120, label: 'Replace maximum stones with standard stones (-120 €)' },
+        'standard': { savings: 70, label: 'Replace standard stones with minimal set (-70 €)' },
+        'minimal': { savings: 30, label: 'Remove all rhinestones (-30 €)' }
       }
       if (rhinestoneMap[config.rhinestone]) {
         recommendations.push({
@@ -48,17 +48,49 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
     }
 
     // Priority 2: Urgency (expedited to standard)
-    if (config.urgency === 'expedited') {
+    if (config.urgency && config.urgency === 'accelerated') {
       recommendations.push({
         priority: 2,
         param: 'urgency',
         savings: Math.round(priceResult.finalPrice * 0.1), // 10% surcharge
-        label: 'Change from expedited to standard production time'
+        label: 'Change from expedited to standard production time (save 10%)'
+      })
+    }
+
+    // Priority 3: Decorative elements
+    if (config.decorativeElements && config.decorativeElements !== 'none' && config.decorativeElements !== '') {
+      const elements = config.decorativeElements.split(',').filter(e => e.trim());
+      let savings = 0;
+      elements.forEach(el => {
+        const e = el.trim();
+        if (e === 'feathers') savings += 10;
+        else if (e === 'fringe') savings += 20;
+        else if (e === 'flowers') savings += 10;
+        else if (e === 'other') savings += 15;
+      });
+      if (savings > 0) {
+        recommendations.push({
+          priority: 3,
+          param: 'decorativeElements',
+          savings: savings,
+          label: `Remove decorative elements (-${savings} €)`
+        })
+      }
+    }
+
+    // Priority 4: Aerography
+    if (config.aerography && config.aerography !== 'nothing' && config.aerography !== '') {
+      recommendations.push({
+        priority: 4,
+        param: 'aerography',
+        savings: 20,
+        label: 'Remove aerography/painting (-20 €)'
       })
     }
 
     // Don't recommend changing combinaison - if they selected it, they need it
-    // Don't recommend changing other parameters as they're usually part of the design
+    // Don't recommend changing design - it's part of their creative vision
+    // Don't recommend changing skirt/sleeves - they're structural choices
 
     return recommendations.sort((a, b) => a.priority - b.priority)
   }
@@ -67,12 +99,6 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
   const priceReductions = generatePriceReductions()
 
   const handleReducePrice = () => {
-    console.log('🔍 Reduce Price Modal Debug:')
-    console.log('  selectedBudget:', selectedBudget)
-    console.log('  priceResult:', priceResult)
-    console.log('  config:', config)
-    console.log('  budgetExcess:', budgetExcess)
-    console.log('  priceReductions:', priceReductions)
     setShowReducePriceModal(true)
   }
 
@@ -167,35 +193,33 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
             <h3>{t('priceReduction.title') || 'Ways to reduce the price'}</h3>
 
             {budgetExcess ? (
-              <>
-                <div className="budget-excess-info">
-                  <p>{t('priceReduction.exceedInfo') || 'Your desired budget exceeded by'} <strong>{budgetExcess} €</strong></p>
-                  <p className="budget-excess-recommendation">
-                    {t('priceReduction.recommendation') || 'To reduce the cost of the leotard, we recommend changing some of your selected parameters:'}
-                  </p>
-                </div>
-
-                <div className="reduction-list">
-                  {priceReductions.length > 0 ? (
-                    priceReductions.map((reduction, index) => (
-                      <div key={index} className="reduction-item">
-                        <div className="reduction-label">
-                          <span className="reduction-priority">#{reduction.priority}</span>
-                          <span className="reduction-text">{reduction.label}</span>
-                        </div>
-                        <span className="reduction-savings">-{reduction.savings} €</span>
-                      </div>
-                    ))
-                  ) : (
-                    <p className="no-recommendations">{t('priceReduction.noRecommendations') || 'No further reductions available'}</p>
-                  )}
-                </div>
-              </>
+              <div className="budget-excess-info">
+                <p>{t('priceReduction.exceedInfo') || 'Your desired budget exceeded by'} <strong>{budgetExcess} €</strong></p>
+                <p className="budget-excess-recommendation">
+                  {t('priceReduction.recommendation') || 'To reduce the cost of the leotard, we recommend changing some of your selected parameters:'}
+                </p>
+              </div>
             ) : (
               <div className="no-budget-info">
-                <p>{t('priceReduction.noBudgetComparison') || 'You did not select a specific budget, so we cannot provide specific recommendations.'}</p>
+                <p>{t('priceReduction.noBudgetComparison') || 'You did not select a specific budget, but here are ways to reduce the cost:'}</p>
               </div>
             )}
+
+            <div className="reduction-list">
+              {priceReductions.length > 0 ? (
+                priceReductions.map((reduction, index) => (
+                  <div key={index} className="reduction-item">
+                    <div className="reduction-label">
+                      <span className="reduction-priority">#{reduction.priority}</span>
+                      <span className="reduction-text">{reduction.label}</span>
+                    </div>
+                    <span className="reduction-savings">-{reduction.savings} €</span>
+                  </div>
+                ))
+              ) : (
+                <p className="no-recommendations">{t('priceReduction.noRecommendations') || 'No further reductions available'}</p>
+              )}
+            </div>
 
             <button className="modal-close-btn" onClick={closeReducePriceModal}>
               {t('buttons.back') || 'Back'}
