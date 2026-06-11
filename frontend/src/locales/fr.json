@@ -284,7 +284,11 @@
     "title": "Façons de réduire le prix",
     "save": "économiser",
     "remove": "Supprimer",
-    "choose": "Choisir"
+    "choose": "Choisir",
+    "exceedInfo": "Votre budget souhaité a été dépassé de",
+    "recommendation": "Pour réduire le coût du maillot, nous vous recommandons de modifier certains des paramètres sélectionnés:",
+    "noBudgetComparison": "Si vous souhaitez réduire le prix, voici les façons recommandées de le faire:",
+    "noRecommendations": "Aucune réduction de coût possible avec les paramètres actuels"
   },
   "wheel": {
     "description": "Tentez votre chance et découvrez quelle remise vous obtiendrez",
