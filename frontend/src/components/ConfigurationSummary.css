@@ -25,6 +25,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0px 8px;
+  align-items: start;
 }
 
 .summary-item {
