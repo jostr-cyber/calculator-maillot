@@ -6,6 +6,26 @@ import './DecorativeElementsSelect.css'
 function DecorativeElementsSelect({ onConfirm, onDecorativeElementsChange, onContinue, onBack, config, currentPrice, complexity }) {
   const { t } = useTranslation()
   const [selected, setSelected] = useState([])
+  const [openedImage, setOpenedImage] = useState(null)
+
+  const handleImageClick = (image) => {
+    setOpenedImage(image)
+  }
+
+  const closeModal = () => {
+    setOpenedImage(null)
+  }
+
+  const galleryImages = [
+    '/images/ornament/IMG_3259.PNG',
+    '/images/ornament/IMG_3511.JPEG',
+    '/images/ornament/IMG_3516.JPEG',
+    '/images/ornament/IMG_3517.JPEG',
+    '/images/ornament/IMG_3518.JPEG',
+    '/images/ornament/IMG_3521.JPEG',
+    '/images/ornament/IMG_3523.JPEG',
+    '/images/ornament/IMG_3534.JPEG'
+  ]
 
   const options = [
     { value: 'feathers', labelKey: 'decorativeElements.feathers', icon: '/images/pero.PNG', image: '🎭' },
@@ -97,19 +117,33 @@ function DecorativeElementsSelect({ onConfirm, onDecorativeElementsChange, onCon
         })}
       </div>
 
-      {/* Images Gallery */}
+      {/* Examples Gallery */}
       <div className="decorative-gallery">
+        <h3 className="gallery-title">Примеры дополнительных объемных деталей на купальниках нашего ателье: объемные цветы, бахрома, перья, погон на плечо, реалистичная имитация ремней и т.д.</h3>
         <div className="gallery-grid">
-          {options.map(opt => (
-            <div key={opt.value} className="gallery-item">
-              <div className="gallery-image-placeholder">
-                <span>{opt.image}</span>
-              </div>
-              <p className="gallery-label">{t(opt.labelKey)}</p>
+          {galleryImages.map((image, index) => (
+            <div key={index} className="gallery-item">
+              <img
+                src={image}
+                alt={`Пример детали ${index + 1}`}
+                className="gallery-image"
+                onClick={() => handleImageClick(image)}
+                style={{ cursor: 'pointer' }}
+              />
             </div>
           ))}
         </div>
       </div>
+
+      {/* Image Modal */}
+      {openedImage && (
+        <div className="image-modal" onClick={closeModal}>
+          <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="image-modal-close" onClick={closeModal}>✕</button>
+            <img src={openedImage} alt="Full size" className="image-modal-image" />
+          </div>
+        </div>
+      )}
 
       {config && currentPrice && complexity && (
         <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
