@@ -362,10 +362,10 @@ export const formatConfigurationSummary = (config) => {
   // Rhinestones
   if (config.rhinestone && config.rhinestone !== 'none' && config.rhinestone !== '') {
     const rhinestoneNames = {
-      'minimal': 'Стразы минимальные',
-      'standard': 'Стразы стандартные',
-      'maximum': 'Стразы максимальные',
-      'premium': 'Стразы премиум'
+      'minimal': 'Минимальный набор страз',
+      'standard': 'Стандартный набор страз',
+      'maximum': 'Максимальный набор страз',
+      'premium': 'Премиум стразы'
     };
     if (rhinestoneNames[config.rhinestone]) {
       summary.push('• ' + rhinestoneNames[config.rhinestone]);
