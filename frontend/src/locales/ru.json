@@ -8,9 +8,9 @@
     "startButton": "Начать расчет"
   },
   "complexity": {
-    "simple": "Простой",
-    "advanced": "Средний",
-    "luxury": "Люкс"
+    "simple": "Простая",
+    "advanced": "Средняя",
+    "luxury": "Высокая"
   },
   "productionTime": {
     "standard": "7-14 дней",
