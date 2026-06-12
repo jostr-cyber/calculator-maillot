@@ -119,7 +119,7 @@ function DecorativeElementsSelect({ onConfirm, onDecorativeElementsChange, onCon
 
       {/* Examples Gallery */}
       <div className="decorative-gallery">
-        <h3 className="gallery-title">Примеры дополнительных объемных деталей на купальниках нашего ателье: объемные цветы, бахрома, перья, погон на плечо, реалистичная имитация ремней и т.д.</h3>
+        <h3 className="gallery-title">Примеры дополнительных объемных деталей на купальниках нашего ателье: объемные цветы, бахрома, перья, погон на плечо</h3>
         <div className="gallery-grid">
           {galleryImages.map((image, index) => (
             <div key={index} className="gallery-item">
