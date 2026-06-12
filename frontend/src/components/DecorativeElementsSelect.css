@@ -74,7 +74,7 @@
 
 .option-icon {
   font-size: 64px;
-  line-height: 1;
+  line-height: 0.9;
   flex-shrink: 0;
   width: 64px;
   height: 64px;
