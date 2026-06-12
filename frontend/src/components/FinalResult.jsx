@@ -8,43 +8,17 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
   const [showReducePriceModal, setShowReducePriceModal] = useState(false)
   const summary = formatConfigurationSummary(config)
 
-  // Budget limits for mapping numeric values
-  const BUDGET_LIMITS = {
-    'under-250': 250,
-    'around-400': 400,
-    'around-800': 800,
-    'unknown': null
-  }
-
-  // Helper function to map numeric budget values to category keys
-  const mapBudgetValueToKey = (value) => {
-    if (!value || value === 'undecided' || value === 'unknown') {
-      return 'unknown'
-    }
-    if (value === 'plus' || value >= 800) {
-      return 'around-800'
-    }
-    if (value >= 300) {
-      return 'around-400'
-    }
-    if (value <= 250) {
-      return 'under-250'
-    }
-    return 'unknown'
-  }
-
-  // Calculate budget excess
+  // Calculate budget excess against the actual selected budget value
   const getBudgetExcess = () => {
-    if (!selectedBudget || selectedBudget === 'undecided') {
+    if (!selectedBudget || selectedBudget === 'undecided' || selectedBudget === 'unknown') {
       return null
     }
-    const budgetKey = mapBudgetValueToKey(selectedBudget)
-    if (budgetKey === 'unknown' || !BUDGET_LIMITS[budgetKey]) {
+    // selectedBudget is the exact value chosen on the slider (e.g. 300), or 'plus' for 800+
+    const budgetLimit = selectedBudget === 'plus' ? 800 : Number(selectedBudget)
+    if (!budgetLimit || isNaN(budgetLimit)) {
       return null
     }
-    const budgetLimit = BUDGET_LIMITS[budgetKey]
     const excess = priceResult.finalPrice - budgetLimit
-    console.log('🔍 Budget Debug:', { selectedBudget, budgetKey, budgetLimit, finalPrice: priceResult.finalPrice, excess })
     return excess > 0 ? Math.round(excess) : null
   }
 

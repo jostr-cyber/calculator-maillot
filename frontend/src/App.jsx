@@ -28,29 +28,16 @@ import {
   getProductionTime
 } from './utilities/calculationUtils'
 
-// Budget reference levels for comparison only - do NOT affect pricing
-const BUDGET_REFERENCE = {
-  'under-250': { limit: 250, key: 'under-250' },
-  'around-400': { limit: 400, key: 'around-400' },
-  'around-800': { limit: 800, key: 'around-800' },
-  'unknown': { limit: null, key: 'unknown' }
-}
-
-// Helper function to convert numeric budget values to BUDGET_REFERENCE keys
-const mapBudgetValueToKey = (value) => {
+// Build a budget reference from the actual selected value (exact number, not a coarse tier)
+const getBudgetRef = (value) => {
   if (!value || value === 'undecided' || value === 'unknown') {
-    return 'unknown'
+    return { limit: null, key: 'unknown' }
   }
-  if (value === 'plus' || value >= 800) {
-    return 'around-800'
+  const limit = value === 'plus' ? 800 : Number(value)
+  if (!limit || isNaN(limit)) {
+    return { limit: null, key: 'unknown' }
   }
-  if (value >= 300) {
-    return 'around-400'
-  }
-  if (value <= 250) {
-    return 'under-250'
-  }
-  return 'unknown'
+  return { limit, key: String(value) }
 }
 
 // Helper function to calculate budget comparison message
@@ -193,8 +180,8 @@ function App() {
 
       const data = await response.json()
 
-      // Calculate budget comparison
-      const budgetRef = BUDGET_REFERENCE[selectedBudget]
+      // Calculate budget comparison against the actual selected budget value
+      const budgetRef = getBudgetRef(selectedBudget)
       const comparison = calculateBudgetComparison(data.finalPrice, budgetRef)
       data.budgetComparison = comparison
 
@@ -316,13 +303,11 @@ function App() {
 
       const data = calculatePriceLocal(config)
 
-      // Calculate budget comparison using passed budget value or current state
+      // Calculate budget comparison against the actual selected budget value
       const budgetToUse = budgetVal !== null ? budgetVal : selectedBudget
-      const budgetKey = mapBudgetValueToKey(budgetToUse)
-      const budgetRef = BUDGET_REFERENCE[budgetKey]
+      const budgetRef = getBudgetRef(budgetToUse)
       const comparison = calculateBudgetComparison(data.finalPrice, budgetRef)
       data.budgetComparison = comparison
-      console.log('💰 Budget Comparison:', { budgetVal, selectedBudget, budgetToUse, budgetKey, budgetRef, finalPrice: data.finalPrice, comparison })
 
       setPriceResult(data)
       setStep('result')
