@@ -6,24 +6,13 @@ import './DecorativeElementsSelect.css'
 function DecorativeElementsSelect({ onConfirm, onDecorativeElementsChange, onContinue, onBack, config, currentPrice, complexity }) {
   const { t } = useTranslation()
   const [selected, setSelected] = useState([])
-  const [openedImage, setOpenedImage] = useState(null)
-
-  const handleImageClick = (e, image) => {
-    e.preventDefault()
-    e.stopPropagation()
-    setOpenedImage(image)
-  }
-
-  const closeModal = () => {
-    setOpenedImage(null)
-  }
 
   const options = [
-    { value: 'feathers', labelKey: 'decorativeElements.feathers', icon: '/images/pero.PNG' },
-    { value: 'fringe', labelKey: 'decorativeElements.fringe', icon: '/images/fringe.PNG' },
-    { value: 'flowers', labelKey: 'decorativeElements.flowers', icon: '/images/flower.PNG' },
-    { value: 'other', labelKey: 'decorativeElements.other', icon: '/images/pogon.PNG' },
-    { value: 'nothing', labelKey: 'decorativeElements.nothing', icon: '🚫' }
+    { value: 'feathers', labelKey: 'decorativeElements.feathers', icon: '/images/pero.PNG', image: '🎭' },
+    { value: 'fringe', labelKey: 'decorativeElements.fringe', icon: '/images/fringe.PNG', image: '🎭' },
+    { value: 'flowers', labelKey: 'decorativeElements.flowers', icon: '/images/flower.PNG', image: '🎭' },
+    { value: 'other', labelKey: 'decorativeElements.other', icon: '/images/pogon.PNG', image: '🎭' },
+    { value: 'nothing', labelKey: 'decorativeElements.nothing', icon: '🚫', image: '🎭' }
   ]
 
   const handleToggle = (value) => {
@@ -96,12 +85,7 @@ function DecorativeElementsSelect({ onConfirm, onDecorativeElementsChange, onCon
               <div className="option-card-content">
                 <div className="option-icon">
                   {opt.icon.startsWith('/') ? (
-                    <img
-                      src={opt.icon}
-                      alt={t(opt.labelKey)}
-                      onClick={(e) => handleImageClick(e, opt.icon)}
-                      style={{ cursor: 'pointer' }}
-                    />
+                    <img src={opt.icon} alt={t(opt.labelKey)} />
                   ) : (
                     <span className="icon-emoji">{opt.icon}</span>
                   )}
@@ -113,15 +97,19 @@ function DecorativeElementsSelect({ onConfirm, onDecorativeElementsChange, onCon
         })}
       </div>
 
-      {/* Image Modal */}
-      {openedImage && (
-        <div className="image-modal" onClick={closeModal}>
-          <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="image-modal-close" onClick={closeModal}>✕</button>
-            <img src={openedImage} alt="Full size" className="image-modal-image" />
-          </div>
+      {/* Images Gallery */}
+      <div className="decorative-gallery">
+        <div className="gallery-grid">
+          {options.map(opt => (
+            <div key={opt.value} className="gallery-item">
+              <div className="gallery-image-placeholder">
+                <span>{opt.image}</span>
+              </div>
+              <p className="gallery-label">{t(opt.labelKey)}</p>
+            </div>
+          ))}
         </div>
-      )}
+      </div>
 
       {config && currentPrice && complexity && (
         <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
