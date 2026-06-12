@@ -6,6 +6,34 @@ import './RhinestoneSelect.css'
 function RhinestoneSelect({ value, onRhinestoneChange, onContinue, onBack, config, currentPrice, complexity }) {
   const { t } = useTranslation()
   const [selected, setSelected] = useState(value !== null && value !== '' ? value : 'none')
+  const [openedImage, setOpenedImage] = useState(null)
+
+  const handleImageClick = (image) => {
+    setOpenedImage(image)
+  }
+
+  const closeModal = () => {
+    setOpenedImage(null)
+  }
+
+  const gallerySets = [
+    {
+      label: 'Без страз',
+      images: ['/images/straz/no straz.JPEG', '/images/straz/no straz2.PNG']
+    },
+    {
+      label: 'Минимальный набор страз',
+      images: ['/images/straz/min.jpg', '/images/straz/min2.JPEG']
+    },
+    {
+      label: 'Стандартный набор страз',
+      images: ['/images/straz/standart.JPEG', '/images/straz/standart2.JPEG']
+    },
+    {
+      label: 'Максимальный набор страз',
+      images: ['/images/straz/maks.JPEG', '/images/straz/maks2.JPEG']
+    }
+  ]
 
   const rhinestoneOptions = [
     {
@@ -66,6 +94,39 @@ function RhinestoneSelect({ value, onRhinestoneChange, onContinue, onBack, confi
           </label>
         ))}
       </div>
+
+      {/* Examples Gallery */}
+      <div className="rhinestone-gallery">
+        <h3 className="gallery-title">Примеры наборов страз на купальниках нашего ателье</h3>
+        {gallerySets.map((set, setIndex) => (
+          <div key={setIndex} className="gallery-set">
+            <p className="gallery-set-label">{set.label}</p>
+            <div className="gallery-grid">
+              {set.images.map((image, index) => (
+                <div key={index} className="gallery-item">
+                  <img
+                    src={image}
+                    alt={`${set.label} ${index + 1}`}
+                    className="gallery-image"
+                    onClick={() => handleImageClick(image)}
+                    style={{ cursor: 'pointer' }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Image Modal */}
+      {openedImage && (
+        <div className="image-modal" onClick={closeModal}>
+          <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="image-modal-close" onClick={closeModal}>✕</button>
+            <img src={openedImage} alt="Full size" className="image-modal-image" />
+          </div>
+        </div>
+      )}
 
       {config && currentPrice && complexity && (
         <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
