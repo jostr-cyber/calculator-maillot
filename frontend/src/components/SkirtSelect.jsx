@@ -85,43 +85,57 @@ function SkirtSelect({ onConfirm, onSkirtChange, onContinue, onBack, config, cur
         <div className="gallery-grid">
           <div className="gallery-item">
             <img
-              src="/images/IMG_3490.JPEG"
+              src="/images/IMG_3494.JPEG"
               alt="Пример юбки 1"
               className="gallery-image"
             />
           </div>
           <div className="gallery-item">
             <img
-              src="/images/IMG_3492.JPEG"
+              src="/images/IMG_3496 (1).JPEG"
               alt="Пример юбки 2"
               className="gallery-image"
             />
           </div>
           <div className="gallery-item">
             <img
-              src="/images/IMG_3494.JPEG"
+              src="/images/IMG_3497 (1).JPEG"
               alt="Пример юбки 3"
               className="gallery-image"
             />
           </div>
           <div className="gallery-item">
             <img
-              src="/images/IMG_3509.JPEG"
+              src="/images/IMG_3498 (1).JPEG"
               alt="Пример юбки 4"
               className="gallery-image"
             />
           </div>
           <div className="gallery-item">
             <img
-              src="/images/IMG_3511.JPEG"
+              src="/images/IMG_3500 (1).JPEG"
               alt="Пример юбки 5"
               className="gallery-image"
             />
           </div>
           <div className="gallery-item">
             <img
-              src="/images/IMG_8652.PNG"
+              src="/images/IMG_3509.JPEG"
               alt="Пример юбки 6"
+              className="gallery-image"
+            />
+          </div>
+          <div className="gallery-item">
+            <img
+              src="/images/IMG_3511.JPEG"
+              alt="Пример юбки 7"
+              className="gallery-image"
+            />
+          </div>
+          <div className="gallery-item">
+            <img
+              src="/images/IMG_8652 (1).PNG"
+              alt="Пример юбки 8"
               className="gallery-image"
             />
           </div>
