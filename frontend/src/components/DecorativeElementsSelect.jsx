@@ -75,7 +75,7 @@ function DecorativeElementsSelect({ onConfirm, onBack, config, currentPrice, com
                   {opt.icon.startsWith('/') ? (
                     <img src={opt.icon} alt={t(opt.labelKey)} />
                   ) : (
-                    opt.icon
+                    <span className="icon-emoji">{opt.icon}</span>
                   )}
                 </div>
                 <div className="option-text">{t(opt.labelKey)}</div>

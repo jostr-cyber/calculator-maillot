@@ -89,6 +89,13 @@
   object-fit: cover;
 }
 
+.icon-emoji {
+  font-size: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .option-text {
   font-size: 15px;
   font-weight: 600;
