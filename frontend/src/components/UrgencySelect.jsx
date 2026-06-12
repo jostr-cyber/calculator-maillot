@@ -4,7 +4,7 @@ import ConfigurationSummary from './ConfigurationSummary'
 import './SelectCommon.css'
 import './UrgencySelect.css'
 
-function UrgencySelect({ onConfirm, onBack, config, currentPrice, complexity }) {
+function UrgencySelect({ onConfirm, onUrgencyChange, onContinue, onBack, config, currentPrice, complexity }) {
   const { t } = useTranslation()
   const [selected, setSelected] = useState('none')
 
@@ -25,14 +25,6 @@ function UrgencySelect({ onConfirm, onBack, config, currentPrice, complexity }) 
     <div className="select-wrapper">
       <h2>{t('steps.urgency')}</h2>
 
-      {config && currentPrice && complexity && (
-        <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
-      )}
-
-      <div className="urgency-info">
-        <p>{t('urgency.info')}</p>
-      </div>
-
       <div className="radio-group urgency-options">
         {options.map(opt => (
           <label key={opt.value} className="radio-label urgency-label">
@@ -41,7 +33,13 @@ function UrgencySelect({ onConfirm, onBack, config, currentPrice, complexity }) 
               name="urgency"
               value={opt.value}
               checked={selected === opt.value}
-              onChange={(e) => setSelected(e.target.value)}
+              onChange={(e) => {
+                const newValue = e.target.value
+                setSelected(newValue)
+                if (onUrgencyChange) {
+                  onUrgencyChange(newValue)
+                }
+              }}
             />
             <div className="option-content">
               <span className="option-label">{t(opt.labelKey)}</span>
@@ -51,12 +49,18 @@ function UrgencySelect({ onConfirm, onBack, config, currentPrice, complexity }) 
         ))}
       </div>
 
-      <div className="urgency-note">
-        <p>{t('urgency.note')}</p>
-      </div>
+      {config && currentPrice && complexity && (
+        <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
+      )}
 
       <div className="actions">
-        <button onClick={() => onConfirm(selected)} className="btn-primary">{t('buttons.continue')}</button>
+        <button onClick={() => {
+          if (onContinue) {
+            onContinue()
+          } else {
+            onConfirm(selected)
+          }
+        }} className="btn-primary">{t('buttons.continue')}</button>
         <button onClick={onBack} className="btn-secondary">{t('buttons.back')}</button>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { useTranslation } from '../hooks/useTranslation'
 import ConfigurationSummary from './ConfigurationSummary'
 import './CombinaisionSelect.css'
 
-function CombinaisionSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
+function CombinaisionSelect({ onConfirm, onCombinaisionChange, onContinue, onBack, config, currentPrice, complexity }) {
   const { t } = useTranslation()
   const [selected, setSelected] = useState('')
 
@@ -13,7 +13,11 @@ function CombinaisionSelect({ onConfirm, onBack, config, currentPrice, complexit
   ]
 
   const handleContinue = () => {
-    onConfirm(selected)
+    if (onContinue) {
+      onContinue()
+    } else {
+      onConfirm(selected)
+    }
   }
 
   return (
@@ -32,7 +36,13 @@ function CombinaisionSelect({ onConfirm, onBack, config, currentPrice, complexit
               name="combinaison"
               value={option.value}
               checked={selected === option.value}
-              onChange={(e) => setSelected(e.target.value)}
+              onChange={(e) => {
+                const newValue = e.target.value
+                setSelected(newValue)
+                if (onCombinaisionChange) {
+                  onCombinaisionChange(newValue)
+                }
+              }}
               className="radio-input"
             />
             <div className="combinaison-card-content">

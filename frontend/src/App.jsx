@@ -278,6 +278,14 @@ function App() {
     setStep('aerography')
   }
 
+  const handleCombinaisionChange = (comboValue) => {
+    setCombinaison(comboValue)
+  }
+
+  const handleUrgencyChange = (urgencyValue) => {
+    setUrgency(urgencyValue)
+  }
+
   const handleBack = () => {
     const currentIndex = steps.indexOf(step)
     if (currentIndex > 0) {
@@ -517,8 +525,8 @@ function App() {
 
         {step === 'combinaison' && (
           <CombinaisionSelect
-            onConfirm={(val) => {
-              setCombinaison(val)
+            onCombinaisionChange={handleCombinaisionChange}
+            onContinue={() => {
               setPremiumStones('none')
               setStep('urgency')
             }}
@@ -531,10 +539,8 @@ function App() {
 
         {step === 'urgency' && (
           <UrgencySelect
-            onConfirm={(val) => {
-              setUrgency(val)
-              setStep('rhinestone')
-            }}
+            onUrgencyChange={handleUrgencyChange}
+            onContinue={() => setStep('rhinestone')}
             onBack={handleBack}
             config={config}
             currentPrice={currentPrice}
