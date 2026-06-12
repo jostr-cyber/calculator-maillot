@@ -96,6 +96,45 @@ function SkirtSelect({ onConfirm, onSkirtChange, onContinue, onBack, config, cur
         </div>
       </div>
 
+      {/* Examples Gallery */}
+      <div className="skirt-gallery">
+        <h3 className="gallery-title">Примеры юбок нашего производства</h3>
+        <div className="gallery-grid">
+          <div className="gallery-item">
+            <img
+              src="/images/skirt-bez.PNG"
+              alt="Пример без юбки"
+              className="gallery-image"
+            />
+            <p className="gallery-label">Без юбки</p>
+          </div>
+          <div className="gallery-item">
+            <img
+              src="/images/skirt-front.PNG"
+              alt="Пример юбка спереди"
+              className="gallery-image"
+            />
+            <p className="gallery-label">Юбка спереди</p>
+          </div>
+          <div className="gallery-item">
+            <img
+              src="/images/skirt-back.PNG"
+              alt="Пример юбка сзади"
+              className="gallery-image"
+            />
+            <p className="gallery-label">Юбка сзади</p>
+          </div>
+          <div className="gallery-item">
+            <img
+              src="/images/skirt-both.PNG"
+              alt="Пример юбка спереди и сзади"
+              className="gallery-image"
+            />
+            <p className="gallery-label">Юбка спереди и сзади</p>
+          </div>
+        </div>
+      </div>
+
       {config && currentPrice && complexity && (
         <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
       )}
