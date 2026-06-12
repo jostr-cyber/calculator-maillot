@@ -84,7 +84,11 @@ function RhinestoneSelect({ value, onRhinestoneChange, onContinue, onBack, confi
               name="rhinestone"
               value={option.value}
               checked={selected === option.value}
-              onChange={(e) => setSelected(e.target.value)}
+              onChange={(e) => {
+                const newValue = e.target.value
+                setSelected(newValue)
+                onRhinestoneChange(newValue)
+              }}
               className="radio-input"
             />
             <div className="rhinestone-card-content">
