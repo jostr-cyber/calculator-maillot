@@ -293,16 +293,16 @@
   position: relative;
   background: white;
   border-radius: 12px;
-  max-width: 45vw;
-  max-height: 45vh;
-  overflow: auto;
+  overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .image-modal-image {
-  width: 100%;
-  height: auto;
   display: block;
+  height: 80vh;
+  width: auto;
+  max-width: 90vw;
+  object-fit: contain;
   border-radius: 12px;
 }
 
