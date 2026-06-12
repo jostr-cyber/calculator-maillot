@@ -6,6 +6,26 @@ import './AerographySelect.css'
 function AerographySelect({ onConfirm, onAerographyChange, onContinue, onBack, config, currentPrice, complexity }) {
   const { t } = useTranslation()
   const [selected, setSelected] = useState(new Set()) // Using Set to store selected options
+  const [openedImage, setOpenedImage] = useState(null)
+
+  const handleImageClick = (image) => {
+    setOpenedImage(image)
+  }
+
+  const closeModal = () => {
+    setOpenedImage(null)
+  }
+
+  const galleryImages = [
+    '/images/aerog/IMG_3515.JPEG',
+    '/images/aerog/IMG_3522 (1).JPEG',
+    '/images/aerog/IMG_3524.JPEG',
+    '/images/aerog/IMG_3527.JPEG',
+    '/images/aerog/IMG_3538.JPEG',
+    '/images/aerog/IMG_6818.PNG',
+    '/images/aerog/IMG_6835.PNG',
+    '/images/aerog/IMG_6836.PNG'
+  ]
 
   const options = [
     { value: 'nothing', labelKey: 'aerography.nothing', descKey: 'aerography.nothingDesc' },
@@ -88,6 +108,34 @@ function AerographySelect({ onConfirm, onAerographyChange, onContinue, onBack, c
           </label>
         ))}
       </div>
+
+      {/* Examples Gallery */}
+      <div className="aerography-gallery">
+        <h3 className="gallery-title">Примеры росписи и аэрографии на купальниках нашего ателье</h3>
+        <div className="gallery-grid">
+          {galleryImages.map((image, index) => (
+            <div key={index} className="gallery-item">
+              <img
+                src={image}
+                alt={`Пример росписи ${index + 1}`}
+                className="gallery-image"
+                onClick={() => handleImageClick(image)}
+                style={{ cursor: 'pointer' }}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Image Modal */}
+      {openedImage && (
+        <div className="image-modal" onClick={closeModal}>
+          <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="image-modal-close" onClick={closeModal}>✕</button>
+            <img src={openedImage} alt="Full size" className="image-modal-image" />
+          </div>
+        </div>
+      )}
 
       {config && currentPrice && complexity && (
         <ConfigurationSummary config={config} currentPrice={currentPrice} complexity={complexity} />
