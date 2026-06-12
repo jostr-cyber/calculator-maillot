@@ -19,19 +19,19 @@ function RhinestoneSelect({ value, onRhinestoneChange, onContinue, onBack, confi
   const gallerySets = [
     {
       label: 'Без страз',
-      images: ['/images/straz/no straz.JPEG', '/images/straz/no straz2.PNG']
+      images: ['/images/straz/no straz.JPEG', '/images/straz/no straz2.PNG', '/images/straz/no straz 3.jpg', '/images/straz/no straz 4.jpg']
     },
     {
       label: 'Минимальный набор страз',
-      images: ['/images/straz/min.jpg', '/images/straz/min2.JPEG']
+      images: ['/images/straz/min.jpg', '/images/straz/min2.JPEG', '/images/straz/min 3.jpg', '/images/straz/min 4.jpg']
     },
     {
       label: 'Стандартный набор страз',
-      images: ['/images/straz/standart.JPEG', '/images/straz/standart2.JPEG']
+      images: ['/images/straz/standart.JPEG', '/images/straz/standart2.JPEG', '/images/straz/standart3.JPEG', '/images/straz/standart4.JPEG']
     },
     {
       label: 'Максимальный набор страз',
-      images: ['/images/straz/maks.JPEG', '/images/straz/maks2.JPEG']
+      images: ['/images/straz/maks.JPEG', '/images/straz/maks2.JPEG', '/images/straz/maks3.JPEG', '/images/straz/maks4.JPEG']
     }
   ]
 
