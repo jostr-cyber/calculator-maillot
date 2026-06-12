@@ -73,7 +73,7 @@ function DecorativeElementsSelect({ onConfirm, onBack, config, currentPrice, com
               <div className="option-card-content">
                 <div className="option-icon">
                   {opt.icon.startsWith('/') ? (
-                    <img src={opt.icon} alt={t(opt.labelKey)} style={{ width: '36px', height: '36px', objectFit: 'contain' }} />
+                    <img src={opt.icon} alt={t(opt.labelKey)} />
                   ) : (
                     opt.icon
                   )}
