@@ -270,6 +270,14 @@ function App() {
     setStep('combinaison')
   }
 
+  const handleDecorativeElementsChange = (elementsValue) => {
+    setDecorativeElements(elementsValue)
+  }
+
+  const handleDecorativeElementsContinue = () => {
+    setStep('aerography')
+  }
+
   const handleBack = () => {
     const currentIndex = steps.indexOf(step)
     if (currentIndex > 0) {
@@ -489,7 +497,8 @@ function App() {
 
         {step === 'decorativeElements' && (
           <DecorativeElementsSelect
-            onConfirm={(val) => { setDecorativeElements(val); setStep('aerography') }}
+            onDecorativeElementsChange={handleDecorativeElementsChange}
+            onContinue={handleDecorativeElementsContinue}
             onBack={handleBack}
             config={config}
             currentPrice={currentPrice}

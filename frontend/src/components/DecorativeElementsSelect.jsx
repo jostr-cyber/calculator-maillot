@@ -3,7 +3,7 @@ import { useTranslation } from '../hooks/useTranslation'
 import ConfigurationSummary from './ConfigurationSummary'
 import './DecorativeElementsSelect.css'
 
-function DecorativeElementsSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
+function DecorativeElementsSelect({ onConfirm, onDecorativeElementsChange, onContinue, onBack, config, currentPrice, complexity }) {
   const { t } = useTranslation()
   const [selected, setSelected] = useState([])
 
@@ -16,32 +16,44 @@ function DecorativeElementsSelect({ onConfirm, onBack, config, currentPrice, com
   ]
 
   const handleToggle = (value) => {
+    let newSelected
+
     if (value === 'nothing') {
       // If clicking "nothing", clear all other selections
       if (selected.includes('nothing')) {
-        setSelected([])
+        newSelected = []
       } else {
-        setSelected(['nothing'])
+        newSelected = ['nothing']
       }
     } else {
       // If clicking other options, remove "nothing" if present
-      let newSelected = selected.filter(item => item !== 'nothing')
+      newSelected = selected.filter(item => item !== 'nothing')
 
       if (newSelected.includes(value)) {
         newSelected = newSelected.filter(item => item !== value)
       } else {
         newSelected = [...newSelected, value]
       }
+    }
 
-      setSelected(newSelected)
+    setSelected(newSelected)
+
+    // Update price immediately
+    if (onDecorativeElementsChange) {
+      const result = newSelected.length === 0 ? 'none' : newSelected.join(',')
+      onDecorativeElementsChange(result)
     }
   }
 
   const handleConfirm = () => {
-    if (selected.length === 0) {
-      onConfirm('none')
+    if (onContinue) {
+      onContinue()
     } else {
-      onConfirm(selected.join(','))
+      if (selected.length === 0) {
+        onConfirm('none')
+      } else {
+        onConfirm(selected.join(','))
+      }
     }
   }
 
