@@ -18,7 +18,7 @@ function DecorativeElementsSelect({ onConfirm, onDecorativeElementsChange, onCon
 
   const galleryImages = [
     '/images/ornament/IMG_3259.PNG',
-    '/images/ornament/IMG_3511.JPEG',
+    '/images/ornament/IMG_3536.JPEG',
     '/images/ornament/IMG_3516.JPEG',
     '/images/ornament/IMG_3517.JPEG',
     '/images/ornament/IMG_3518.JPEG',
