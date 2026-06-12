@@ -288,25 +288,23 @@ function App() {
         height: heightCategory,
         sleeves: sleeves || 0,
         skirt: skirt || '',
-        decorativeElements: decorativeElements || 'nothing',
+        decorativeElements: decorativeElements || 'none',
         shoulder: shoulder || '',
         aerography: aerography || 'nothing',
         combinaison: combinaison || 'standard',
         premiumStones: premiumStones || 'none',
-        urgency: urgency || 'none',
+        urgency: urgency || 'standard',
         rhinestone: rhinestone || 'none',
         design: design || 'our-design',
         designSource: designSource
       }
 
-      if (designSource) {
-        const data = calculatePriceLocal(config)
-        setCurrentPrice(data.finalPrice)
-        const complexityLevel = calculateComplexity(config)
-        setComplexity(complexityLevel)
-        const crystals = calculateEstimatedCrystals(config)
-        setEstimatedCrystals(crystals)
-      }
+      const data = calculatePriceLocal(config)
+      setCurrentPrice(data.finalPrice)
+      const complexityLevel = calculateComplexity(config)
+      setComplexity(complexityLevel)
+      const crystals = calculateEstimatedCrystals(config)
+      setEstimatedCrystals(crystals)
     }
   }
 
