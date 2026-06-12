@@ -61,9 +61,12 @@ export const calculatePriceLocal = (config) => {
     });
   }
 
-  // Aerography (fixed amounts)
-  if (config.aerography === 'drawing') finalPrice += 20;      // Рисунок
-  else if (config.aerography === 'aerography') finalPrice += 20; // Аэрография
+  // Aerography (fixed amounts) - supports both single and combined
+  if (config.aerography && config.aerography !== 'nothing' && config.aerography !== '') {
+    const aeroParts = config.aerography.split(',').filter(a => a.trim());
+    if (aeroParts.includes('drawing')) finalPrice += 20;      // Рисунок
+    if (aeroParts.includes('aerography')) finalPrice += 20;    // Аэрография
+  }
 
   // Rhinestones (fixed amounts)
   if (config.rhinestone === 'minimal') finalPrice += 30;
@@ -107,7 +110,14 @@ export const calculatePriceLocal = (config) => {
         });
         return total;
       })(),
-      aerography: config.aerography === 'drawing' ? 20 : (config.aerography === 'aerography' ? 20 : 0),
+      aerography: (() => {
+        if (!config.aerography || config.aerography === 'nothing' || config.aerography === '') return 0;
+        const aeroParts = config.aerography.split(',').filter(a => a.trim());
+        let price = 0;
+        if (aeroParts.includes('drawing')) price += 20;
+        if (aeroParts.includes('aerography')) price += 20;
+        return price;
+      })(),
       rhinestone: (config.rhinestone === 'minimal' ? 30 : (config.rhinestone === 'standard' ? 70 : (config.rhinestone === 'maximum' ? 120 : (config.rhinestone === 'premium' ? 200 : 0)))),
       combinaison: config.combinaison === 'full' ? 50 : 0,
       premiumStones: (config.premiumStones === 'swarovski' ? 200 : (config.premiumStones === 'premium' ? 150 : 0))
@@ -293,49 +303,73 @@ export const formatConfigurationSummary = (config) => {
 
   // Design
   if (config.design === 'our-design') {
-    summary.push({ key: 'design.our.title', type: 'design' });
+    summary.push('• Нужен дизайн');
   } else if (config.design === 'customer-design') {
-    summary.push({ key: 'design.your.title', type: 'design' });
+    summary.push('• Ваш дизайн');
   }
 
   // Sleeves
   if (config.sleeves === 1) {
-    summary.push({ key: 'sleeves.one', type: 'sleeves' });
+    summary.push('• Один рукав');
   } else if (config.sleeves === 2) {
-    summary.push({ key: 'sleeves.two', type: 'sleeves' });
+    summary.push('• Рукава');
   }
 
   // Skirt
   if (config.skirt === 'front') {
-    summary.push({ key: 'skirt.front', type: 'skirt' });
+    summary.push('• Юбка спереди');
   } else if (config.skirt === 'back') {
-    summary.push({ key: 'skirt.back', type: 'skirt' });
+    summary.push('• Юбка сзади');
   } else if (config.skirt === 'both') {
-    summary.push({ key: 'skirt.both', type: 'skirt' });
+    summary.push('• Юбка');
   }
 
   // Decorative elements
   if (config.decorativeElements && config.decorativeElements !== 'none') {
-    const elements = config.decorativeElements.split(',');
+    const elements = config.decorativeElements.split(',').filter(e => e.trim());
+    const elementNames = {
+      'feathers': 'Перья',
+      'fringe': 'Бахрома',
+      'flowers': 'Цветы',
+      'other': 'Другое'
+    };
     elements.forEach(el => {
-      const keyMap = {
-        'feathers': 'decorativeElements.feathers',
-        'fringe': 'decorativeElements.fringe',
-        'flowers': 'decorativeElements.flowers',
-        'other': 'decorativeElements.other'
-      };
-      if (keyMap[el]) summary.push({ key: keyMap[el], type: 'decorative' });
+      const trimmed = el.trim();
+      if (elementNames[trimmed]) {
+        summary.push('• ' + elementNames[trimmed]);
+      }
     });
   }
 
-  // Aerography
-  if (config.aerography && config.aerography !== 'nothing') {
-    summary.push({ key: 'aerography.drawing', type: 'aerography' });
+  // Aerography - handle both single and combined selections
+  if (config.aerography && config.aerography !== 'nothing' && config.aerography !== '') {
+    const aeroParts = config.aerography.split(',').filter(a => a.trim());
+    if (aeroParts.length > 0) {
+      if (aeroParts.includes('drawing') || (aeroParts.length === 1 && config.aerography === 'drawing')) {
+        summary.push('• Рисунок');
+      }
+      if (aeroParts.includes('aerography') || (aeroParts.length === 1 && config.aerography === 'aerography')) {
+        summary.push('• Аэрография');
+      }
+    }
   }
 
   // Urgency
   if (config.urgency === 'accelerated') {
-    summary.push({ key: 'urgency.expedited.title', type: 'urgency' });
+    summary.push('• Срочное исполнение');
+  }
+
+  // Rhinestones
+  if (config.rhinestone && config.rhinestone !== 'none' && config.rhinestone !== '') {
+    const rhinestoneNames = {
+      'minimal': 'Стразы минимальные',
+      'standard': 'Стразы стандартные',
+      'maximum': 'Стразы максимальные',
+      'premium': 'Стразы премиум'
+    };
+    if (rhinestoneNames[config.rhinestone]) {
+      summary.push('• ' + rhinestoneNames[config.rhinestone]);
+    }
   }
 
   return summary;
