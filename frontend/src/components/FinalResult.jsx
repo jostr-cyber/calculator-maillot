@@ -52,67 +52,90 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
   const generatePriceReductions = () => {
     const recommendations = []
 
-    // Priority 1: Rhinestones
-    if (config.rhinestone && config.rhinestone !== 'none') {
+    // Priority 1: Urgency (accelerated to standard) - ALWAYS SHOW if applicable
+    if (config.urgency && config.urgency === 'accelerated') {
+      recommendations.push({
+        priority: 1,
+        param: 'urgency',
+        savings: Math.round(priceResult.finalPrice * 0.1),
+        labelKey: 'priceReduction.recommendations.urgencyStandard',
+        isComplexityChange: false
+      })
+    }
+
+    // Priority 2: Rhinestones - ALWAYS SHOW if applicable
+    const rhinestoneValue = config.rhinestone || ''
+    if (rhinestoneValue && rhinestoneValue !== 'none' && rhinestoneValue !== '') {
       const rhinestoneMap = {
         'premium': { savings: 200, labelKey: 'priceReduction.recommendations.rhinestoneMaximum' },
         'maximum': { savings: 120, labelKey: 'priceReduction.recommendations.rhinestoneStandard' },
         'standard': { savings: 70, labelKey: 'priceReduction.recommendations.rhinestoneMinimal' },
         'minimal': { savings: 30, labelKey: 'priceReduction.recommendations.rhinestoneRemoveAll' }
       }
-      if (rhinestoneMap[config.rhinestone]) {
+      if (rhinestoneMap[rhinestoneValue]) {
         recommendations.push({
-          priority: 1,
+          priority: 2,
           param: 'rhinestone',
-          ...rhinestoneMap[config.rhinestone]
+          ...rhinestoneMap[rhinestoneValue],
+          isComplexityChange: false
         })
       }
     }
 
-    // Priority 2: Urgency (accelerated to standard)
-    if (config.urgency && config.urgency === 'accelerated') {
+    // Priority 3+: Complexity changes (suggest discussing with designer, not removing)
+    // These show approximate savings based on complexity reduction (30-50%)
+
+    // Sleeves complexity
+    if (config.sleeves && config.sleeves > 0) {
+      const approximateSavings = Math.round(priceResult.finalPrice * 0.08) // ~8% of total price
       recommendations.push({
-        priority: 2,
-        param: 'urgency',
-        savings: Math.round(priceResult.finalPrice * 0.1), // 10% surcharge
-        labelKey: 'priceReduction.recommendations.urgencyStandard'
+        priority: 3,
+        param: 'sleeves',
+        savings: approximateSavings,
+        labelKey: 'priceReduction.recommendations.sleevesComplexity',
+        isComplexityChange: true,
+        isApproximate: true
       })
     }
 
-    // Priority 3: Decorative elements
-    if (config.decorativeElements && config.decorativeElements !== 'none' && config.decorativeElements !== '') {
-      const elements = config.decorativeElements.split(',').filter(e => e.trim());
-      let savings = 0;
-      elements.forEach(el => {
-        const e = el.trim();
-        if (e === 'feathers') savings += 10;
-        else if (e === 'fringe') savings += 20;
-        else if (e === 'flowers') savings += 10;
-        else if (e === 'other') savings += 15;
-      });
-      if (savings > 0) {
-        recommendations.push({
-          priority: 3,
-          param: 'decorativeElements',
-          savings: savings,
-          labelKey: 'priceReduction.recommendations.decorativeElements'
-        })
-      }
-    }
-
-    // Priority 4: Aerography
-    if (config.aerography && config.aerography !== 'nothing' && config.aerography !== '') {
+    // Skirt complexity
+    if (config.skirt && config.skirt !== '') {
+      const approximateSavings = Math.round(priceResult.finalPrice * 0.12) // ~12% of total price
       recommendations.push({
         priority: 4,
-        param: 'aerography',
-        savings: 20,
-        labelKey: 'priceReduction.recommendations.aerography'
+        param: 'skirt',
+        savings: approximateSavings,
+        labelKey: 'priceReduction.recommendations.skirtComplexity',
+        isComplexityChange: true,
+        isApproximate: true
       })
     }
 
-    // Don't recommend changing combinaison - if they selected it, they need it
-    // Don't recommend changing design - it's part of their creative vision
-    // Don't recommend changing skirt/sleeves - they're structural choices
+    // Decorative elements complexity
+    if (config.decorativeElements && config.decorativeElements !== 'none' && config.decorativeElements !== '') {
+      const approximateSavings = Math.round(priceResult.finalPrice * 0.10) // ~10% of total price
+      recommendations.push({
+        priority: 5,
+        param: 'decorativeElements',
+        savings: approximateSavings,
+        labelKey: 'priceReduction.recommendations.decorativeElementsComplexity',
+        isComplexityChange: true,
+        isApproximate: true
+      })
+    }
+
+    // Aerography complexity
+    if (config.aerography && config.aerography !== 'nothing' && config.aerography !== '') {
+      const approximateSavings = Math.round(priceResult.finalPrice * 0.15) // ~15% of total price
+      recommendations.push({
+        priority: 6,
+        param: 'aerography',
+        savings: approximateSavings,
+        labelKey: 'priceReduction.recommendations.aerographyComplexity',
+        isComplexityChange: true,
+        isApproximate: true
+      })
+    }
 
     return recommendations.sort((a, b) => a.priority - b.priority)
   }
@@ -147,17 +170,6 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
       </div>
 
       <div className="result-content">
-        {/* Price Section */}
-        <div className="result-section price-section">
-          <div className="price-main">
-            <span className="price-label">{t('result.estimatedPrice') || 'Estimated price'}</span>
-            <span className="price-amount">{priceResult.finalPrice} €</span>
-          </div>
-          <p className="price-disclaimer">
-            {t('priceBreakdown.disclaimer') || '*This is a preliminary calculation. Final price may be clarified after discussing details.'}
-          </p>
-        </div>
-
         {/* Configuration Summary */}
         <div className="result-section summary-section">
           <h3>{t('result.selectedOptions') || 'Selected options'}</h3>
@@ -177,6 +189,17 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
           </div>
         </div>
 
+        {/* Price Section */}
+        <div className="result-section price-section">
+          <div className="price-main">
+            <span className="price-label">{t('result.estimatedPrice') || 'Estimated price'}</span>
+            <span className="price-amount">{priceResult.finalPrice} €</span>
+          </div>
+          <p className="price-disclaimer">
+            {t('priceBreakdown.disclaimer') || '*This is a preliminary calculation. Final price may be clarified after discussing details.'}
+          </p>
+        </div>
+
         {/* Discount Info */}
         {wheelDiscount > 0 && (
           <div className="result-section discount-section">
@@ -192,17 +215,14 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
 
       {/* CTA Buttons - Multi-action */}
       <div className="result-actions">
-        <button className="btn-primary btn-action" onClick={handleWhatsAppOrder}>
-          {t('actionButtons.order') || '💚 Order this leotard'}
+        <button className="btn-primary btn-action" onClick={handleReducePrice}>
+          {t('actionButtons.reducePrice.label') || '💰 Reduce the price'}
         </button>
         <button className="btn-secondary btn-action" onClick={handleDiscussDetails}>
           {t('actionButtons.discuss') || '💬 Discuss on WhatsApp'}
         </button>
-        <button className="btn-secondary btn-action" onClick={handleReducePrice}>
-          {t('actionButtons.reducePrice.label') || '💰 Reduce the price'}
-        </button>
         <button className="btn-secondary btn-action" onClick={onCustomizeAgain}>
-          {t('actionButtons.customize') || '🎨 Customize again'}
+          {t('actionButtons.customize') || '🎨 Make new calculation'}
         </button>
       </div>
 
@@ -229,22 +249,74 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
 
             <div className="reduction-list">
               {priceReductions.length > 0 ? (
-                priceReductions.map((reduction, index) => {
-                  const newPrice = priceResult.finalPrice - reduction.savings
-                  return (
-                    <div key={index} className="reduction-item">
-                      <div className="reduction-label">
-                        <span className="reduction-priority">#{reduction.priority}</span>
-                        <span className="reduction-text">
-                          {t(reduction.labelKey)}
-                          <br />
-                          <span className="reduction-new-price">{t('priceReduction.newPrice') || 'New price'}: {newPrice} €</span>
-                        </span>
+                <>
+                  {priceReductions.map((reduction, index) => {
+                    const handleComplexityClick = () => {
+                      const message = encodeURIComponent(`Привет! Хотела бы обсудить детали дизайна купальника. Интересует: ${t(reduction.labelKey)}`)
+                      window.open(`https://wa.me/34670770024?text=${message}`, '_blank')
+                    }
+
+                    return (
+                      <div
+                        key={index}
+                        className={`reduction-item ${reduction.isComplexityChange ? 'complexity-change clickable' : ''}`}
+                        onClick={reduction.isComplexityChange ? handleComplexityClick : undefined}
+                        style={reduction.isComplexityChange ? { cursor: 'pointer' } : {}}
+                      >
+                        <div className="reduction-label">
+                          <span className="reduction-priority">#{reduction.priority}</span>
+                          <span className="reduction-text">
+                            {t(reduction.labelKey)}
+                            {reduction.isComplexityChange && (
+                              <>
+                                <br />
+                                <span className="complexity-note">{t('priceReduction.discussWithDesigner') || 'Discuss with designer'}</span>
+                              </>
+                            )}
+                          </span>
+                        </div>
                       </div>
-                      <span className="reduction-savings">-{reduction.savings} €</span>
-                    </div>
-                  )
-                })
+                    )
+                  })}
+
+                  {/* Total savings summary - show approximate price based on selected budget + main reductions */}
+                  {(() => {
+                    let targetPrice = null
+                    let baseBudget = null
+
+                    // Map selected budget to base price
+                    if (selectedBudget) {
+                      if (selectedBudget === 'under-250' || selectedBudget <= 250) {
+                        baseBudget = 280
+                      } else if (selectedBudget === 'around-400' || (selectedBudget >= 300 && selectedBudget < 800)) {
+                        baseBudget = Math.round(selectedBudget + 50)
+                      } else if (selectedBudget === 'around-800' || selectedBudget >= 800) {
+                        baseBudget = Math.round(selectedBudget + 50)
+                      }
+                    }
+
+                    // Calculate reductions from highest priority items (Urgency + Rhinestones)
+                    const mainReductions = priceReductions
+                      .filter(r => r.priority <= 2) // Only Urgency (1) and Rhinestones (2)
+                      .reduce((sum, r) => sum + (r.savings || 0), 0)
+
+                    if (baseBudget && mainReductions > 0) {
+                      targetPrice = baseBudget - Math.round(mainReductions * 0.5) // Apply 50% of main reductions as buffer
+                      targetPrice = Math.max(targetPrice, baseBudget - 100) // Don't reduce too much
+                    } else if (baseBudget) {
+                      targetPrice = baseBudget
+                    }
+
+                    return targetPrice ? (
+                      <div className="reduction-summary">
+                        <p className="summary-text">
+                          {t('priceReduction.accordingToRecommendations') || 'According to these recommendations'}:
+                          <span className="summary-price">{targetPrice} €</span>
+                        </p>
+                      </div>
+                    ) : null
+                  })()}
+                </>
               ) : (
                 <p className="no-recommendations">{t('priceReduction.noRecommendations') || 'No further reductions available'}</p>
               )}
