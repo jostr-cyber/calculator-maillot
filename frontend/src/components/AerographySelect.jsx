@@ -24,7 +24,7 @@ function AerographySelect({ onConfirm, onAerographyChange, onContinue, onBack, c
     '/images/aerog/IMG_3538.JPEG',
     '/images/aerog/IMG_6818.PNG',
     '/images/aerog/IMG_6835.PNG',
-    '/images/aerog/IMG_6836.PNG'
+    '/images/aerog/stich.JPEG'
   ]
 
   const options = [
