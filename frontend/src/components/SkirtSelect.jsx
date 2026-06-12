@@ -102,42 +102,42 @@ function SkirtSelect({ onConfirm, onSkirtChange, onContinue, onBack, config, cur
         <div className="gallery-grid">
           <div className="gallery-item">
             <img
-              src="/images/IMG_3260.PNG"
+              src="/images/IMG_3490.JPEG"
               alt="Пример юбки 1"
               className="gallery-image"
             />
           </div>
           <div className="gallery-item">
             <img
-              src="/images/IMG_3261.PNG"
+              src="/images/IMG_3492.JPEG"
               alt="Пример юбки 2"
               className="gallery-image"
             />
           </div>
           <div className="gallery-item">
             <img
-              src="/images/IMG_3262.JPEG"
+              src="/images/IMG_3494.JPEG"
               alt="Пример юбки 3"
               className="gallery-image"
             />
           </div>
           <div className="gallery-item">
             <img
-              src="/images/IMG_3418.PNG"
+              src="/images/IMG_3509.JPEG"
               alt="Пример юбки 4"
               className="gallery-image"
             />
           </div>
           <div className="gallery-item">
             <img
-              src="/images/IMG_3442.JPEG"
+              src="/images/IMG_3511.JPEG"
               alt="Пример юбки 5"
               className="gallery-image"
             />
           </div>
           <div className="gallery-item">
             <img
-              src="/images/IMG_3444.JPEG"
+              src="/images/IMG_8652.PNG"
               alt="Пример юбки 6"
               className="gallery-image"
             />
