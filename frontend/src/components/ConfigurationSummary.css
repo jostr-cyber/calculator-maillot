@@ -22,27 +22,22 @@
 
 .summary-items {
   margin-bottom: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0px 8px;
 }
 
 .summary-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 0;
+  padding: 0px 0;
+  margin: -1px 0;
   font-size: 13px;
   color: #4c1d95;
-  line-height: 1.4;
+  line-height: 0.95;
 }
 
 .summary-item.empty {
   color: #9b7fbf;
   font-style: italic;
-}
-
-.summary-checkmark {
-  color: #7c3aed;
-  font-weight: bold;
-  flex-shrink: 0;
 }
 
 .summary-text {
@@ -66,7 +61,7 @@
 
 .price-label {
   font-size: 11px;
-  color: #7c3aed;
+  color: #4c1d95;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.3px;
@@ -116,10 +111,20 @@
   color: #5b21b6;
 }
 
+@media (max-width: 900px) {
+  .summary-items {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media (max-width: 600px) {
   .configuration-summary {
     padding: 12px;
     margin-bottom: 16px;
+  }
+
+  .summary-items {
+    grid-template-columns: 1fr;
   }
 
   .summary-footer {
