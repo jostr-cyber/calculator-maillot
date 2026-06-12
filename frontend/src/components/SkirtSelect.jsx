@@ -58,11 +58,7 @@ function SkirtSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
               name="skirt"
               value={option.value}
               checked={skirtOption === option.value}
-              onChange={(e) => {
-                const newValue = e.target.value
-                setSkirtOption(newValue)
-                onConfirm(newValue)
-              }}
+              onChange={(e) => setSkirtOption(e.target.value)}
               className="radio-input"
             />
             <div className="skirt-card-content">
