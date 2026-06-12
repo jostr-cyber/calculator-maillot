@@ -176,7 +176,8 @@ function App() {
       premiumStones: premiumStones || 'none',
       urgency: urgencyVal || 'none',
       rhinestone: rhinestone || 'none',
-      design: design || 'our-design'
+      design: design || 'our-design',
+      designSource: designSource
     }
 
     try {
@@ -253,10 +254,51 @@ function App() {
     setStep('skirt')
   }
 
+  const handleSkirtChange = (skirtValue) => {
+    setSkirt(skirtValue)
+  }
+
+  const handleSkirtContinue = () => {
+    setStep('decorativeElements')
+  }
+
+  const handleAerographyChange = (aeroValue) => {
+    setAerography(aeroValue)
+  }
+
+  const handleAerographyContinue = () => {
+    setStep('combinaison')
+  }
+
   const handleBack = () => {
     const currentIndex = steps.indexOf(step)
     if (currentIndex > 0) {
       setStep(steps[currentIndex - 1])
+
+      // Recalculate price when going back
+      const config = {
+        height: heightCategory,
+        sleeves: sleeves || 0,
+        skirt: skirt || '',
+        decorativeElements: decorativeElements || 'nothing',
+        shoulder: shoulder || '',
+        aerography: aerography || 'nothing',
+        combinaison: combinaison || 'standard',
+        premiumStones: premiumStones || 'none',
+        urgency: urgency || 'none',
+        rhinestone: rhinestone || 'none',
+        design: design || 'our-design',
+        designSource: designSource
+      }
+
+      if (designSource) {
+        const data = calculatePriceLocal(config)
+        setCurrentPrice(data.finalPrice)
+        const complexityLevel = calculateComplexity(config)
+        setComplexity(complexityLevel)
+        const crystals = calculateEstimatedCrystals(config)
+        setEstimatedCrystals(crystals)
+      }
     }
   }
 
@@ -278,7 +320,7 @@ function App() {
         urgency: urgencyVal || 'none',
         rhinestone: rhinestone || 'none',
         design: design || 'our-design',
-        designSource: designSource || 'our-design'
+        designSource: designSource
       }
 
       const data = calculatePriceLocal(config)
@@ -382,6 +424,7 @@ function App() {
     combinaison,
     premiumStones,
     urgency,
+    rhinestone,
     design,
     designSource
   }
@@ -435,7 +478,8 @@ function App() {
 
         {step === 'skirt' && (
           <SkirtSelect
-            onConfirm={(val) => { setSkirt(val); setStep('decorativeElements') }}
+            onSkirtChange={handleSkirtChange}
+            onContinue={handleSkirtContinue}
             onBack={handleBack}
             config={config}
             currentPrice={currentPrice}
@@ -455,7 +499,8 @@ function App() {
 
         {step === 'aerography' && (
           <AerographySelect
-            onConfirm={(val) => { setAerography(val); setStep('combinaison') }}
+            onAerographyChange={handleAerographyChange}
+            onContinue={handleAerographyContinue}
             onBack={handleBack}
             config={config}
             currentPrice={currentPrice}

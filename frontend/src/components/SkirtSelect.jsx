@@ -3,7 +3,7 @@ import { useTranslation } from '../hooks/useTranslation'
 import ConfigurationSummary from './ConfigurationSummary'
 import './SkirtSelect.css'
 
-function SkirtSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
+function SkirtSelect({ onConfirm, onSkirtChange, onContinue, onBack, config, currentPrice, complexity }) {
   const { t } = useTranslation()
   const [skirtOption, setSkirtOption] = useState('')
 
@@ -39,7 +39,11 @@ function SkirtSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
   ]
 
   const handleConfirm = () => {
-    onConfirm(skirtOption || 'none')
+    if (onContinue) {
+      onContinue()
+    } else {
+      onConfirm(skirtOption || 'none')
+    }
   }
 
   return (
@@ -58,7 +62,13 @@ function SkirtSelect({ onConfirm, onBack, config, currentPrice, complexity }) {
               name="skirt"
               value={option.value}
               checked={skirtOption === option.value}
-              onChange={(e) => setSkirtOption(e.target.value)}
+              onChange={(e) => {
+                const newValue = e.target.value
+                setSkirtOption(newValue)
+                if (onSkirtChange) {
+                  onSkirtChange(newValue)
+                }
+              }}
               className="radio-input"
             />
             <div className="skirt-card-content">

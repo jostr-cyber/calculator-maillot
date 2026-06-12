@@ -3,9 +3,9 @@ import { useTranslation } from '../hooks/useTranslation'
 import ConfigurationSummary from './ConfigurationSummary'
 import './AerographySelect.css'
 
-function AerographySelect({ onConfirm, onBack, config, currentPrice, complexity }) {
+function AerographySelect({ onConfirm, onAerographyChange, onContinue, onBack, config, currentPrice, complexity }) {
   const { t } = useTranslation()
-  const [selected, setSelected] = useState('nothing')
+  const [selected, setSelected] = useState(new Set()) // Using Set to store selected options
 
   const options = [
     { value: 'nothing', labelKey: 'aerography.nothing', descKey: 'aerography.nothingDesc' },
@@ -13,8 +13,53 @@ function AerographySelect({ onConfirm, onBack, config, currentPrice, complexity 
     { value: 'aerography', labelKey: 'aerography.aerography', descKey: 'aerography.aerographyDesc' }
   ]
 
+  const handleToggle = (value) => {
+    const newSelected = new Set(selected)
+
+    // If "nothing" is selected, clear all and select "nothing"
+    if (value === 'nothing') {
+      if (newSelected.has('nothing')) {
+        newSelected.delete('nothing')
+      } else {
+        newSelected.clear()
+        newSelected.add('nothing')
+      }
+    } else {
+      // If toggling drawing or aerography, remove "nothing" if it exists
+      if (newSelected.has('nothing')) {
+        newSelected.delete('nothing')
+      }
+
+      // Toggle the selected option
+      if (newSelected.has(value)) {
+        newSelected.delete(value)
+      } else {
+        newSelected.add(value)
+      }
+
+      // If nothing is selected after this, add "nothing" back
+      if (newSelected.size === 0) {
+        newSelected.add('nothing')
+      }
+    }
+
+    setSelected(newSelected)
+
+    // Update price immediately
+    if (onAerographyChange) {
+      const result = newSelected.has('nothing') ? 'nothing' : Array.from(newSelected).join(',')
+      onAerographyChange(result)
+    }
+  }
+
   const handleContinue = () => {
-    onConfirm(selected)
+    if (onContinue) {
+      onContinue()
+    } else {
+      // Convert Set to string format (e.g., "drawing,aerography" or "nothing")
+      const result = selected.has('nothing') ? 'nothing' : Array.from(selected).join(',')
+      onConfirm(result)
+    }
   }
 
   return (
@@ -26,15 +71,15 @@ function AerographySelect({ onConfirm, onBack, config, currentPrice, complexity 
         {options.map(option => (
           <label
             key={option.value}
-            className={`aerography-card ${selected === option.value ? 'selected' : ''}`}
+            className={`aerography-card ${selected.has(option.value) ? 'selected' : ''}`}
           >
             <input
-              type="radio"
+              type="checkbox"
               name="aerography"
               value={option.value}
-              checked={selected === option.value}
-              onChange={(e) => setSelected(e.target.value)}
-              className="radio-input"
+              checked={selected.has(option.value)}
+              onChange={() => handleToggle(option.value)}
+              className="checkbox-input"
             />
             <div className="aerography-card-content">
               <div className="aerography-label">{t(option.labelKey)}</div>
