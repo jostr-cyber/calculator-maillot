@@ -8,10 +8,10 @@ function DecorativeElementsSelect({ onConfirm, onBack, config, currentPrice, com
   const [selected, setSelected] = useState([])
 
   const options = [
-    { value: 'feathers', labelKey: 'decorativeElements.feathers', icon: '🪶', image: '🎭' },
-    { value: 'fringe', labelKey: 'decorativeElements.fringe', icon: '✂️', image: '🎭' },
-    { value: 'flowers', labelKey: 'decorativeElements.flowers', icon: '🌸', image: '🎭' },
-    { value: 'other', labelKey: 'decorativeElements.other', icon: '✨', image: '🎭' },
+    { value: 'feathers', labelKey: 'decorativeElements.feathers', icon: '/images/pero.PNG', image: '🎭' },
+    { value: 'fringe', labelKey: 'decorativeElements.fringe', icon: '/images/fringe.PNG', image: '🎭' },
+    { value: 'flowers', labelKey: 'decorativeElements.flowers', icon: '/images/flower.PNG', image: '🎭' },
+    { value: 'other', labelKey: 'decorativeElements.other', icon: '/images/pogon.PNG', image: '🎭' },
     { value: 'nothing', labelKey: 'decorativeElements.nothing', icon: '🚫', image: '🎭' }
   ]
 
@@ -71,7 +71,13 @@ function DecorativeElementsSelect({ onConfirm, onBack, config, currentPrice, com
                 disabled={isDisabled}
               />
               <div className="option-card-content">
-                <div className="option-icon">{opt.icon}</div>
+                <div className="option-icon">
+                  {opt.icon.startsWith('/') ? (
+                    <img src={opt.icon} alt={t(opt.labelKey)} style={{ width: '36px', height: '36px', objectFit: 'contain' }} />
+                  ) : (
+                    opt.icon
+                  )}
+                </div>
                 <div className="option-text">{t(opt.labelKey)}</div>
               </div>
             </label>
