@@ -79,26 +79,9 @@ function SkirtSelect({ onConfirm, onSkirtChange, onContinue, onBack, config, cur
         ))}
       </div>
 
-      {/* Images Gallery */}
-      <div className="skirt-gallery">
-        <h3 className="gallery-title">{t('skirt.galleryTitle')}</h3>
-        <div className="gallery-grid">
-          {skirtOptions.map(option => (
-            <div key={option.value} className="gallery-item">
-              <img
-                src={option.image}
-                alt={t(option.labelKey)}
-                className="gallery-image"
-              />
-              <p className="gallery-label">{t(option.labelKey)}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Examples Gallery */}
       <div className="skirt-gallery">
-        <h3 className="gallery-title">Примеры юбок нашего производства</h3>
+        <h3 className="gallery-title">Примеры юбок на купальниках нашего ателье</h3>
         <div className="gallery-grid">
           <div className="gallery-item">
             <img
