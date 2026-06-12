@@ -165,8 +165,8 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
   return (
     <div className="final-result">
       <div className="result-header">
-        <h2>{t('result.title') || 'Your Custom Leotard'}</h2>
-        <p className="result-subtitle">{t('result.subtitle') || 'Ready to order?'}</p>
+        <h2>{t('result.title') || 'Final calculation'}</h2>
+        <p className="result-subtitle">{t('result.subtitle') || 'Based on your selected options'}</p>
       </div>
 
       <div className="result-content">
