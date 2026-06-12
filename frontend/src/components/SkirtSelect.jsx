@@ -102,35 +102,45 @@ function SkirtSelect({ onConfirm, onSkirtChange, onContinue, onBack, config, cur
         <div className="gallery-grid">
           <div className="gallery-item">
             <img
-              src="/images/skirt-bez.PNG"
-              alt="Пример без юбки"
+              src="/images/skirts/IMG_3260.jpg"
+              alt="Пример юбки 1"
               className="gallery-image"
             />
-            <p className="gallery-label">Без юбки</p>
           </div>
           <div className="gallery-item">
             <img
-              src="/images/skirt-front.PNG"
-              alt="Пример юбка спереди"
+              src="/images/skirts/IMG_3261.jpg"
+              alt="Пример юбки 2"
               className="gallery-image"
             />
-            <p className="gallery-label">Юбка спереди</p>
           </div>
           <div className="gallery-item">
             <img
-              src="/images/skirt-back.PNG"
-              alt="Пример юбка сзади"
+              src="/images/skirts/IMG_3262.jpg"
+              alt="Пример юбки 3"
               className="gallery-image"
             />
-            <p className="gallery-label">Юбка сзади</p>
           </div>
           <div className="gallery-item">
             <img
-              src="/images/skirt-both.PNG"
-              alt="Пример юбка спереди и сзади"
+              src="/images/skirts/IMG_3418.jpg"
+              alt="Пример юбки 4"
               className="gallery-image"
             />
-            <p className="gallery-label">Юбка спереди и сзади</p>
+          </div>
+          <div className="gallery-item">
+            <img
+              src="/images/skirts/IMG_3442.jpg"
+              alt="Пример юбки 5"
+              className="gallery-image"
+            />
+          </div>
+          <div className="gallery-item">
+            <img
+              src="/images/skirts/IMG_3444.jpg"
+              alt="Пример юбки 6"
+              className="gallery-image"
+            />
           </div>
         </div>
       </div>
