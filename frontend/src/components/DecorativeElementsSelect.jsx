@@ -84,23 +84,16 @@ function DecorativeElementsSelect({ onConfirm, onDecorativeElementsChange, onCon
       {/* Selection Options */}
       <div className="options-group">
         {options.map(opt => {
-          // Determine if this checkbox should be disabled
-          const isNothing = opt.value === 'nothing'
-          const hasNothingSelected = selected.includes('nothing')
-          const isDisabled = (isNothing && selected.length > 0 && !hasNothingSelected) ||
-                            (!isNothing && hasNothingSelected)
-
           return (
             <label
               key={opt.value}
-              className={`option-card ${selected.includes(opt.value) ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`}
+              className={`option-card ${selected.includes(opt.value) ? 'selected' : ''}`}
             >
               <input
                 type="checkbox"
                 checked={selected.includes(opt.value)}
                 onChange={() => handleToggle(opt.value)}
                 className="checkbox-input"
-                disabled={isDisabled}
               />
               <div className="option-card-content">
                 <div className="option-icon">
