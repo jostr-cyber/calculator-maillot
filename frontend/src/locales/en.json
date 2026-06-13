@@ -308,7 +308,11 @@
       "rhinestoneMaximum": "Replace premium rhinestones with standard set",
       "urgencyStandard": "Change from expedited to standard production time",
       "decorativeElements": "Remove decorative elements",
-      "aerography": "Remove aerography/painting"
+      "aerography": "Remove aerography/painting",
+      "sleevesComplexity": "Simplify the sleeves",
+      "skirtComplexity": "Simplify the skirt",
+      "decorativeElementsComplexity": "Simplify the decorative elements",
+      "aerographyComplexity": "Simplify the painting/aerography"
     },
     "whatsappMessage": "Hello! I would like to discuss the leotard design details. I am interested in: {item}"
   },

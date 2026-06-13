@@ -308,7 +308,11 @@
       "rhinestoneMaximum": "Reemplazar cristales premium con conjunto estándar",
       "urgencyStandard": "Pasar de confección urgente a estándar",
       "decorativeElements": "Eliminar elementos decorativos",
-      "aerography": "Eliminar pintura/aerografía"
+      "aerography": "Eliminar pintura/aerografía",
+      "sleevesComplexity": "Simplificar las mangas",
+      "skirtComplexity": "Simplificar la falda",
+      "decorativeElementsComplexity": "Simplificar los elementos decorativos",
+      "aerographyComplexity": "Simplificar la aerografía"
     },
     "whatsappMessage": "¡Hola! Me gustaría hablar sobre los detalles del diseño del maillot. Me interesa: {item}"
   },
