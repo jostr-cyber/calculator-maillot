@@ -226,7 +226,7 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
                 <>
                   {priceReductions.map((reduction, index) => {
                     const handleComplexityClick = () => {
-                      const message = encodeURIComponent(`Привет! Хотела бы обсудить детали дизайна купальника. Интересует: ${t(reduction.labelKey)}`)
+                      const message = encodeURIComponent(t('priceReduction.whatsappMessage', { item: t(reduction.labelKey) }))
                       window.open(`https://wa.me/34670770024?text=${message}`, '_blank')
                     }
 

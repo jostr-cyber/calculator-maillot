@@ -119,13 +119,13 @@ function DecorativeElementsSelect({ onConfirm, onDecorativeElementsChange, onCon
 
       {/* Examples Gallery */}
       <div className="decorative-gallery">
-        <h3 className="gallery-title">Примеры дополнительных объемных деталей на купальниках нашего ателье: объемные цветы, бахрома, перья, погон на плечо</h3>
+        <h3 className="gallery-title">{t('decorativeElements.galleryTitle')}</h3>
         <div className="gallery-grid">
           {galleryImages.map((image, index) => (
             <div key={index} className="gallery-item">
               <img
                 src={image}
-                alt={`Пример детали ${index + 1}`}
+                alt={`${t('decorativeElements.galleryTitle')} ${index + 1}`}
                 className="gallery-image"
                 onClick={() => handleImageClick(image)}
                 style={{ cursor: 'pointer' }}

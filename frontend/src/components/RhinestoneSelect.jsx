@@ -18,19 +18,19 @@ function RhinestoneSelect({ value, onRhinestoneChange, onContinue, onBack, confi
 
   const gallerySets = [
     {
-      label: 'Без страз',
+      labelKey: 'rhinestone.gallerySets.none',
       images: ['/images/straz/no straz.JPEG', '/images/straz/no straz2.PNG', '/images/straz/no straz 3.jpg', '/images/straz/no straz 4.jpg']
     },
     {
-      label: 'Минимальный набор страз',
+      labelKey: 'rhinestone.gallerySets.minimal',
       images: ['/images/straz/min.jpg', '/images/straz/min2.JPEG', '/images/straz/min 3.jpg', '/images/straz/min 4.jpg']
     },
     {
-      label: 'Стандартный набор страз',
+      labelKey: 'rhinestone.gallerySets.standard',
       images: ['/images/straz/standart.JPEG', '/images/straz/standart2.JPEG', '/images/straz/standart3.JPEG', '/images/straz/standart4.JPEG']
     },
     {
-      label: 'Максимальный набор страз',
+      labelKey: 'rhinestone.gallerySets.maximum',
       images: ['/images/straz/maks.JPEG', '/images/straz/maks2.JPEG', '/images/straz/maks3.JPEG', '/images/straz/maks4.JPEG']
     }
   ]
@@ -101,16 +101,16 @@ function RhinestoneSelect({ value, onRhinestoneChange, onContinue, onBack, confi
 
       {/* Examples Gallery */}
       <div className="rhinestone-gallery">
-        <h3 className="gallery-title">Примеры наборов страз на купальниках нашего ателье</h3>
+        <h3 className="gallery-title">{t('rhinestone.galleryTitle')}</h3>
         {gallerySets.map((set, setIndex) => (
           <div key={setIndex} className="gallery-set">
-            <p className="gallery-set-label">{set.label}</p>
+            <p className="gallery-set-label">{t(set.labelKey)}</p>
             <div className="gallery-grid">
               {set.images.map((image, index) => (
                 <div key={index} className="gallery-item">
                   <img
                     src={image}
-                    alt={`${set.label} ${index + 1}`}
+                    alt={`${t(set.labelKey)} ${index + 1}`}
                     className="gallery-image"
                     onClick={() => handleImageClick(image)}
                     style={{ cursor: 'pointer' }}

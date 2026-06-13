@@ -111,13 +111,13 @@ function AerographySelect({ onConfirm, onAerographyChange, onContinue, onBack, c
 
       {/* Examples Gallery */}
       <div className="aerography-gallery">
-        <h3 className="gallery-title">Примеры росписи и аэрографии на купальниках нашего ателье</h3>
+        <h3 className="gallery-title">{t('aerography.galleryTitle')}</h3>
         <div className="gallery-grid">
           {galleryImages.map((image, index) => (
             <div key={index} className="gallery-item">
               <img
                 src={image}
-                alt={`Пример росписи ${index + 1}`}
+                alt={`${t('aerography.galleryTitle')} ${index + 1}`}
                 className="gallery-image"
                 onClick={() => handleImageClick(image)}
                 style={{ cursor: 'pointer' }}

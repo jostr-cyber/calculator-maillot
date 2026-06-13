@@ -1,5 +1,6 @@
 import React from 'react'
 import { useTranslation } from '../hooks/useTranslation'
+import { LanguageSwitcher } from './LanguageSwitcher'
 import './Intro.css'
 
 function Intro({ onStart }) {
@@ -7,25 +8,22 @@ function Intro({ onStart }) {
 
   return (
     <div className="intro-container">
+      <LanguageSwitcher />
       <div className="intro-content">
         <h1 className="intro-title">
-          LeotART КАЛЬКУЛЯТОР
+          {t('intro.appTitle')}
         </h1>
 
         <div className="intro-image">
           <img
             src="/images/2.PNG"
-            alt="Примеры купальников"
+            alt={t('intro.imageAlt')}
             className="intro-image-content"
           />
         </div>
 
-        <p className="intro-description">
-          {t('intro.description') || 'Рассчитайте стоимость вашего индивидуального купальника за несколько простых шагов'}
-        </p>
-
         <button className="btn-start" onClick={onStart}>
-          <span>{t('intro.startButton') || 'Начать расчет'}</span>
+          <span>{t('intro.startButton')}</span>
           <span className="arrow">→</span>
         </button>
       </div>

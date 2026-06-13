@@ -5,7 +5,9 @@
   },
   "intro": {
     "description": "Calculate the cost of your custom leotard in just a few simple steps",
-    "startButton": "Start calculation"
+    "startButton": "Start calculation",
+    "appTitle": "LeotART CALCULATOR",
+    "imageAlt": "Leotard examples"
   },
   "complexity": {
     "simple": "Simple",
@@ -138,7 +140,7 @@
     "strapsImg": "Example with straps"
   },
   "skirt": {
-    "galleryTitle": "Skirt Examples",
+    "galleryTitle": "Examples of skirts on our atelier's leotards",
     "label": "Select option...",
     "none": "No skirt",
     "noneDesc": "Classic style",
@@ -155,7 +157,8 @@
     "fringe": "Fringe",
     "flowers": "Volumetric flowers",
     "other": "Other",
-    "nothing": "Nothing"
+    "nothing": "Nothing",
+    "galleryTitle": "Examples of additional volumetric details on our atelier's leotards: volumetric flowers, fringe, feathers, shoulder epaulet"
   },
   "aerography": {
     "label": "Select option...",
@@ -164,7 +167,8 @@
     "drawing": "Drawing (character, object, building, etc.)",
     "drawingDesc": "Small element with drawing",
     "aerography": "Aerography",
-    "aerographyDesc": "Painting required on a significant area for color transition"
+    "aerographyDesc": "Painting required on a significant area for color transition",
+    "galleryTitle": "Examples of painting and aerography on our atelier's leotards"
   },
   "combinaison": {
     "label": "Select option...",
@@ -197,7 +201,14 @@
     "maximum": "Maximum set of glued and sewn stones",
     "maximumDesc": "Generous decoration throughout",
     "premium": "Mix of premium glued and sewn stones",
-    "premiumDesc": "Luxury decoration with premium materials"
+    "premiumDesc": "Luxury decoration with premium materials",
+    "galleryTitle": "Examples of rhinestone sets on our atelier's leotards",
+    "gallerySets": {
+      "none": "No rhinestones",
+      "minimal": "Minimal set of rhinestones",
+      "standard": "Standard set of rhinestones",
+      "maximum": "Maximum set of rhinestones"
+    }
   },
   "premiumStones": {
     "swarovski": "Swarovski Stones",
@@ -298,7 +309,8 @@
       "urgencyStandard": "Change from expedited to standard production time",
       "decorativeElements": "Remove decorative elements",
       "aerography": "Remove aerography/painting"
-    }
+    },
+    "whatsappMessage": "Hello! I would like to discuss the leotard design details. I am interested in: {item}"
   },
   "wheel": {
     "description": "Try your luck and discover what discount you will get",

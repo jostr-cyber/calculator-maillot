@@ -5,7 +5,9 @@
   },
   "intro": {
     "description": "Calcula el costo de tu maillot personalizado en unos pocos pasos simples",
-    "startButton": "Comenzar cálculo"
+    "startButton": "Comenzar cálculo",
+    "appTitle": "LeotART CALCULADORA",
+    "imageAlt": "Ejemplos de maillots"
   },
   "complexity": {
     "simple": "Simple",
@@ -138,7 +140,7 @@
     "strapsImg": "Ejemplo con tirantes"
   },
   "skirt": {
-    "galleryTitle": "Ejemplos de Faldas",
+    "galleryTitle": "Ejemplos de faldas en los maillots de nuestro taller",
     "label": "Selecciona opción...",
     "none": "Sin falda",
     "noneDesc": "Estilo clásico",
@@ -155,7 +157,8 @@
     "fringe": "Flecos",
     "flowers": "Flores en relieve",
     "other": "Otro",
-    "nothing": "Nada"
+    "nothing": "Nada",
+    "galleryTitle": "Ejemplos de detalles volumétricos adicionales en los maillots de nuestro taller: flores volumétricas, flecos, plumas, charretera en el hombro"
   },
   "aerography": {
     "label": "Selecciona opción...",
@@ -164,7 +167,8 @@
     "drawing": "Dibujo (personaje, objeto, edificio, etc.)",
     "drawingDesc": "Pequeño elemento con dibujo",
     "aerography": "Aerografía",
-    "aerographyDesc": "Pintura requerida en área significativa para transición de colores"
+    "aerographyDesc": "Pintura requerida en área significativa para transición de colores",
+    "galleryTitle": "Ejemplos de pintura y aerografía en los maillots de nuestro taller"
   },
   "combinaison": {
     "label": "Selecciona opción...",
@@ -197,7 +201,14 @@
     "maximum": "Conjunto máximo de piedras pegadas y cosidas",
     "maximumDesc": "Decoración generosa en toda la superficie",
     "premium": "Mezcla de piedras pegadas y cosidas clase Premium",
-    "premiumDesc": "Decoración de lujo con materiales premium"
+    "premiumDesc": "Decoración de lujo con materiales premium",
+    "galleryTitle": "Ejemplos de conjuntos de pedrería en los maillots de nuestro taller",
+    "gallerySets": {
+      "none": "Sin pedrería",
+      "minimal": "Conjunto mínimo de pedrería",
+      "standard": "Conjunto estándar de pedrería",
+      "maximum": "Conjunto máximo de pedrería"
+    }
   },
   "premiumStones": {
     "swarovski": "Piedras Swarovski",
@@ -298,7 +309,8 @@
       "urgencyStandard": "Cambiar de entrega acelerada a estándar",
       "decorativeElements": "Eliminar elementos decorativos",
       "aerography": "Eliminar pintura/aerografía"
-    }
+    },
+    "whatsappMessage": "¡Hola! Me gustaría hablar sobre los detalles del diseño del maillot. Me interesa: {item}"
   },
   "wheel": {
     "description": "Prueba tu suerte y descubre qué descuento obtendrás",

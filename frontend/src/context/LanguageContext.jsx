@@ -4,22 +4,19 @@ import React, { createContext, useState, useEffect } from 'react';
 import en from '../locales/en.json';
 import es from '../locales/es.json';
 import ru from '../locales/ru.json';
-import fr from '../locales/fr.json';
 
 export const LanguageContext = createContext();
 
 const translations = {
   en,
   es,
-  ru,
-  fr
+  ru
 };
 
 const SUPPORTED_LANGUAGES = {
   en: { name: 'English', flag: '🇬🇧' },
   es: { name: 'Español', flag: '🇪🇸' },
-  ru: { name: 'Русский', flag: '🇷🇺' },
-  fr: { name: 'Français', flag: '🇫🇷' }
+  ru: { name: 'Русский', flag: '🇷🇺' }
 };
 
 export const LanguageProvider = ({ children }) => {
