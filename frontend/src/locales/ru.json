@@ -418,7 +418,27 @@
     "title": "Ваш текущий выбор на основе предыдущих шагов",
     "currentEstimate": "Примерная стоимость",
     "complexity": "Сложность",
-    "noSelections": "Нет выборов"
+    "noSelections": "Нет выборов",
+    "items": {
+      "designOur": "Нужен дизайн",
+      "designYour": "Ваш дизайн",
+      "sleevesOne": "Один рукав",
+      "sleevesTwo": "Рукава",
+      "skirtFront": "Юбка спереди",
+      "skirtBack": "Юбка сзади",
+      "skirtBoth": "Юбка",
+      "feathers": "Перья",
+      "fringe": "Бахрома",
+      "flowers": "Цветы",
+      "other": "Другое",
+      "drawing": "Рисунок",
+      "aerography": "Аэрография",
+      "urgency": "Срочное исполнение",
+      "rhinestoneMinimal": "Минимальный набор страз",
+      "rhinestoneStandard": "Стандартный набор страз",
+      "rhinestoneMaximum": "Максимальный набор страз",
+      "rhinestonePremium": "Премиум стразы"
+    }
   },
   "result": {
     "title": "Итоговый расчет",

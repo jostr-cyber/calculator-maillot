@@ -18,8 +18,7 @@ function ConfigurationSummary({ config, currentPrice, complexity }) {
         {summary.length > 0 ? (
           summary.map((item, index) => (
             <div key={index} className="summary-item">
-              <span className="summary-checkmark">✓</span>
-              <span className="summary-text">{typeof item === 'string' ? item : t(item.key)}</span>
+              <span className="summary-text">{typeof item === 'string' ? item : '• ' + t(item.key)}</span>
             </div>
           ))
         ) : (

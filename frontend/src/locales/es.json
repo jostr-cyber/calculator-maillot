@@ -412,7 +412,27 @@
     "title": "Tu selección actual basada en pasos anteriores",
     "currentEstimate": "Estimación actual",
     "complexity": "Complejidad",
-    "noSelections": "Sin selecciones aún"
+    "noSelections": "Sin selecciones aún",
+    "items": {
+      "designOur": "Se necesita diseño",
+      "designYour": "Tu diseño",
+      "sleevesOne": "Una manga",
+      "sleevesTwo": "Mangas",
+      "skirtFront": "Falda delantera",
+      "skirtBack": "Falda trasera",
+      "skirtBoth": "Falda",
+      "feathers": "Plumas",
+      "fringe": "Flecos",
+      "flowers": "Flores",
+      "other": "Otro",
+      "drawing": "Dibujo",
+      "aerography": "Aerografía",
+      "urgency": "Producción urgente",
+      "rhinestoneMinimal": "Conjunto mínimo de pedrería",
+      "rhinestoneStandard": "Conjunto estándar de pedrería",
+      "rhinestoneMaximum": "Conjunto máximo de pedrería",
+      "rhinestonePremium": "Pedrería premium"
+    }
   },
   "result": {
     "title": "Tu Maillot Personalizado",

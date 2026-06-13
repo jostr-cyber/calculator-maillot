@@ -412,7 +412,27 @@
     "title": "Your current selection based on previous steps",
     "currentEstimate": "Current estimate",
     "complexity": "Complexity",
-    "noSelections": "No selections yet"
+    "noSelections": "No selections yet",
+    "items": {
+      "designOur": "Design needed",
+      "designYour": "Your design",
+      "sleevesOne": "One sleeve",
+      "sleevesTwo": "Sleeves",
+      "skirtFront": "Front skirt",
+      "skirtBack": "Back skirt",
+      "skirtBoth": "Skirt",
+      "feathers": "Feathers",
+      "fringe": "Fringe",
+      "flowers": "Flowers",
+      "other": "Other",
+      "drawing": "Drawing",
+      "aerography": "Aerography",
+      "urgency": "Express production",
+      "rhinestoneMinimal": "Minimal rhinestone set",
+      "rhinestoneStandard": "Standard rhinestone set",
+      "rhinestoneMaximum": "Maximum rhinestone set",
+      "rhinestonePremium": "Premium rhinestones"
+    }
   },
   "result": {
     "title": "Your Custom Leotard",
