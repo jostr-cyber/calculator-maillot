@@ -72,13 +72,16 @@ function SleevesSelect({ value, onSleevesChange, onContinue, onBack, config, cur
               name="sleeves"
               value={sleeve.value}
               checked={selected === sleeve.value}
-              onChange={(e) => setSelected(parseInt(e.target.value))}
+              onChange={(e) => {
+                const newValue = parseInt(e.target.value)
+                setSelected(newValue)
+                onSleevesChange(newValue)
+              }}
               className="radio-input"
             />
             <div className="sleeve-card-content">
               <img src={sleeve.iconImage} alt={t(sleeve.labelKey)} className="sleeve-icon" />
               <div className="sleeve-label">{t(sleeve.labelKey)}</div>
-              <div className="sleeve-desc">{t(sleeve.descKey)}</div>
             </div>
           </label>
         ))}

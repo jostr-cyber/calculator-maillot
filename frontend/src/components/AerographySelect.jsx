@@ -103,7 +103,6 @@ function AerographySelect({ onConfirm, onAerographyChange, onContinue, onBack, c
             />
             <div className="aerography-card-content">
               <div className="aerography-label">{t(option.labelKey)}</div>
-              <div className="aerography-desc">{t(option.descKey)}</div>
             </div>
           </label>
         ))}
