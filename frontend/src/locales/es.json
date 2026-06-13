@@ -355,7 +355,7 @@
       "wheelDiscount": "🎁 Descuento de la Ruleta ({percent}%):"
     },
     "finalPrice": "💰 Precio final:",
-    "disclaimer": "Este es un cálculo preliminar. El precio final puede aclararse después de discutir detalles."
+    "disclaimer": "Este es un cálculo preliminar. El precio final se confirmará después de revisar los detalles"
   },
   "admin": {
     "title": "📊 Resultados de Encuesta",
@@ -414,7 +414,7 @@
     "complexity": "Complejidad",
     "noSelections": "Sin selecciones aún",
     "items": {
-      "designOur": "Se necesita diseño",
+      "designOur": "Diseño personalizado",
       "designYour": "Tu diseño",
       "sleevesOne": "Una manga",
       "sleevesTwo": "Mangas",
@@ -436,7 +436,7 @@
   },
   "result": {
     "title": "Tu Maillot Personalizado",
-    "subtitle": "¿Listo para ordenar?",
+    "subtitle": "¿Lista para hacer tu pedido?",
     "estimatedPrice": "Precio estimado",
     "complexity": "Nivel de complejidad",
     "productionTime": "Tiempo de producción",
@@ -457,10 +457,10 @@
   "actionButtons": {
     "order": "💚 Pedir este maillot",
     "sendPhotos": "📸 Enviar fotos de inspiración",
-    "discuss": "💬 Discutir detalles en WhatsApp",
-    "customize": "🎨 Personalizar de nuevo",
+    "discuss": "Continuar por WhatsApp",
+    "customize": "Empezar de nuevo",
     "reducePrice": {
-      "label": "💰 Reducir el precio",
+      "label": "Ver opciones más económicas",
       "message": "¿Te gustaría reducir tu selección para bajar el precio? Haz clic en 'Personalizar de nuevo' para ajustar tus opciones."
     }
   },
