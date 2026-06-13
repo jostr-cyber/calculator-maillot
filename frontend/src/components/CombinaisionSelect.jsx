@@ -47,7 +47,6 @@ function CombinaisionSelect({ onConfirm, onCombinaisionChange, onContinue, onBac
             />
             <div className="combinaison-card-content">
               <div className="combinaison-label">{t(option.labelKey)}</div>
-              <div className="combinaison-desc">{t(option.descKey)}</div>
             </div>
           </label>
         ))}
