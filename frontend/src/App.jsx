@@ -363,6 +363,7 @@ function App() {
   const handleReset = () => {
     setSelectedBudget(null)
     setHeight(150)
+    setHeightCategory('150-170')
     setDesignSource('')
     setDesign('')
     setSleeves(0)
@@ -373,6 +374,7 @@ function App() {
     setCombinaison('')
     setPremiumStones('')
     setUrgency('')
+    setRhinestone('')
     setPriceResult(null)
     setError(null)
     setReturnedFromResult(false)
