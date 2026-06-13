@@ -180,14 +180,14 @@
   "urgency": {
     "info": "Selecciona el plazo de confección",
     "standard": {
-      "title": "Pedido Estándar",
+      "title": "Pedido estándar",
       "time": "7-14 días",
       "price": "sin recargo"
     },
     "expedited": {
-      "title": "Pedido Acelerado",
-      "time": "hasta 5 días",
-      "price": "+10% al precio"
+      "title": "Pedido urgente",
+      "time": "Hasta 5 días",
+      "price": "+10 % sobre el precio"
     },
     "note": "💡 Recargos por urgencia..."
   },
