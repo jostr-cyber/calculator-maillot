@@ -297,7 +297,7 @@
     "remove": "Eliminar",
     "choose": "Elegir",
     "newPrice": "Nuevo precio",
-    "exceedInfo": "Tu presupuesto deseado se ha excedido por",
+    "exceedInfo": "El precio estimado supera el presupuesto seleccionado en",
     "recommendation": "Para reducir el costo del maillot, recomendamos cambiar algunos de los parámetros seleccionados:",
     "noBudgetComparison": "Si deseas reducir el precio, aquí hay algunas formas en que puedes hacerlo:",
     "noRecommendations": "Sin reducciones de costo posibles con los parámetros actuales",
