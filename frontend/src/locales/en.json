@@ -54,7 +54,7 @@
     "aerography": "Painting & Airbrushing",
     "combinaison": "Leotard Type",
     "urgency": "Urgency",
-    "rhinestone": "Do you need rhinestones?",
+    "rhinestone": "Amount of rhinestones",
     "survey": "🎯 Survey",
     "wheel": "🎡 Wheel of Fortune",
     "result": "Price Calculation"
@@ -194,15 +194,15 @@
   "rhinestone": {
     "none": "No rhinestones",
     "noneDesc": "Classic style without decorations",
-    "minimal": "Minimal set of glued and sewn stones",
+    "minimal": "Minimal rhinestones",
     "minimalDesc": "Small amount of decorations",
-    "standard": "Standard set of glued and sewn stones",
+    "standard": "Standard rhinestones",
     "standardDesc": "Optimal amount of decorations",
-    "maximum": "Maximum set of glued and sewn stones",
+    "maximum": "Maximum rhinestones",
     "maximumDesc": "Generous decoration throughout",
     "premium": "Mix of premium glued and sewn stones",
     "premiumDesc": "Luxury decoration with premium materials",
-    "galleryTitle": "Examples of rhinestone sets on our atelier's leotards",
+    "galleryTitle": "Examples of rhinestone coverage",
     "gallerySets": {
       "none": "No rhinestones",
       "minimal": "Minimal set of rhinestones",

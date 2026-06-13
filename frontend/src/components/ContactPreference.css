@@ -140,14 +140,14 @@
   background-color: #45a049;
 }
 
-.actions .btn-secondary {
+.contact-preference-wrapper .actions .btn-secondary {
   background-color: #f44336;
   color: white;
   flex: 1;
   max-width: 300px;
 }
 
-.actions .btn-secondary:hover {
+.contact-preference-wrapper .actions .btn-secondary:hover {
   background-color: #da190b;
 }
 
