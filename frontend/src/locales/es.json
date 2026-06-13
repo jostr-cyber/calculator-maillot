@@ -314,7 +314,9 @@
       "decorativeElementsComplexity": "Simplificar los elementos decorativos",
       "aerographyComplexity": "Simplificar la aerografía"
     },
-    "whatsappMessage": "¡Hola! Me gustaría hablar sobre los detalles del diseño del maillot. Me interesa: {item}"
+    "whatsappMessage": "¡Hola! Me gustaría hablar sobre los detalles del diseño del maillot. Me interesa: {item}",
+    "discussWithDesigner": "Consulta los detalles con nuestro diseñador",
+    "accordingToRecommendations": "Precio aproximado siguiendo estas recomendaciones"
   },
   "wheel": {
     "description": "Prueba tu suerte y descubre qué descuento obtendrás",

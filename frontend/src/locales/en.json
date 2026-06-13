@@ -314,7 +314,9 @@
       "decorativeElementsComplexity": "Simplify the decorative elements",
       "aerographyComplexity": "Simplify the painting/aerography"
     },
-    "whatsappMessage": "Hello! I would like to discuss the leotard design details. I am interested in: {item}"
+    "whatsappMessage": "Hello! I would like to discuss the leotard design details. I am interested in: {item}",
+    "discussWithDesigner": "Discuss with designer",
+    "accordingToRecommendations": "According to these recommendations"
   },
   "wheel": {
     "description": "Try your luck and discover what discount you will get",
