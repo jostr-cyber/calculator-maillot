@@ -457,10 +457,10 @@
   "actionButtons": {
     "order": "💚 Order this leotard",
     "sendPhotos": "📸 Send inspiration photos",
-    "discuss": "💬 Discuss details on WhatsApp",
-    "customize": "🎨 Customize again",
+    "discuss": "Discuss details on WhatsApp",
+    "customize": "Customize again",
     "reducePrice": {
-      "label": "💰 Reduce the price",
+      "label": "Reduce the price",
       "message": "Would you like to reduce your selection to lower the price? Click 'Customize again' to adjust your options."
     }
   },
