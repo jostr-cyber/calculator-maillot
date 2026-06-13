@@ -10,9 +10,9 @@
     "imageAlt": "Ejemplos de maillots"
   },
   "complexity": {
-    "simple": "Simple",
-    "advanced": "Avanzado",
-    "luxury": "Lujo"
+    "simple": "Media",
+    "advanced": "Alta",
+    "luxury": "Muy alta"
   },
   "productionTime": {
     "standard": "7-14 días",
