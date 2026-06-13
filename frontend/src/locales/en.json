@@ -51,7 +51,7 @@
     "sleeves": "Choose sleeve style",
     "skirt": "Choose a skirt style",
     "decorativeElements": "Additional Elements",
-    "aerography": "Leotard Painting, Aerography",
+    "aerography": "Painting & Airbrushing",
     "combinaison": "Leotard Type",
     "urgency": "Urgency",
     "rhinestone": "Do you need rhinestones?",
@@ -162,13 +162,13 @@
   },
   "aerography": {
     "label": "Select option...",
-    "nothing": "Nothing",
+    "nothing": "None",
     "nothingDesc": "No painting or aerography",
-    "drawing": "Drawing (character, object, building, etc.)",
+    "drawing": "Hand-painted artwork (characters, objects, buildings, etc.)",
     "drawingDesc": "Small element with drawing",
-    "aerography": "Aerography",
+    "aerography": "Airbrushing",
     "aerographyDesc": "Painting required on a significant area for color transition",
-    "galleryTitle": "Examples of painting and aerography on our atelier's leotards"
+    "galleryTitle": "Examples of our artwork and airbrushing"
   },
   "combinaison": {
     "label": "Select option...",
@@ -432,7 +432,7 @@
       "flowers": "Flowers",
       "other": "Other",
       "drawing": "Drawing",
-      "aerography": "Aerography",
+      "aerography": "Airbrushing",
       "urgency": "Express production",
       "rhinestoneMinimal": "Minimal rhinestone set",
       "rhinestoneStandard": "Standard rhinestone set",
