@@ -438,7 +438,8 @@
       "rhinestoneStandard": "Conjunto estándar de pedrería",
       "rhinestoneMaximum": "Conjunto máximo de pedrería",
       "rhinestonePremium": "Pedrería premium"
-    }
+    },
+    "priceNote": "El precio final puede variar según la complejidad del diseño"
   },
   "result": {
     "title": "Tu Maillot Personalizado",

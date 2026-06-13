@@ -181,13 +181,13 @@
     "info": "Select manufacturing timeframe...",
     "standard": {
       "title": "Standard Order",
-      "time": "7-14 days",
-      "price": "+0 euro"
+      "time": "7–14 days",
+      "price": "No extra charge"
     },
     "expedited": {
       "title": "Express production",
-      "time": "up to 5 days",
-      "price": "+10% to price"
+      "time": "Up to 5 days",
+      "price": "+10% extra"
     },
     "note": "💡 Urgency surcharges..."
   },
@@ -438,7 +438,8 @@
       "rhinestoneStandard": "Standard rhinestone set",
       "rhinestoneMaximum": "Maximum rhinestone set",
       "rhinestonePremium": "Premium rhinestones"
-    }
+    },
+    "priceNote": "The final price may vary depending on design complexity"
   },
   "result": {
     "title": "Your Custom Leotard",

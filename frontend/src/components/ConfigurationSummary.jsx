@@ -45,6 +45,10 @@ function ConfigurationSummary({ config, currentPrice, complexity }) {
           </div>
         )}
       </div>
+
+      {currentPrice && (
+        <p className="price-note">{t('summary.priceNote')}</p>
+      )}
     </div>
   )
 }
