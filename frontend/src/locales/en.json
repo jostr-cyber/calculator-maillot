@@ -11,8 +11,8 @@
   },
   "complexity": {
     "simple": "Simple",
-    "advanced": "Advanced",
-    "luxury": "Luxury"
+    "advanced": "Standard",
+    "luxury": "Advanced"
   },
   "productionTime": {
     "standard": "7-14 days",
@@ -20,7 +20,7 @@
   },
   "buttons": {
     "continue": "Continue",
-    "back": "Back",
+    "back": "Previous",
     "next": "Next",
     "save": "Save",
     "finish": "Finish",
@@ -48,7 +48,7 @@
     "height": "Select the gymnast's height (cm)",
     "designSource": "Choose a design option",
     "design": "Design",
-    "sleeves": "How many sleeves?",
+    "sleeves": "Choose sleeve style",
     "skirt": "Do you need a skirt?",
     "decorativeElements": "Additional Elements",
     "aerography": "Leotard Painting, Aerography",
@@ -135,7 +135,7 @@
     "two": "Two sleeves",
     "twoDesc": "Full coverage",
     "twoImg": "Example with two sleeves",
-    "straps": "With straps",
+    "straps": "Shoulder straps",
     "strapsDesc": "With decorative straps",
     "strapsImg": "Example with straps"
   },
@@ -415,12 +415,12 @@
     "required": "Please select a contact method and provide your contact information"
   },
   "summary": {
-    "title": "Your current selection based on previous steps",
-    "currentEstimate": "Current estimate",
-    "complexity": "Complexity",
+    "title": "Your current configuration",
+    "currentEstimate": "Estimated price",
+    "complexity": "Design complexity",
     "noSelections": "No selections yet",
     "items": {
-      "designOur": "Design needed",
+      "designOur": "Custom design",
       "designYour": "Your design",
       "sleevesOne": "One sleeve",
       "sleevesTwo": "Sleeves",
