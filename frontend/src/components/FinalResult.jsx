@@ -287,17 +287,10 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
               {priceReductions.length > 0 ? (
                 <>
                   {priceReductions.map((reduction, index) => {
-                    const handleComplexityClick = () => {
-                      const message = encodeURIComponent(t('priceReduction.whatsappMessage', { item: t(reduction.labelKey) }))
-                      window.open(`https://wa.me/34670770024?text=${message}`, '_blank')
-                    }
-
                     return (
                       <div
                         key={index}
-                        className={`reduction-item ${reduction.isComplexityChange ? 'complexity-change clickable' : ''}`}
-                        onClick={reduction.isComplexityChange ? handleComplexityClick : undefined}
-                        style={reduction.isComplexityChange ? { cursor: 'pointer' } : {}}
+                        className={`reduction-item ${reduction.isComplexityChange ? 'complexity-change' : ''}`}
                       >
                         <div className="reduction-label">
                           <span className="reduction-priority">#{reduction.priority}</span>
