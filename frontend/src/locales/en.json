@@ -49,7 +49,7 @@
     "designSource": "Choose a design option",
     "design": "Design",
     "sleeves": "Choose sleeve style",
-    "skirt": "Do you need a skirt?",
+    "skirt": "Choose a skirt style",
     "decorativeElements": "Additional Elements",
     "aerography": "Leotard Painting, Aerography",
     "combinaison": "Leotard Type",
@@ -140,15 +140,15 @@
     "strapsImg": "Example with straps"
   },
   "skirt": {
-    "galleryTitle": "Examples of skirts on our atelier's leotards",
+    "galleryTitle": "Examples from our work",
     "label": "Select option...",
     "none": "No skirt",
     "noneDesc": "Classic style",
-    "front": "Skirt in front",
+    "front": "Front skirt",
     "frontDesc": "Elegant front view",
-    "back": "Skirt in back",
+    "back": "Back skirt",
     "backDesc": "Mysterious back view",
-    "both": "Skirt in front and back",
+    "both": "Front and back skirt",
     "bothDesc": "Full coverage"
   },
   "decorativeElements": {
