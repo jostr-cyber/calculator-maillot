@@ -119,6 +119,12 @@ function App() {
     'contactPreference'
   ]
 
+  // Scroll to the top of the page whenever the step changes,
+  // so each new step opens at its title instead of mid-page.
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' })
+  }, [step])
+
   // Calculate current price whenever configuration changes (debounced)
   useEffect(() => {
     if (step === 'height' || !designSource) {
