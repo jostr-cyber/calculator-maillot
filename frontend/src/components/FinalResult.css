@@ -789,6 +789,25 @@
   line-height: 1.5;
 }
 
+.modal-whatsapp-btn {
+  width: 100%;
+  padding: 14px 20px;
+  margin-bottom: 10px;
+  background-color: #25D366;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-whatsapp-btn:hover {
+  background-color: #1ebe5b;
+  transform: translateY(-2px);
+}
+
 .modal-close-btn {
   width: 100%;
   padding: 12px 20px;

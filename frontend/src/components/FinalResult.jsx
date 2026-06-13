@@ -179,18 +179,23 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
     setShowReducePriceModal(false)
   }
 
-  const handleDiscussDetails = () => {
-    const optimized = reduceModalOpened
+  const openWhatsApp = (optimized) => {
     const record = {
       ...buildRecord(),
-      reduceModalOpened,
-      recommendationsApplied: reduceModalOpened ? recommendationKeys : [],
-      optimizedPrice: reduceModalOpened ? optimizedPrice : null
+      reduceModalOpened: optimized,
+      recommendationsApplied: optimized ? recommendationKeys : [],
+      optimizedPrice: optimized ? optimizedPrice : null
     }
     const message = buildWhatsAppMessage(record, { t, language, optimized })
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank')
     updateCalculation(calculationId, { status: 'whatsapp_clicked', whatsappMessage: message })
   }
+
+  // Main screen button: optimized only if the customer opened the reduce-cost modal
+  const handleDiscussDetails = () => openWhatsApp(reduceModalOpened)
+
+  // Modal button: always sends the optimized version (original + optimized price + applied recommendations)
+  const handleDiscussOptimized = () => openWhatsApp(true)
 
   return (
     <div className="final-result">
@@ -322,6 +327,10 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
                 <p className="no-recommendations">{t('priceReduction.noRecommendations') || 'No further reductions available'}</p>
               )}
             </div>
+
+            <button className="modal-whatsapp-btn" onClick={handleDiscussOptimized}>
+              {t('actionButtons.discuss') || 'Contact us on WhatsApp'}
+            </button>
 
             <button className="modal-close-btn" onClick={closeReducePriceModal}>
               {t('buttons.back') || 'Back'}
