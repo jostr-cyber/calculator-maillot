@@ -304,19 +304,19 @@
     "recommendations": {
       "rhinestoneRemoveAll": "Remove all rhinestones",
       "rhinestoneMinimal": "Remove rhinestones and use minimal set",
-      "rhinestoneStandard": "Replace maximum rhinestones with standard set",
+      "rhinestoneStandard": "Choose a standard rhinestone set",
       "rhinestoneMaximum": "Replace premium rhinestones with standard set",
-      "urgencyStandard": "Change from expedited to standard production time",
+      "urgencyStandard": "Choose standard production time",
       "decorativeElements": "Remove decorative elements",
       "aerography": "Remove aerography/painting",
       "sleevesComplexity": "Simplify the sleeves",
       "skirtComplexity": "Simplify the skirt",
       "decorativeElementsComplexity": "Simplify the decorative elements",
-      "aerographyComplexity": "Simplify the painting/aerography"
+      "aerographyComplexity": "Simplify painting and airbrushing"
     },
     "whatsappMessage": "Hello! I would like to discuss the leotard design details. I am interested in: {item}",
-    "discussWithDesigner": "Discuss with designer",
-    "accordingToRecommendations": "According to these recommendations"
+    "discussWithDesigner": "Requires designer review",
+    "accordingToRecommendations": "Estimated price after these changes"
   },
   "wheel": {
     "description": "Try your luck and discover what discount you will get",
@@ -361,7 +361,7 @@
       "wheelDiscount": "🎁 Wheel of Fortune discount ({percent}%):"
     },
     "finalPrice": "💰 Final price:",
-    "disclaimer": "This is a preliminary calculation. Final price may be clarified after discussing details."
+    "disclaimer": "This is an approximate estimate. Final price will be confirmed after discussing the details."
   },
   "admin": {
     "title": "📊 Survey Results",
@@ -465,10 +465,10 @@
   "actionButtons": {
     "order": "💚 Order this leotard",
     "sendPhotos": "📸 Send inspiration photos",
-    "discuss": "Discuss details on WhatsApp",
+    "discuss": "Contact us on WhatsApp",
     "customize": "Customize again",
     "reducePrice": {
-      "label": "Reduce the price",
+      "label": "Reduce the cost",
       "message": "Would you like to reduce your selection to lower the price? Click 'Customize again' to adjust your options."
     }
   },
