@@ -304,9 +304,9 @@
     "recommendations": {
       "rhinestoneRemoveAll": "Eliminar todos los cristales",
       "rhinestoneMinimal": "Eliminar cristales y usar conjunto mínimo",
-      "rhinestoneStandard": "Reemplazar cristales máximos con conjunto estándar",
+      "rhinestoneStandard": "Elegir un conjunto estándar de pedrería",
       "rhinestoneMaximum": "Reemplazar cristales premium con conjunto estándar",
-      "urgencyStandard": "Cambiar de entrega acelerada a estándar",
+      "urgencyStandard": "Pasar de confección urgente a estándar",
       "decorativeElements": "Eliminar elementos decorativos",
       "aerography": "Eliminar pintura/aerografía"
     },
