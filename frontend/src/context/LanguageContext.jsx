@@ -14,7 +14,7 @@ const translations = {
 };
 
 const SUPPORTED_LANGUAGES = {
-  en: { name: 'English', flag: '🇬🇧' },
+  en: { name: 'English', flag: 'ENG' },
   es: { name: 'Español', flag: '🇪🇸' },
   ru: { name: 'Русский', flag: '🇷🇺' }
 };
