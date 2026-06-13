@@ -87,9 +87,9 @@
       "discount": "5% discount on the base price"
     },
     "inspirationPhotos": {
-      "title": "I have references from the Internet",
-      "desc": "Photo examples, ideas",
-      "discount": "Discount: none"
+      "title": "I have references from Pinterest or the Internet",
+      "desc": "Reference photos and ideas",
+      "discount": "No discount"
     },
     "customDesign": {
       "title": "I need a design",
