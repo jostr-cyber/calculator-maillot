@@ -1,10 +1,10 @@
 import React from 'react'
 import { useTranslation } from '../hooks/useTranslation'
-import { formatConfigurationSummary } from '../utilities/calculationUtils'
+import { formatConfigurationSummary, formatPrice } from '../utilities/calculationUtils'
 import './ConfigurationSummary.css'
 
 function ConfigurationSummary({ config, currentPrice, complexity }) {
-  const { t } = useTranslation()
+  const { t, language } = useTranslation()
 
   const summary = formatConfigurationSummary(config)
 
@@ -32,7 +32,7 @@ function ConfigurationSummary({ config, currentPrice, complexity }) {
         {currentPrice && (
           <div className="current-price">
             <span className="price-label">{t('summary.currentEstimate') || 'Current estimate'}</span>
-            <span className="price-value">{currentPrice} €</span>
+            <span className="price-value">{formatPrice(currentPrice, language)}</span>
           </div>
         )}
 

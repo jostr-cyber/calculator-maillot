@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
-import { formatConfigurationSummary } from '../utilities/calculationUtils'
+import { formatConfigurationSummary, formatPrice } from '../utilities/calculationUtils'
 import './FinalResult.css'
 
 function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheelDiscount, selectedBudget, onCustomizeAgain, onReducePrice }) {
-  const { t } = useTranslation()
+  const { t, language } = useTranslation()
   const [showReducePriceModal, setShowReducePriceModal] = useState(false)
   const summary = formatConfigurationSummary(config)
 
@@ -167,7 +167,7 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
         <div className="result-section price-section">
           <div className="price-main">
             <span className="price-label">{t('result.estimatedPrice') || 'Estimated price'}</span>
-            <span className="price-amount">{priceResult.finalPrice} €</span>
+            <span className="price-amount">{formatPrice(priceResult.finalPrice, language)}</span>
           </div>
           <p className="price-disclaimer">
             {t('priceBreakdown.disclaimer') || '*This is a preliminary calculation. Final price may be clarified after discussing details.'}
@@ -210,7 +210,7 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
 
             {budgetExcess ? (
               <div className="budget-excess-info">
-                <p>{t('priceReduction.exceedInfo') || 'Your desired budget exceeded by'} <strong>{budgetExcess} €</strong></p>
+                <p>{t('priceReduction.exceedInfo') || 'Your desired budget exceeded by'} <strong>{formatPrice(budgetExcess, language)}</strong></p>
                 <p className="budget-excess-recommendation">
                   {t('priceReduction.recommendation') || 'To reduce the cost of the leotard, we recommend changing some of your selected parameters:'}
                 </p>
@@ -272,7 +272,7 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
                       <div className="reduction-summary">
                         <p className="summary-text">
                           {t('priceReduction.accordingToRecommendations') || 'According to these recommendations'}:
-                          <span className="summary-price">{targetPrice} €</span>
+                          <span className="summary-price">{formatPrice(targetPrice, language)}</span>
                         </p>
                       </div>
                     ) : null

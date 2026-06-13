@@ -1,5 +1,10 @@
 // Utility functions for leotard calculator
 
+// Format a price with the currency symbol placed per locale convention:
+// English -> "€180" (symbol first), Spanish/Russian -> "180 €" (symbol after)
+export const formatPrice = (price, language) =>
+  language === 'en' ? `€${price}` : `${price} €`;
+
 // Mock price calculation (no backend needed)
 export const calculatePriceLocal = (config) => {
   const originalBasePrice = 150; // Base price for simple leotard
