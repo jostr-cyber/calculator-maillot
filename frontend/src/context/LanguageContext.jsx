@@ -15,8 +15,8 @@ const translations = {
 
 const SUPPORTED_LANGUAGES = {
   en: { name: 'English', flag: 'EN' },
-  es: { name: 'Español', flag: '🇪🇸' },
-  ru: { name: 'Русский', flag: '🇷🇺' }
+  es: { name: 'Español', flag: 'ES' },
+  ru: { name: 'Русский', flag: 'RU' }
 };
 
 export const LanguageProvider = ({ children }) => {
