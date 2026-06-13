@@ -20,6 +20,7 @@ import EmailConfirmation from './components/EmailConfirmation'
 import ContactPreference from './components/ContactPreference'
 import { LanguageSwitcher } from './components/LanguageSwitcher'
 import { useTranslation } from './hooks/useTranslation'
+import { generateCalculationId } from './utilities/calculationStore'
 import {
   calculateComplexity,
   calculateEstimatedCrystals,
@@ -89,6 +90,7 @@ function App() {
   const [complexity, setComplexity] = useState(null)
   const [estimatedCrystals, setEstimatedCrystals] = useState(0)
   const [priceResult, setPriceResult] = useState(null)
+  const [calculationId, setCalculationId] = useState(null)
 
   // UI state
   const [loading, setLoading] = useState(false)
@@ -309,6 +311,7 @@ function App() {
       const comparison = calculateBudgetComparison(data.finalPrice, budgetRef)
       data.budgetComparison = comparison
 
+      setCalculationId(generateCalculationId())
       setPriceResult(data)
       setStep('result')
       setReturnedFromResult(false)
@@ -376,6 +379,7 @@ function App() {
     setUrgency('')
     setRhinestone('')
     setPriceResult(null)
+    setCalculationId(null)
     setError(null)
     setReturnedFromResult(false)
     setUserEmail('')
@@ -547,6 +551,7 @@ function App() {
             config={config}
             wheelDiscount={wheelDiscount}
             selectedBudget={selectedBudget}
+            calculationId={calculationId}
             onCustomizeAgain={handleReset}
             onReducePrice={() => {
               alert(t('actionButtons.reducePrice.message') || 'Would you like to reduce your selection to lower the price? Click Customize again to adjust your options.');

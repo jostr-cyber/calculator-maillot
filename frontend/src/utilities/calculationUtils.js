@@ -9,6 +9,20 @@ export const formatPrice = (price, language) => {
   return language === 'en' ? `€${amount}` : `${amount} €`;
 };
 
+// Approximate price after applying the reduce-cost recommendations.
+// Always returns a value strictly below the current finalPrice (or null if nothing to reduce).
+export const computeOptimizedPrice = (finalPrice, priceReductions) => {
+  const totalSavings = (priceReductions || []).reduce((sum, r) => sum + (r.savings || 0), 0);
+  if (totalSavings <= 0) return null;
+  // Apply half of the estimated savings as a conservative buffer
+  let targetPrice = Math.round(finalPrice - totalSavings * 0.5);
+  // Don't drop below ~60% of the current price
+  targetPrice = Math.max(targetPrice, Math.round(finalPrice * 0.6));
+  // Safety: must always be lower than the current estimate
+  targetPrice = Math.min(targetPrice, finalPrice - 5);
+  return targetPrice;
+};
+
 // Mock price calculation (no backend needed)
 export const calculatePriceLocal = (config) => {
   const originalBasePrice = 150; // Base price for simple leotard

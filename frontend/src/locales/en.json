@@ -460,7 +460,8 @@
     "valueForMoney": "Value for money",
     "similarDesigns": "Similar designs",
     "gallerySimilarityNote": "Images show designs with similar complexity and style",
-    "personalizedEstimate": "Based on your choices, your estimated price is {price}."
+    "personalizedEstimate": "Based on your choices, your estimated price is {price}.",
+    "calculationId": "Calculation ID"
   },
   "actionButtons": {
     "order": "💚 Order this leotard",
@@ -476,5 +477,18 @@
     "priceCalculation": "Failed to calculate price",
     "survey": "Error processing survey",
     "surveys": "Error retrieving surveys"
+  },
+  "whatsapp": {
+    "greeting": "Hello! I used your Leotard Calculator.",
+    "calculationId": "Calculation ID",
+    "estimatedPrice": "Estimated price",
+    "originalEstimate": "Original estimate",
+    "optimizedEstimate": "Optimized estimate",
+    "selectedOptions": "Selected options",
+    "selectedOptionsBefore": "Selected options before optimization",
+    "appliedRecommendations": "Applied recommendations",
+    "budgetAround": "My selected budget:",
+    "closing": "Please help me discuss the details.",
+    "closingOptimized": "Please help me discuss the optimized version."
   }
 }

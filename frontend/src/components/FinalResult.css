@@ -19,6 +19,14 @@
   font-size: 16px;
 }
 
+.calculation-id {
+  margin: 8px 0 0 0;
+  color: #9b7fbf;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
 .result-content {
   display: flex;
   flex-direction: column;

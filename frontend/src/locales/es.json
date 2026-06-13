@@ -460,7 +460,8 @@
     "valueForMoney": "Relación calidad-precio",
     "similarDesigns": "Diseños similares",
     "gallerySimilarityNote": "Las imágenes muestran diseños con complejidad y estilo similar",
-    "personalizedEstimate": "Según tus elecciones, tu precio estimado es {price}."
+    "personalizedEstimate": "Según tus elecciones, tu precio estimado es {price}.",
+    "calculationId": "ID de cálculo"
   },
   "actionButtons": {
     "order": "💚 Pedir este maillot",
@@ -476,5 +477,18 @@
     "priceCalculation": "Error al calcular el precio",
     "survey": "Error al procesar la encuesta",
     "surveys": "Error al recuperar encuestas"
+  },
+  "whatsapp": {
+    "greeting": "¡Hola! He usado vuestra Calculadora de Maillots.",
+    "calculationId": "ID de cálculo",
+    "estimatedPrice": "Precio estimado",
+    "originalEstimate": "Estimación original",
+    "optimizedEstimate": "Estimación optimizada",
+    "selectedOptions": "Opciones seleccionadas",
+    "selectedOptionsBefore": "Opciones seleccionadas antes de optimizar",
+    "appliedRecommendations": "Recomendaciones aplicadas",
+    "budgetAround": "Mi presupuesto seleccionado:",
+    "closing": "Por favor, ayúdenme a concretar los detalles.",
+    "closingOptimized": "Por favor, ayúdenme a concretar la versión optimizada."
   }
 }

@@ -1,11 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
-import { formatConfigurationSummary, formatPrice } from '../utilities/calculationUtils'
+import { formatConfigurationSummary, formatPrice, computeOptimizedPrice } from '../utilities/calculationUtils'
+import { saveCalculation, updateCalculation } from '../utilities/calculationStore'
+import { buildWhatsAppMessage } from '../utilities/whatsappMessage'
 import './FinalResult.css'
 
-function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheelDiscount, selectedBudget, onCustomizeAgain, onReducePrice }) {
+const WHATSAPP_NUMBER = '34670770024'
+
+function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheelDiscount, selectedBudget, calculationId, onCustomizeAgain, onReducePrice }) {
   const { t, language } = useTranslation()
   const [showReducePriceModal, setShowReducePriceModal] = useState(false)
+  const [reduceModalOpened, setReduceModalOpened] = useState(false)
   const summary = formatConfigurationSummary(config)
 
   // Calculate budget excess against the actual selected budget value
@@ -116,24 +121,75 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
 
   const budgetExcess = getBudgetExcess()
   const priceReductions = generatePriceReductions()
+  const optimizedPrice = computeOptimizedPrice(priceResult.finalPrice, priceReductions)
+  const recommendationKeys = priceReductions.map((r) => r.labelKey)
+
+  // Build the full structured calculation record (also the JSON for a future admin/CRM).
+  const buildRecord = (extra = {}) => ({
+    id: calculationId,
+    language,
+    createdAt: new Date().toISOString(),
+    status: 'calculator_completed',
+    config: {
+      leotardType: config.combinaison,
+      height: config.height,
+      designSource: config.designSource,
+      design: config.design,
+      sleeves: config.sleeves,
+      skirt: config.skirt,
+      decorativeElements: config.decorativeElements,
+      aerography: config.aerography,
+      rhinestone: config.rhinestone,
+      urgency: config.urgency
+    },
+    budget: selectedBudget,
+    complexity: complexity ? { level: complexity.level, labelKey: complexity.labelKey } : null,
+    originalPrice: priceResult.finalPrice,
+    finalPrice: priceResult.finalPrice,
+    reduceModalOpened: false,
+    recommendationsShown: recommendationKeys,
+    recommendationsApplied: [],
+    optimizedPrice: null,
+    whatsappMessage: null,
+    ...extra
+  })
+
+  // Save the calculation as soon as the customer reaches the final screen (status: calculator_completed).
+  useEffect(() => {
+    if (calculationId) {
+      saveCalculation(buildRecord())
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [calculationId])
 
   const handleReducePrice = () => {
     setShowReducePriceModal(true)
+    if (!reduceModalOpened) {
+      setReduceModalOpened(true)
+      // Opening the modal counts as applying the recommendations
+      updateCalculation(calculationId, {
+        reduceModalOpened: true,
+        recommendationsApplied: recommendationKeys,
+        optimizedPrice
+      })
+    }
   }
 
   const closeReducePriceModal = () => {
     setShowReducePriceModal(false)
   }
 
-
-  const handleWhatsAppOrder = () => {
-    const text = encodeURIComponent(`Hello! I want to order a leotard with the following configuration:\n\nPrice: €${priceResult.finalPrice}\n\nPlease help me with the next steps.`)
-    window.open(`https://wa.me/34670770024?text=${text}`, '_blank')
-  }
-
   const handleDiscussDetails = () => {
-    const text = encodeURIComponent(`Hello! I'd like to discuss the details of my leotard configuration. My estimated price is €${priceResult.finalPrice}.`)
-    window.open(`https://wa.me/34670770024?text=${text}`, '_blank')
+    const optimized = reduceModalOpened
+    const record = {
+      ...buildRecord(),
+      reduceModalOpened,
+      recommendationsApplied: reduceModalOpened ? recommendationKeys : [],
+      optimizedPrice: reduceModalOpened ? optimizedPrice : null
+    }
+    const message = buildWhatsAppMessage(record, { t, language, optimized })
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank')
+    updateCalculation(calculationId, { status: 'whatsapp_clicked', whatsappMessage: message })
   }
 
   return (
@@ -141,6 +197,9 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
       <div className="result-header">
         <h2>{t('result.title') || 'Final calculation'}</h2>
         <p className="result-subtitle">{t('result.subtitle') || 'Based on your selected options'}</p>
+        {calculationId && (
+          <p className="calculation-id">{t('result.calculationId') || 'Calculation ID'}: {calculationId}</p>
+        )}
       </div>
 
       <div className="result-content">
@@ -257,29 +316,14 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
                   })}
 
                   {/* Approximate price after applying the recommendations - always below the current estimate */}
-                  {(() => {
-                    // Sum the estimated savings of all recommendations
-                    const totalSavings = priceReductions
-                      .reduce((sum, r) => sum + (r.savings || 0), 0)
-
-                    if (totalSavings <= 0) return null
-
-                    // Apply half of the estimated savings as a conservative buffer
-                    let targetPrice = Math.round(priceResult.finalPrice - totalSavings * 0.5)
-                    // Don't drop below ~60% of the current price
-                    targetPrice = Math.max(targetPrice, Math.round(priceResult.finalPrice * 0.6))
-                    // Safety: must always be lower than the current estimate
-                    targetPrice = Math.min(targetPrice, priceResult.finalPrice - 5)
-
-                    return targetPrice ? (
-                      <div className="reduction-summary">
-                        <p className="summary-text">
-                          {t('priceReduction.accordingToRecommendations') || 'According to these recommendations'}:
-                          <span className="summary-price">{formatPrice(targetPrice, language)}</span>
-                        </p>
-                      </div>
-                    ) : null
-                  })()}
+                  {optimizedPrice ? (
+                    <div className="reduction-summary">
+                      <p className="summary-text">
+                        {t('priceReduction.accordingToRecommendations') || 'According to these recommendations'}:
+                        <span className="summary-price">{formatPrice(optimizedPrice, language)}</span>
+                      </p>
+                    </div>
+                  ) : null}
                 </>
               ) : (
                 <p className="no-recommendations">{t('priceReduction.noRecommendations') || 'No further reductions available'}</p>
