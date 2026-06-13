@@ -45,7 +45,7 @@
   },
   "steps": {
     "budget": "Select a price range",
-    "height": "Specify the gymnast's height (cm)",
+    "height": "Select the gymnast's height (cm)",
     "designSource": "Design",
     "design": "Design",
     "sleeves": "How many sleeves?",
