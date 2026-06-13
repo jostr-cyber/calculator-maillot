@@ -169,6 +169,9 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
             <span className="price-label">{t('result.estimatedPrice') || 'Estimated price'}</span>
             <span className="price-amount">{formatPrice(priceResult.finalPrice, language)}</span>
           </div>
+          <p className="price-personalized">
+            {t('result.personalizedEstimate', { price: formatPrice(priceResult.finalPrice, language) })}
+          </p>
           <p className="price-disclaimer">
             {t('priceBreakdown.disclaimer') || '*This is a preliminary calculation. Final price may be clarified after discussing details.'}
           </p>

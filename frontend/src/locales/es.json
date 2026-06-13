@@ -459,7 +459,8 @@
     "whatWeWouldChange": "Qué cambiaríamos nosotros",
     "valueForMoney": "Relación calidad-precio",
     "similarDesigns": "Diseños similares",
-    "gallerySimilarityNote": "Las imágenes muestran diseños con complejidad y estilo similar"
+    "gallerySimilarityNote": "Las imágenes muestran diseños con complejidad y estilo similar",
+    "personalizedEstimate": "Según tus elecciones, tu precio estimado es {price}."
   },
   "actionButtons": {
     "order": "💚 Pedir este maillot",

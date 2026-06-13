@@ -1,9 +1,13 @@
 // Utility functions for leotard calculator
 
 // Format a price with the currency symbol placed per locale convention:
-// English -> "€180" (symbol first), Spanish/Russian -> "180 €" (symbol after)
-export const formatPrice = (price, language) =>
-  language === 'en' ? `€${price}` : `${price} €`;
+// English -> "€180" (symbol first), Spanish/Russian -> "180 €" (symbol after).
+// Fractional amounts always show two decimals (462.5 -> "462.50"); whole numbers stay clean (245 -> "245").
+export const formatPrice = (price, language) => {
+  const n = Number(price);
+  const amount = Number.isInteger(n) ? String(n) : n.toFixed(2);
+  return language === 'en' ? `€${amount}` : `${amount} €`;
+};
 
 // Mock price calculation (no backend needed)
 export const calculatePriceLocal = (config) => {

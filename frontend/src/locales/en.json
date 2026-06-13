@@ -44,7 +44,7 @@
     "hideExamples": "▼ Hide examples"
   },
   "steps": {
-    "budget": "Select a price range",
+    "budget": "Your budget",
     "height": "Select the gymnast's height (cm)",
     "designSource": "Choose a design option",
     "design": "Design",
@@ -439,7 +439,7 @@
       "rhinestoneMaximum": "Maximum rhinestone set",
       "rhinestonePremium": "Premium rhinestones"
     },
-    "priceNote": "The final price may vary depending on design complexity"
+    "priceNote": "Final price will be confirmed after reviewing your request."
   },
   "result": {
     "title": "Your Custom Leotard",
@@ -459,7 +459,8 @@
     "whatWeWouldChange": "What would we change",
     "valueForMoney": "Value for money",
     "similarDesigns": "Similar designs",
-    "gallerySimilarityNote": "Images show designs with similar complexity and style"
+    "gallerySimilarityNote": "Images show designs with similar complexity and style",
+    "personalizedEstimate": "Based on your choices, your estimated price is {price}."
   },
   "actionButtons": {
     "order": "💚 Order this leotard",
