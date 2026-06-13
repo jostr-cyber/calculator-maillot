@@ -46,7 +46,7 @@
   "steps": {
     "budget": "Select a price range",
     "height": "Select the gymnast's height (cm)",
-    "designSource": "Design",
+    "designSource": "Choose a design option",
     "design": "Design",
     "sleeves": "How many sleeves?",
     "skirt": "Do you need a skirt?",
@@ -93,8 +93,8 @@
     },
     "customDesign": {
       "title": "I need a design",
-      "desc": "• Development of your leotard design from scratch by our artist\n• Taking into account the recommendations of the rhythmic gymnastics judge\n• Checking the design for compliance with your country's Rules",
-      "discount": "Possible additional fee for complex design"
+      "desc": "• Custom leotard design created from scratch by our artist\n• Designed with guidance from a rhythmic gymnastics judge\n• Design checked for compliance with your country's RG regulations",
+      "discount": "Additional fee may apply for complex designs"
     }
   },
   "height": {
