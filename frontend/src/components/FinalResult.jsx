@@ -253,33 +253,20 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
                     )
                   })}
 
-                  {/* Total savings summary - show approximate price based on selected budget + main reductions */}
+                  {/* Approximate price after applying the recommendations - always below the current estimate */}
                   {(() => {
-                    let targetPrice = null
-                    let baseBudget = null
-
-                    // Map selected budget to base price
-                    if (selectedBudget) {
-                      if (selectedBudget === 'under-250' || selectedBudget <= 250) {
-                        baseBudget = 280
-                      } else if (selectedBudget === 'around-400' || (selectedBudget >= 300 && selectedBudget < 800)) {
-                        baseBudget = Math.round(selectedBudget + 50)
-                      } else if (selectedBudget === 'around-800' || selectedBudget >= 800) {
-                        baseBudget = Math.round(selectedBudget + 50)
-                      }
-                    }
-
-                    // Calculate reductions from highest priority items (Urgency + Rhinestones)
-                    const mainReductions = priceReductions
-                      .filter(r => r.priority <= 2) // Only Urgency (1) and Rhinestones (2)
+                    // Sum the estimated savings of all recommendations
+                    const totalSavings = priceReductions
                       .reduce((sum, r) => sum + (r.savings || 0), 0)
 
-                    if (baseBudget && mainReductions > 0) {
-                      targetPrice = baseBudget - Math.round(mainReductions * 0.5) // Apply 50% of main reductions as buffer
-                      targetPrice = Math.max(targetPrice, baseBudget - 100) // Don't reduce too much
-                    } else if (baseBudget) {
-                      targetPrice = baseBudget
-                    }
+                    if (totalSavings <= 0) return null
+
+                    // Apply half of the estimated savings as a conservative buffer
+                    let targetPrice = Math.round(priceResult.finalPrice - totalSavings * 0.5)
+                    // Don't drop below ~60% of the current price
+                    targetPrice = Math.max(targetPrice, Math.round(priceResult.finalPrice * 0.6))
+                    // Safety: must always be lower than the current estimate
+                    targetPrice = Math.min(targetPrice, priceResult.finalPrice - 5)
 
                     return targetPrice ? (
                       <div className="reduction-summary">
