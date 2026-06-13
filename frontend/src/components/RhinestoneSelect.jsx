@@ -55,11 +55,6 @@ function RhinestoneSelect({ value, onRhinestoneChange, onContinue, onBack, confi
       value: 'maximum',
       labelKey: 'rhinestone.maximum',
       descKey: 'rhinestone.maximumDesc'
-    },
-    {
-      value: 'premium',
-      labelKey: 'rhinestone.premium',
-      descKey: 'rhinestone.premiumDesc'
     }
   ]
 
@@ -93,7 +88,6 @@ function RhinestoneSelect({ value, onRhinestoneChange, onContinue, onBack, confi
             />
             <div className="rhinestone-card-content">
               <div className="rhinestone-label">{t(option.labelKey)}</div>
-              <div className="rhinestone-desc">{t(option.descKey)}</div>
             </div>
           </label>
         ))}

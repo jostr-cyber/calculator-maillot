@@ -54,7 +54,7 @@
     "aerography": "Aerografía y pintura",
     "combinaison": "Tipo de Maillot",
     "urgency": "Urgencia",
-    "rhinestone": "¿Necesita diamantes de imitación?",
+    "rhinestone": "¿Cuánta pedrería necesita?",
     "survey": "🎯 Encuesta",
     "wheel": "🎡 Ruleta de la Fortuna",
     "result": "Cálculo de Precio"
@@ -192,22 +192,22 @@
     "note": "💡 Recargos por urgencia..."
   },
   "rhinestone": {
-    "none": "Sin diamantes",
+    "none": "Sin pedrería",
     "noneDesc": "Estilo clásico sin adornos",
-    "minimal": "Conjunto mínimo de piedras pegadas y cosidas",
+    "minimal": "Pedrería mínima",
     "minimalDesc": "Pequeña cantidad de adornos",
-    "standard": "Conjunto estándar de piedras pegadas y cosidas",
+    "standard": "Cantidad óptima de pedrería",
     "standardDesc": "Cantidad óptima de adornos",
-    "maximum": "Conjunto máximo de piedras pegadas y cosidas",
+    "maximum": "Máxima cantidad de pedrería",
     "maximumDesc": "Decoración generosa en toda la superficie",
     "premium": "Mezcla de piedras pegadas y cosidas clase Premium",
     "premiumDesc": "Decoración de lujo con materiales premium",
-    "galleryTitle": "Ejemplos de conjuntos de pedrería en los maillots de nuestro taller",
+    "galleryTitle": "Ejemplos de pedrería en nuestros maillots",
     "gallerySets": {
       "none": "Sin pedrería",
-      "minimal": "Conjunto mínimo de pedrería",
-      "standard": "Conjunto estándar de pedrería",
-      "maximum": "Conjunto máximo de pedrería"
+      "minimal": "Pedrería mínima",
+      "standard": "Pedrería estándar",
+      "maximum": "Pedrería abundante"
     }
   },
   "premiumStones": {
