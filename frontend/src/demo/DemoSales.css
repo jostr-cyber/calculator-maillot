@@ -1,0 +1,79 @@
+.rq-sales {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 4px 40px;
+}
+
+.rq-sales-card {
+  background: var(--demo-card, #fff);
+  border-radius: 28px;
+  padding: 48px 42px;
+  max-width: 620px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 22px 70px rgba(120, 95, 55, 0.2);
+  border: 1px solid rgba(194, 163, 107, 0.22);
+}
+
+.rq-sales-title {
+  font-size: 27px; font-weight: 800;
+  color: var(--demo-text, #3A3026);
+  margin: 6px 0 18px;
+  line-height: 1.25;
+}
+.rq-sales-sub {
+  font-size: 15px; font-weight: 700; letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--demo-main-dark, #9E8350);
+  margin-bottom: 18px;
+}
+
+.rq-sales-list {
+  list-style: none; padding: 0; margin: 0 auto 28px;
+  display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 12px; max-width: 480px; text-align: left;
+}
+.rq-sales-list li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 15px; font-weight: 500; color: var(--demo-text, #3A3026);
+}
+
+.rq-sales-contacts {
+  display: flex; gap: 14px; justify-content: center;
+  margin-bottom: 26px; flex-wrap: wrap;
+}
+.rq-contact {
+  display: flex; flex-direction: column; gap: 4px;
+  text-decoration: none;
+  background: var(--demo-soft, #F3E9DA);
+  border: 1px solid rgba(194, 163, 107, 0.35);
+  border-radius: 16px; padding: 14px 24px;
+  transition: transform .18s ease, background .18s ease;
+}
+.rq-contact:hover { transform: translateY(-2px); background: #ece0cb; }
+.rq-contact-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--demo-main-dark, #9E8350); font-weight: 700; }
+.rq-contact-value { font-size: 16px; font-weight: 700; color: var(--demo-text, #3A3026); }
+
+.rq-sales-cta { text-decoration: none; }
+
+.rq-sales-restart {
+  display: block;
+  margin: 18px auto 0;
+  background: none; border: none;
+  color: #8a7a5f; font-size: 13px; cursor: pointer;
+  text-decoration: underline;
+}
+
+.rq-sales-foot {
+  margin-top: 22px;
+  font-size: 12.5px; color: #8a7a5f;
+}
+
+@media (max-width: 640px) {
+  .rq-sales-card { padding: 34px 22px; border-radius: 20px; }
+  .rq-sales-list { grid-template-columns: 1fr; max-width: 360px; }
+  .rq-sales-title { font-size: 23px; }
+}

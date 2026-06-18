@@ -2,26 +2,30 @@ import React from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import { LanguageSwitcher } from '../components/LanguageSwitcher'
 import clientConfig from './clientConfig'
-import DemoBadge from './DemoBadge'
 import './DemoIntro.css'
 
-function DemoIntro({ onStart }) {
+function DemoIntro({ onStart, onBack }) {
   const { t } = useTranslation()
-  const startLabel = clientConfig.buttonLabels?.start || t('intro.startButton')
+  const c = clientConfig
+  const startLabel = c.buttonLabels?.start || t('intro.startButton')
 
   return (
     <div className="demo-intro">
       <LanguageSwitcher />
-      <DemoBadge />
 
       <div className="demo-intro-card">
+        {onBack && (
+          <button className="demo-intro-back" onClick={onBack}>← Back</button>
+        )}
+
         <div className="demo-brand">
-          {clientConfig.logo ? (
-            <img src={clientConfig.logo} alt={clientConfig.brandName} className="demo-brand-logo" />
+          {c.atelier.logo ? (
+            <img src={c.atelier.logo} alt={c.atelier.name} className="demo-brand-logo" />
           ) : (
-            <div className="demo-brand-name">{clientConfig.brandName}</div>
+            <div className="demo-logo-placeholder">{c.atelier.logoPlaceholder}</div>
           )}
-          <div className="demo-brand-tagline">{clientConfig.tagline}</div>
+          <div className="demo-brand-name">{c.atelier.name}</div>
+          <div className="demo-brand-tagline">{c.product.calculatorName}</div>
         </div>
 
         <div className="demo-intro-art">
@@ -36,6 +40,9 @@ function DemoIntro({ onStart }) {
           <span>{startLabel}</span>
           <span className="arrow">→</span>
         </button>
+
+        <p className="demo-generic-note">{c.atelier.genericNote}</p>
+        <p className="demo-powered">Powered by {c.product.name}</p>
       </div>
     </div>
   )

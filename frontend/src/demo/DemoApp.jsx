@@ -12,8 +12,10 @@ import CombinaisionSelect from '../components/CombinaisionSelect'
 import UrgencySelect from '../components/UrgencySelect'
 import RhinestoneSelect from '../components/RhinestoneSelect'
 import BudgetSlider from '../components/BudgetSlider'
+import DemoWelcome from './DemoWelcome'
 import DemoIntro from './DemoIntro'
 import DemoFinalResult from './DemoFinalResult'
+import DemoSales from './DemoSales'
 import DemoBadge from './DemoBadge'
 import clientConfig from './clientConfig'
 import { useTranslation } from '../hooks/useTranslation'
@@ -49,7 +51,7 @@ function DemoApp() {
 
   const flow = ['intro', ...BASE_STEPS.filter((s) => clientConfig.availableOptions?.[s] !== false), 'result']
 
-  const [step, setStep] = useState('intro')
+  const [step, setStep] = useState('welcome')
   const [selectedBudget, setSelectedBudget] = useState(null)
   const [height, setHeight] = useState(150)
   const [heightCategory, setHeightCategory] = useState('150-170')
@@ -154,15 +156,31 @@ function DemoApp() {
     setDecorativeElements(''); setAerography(''); setCombinaison('')
     setPremiumStones(''); setUrgency(''); setRhinestone('')
     setPriceResult(null); setError(null); setCurrentPrice(null)
-    setComplexity(null); setEstimatedCrystals(0); setStep('intro')
+    setComplexity(null); setEstimatedCrystals(0); setStep('welcome')
   }
 
   const config = buildConfig()
 
+  if (step === 'welcome') {
+    return (
+      <div className="demo-app" style={themeStyle}>
+        <DemoWelcome onTryDemo={() => setStep('intro')} />
+      </div>
+    )
+  }
+
   if (step === 'intro') {
     return (
       <div className="demo-app" style={themeStyle}>
-        <DemoIntro onStart={() => setStep(flow[1])} />
+        <DemoIntro onStart={() => setStep(flow[1])} onBack={() => setStep('welcome')} />
+      </div>
+    )
+  }
+
+  if (step === 'sales') {
+    return (
+      <div className="demo-app" style={themeStyle}>
+        <DemoSales onRestart={handleReset} />
       </div>
     )
   }
@@ -172,7 +190,8 @@ function DemoApp() {
       <LanguageSwitcher />
       <DemoBadge />
       <div className="container">
-        <h1>{t('app.title')}</h1>
+        <h1 className="demo-step-brand">{clientConfig.atelier.name}</h1>
+        <p className="demo-step-sub">{clientConfig.product.calculatorName}</p>
         {error && <div className="error">{t('errors.priceCalculation')}: {error}</div>}
 
         {step === 'height' && (
@@ -206,7 +225,7 @@ function DemoApp() {
           <BudgetSlider value={selectedBudget} onBudgetChange={setSelectedBudget} onContinue={(v) => { setSelectedBudget(v); setTimeout(() => handleCalculate(v), 0) }} onBack={goBack} config={config} currentPrice={currentPrice} complexity={complexity} />
         )}
         {step === 'result' && priceResult && (
-          <DemoFinalResult priceResult={priceResult} complexity={complexity} estimatedCrystals={estimatedCrystals} config={config} wheelDiscount={0} selectedBudget={selectedBudget} onCustomizeAgain={handleReset} />
+          <DemoFinalResult priceResult={priceResult} complexity={complexity} estimatedCrystals={estimatedCrystals} config={config} wheelDiscount={0} selectedBudget={selectedBudget} onCustomizeAgain={handleReset} onProceed={() => setStep('sales')} />
         )}
       </div>
     </div>

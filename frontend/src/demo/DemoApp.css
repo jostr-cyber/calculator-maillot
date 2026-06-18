@@ -56,6 +56,22 @@
   letter-spacing: 0.3px;
 }
 
+.demo-app .demo-step-brand {
+  margin-bottom: 2px;
+  font-size: 22px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.demo-app .demo-step-sub {
+  text-align: center;
+  margin: 0 0 24px;
+  font-size: 12.5px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--demo-main-dark);
+  font-weight: 600;
+}
+
 /* --- Buttons (rounded, premium) ------------------------------------------- */
 .demo-app .btn-primary,
 .demo-app .btn-secondary,

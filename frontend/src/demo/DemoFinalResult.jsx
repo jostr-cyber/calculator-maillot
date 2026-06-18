@@ -9,7 +9,7 @@ import './DemoFinalResult.css'
 // Demo: routes to the placeholder number in clientConfig — never a real business.
 const WHATSAPP_NUMBER = clientConfig.whatsappNumber
 
-function DemoFinalResult({ priceResult, complexity, config, wheelDiscount, selectedBudget, onCustomizeAgain }) {
+function DemoFinalResult({ priceResult, complexity, config, wheelDiscount, selectedBudget, onCustomizeAgain, onProceed }) {
   const { t, language } = useTranslation()
   const [showReducePriceModal, setShowReducePriceModal] = useState(false)
   const [reduceModalOpened, setReduceModalOpened] = useState(false)
@@ -137,8 +137,17 @@ function DemoFinalResult({ priceResult, complexity, config, wheelDiscount, selec
 
       {clientConfig.instagramLink && (
         <a className="demo-instagram" href={clientConfig.instagramLink} target="_blank" rel="noopener noreferrer">
-          ◎ {clientConfig.brandName} on Instagram
+          ◎ {clientConfig.atelier.name} on Instagram
         </a>
+      )}
+
+      {onProceed && (
+        <div className="demo-sales-bridge">
+          <p>This is exactly the request your client would send you — complete and ready.</p>
+          <button className="demo-bridge-btn" onClick={onProceed}>
+            ✨ Get this for your atelier <span className="arrow">→</span>
+          </button>
+        </div>
       )}
 
       {showReducePriceModal && (

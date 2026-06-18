@@ -51,6 +51,39 @@
   transform: translateY(-1px);
 }
 
+/* Sales bridge — turns the calculator result into a product pitch */
+.demo-sales-bridge {
+  margin-top: 22px;
+  padding: 22px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fbf4e8 0%, #f1e2c9 100%);
+  border: 1px solid rgba(194, 163, 107, 0.4);
+  text-align: center;
+}
+.demo-sales-bridge p {
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: #6b5c45;
+  line-height: 1.5;
+}
+.demo-bridge-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--demo-text, #3A3026);
+  color: #fff;
+  border: none;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform .18s ease, background .18s ease;
+}
+.demo-bridge-btn:hover { background: #000; transform: translateY(-2px); }
+.demo-bridge-btn .arrow { transition: transform .18s ease; }
+.demo-bridge-btn:hover .arrow { transform: translateX(4px); }
+
 /* Champagne action buttons (override FinalResult.css green/violet) */
 .demo-final .btn-primary.btn-action {
   background: var(--demo-main);
