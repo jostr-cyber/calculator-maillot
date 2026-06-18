@@ -1,0 +1,87 @@
+/* Demo-only tweaks on top of the shared FinalResult.css */
+
+.demo-final .result-section.price-section {
+  background: var(--demo-soft, #F3E9DA);
+  border: 1px solid rgba(194, 163, 107, 0.3);
+  border-radius: 18px;
+}
+
+.demo-final .price-amount {
+  color: var(--demo-main-dark, #9E8350);
+}
+
+/* Readable label/disclaimer on the light champagne price card */
+.demo-final .price-label {
+  color: var(--demo-main-dark, #9E8350);
+  letter-spacing: 1px;
+}
+.demo-final .price-disclaimer {
+  color: #8a7a5f;
+}
+
+/* Warm tint for the selected-options card (was cool lavender) */
+.demo-final .summary-section {
+  background: #fbf6ee;
+  border: 1px solid rgba(194, 163, 107, 0.22);
+}
+
+.demo-final .option-checkmark {
+  color: var(--demo-main, #C2A36B);
+}
+
+.demo-instagram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--demo-main-dark, #9E8350);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(194, 163, 107, 0.4);
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.demo-instagram:hover {
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+/* Champagne action buttons (override FinalResult.css green/violet) */
+.demo-final .btn-primary.btn-action {
+  background: var(--demo-main);
+  color: #fff;
+}
+.demo-final .btn-primary.btn-action:hover {
+  background: var(--demo-main-dark);
+}
+.demo-final .btn-secondary.btn-action {
+  background: var(--demo-soft);
+  color: var(--demo-text);
+  border: 1px solid rgba(194, 163, 107, 0.35);
+}
+.demo-final .btn-secondary.btn-action:hover {
+  background: #ece0cb;
+}
+
+/* Selected option label text */
+.demo-final .option-name {
+  color: var(--demo-text);
+}
+
+/* Reduce-cost modal CTA (modal is rendered inside .demo-final) */
+.demo-final .modal-whatsapp-btn {
+  background: var(--demo-main, #C2A36B);
+}
+.demo-final .modal-whatsapp-btn:hover {
+  background: var(--demo-main-dark, #9E8350);
+}
+.demo-final .reduce-price-modal h3,
+.demo-final .summary-price,
+.demo-final .reduction-priority {
+  color: var(--demo-main-dark, #9E8350);
+}
