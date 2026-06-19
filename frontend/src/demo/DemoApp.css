@@ -194,6 +194,9 @@
 .demo-app [class*="urgency"] { border-left-color: var(--demo-main) !important; }
 .demo-app input[type="checkbox"] { accent-color: var(--demo-main); }
 
+/* Design step: show only the title + discount line, hide the description */
+.demo-app .design-option-desc { display: none; }
+
 /* Small colored sub-labels inside option cards (discounts, fees, highlights) */
 .demo-app .design-option-discount,
 .demo-app [class*="discount"],
