@@ -18,6 +18,7 @@ import DemoFinalResult from './DemoFinalResult'
 import DemoSales from './DemoSales'
 import DemoBadge from './DemoBadge'
 import clientConfig from './clientConfig'
+import { getDemoContent } from './demoContent'
 import { useTranslation } from '../hooks/useTranslation'
 import {
   calculateComplexity,
@@ -47,7 +48,8 @@ const BASE_STEPS = [
 ]
 
 function DemoApp() {
-  const { t } = useTranslation()
+  const { t, language } = useTranslation()
+  const dc = getDemoContent(language)
 
   const flow = ['intro', ...BASE_STEPS.filter((s) => clientConfig.availableOptions?.[s] !== false), 'result']
 
@@ -190,8 +192,8 @@ function DemoApp() {
       <LanguageSwitcher />
       <DemoBadge />
       <div className="container">
-        <h1 className="demo-step-brand">{clientConfig.atelier.name}</h1>
-        <p className="demo-step-sub">{clientConfig.product.calculatorName}</p>
+        <h1 className="demo-step-brand">{dc.atelier.name}</h1>
+        <p className="demo-step-sub">{dc.product.calculatorName}</p>
         {error && <div className="error">{t('errors.priceCalculation')}: {error}</div>}
 
         {step === 'height' && (

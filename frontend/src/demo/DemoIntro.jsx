@@ -1,26 +1,27 @@
 import React from 'react'
 import { useTranslation } from '../hooks/useTranslation'
-import { LanguageSwitcher } from '../components/LanguageSwitcher'
+import { DemoLanguageSwitcher } from './DemoLanguageSwitcher'
 import clientConfig from './clientConfig'
+import { getDemoContent } from './demoContent'
 import './DemoIntro.css'
 
 function DemoIntro({ onStart, onBack }) {
-  const { t } = useTranslation()
-  const c = clientConfig
-  const startLabel = c.buttonLabels?.start || t('intro.startButton')
+  const { t, language } = useTranslation()
+  const c = getDemoContent(language)
+  const startLabel = t('intro.startButton')
 
   return (
     <div className="demo-intro">
-      <LanguageSwitcher />
+      <DemoLanguageSwitcher />
 
       <div className="demo-intro-card">
         {onBack && (
-          <button className="demo-intro-back" onClick={onBack}>← Back</button>
+          <button className="demo-intro-back" onClick={onBack}>{c.back}</button>
         )}
 
         <div className="demo-brand">
-          {c.atelier.logo ? (
-            <img src={c.atelier.logo} alt={c.atelier.name} className="demo-brand-logo" />
+          {clientConfig.atelier?.logo ? (
+            <img src={clientConfig.atelier.logo} alt={c.atelier.name} className="demo-brand-logo" />
           ) : (
             <div className="demo-logo-placeholder">{c.atelier.logoPlaceholder}</div>
           )}
@@ -42,7 +43,7 @@ function DemoIntro({ onStart, onBack }) {
         </button>
 
         <p className="demo-generic-note">{c.atelier.genericNote}</p>
-        <p className="demo-powered">Powered by {c.product.name}</p>
+        <p className="demo-powered">{c.poweredBy} {c.product.name}</p>
       </div>
     </div>
   )

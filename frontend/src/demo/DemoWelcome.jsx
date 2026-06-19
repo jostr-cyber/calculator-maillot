@@ -1,6 +1,8 @@
 import React from 'react'
-import { LanguageSwitcher } from '../components/LanguageSwitcher'
+import { useTranslation } from '../hooks/useTranslation'
+import { DemoLanguageSwitcher } from './DemoLanguageSwitcher'
 import clientConfig from './clientConfig'
+import { getDemoContent } from './demoContent'
 import './DemoWelcome.css'
 
 function Stars({ n }) {
@@ -8,15 +10,16 @@ function Stars({ n }) {
 }
 
 function DemoWelcome({ onTryDemo }) {
-  const c = clientConfig
-  const contactHref = `https://wa.me/${c.whatsappNumber}`
+  const { language } = useTranslation()
+  const c = getDemoContent(language)
+  const contactHref = `https://wa.me/${clientConfig.whatsappNumber}`
 
   return (
     <div className="rq-welcome">
-      <LanguageSwitcher />
+      <DemoLanguageSwitcher />
 
       <div className="rq-demo-pill">
-        <span className="rq-dot">●</span> Live demo
+        <span className="rq-dot">●</span> {c.liveDemo}
       </div>
 
       {/* HERO */}
@@ -27,12 +30,12 @@ function DemoWelcome({ onTryDemo }) {
 
         <ul className="rq-features">
           {c.features.map((f, i) => (
-            <li key={i}><span className="rq-feat-icon">{f.icon}</span>{f.text}</li>
+            <li key={i}><span className="rq-feat-icon">✨</span>{f}</li>
           ))}
         </ul>
 
         <button className="rq-cta-primary" onClick={onTryDemo}>
-          {c.buttonLabels.tryDemo} <span className="rq-arrow">→</span>
+          {c.tryDemo} <span className="rq-arrow">→</span>
         </button>
 
         <p className="rq-generic-note">{c.atelier.genericNote}</p>
@@ -40,9 +43,9 @@ function DemoWelcome({ onTryDemo }) {
 
       {/* BENEFITS */}
       <section className="rq-section">
-        <h2 className="rq-section-title">{c.benefits.title}</h2>
+        <h2 className="rq-section-title">{c.benefitsTitle}</h2>
         <div className="rq-benefits">
-          {c.benefits.items.map((b, i) => (
+          {c.benefits.map((b, i) => (
             <div key={i} className="rq-benefit"><span className="rq-check">✓</span>{b}</div>
           ))}
         </div>
@@ -50,11 +53,11 @@ function DemoWelcome({ onTryDemo }) {
 
       {/* TESTIMONIALS */}
       <section className="rq-section">
-        <h2 className="rq-section-title">What studios say</h2>
+        <h2 className="rq-section-title">{c.testimonialsTitle}</h2>
         <div className="rq-testimonials">
           {c.testimonials.map((t, i) => (
             <figure key={i} className="rq-testimonial">
-              <Stars n={t.stars} />
+              <Stars n={5} />
               <blockquote>“{t.quote}”</blockquote>
               <figcaption>— {t.author}, {t.studio}</figcaption>
             </figure>
@@ -71,14 +74,14 @@ function DemoWelcome({ onTryDemo }) {
           ))}
         </ul>
         <a className="rq-cta-secondary" href={contactHref} target="_blank" rel="noopener noreferrer">
-          {c.infoCard.buttonLabel}
+          {c.infoCard.button}
         </a>
       </section>
 
       {/* SECONDARY TRY DEMO */}
       <div className="rq-bottom-cta">
         <button className="rq-cta-primary" onClick={onTryDemo}>
-          {c.buttonLabels.tryDemo} <span className="rq-arrow">→</span>
+          {c.tryDemo} <span className="rq-arrow">→</span>
         </button>
       </div>
 

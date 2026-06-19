@@ -1,11 +1,14 @@
 import React from 'react'
+import { useTranslation } from '../hooks/useTranslation'
 import clientConfig from './clientConfig'
+import { getDemoContent } from './demoContent'
 import './DemoSales.css'
 
 function DemoSales({ onRestart }) {
-  const c = clientConfig
+  const { language } = useTranslation()
+  const c = getDemoContent(language)
   const s = c.finalSales
-  const waHref = `https://wa.me/${c.whatsappNumber}`
+  const waHref = `https://wa.me/${clientConfig.whatsappNumber}`
 
   return (
     <div className="rq-sales">
@@ -22,20 +25,20 @@ function DemoSales({ onRestart }) {
 
         <div className="rq-sales-contacts">
           <a className="rq-contact" href={waHref} target="_blank" rel="noopener noreferrer">
-            <span className="rq-contact-label">WhatsApp</span>
-            <span className="rq-contact-value">{c.whatsappDisplay}</span>
+            <span className="rq-contact-label">{c.contactWhatsApp}</span>
+            <span className="rq-contact-value">{clientConfig.whatsappDisplay}</span>
           </a>
-          <a className="rq-contact" href={c.instagramLink} target="_blank" rel="noopener noreferrer">
-            <span className="rq-contact-label">Instagram</span>
-            <span className="rq-contact-value">{c.instagramHandle}</span>
+          <a className="rq-contact" href={clientConfig.instagramLink} target="_blank" rel="noopener noreferrer">
+            <span className="rq-contact-label">{c.contactInstagram}</span>
+            <span className="rq-contact-value">{clientConfig.instagramHandle}</span>
           </a>
         </div>
 
         <a className="rq-cta-primary rq-sales-cta" href={waHref} target="_blank" rel="noopener noreferrer">
-          {s.buttonLabel} <span className="rq-arrow">→</span>
+          {s.button} <span className="rq-arrow">→</span>
         </a>
 
-        <button className="rq-sales-restart" onClick={onRestart}>↺ Restart demo</button>
+        <button className="rq-sales-restart" onClick={onRestart}>{c.restartDemo}</button>
 
         <p className="rq-sales-foot">{c.product.name} · {c.product.subtitle}</p>
       </div>

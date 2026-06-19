@@ -3,6 +3,7 @@ import { useTranslation } from '../hooks/useTranslation'
 import { formatConfigurationSummary, formatPrice, computeOptimizedPrice } from '../utilities/calculationUtils'
 import { buildWhatsAppMessage } from '../utilities/whatsappMessage'
 import clientConfig from './clientConfig'
+import { getDemoContent } from './demoContent'
 import '../components/FinalResult.css'
 import './DemoFinalResult.css'
 
@@ -15,7 +16,7 @@ function DemoFinalResult({ priceResult, complexity, config, wheelDiscount, selec
   const [reduceModalOpened, setReduceModalOpened] = useState(false)
   const summary = formatConfigurationSummary(config)
 
-  const labels = clientConfig.buttonLabels || {}
+  const dc = getDemoContent(language)
 
   const getBudgetExcess = () => {
     if (!selectedBudget || selectedBudget === 'undecided' || selectedBudget === 'unknown') return null
@@ -125,27 +126,27 @@ function DemoFinalResult({ priceResult, complexity, config, wheelDiscount, selec
 
       <div className="result-actions">
         <button className="btn-primary btn-action" onClick={handleReducePrice}>
-          {labels.reducePrice || t('actionButtons.reducePrice.label') || '💰 Reduce the price'}
+          {t('actionButtons.reducePrice.label') || '💰 Reduce the price'}
         </button>
         <button className="btn-secondary btn-action" onClick={handleDiscussDetails}>
-          {labels.discuss || t('actionButtons.discuss') || '💬 Request a quote'}
+          {dc.sendRequest}
         </button>
         <button className="btn-secondary btn-action" onClick={onCustomizeAgain}>
-          {labels.customize || t('actionButtons.customize') || '🎨 Make new calculation'}
+          {t('actionButtons.customize') || '🎨 Make new calculation'}
         </button>
       </div>
 
       {clientConfig.instagramLink && (
         <a className="demo-instagram" href={clientConfig.instagramLink} target="_blank" rel="noopener noreferrer">
-          ◎ {clientConfig.atelier.name} on Instagram
+          ◎ {dc.atelier.name} {dc.onInstagram}
         </a>
       )}
 
       {onProceed && (
         <div className="demo-sales-bridge">
-          <p>This is exactly the request your client would send you — complete and ready.</p>
+          <p>{dc.bridgeText}</p>
           <button className="demo-bridge-btn" onClick={onProceed}>
-            ✨ Get this for your atelier <span className="arrow">→</span>
+            {dc.bridgeButton} <span className="arrow">→</span>
           </button>
         </div>
       )}
@@ -197,7 +198,7 @@ function DemoFinalResult({ priceResult, complexity, config, wheelDiscount, selec
             </div>
 
             <button className="modal-whatsapp-btn" onClick={handleDiscussOptimized}>
-              {labels.discuss || t('actionButtons.discuss') || 'Request a quote'}
+              {dc.sendRequest}
             </button>
             <button className="modal-close-btn" onClick={closeReducePriceModal}>
               {t('buttons.back') || 'Back'}

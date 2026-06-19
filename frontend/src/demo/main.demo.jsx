@@ -4,10 +4,12 @@ import DemoApp from './DemoApp'
 import clientConfig from './clientConfig'
 import { LanguageProvider } from '../context/LanguageContext'
 
-// Seed the default demo language from clientConfig the first time (the switcher
-// then stays in control and persists the user's choice in localStorage).
-if (!localStorage.getItem('language') && clientConfig.defaultLanguage) {
-  localStorage.setItem('language', clientConfig.defaultLanguage)
+// Demo supports EN + RU only. Seed the default the first time and coerce any
+// previously-stored unsupported language (e.g. 'es') to the demo default.
+const DEMO_LANGS = ['en', 'ru']
+const stored = localStorage.getItem('language')
+if (!stored || !DEMO_LANGS.includes(stored)) {
+  localStorage.setItem('language', clientConfig.defaultLanguage || 'en')
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
