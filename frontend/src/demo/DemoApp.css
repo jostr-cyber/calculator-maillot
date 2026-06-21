@@ -194,8 +194,118 @@
 .demo-app [class*="urgency"] { border-left-color: var(--demo-main) !important; }
 .demo-app input[type="checkbox"] { accent-color: var(--demo-main); }
 
+/* Move the live "estimated price" summary BELOW the option cards on every
+   select-style step in the demo (production order is untouched). */
+.demo-app .select-wrapper { display: flex; flex-direction: column; }
+.demo-app .select-wrapper > .configuration-summary { order: 2; margin-bottom: 0; margin-top: 12px; }
+.demo-app .select-wrapper > .actions { order: 3; }
+
+/* Recolor the live summary block to match the demo's champagne palette */
+.demo-app .configuration-summary {
+  background: linear-gradient(135deg, #fbf6ee 0%, #f3e9da 100%);
+  border: 1px solid rgba(194, 163, 107, 0.3);
+  box-shadow: 0 2px 8px rgba(158, 131, 80, 0.1);
+}
+.demo-app .summary-header h3 { color: var(--demo-main-dark); }
+.demo-app .summary-item { color: var(--demo-text); }
+.demo-app .summary-item.empty { color: #8a7a5f; }
+/* FinalResult.css ships a global .summary-text {color:#065f46} (dark teal)
+   used by its reduce-cost modal. That leaks to the live "Your selection" block
+   which also uses .summary-text. Force the demo color here. */
+.demo-app .configuration-summary .summary-text { color: var(--demo-text); }
+.demo-app .summary-footer { border-top-color: rgba(194, 163, 107, 0.35); }
+.demo-app .configuration-summary .price-label { color: var(--demo-text); }
+.demo-app .configuration-summary .price-value { color: var(--demo-main-dark); }
+.demo-app .complexity-label { color: var(--demo-main-dark); }
+.demo-app .price-note { color: #8a7a5f; }
+
+/* Complexity badges */
+.demo-app .complexity-simple   { background-color: #f3e9da; color: var(--demo-main-dark); }
+.demo-app .complexity-advanced { background-color: #efdcc0; color: var(--demo-main-dark); }
+.demo-app .complexity-luxury   { background-color: var(--demo-main); color: #fff; }
+
 /* Design step: show only the title + discount line, hide the description */
 .demo-app .design-option-desc { display: none; }
+
+/* Demo-only artwork for the design-source step (production keeps its own images) */
+.demo-app .design-option-image[src$="design-done.PNG"] { content: url('/demo-images/design-own.PNG'); }
+.demo-app .design-option-image[src$="design-reference.PNG"] { content: url('/demo-images/design-reference.PNG'); }
+.demo-app .design-option-image[src$="design-artist.PNG"] { content: url('/demo-images/design-artist.PNG'); }
+
+/* Demo-only example photos for the sleeves step (gallery + zoom modal) */
+.demo-app img[src$="/images/4.PNG"] { content: url('/demo-images/leotard-bez.jpg'); }
+.demo-app img[src$="/images/3.PNG"] { content: url('/demo-images/leotard-1.jpg'); }
+.demo-app img[src$="/images/3-gallery.PNG"] { content: url('/demo-images/leotard-2.PNG'); }
+.demo-app img[src$="/images/3b.PNG"] { content: url('/demo-images/leotard-straps.PNG'); }
+
+/* Demo-only icons on the sleeves selection cards */
+.demo-app .sleeve-icon[src$="sleeve-bez.PNG"]     { content: url('/demo-images/sleeve-bez.PNG'); }
+.demo-app .sleeve-icon[src$="sleeve-1.PNG"]       { content: url('/demo-images/sleeve-1.PNG'); }
+.demo-app .sleeve-icon[src$="sleeve-2.PNG"]       { content: url('/demo-images/sleeve-2.PNG'); }
+.demo-app .sleeve-icon[src$="sleeve-breteli.PNG"] { content: url('/demo-images/sleeve-breteli.PNG'); }
+
+/* Demo-only icons + example images on the skirt selection step */
+.demo-app img[src$="skirt-bez.PNG"]   { content: url('/demo-images/skirt-bez.PNG'); }
+.demo-app img[src$="skirt-front.PNG"] { content: url('/demo-images/skirt-front.PNG'); }
+.demo-app img[src$="skirt-back.PNG"]  { content: url('/demo-images/skirt-back.PNG'); }
+.demo-app img[src$="skirt-both.PNG"]  { content: url('/demo-images/skirt-both.PNG'); }
+
+/* Aerography step: hide the "Аэрография" option in demo (only "Роспись" + "Ничего" remain) */
+.demo-app .aerography-card:has(input[value="aerography"]) { display: none; }
+/* Rhinestone step: hide the example-photos gallery entirely in demo */
+.demo-app .rhinestone-gallery { display: none; }
+/* Aerography step: demo shows only 4 photo examples (production keeps all 8) */
+.demo-app .aerography-gallery .gallery-grid > .gallery-item:nth-child(n+5) { display: none; }
+/* All 4 slots replaced with demo painting photos */
+.demo-app .aerography-gallery .gallery-grid > .gallery-item:nth-child(1) img { content: url('/demo-images/painting-ex-1.png'); }
+.demo-app .aerography-gallery .gallery-grid > .gallery-item:nth-child(2) img { content: url('/demo-images/painting-ex-2.png'); }
+.demo-app .aerography-gallery .gallery-grid > .gallery-item:nth-child(3) img { content: url('/demo-images/painting-ex-3.png'); }
+.demo-app .aerography-gallery .gallery-grid > .gallery-item:nth-child(4) img { content: url('/demo-images/painting-ex-4.png'); }
+/* Modal full-size: same swap by source filename */
+.demo-app .image-modal img[src*="IMG_3515"] { content: url('/demo-images/painting-ex-1.png'); }
+.demo-app .image-modal img[src*="IMG_3522"] { content: url('/demo-images/painting-ex-2.png'); }
+.demo-app .image-modal img[src*="IMG_3524"] { content: url('/demo-images/painting-ex-3.png'); }
+.demo-app .image-modal img[src*="IMG_3527"] { content: url('/demo-images/painting-ex-4.png'); }
+
+/* Decorative-elements step: swap option icons (production keeps its own) */
+.demo-app .option-icon img[src$="pero.PNG"]   { content: url('/demo-images/decorative-feathers.PNG'); }
+.demo-app .option-icon img[src$="fringe.PNG"] { content: url('/demo-images/decorative-fringe.PNG'); }
+.demo-app .option-icon img[src$="flower.PNG"] { content: url('/demo-images/decorative-flowers.PNG'); }
+.demo-app .option-icon img[src$="pogon.PNG"]  { content: url('/demo-images/decorative-other.PNG'); }
+/* "Nothing" icon is rendered as an emoji <span>, not an <img>. Hide the emoji
+   and show our champagne icon as the span background instead. */
+.demo-app .option-icon .icon-emoji {
+  font-size: 0;
+  width: 64px;
+  height: 64px;
+  background: url('/demo-images/decorative-nothing.PNG') center/contain no-repeat;
+}
+
+/* Decorative-elements gallery: demo shows only 4 photos (production keeps all 8) */
+.demo-app .decorative-gallery .gallery-grid > .gallery-item:nth-child(n+5) { display: none; }
+.demo-app .decorative-gallery .gallery-grid > .gallery-item:nth-child(1) img { content: url('/demo-images/decorative-ex-1.PNG'); }
+.demo-app .decorative-gallery .gallery-grid > .gallery-item:nth-child(2) img { content: url('/demo-images/decorative-ex-2.PNG'); }
+.demo-app .decorative-gallery .gallery-grid > .gallery-item:nth-child(3) img { content: url('/demo-images/decorative-ex-3.PNG'); }
+.demo-app .decorative-gallery .gallery-grid > .gallery-item:nth-child(4) img { content: url('/demo-images/decorative-ex-4.PNG'); }
+/* Modal: by file name (covers full-size view after click) */
+.demo-app .image-modal img[src*="IMG_3259"] { content: url('/demo-images/decorative-ex-1.PNG'); }
+.demo-app .image-modal img[src*="IMG_3536"] { content: url('/demo-images/decorative-ex-2.PNG'); }
+.demo-app .image-modal img[src*="IMG_3516"] { content: url('/demo-images/decorative-ex-3.PNG'); }
+.demo-app .image-modal img[src*="IMG_3517"] { content: url('/demo-images/decorative-ex-4.PNG'); }
+
+/* Skirt step: demo shows only 4 photo examples (production keeps all 8) */
+.demo-app .skirt-gallery .gallery-grid > .gallery-item:nth-child(n+5) { display: none; }
+/* Position-based swap so filenames with spaces/parens don't break the match.
+   Modal img is also matched via attribute selectors below by URL-encoded name. */
+.demo-app .skirt-gallery .gallery-grid > .gallery-item:nth-child(1) img { content: url('/demo-images/skirt-ex-1.PNG'); }
+.demo-app .skirt-gallery .gallery-grid > .gallery-item:nth-child(2) img { content: url('/demo-images/skirt-ex-2.PNG'); }
+.demo-app .skirt-gallery .gallery-grid > .gallery-item:nth-child(3) img { content: url('/demo-images/skirt-ex-3.PNG'); }
+.demo-app .skirt-gallery .gallery-grid > .gallery-item:nth-child(4) img { content: url('/demo-images/skirt-ex-4.PNG'); }
+/* Modal: cover both raw and URL-encoded variants of each skirt example filename */
+.demo-app .image-modal img[src$="IMG_3494.JPEG"]            { content: url('/demo-images/skirt-ex-1.PNG'); }
+.demo-app .image-modal img[src*="IMG_3496"]                 { content: url('/demo-images/skirt-ex-2.PNG'); }
+.demo-app .image-modal img[src*="IMG_3497"]                 { content: url('/demo-images/skirt-ex-3.PNG'); }
+.demo-app .image-modal img[src*="IMG_3498"]                 { content: url('/demo-images/skirt-ex-4.PNG'); }
 
 /* Small colored sub-labels inside option cards (discounts, fees, highlights) */
 .demo-app .design-option-discount,

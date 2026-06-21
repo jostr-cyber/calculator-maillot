@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import '../App.css'
 import './DemoApp.css'
-import { LanguageSwitcher } from '../components/LanguageSwitcher'
+import { DemoLanguageSwitcher } from './DemoLanguageSwitcher'
 import HeightSlider from '../components/HeightSlider'
 import DesignSourceSelect from '../components/DesignSourceSelect'
 import SleevesSelect from '../components/SleevesSelect'
@@ -13,6 +13,8 @@ import UrgencySelect from '../components/UrgencySelect'
 import RhinestoneSelect from '../components/RhinestoneSelect'
 import BudgetSlider from '../components/BudgetSlider'
 import DemoWelcome from './DemoWelcome'
+import DemoMainColorSelect from './DemoMainColorSelect'
+import DemoFabricSelect from './DemoFabricSelect'
 import DemoIntro from './DemoIntro'
 import DemoFinalResult from './DemoFinalResult'
 import DemoSales from './DemoSales'
@@ -41,9 +43,10 @@ const calculateBudgetComparison = (finalPrice, budgetRef) => {
     : { type: 'under', message: null }
 }
 
-// Base flow order — middle steps are filtered by clientConfig.availableOptions
+// Base flow order — middle steps are filtered by clientConfig.availableOptions.
+// "mainColor" is a demo-only visual step (no impact on the price engine).
 const BASE_STEPS = [
-  'height', 'designSource', 'sleeves', 'skirt', 'decorativeElements',
+  'height', 'mainColor', 'fabric', 'designSource', 'sleeves', 'skirt', 'decorativeElements',
   'aerography', 'combinaison', 'urgency', 'rhinestone', 'budget',
 ]
 
@@ -57,6 +60,9 @@ function DemoApp() {
   const [selectedBudget, setSelectedBudget] = useState(null)
   const [height, setHeight] = useState(150)
   const [heightCategory, setHeightCategory] = useState('150-170')
+  const [mainColor, setMainColor] = useState('')
+  const [baseFabrics, setBaseFabrics] = useState([])
+  const [trustMaster, setTrustMaster] = useState(false)
   const [designSource, setDesignSource] = useState('')
   const [design, setDesign] = useState('')
   const [sleeves, setSleeves] = useState(0)
@@ -154,6 +160,8 @@ function DemoApp() {
 
   const handleReset = () => {
     setSelectedBudget(null); setHeight(150); setHeightCategory('150-170')
+    setMainColor('')
+    setBaseFabrics([]); setTrustMaster(false)
     setDesignSource(''); setDesign(''); setSleeves(0); setSkirt('')
     setDecorativeElements(''); setAerography(''); setCombinaison('')
     setPremiumStones(''); setUrgency(''); setRhinestone('')
@@ -189,7 +197,7 @@ function DemoApp() {
 
   return (
     <div className="demo-app" style={themeStyle}>
-      <LanguageSwitcher />
+      <DemoLanguageSwitcher />
       <DemoBadge />
       <div className="container">
         <h1 className="demo-step-brand">{dc.atelier.name}</h1>
@@ -198,6 +206,21 @@ function DemoApp() {
 
         {step === 'height' && (
           <HeightSlider value={height} onHeightChange={handleHeightChange} onContinue={goNext} onBack={goBack} config={config} currentPrice={currentPrice} complexity={complexity} />
+        )}
+        {step === 'mainColor' && (
+          <DemoMainColorSelect value={mainColor} onColorChange={setMainColor} onContinue={goNext} onBack={goBack} />
+        )}
+        {step === 'fabric' && (
+          <DemoFabricSelect
+            baseFabrics={baseFabrics}
+            onBaseChange={(arr) => { setBaseFabrics(arr); if (arr.length > 0) setTrustMaster(false) }}
+            onContinue={goNext}
+            onBack={goBack}
+            mainColor={mainColor}
+            trustMaster={trustMaster}
+            onTrustMaster={() => { setTrustMaster(true); setBaseFabrics([]) }}
+            onChangeColor={() => setStep('mainColor')}
+          />
         )}
         {step === 'designSource' && (
           <DesignSourceSelect onConfirm={handleDesignSourceSelect} onBack={goBack} config={config} currentPrice={currentPrice} complexity={complexity} />

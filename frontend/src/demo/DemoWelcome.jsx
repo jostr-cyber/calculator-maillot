@@ -12,7 +12,11 @@ function Stars({ n }) {
 function DemoWelcome({ onTryDemo }) {
   const { language } = useTranslation()
   const c = getDemoContent(language)
-  const contactHref = `https://wa.me/${clientConfig.whatsappNumber}`
+  // "Contact us" goes to the real RhythmIQ seller (atelier owner buying RhythmIQ).
+  const salesNumber = clientConfig.salesWhatsapp || clientConfig.whatsappNumber
+  const contactHref = `https://wa.me/${salesNumber}`
+  const W = c.worksForYou
+  const M = c.moreThan
 
   return (
     <div className="rq-welcome">
@@ -33,6 +37,8 @@ function DemoWelcome({ onTryDemo }) {
             <li key={i}><span className="rq-feat-icon">✨</span>{f}</li>
           ))}
         </ul>
+
+        <p className="rq-features-note">{c.featuresNote}</p>
 
         <button className="rq-cta-primary" onClick={onTryDemo}>
           {c.tryDemo} <span className="rq-arrow">→</span>
@@ -61,6 +67,39 @@ function DemoWelcome({ onTryDemo }) {
               <blockquote>“{t.quote}”</blockquote>
               <figcaption>— {t.author}, {t.studio}</figcaption>
             </figure>
+          ))}
+        </div>
+      </section>
+
+      {/* WORKS-FOR-YOU (atelier use) */}
+      <section className="rq-section rq-works-section">
+        <h2 className="rq-section-title">{W.title}</h2>
+        <p className="rq-section-sub">{W.subtitle}</p>
+        <div className="rq-works-grid">
+          {W.items.map((it, i) => (
+            <div key={i} className="rq-work-item">
+              <span className="rq-check">✓</span>{it}
+            </div>
+          ))}
+        </div>
+
+        <div className="rq-helper-card">
+          <div className="rq-helper-mark">★</div>
+          <h3>{W.helperCard.title}</h3>
+          <p>{W.helperCard.text}</p>
+        </div>
+      </section>
+
+      {/* MORE THAN A CALCULATOR */}
+      <section className="rq-section rq-more-section">
+        <h2 className="rq-section-title">{M.title}</h2>
+        <p className="rq-section-paragraph">{M.text}</p>
+        <div className="rq-more-cards">
+          {M.cards.map((card, i) => (
+            <div key={i} className="rq-more-card">
+              <span className="rq-more-bullet">✦</span>
+              {card}
+            </div>
           ))}
         </div>
       </section>

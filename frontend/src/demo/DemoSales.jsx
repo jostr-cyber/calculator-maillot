@@ -8,7 +8,11 @@ function DemoSales({ onRestart }) {
   const { language } = useTranslation()
   const c = getDemoContent(language)
   const s = c.finalSales
-  const waHref = `https://wa.me/${clientConfig.whatsappNumber}`
+  const sc = s.simpleConnect
+  // Sales page contacts the REAL RhythmIQ seller (not the simulated atelier).
+  const waNumber = clientConfig.salesWhatsapp || clientConfig.whatsappNumber
+  const waDisplay = clientConfig.salesWhatsappDisplay || clientConfig.whatsappDisplay
+  const waHref = `https://wa.me/${waNumber}`
 
   return (
     <div className="rq-sales">
@@ -23,10 +27,26 @@ function DemoSales({ onRestart }) {
           ))}
         </ul>
 
+        {sc && (
+          <div className="rq-simple-connect">
+            <h2 className="rq-sc-title">{sc.title}</h2>
+            <p className="rq-sc-intro">{sc.intro}</p>
+            <p className="rq-sc-text">{sc.text}</p>
+            <p className="rq-sc-how-title">{sc.howTitle}</p>
+            <ul className="rq-sc-list">
+              {sc.howItems.map((it, i) => (
+                <li key={i}><span className="rq-check">✓</span>{it}</li>
+              ))}
+            </ul>
+            <p className="rq-sc-outcome">{sc.outcome}</p>
+            <p className="rq-sc-always">⏰ {sc.always}</p>
+          </div>
+        )}
+
         <div className="rq-sales-contacts">
           <a className="rq-contact" href={waHref} target="_blank" rel="noopener noreferrer">
             <span className="rq-contact-label">{c.contactWhatsApp}</span>
-            <span className="rq-contact-value">{clientConfig.whatsappDisplay}</span>
+            <span className="rq-contact-value">{waDisplay}</span>
           </a>
           <a className="rq-contact" href={clientConfig.instagramLink} target="_blank" rel="noopener noreferrer">
             <span className="rq-contact-label">{c.contactInstagram}</span>

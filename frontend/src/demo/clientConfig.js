@@ -20,8 +20,18 @@ const clientConfig = {
   atelier: { logo: '' }, // '' → show "Your Atelier Logo Here" placeholder
 
   // --- Contact (demo product contacts) --------------------------------------
-  whatsappNumber: '34600777024',
-  whatsappDisplay: '+34 600 777 024',
+  // whatsappNumber = the *simulated atelier* number used by the calculator flow
+  // ("Send my request" button). Placeholder so demo clients don't reach a real
+  // business; replaced per-atelier when the system is sold.
+  whatsappNumber: '9000000000',
+  whatsappDisplay: '+90 000 000 000',
+
+  // salesWhatsapp = the *real* RhythmIQ contact used on the welcome info-card
+  // ("Contact us") and the final sales page ("Request information"). These are
+  // for atelier owners who want to buy RhythmIQ.
+  salesWhatsapp: '34670770024',
+  salesWhatsappDisplay: '+34 670 770 024',
+
   instagramHandle: '@rhythmiq.tools',
   instagramLink: 'https://instagram.com/rhythmiq.tools',
 
@@ -38,7 +48,7 @@ const clientConfig = {
 
   // --- Which calculator steps appear in the demo ----------------------------
   availableOptions: {
-    height: true, designSource: true, sleeves: true, skirt: true,
+    height: true, mainColor: true, fabric: true, designSource: true, sleeves: true, skirt: true,
     decorativeElements: true, aerography: true, combinaison: true,
     urgency: true, rhinestone: true, budget: true,
   },

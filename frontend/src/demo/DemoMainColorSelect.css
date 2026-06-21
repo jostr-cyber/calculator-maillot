@@ -1,0 +1,101 @@
+.main-color-step .mc-hint {
+  text-align: center;
+  color: #8a7a5f;
+  font-size: 14px;
+  margin: -6px 0 22px;
+}
+
+.mc-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+  justify-items: center;
+  margin-bottom: 22px;
+}
+
+.mc-swatch {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease;
+  box-shadow: 0 3px 8px rgba(120, 95, 55, 0.18);
+  position: relative;
+}
+
+.mc-swatch:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 14px rgba(120, 95, 55, 0.28);
+}
+
+.mc-swatch.mc-light {
+  border-color: rgba(120, 95, 55, 0.35);
+}
+
+.mc-swatch.mc-selected {
+  outline: 3px solid var(--demo-main, #C2A36B);
+  outline-offset: 3px;
+  transform: scale(1.05);
+}
+
+.mc-check {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+.mc-swatch.mc-light .mc-check {
+  color: var(--demo-text, #3A3026);
+  text-shadow: none;
+}
+
+.mc-selected-row {
+  text-align: center;
+  margin: 6px 0 18px;
+  padding: 10px 16px;
+  border-radius: 14px;
+  background: var(--demo-soft, #F3E9DA);
+  border: 1px solid rgba(194, 163, 107, 0.3);
+  font-size: 14.5px;
+}
+.mc-selected-label {
+  color: var(--demo-main-dark, #9E8350);
+  font-weight: 600;
+  margin-right: 8px;
+}
+.mc-selected-name {
+  color: var(--demo-text, #3A3026);
+  font-weight: 700;
+}
+
+.mc-dontknow {
+  display: block;
+  width: 100%;
+  margin: 0 0 18px;
+  padding: 14px 20px;
+  background: #fff;
+  color: var(--demo-main-dark, #9E8350);
+  border: 1.5px dashed rgba(194, 163, 107, 0.55);
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .14s ease, border-color .14s ease, transform .14s ease;
+}
+.mc-dontknow:hover {
+  background: var(--demo-soft, #F3E9DA);
+  border-color: var(--demo-main, #C2A36B);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+  .mc-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .mc-swatch { width: 48px; height: 48px; }
+}

@@ -41,6 +41,82 @@
   font-size: 15px; font-weight: 500; color: var(--demo-text, #3A3026);
 }
 
+/* --- "Simple connection" inline section ---------------------------------- */
+.rq-simple-connect {
+  margin: 8px 0 28px;
+  padding: 26px 24px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #fbf4e8 0%, #f1e2c9 100%);
+  border: 1px solid rgba(194, 163, 107, 0.4);
+  text-align: left;
+}
+.rq-sc-title {
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--demo-text, #3A3026);
+  margin: 0 0 12px;
+  text-align: center;
+}
+.rq-sc-intro {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--demo-main-dark, #9E8350);
+  text-align: center;
+}
+.rq-sc-text {
+  margin: 0 0 18px;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: #6b5c45;
+  text-align: center;
+}
+.rq-sc-how-title {
+  margin: 0 0 10px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--demo-text, #3A3026);
+}
+.rq-sc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.rq-sc-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--demo-text, #3A3026);
+  line-height: 1.4;
+}
+.rq-sc-outcome {
+  margin: 0 0 10px;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--demo-text, #3A3026);
+}
+.rq-sc-always {
+  margin: 0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(194, 163, 107, 0.3);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--demo-main-dark, #9E8350);
+  text-align: center;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .rq-sc-list { grid-template-columns: 1fr; }
+  .rq-simple-connect { padding: 22px 18px; }
+}
+
 .rq-sales-contacts {
   display: flex; gap: 14px; justify-content: center;
   margin-bottom: 26px; flex-wrap: wrap;
