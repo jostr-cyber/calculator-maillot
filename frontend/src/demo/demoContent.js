@@ -342,7 +342,177 @@ export const demoContent = {
   },
 }
 
-// Pick the demo content for the active language (only EN/RU supported in the demo).
-export const getDemoContent = (language) => demoContent[language === 'ru' ? 'ru' : 'en']
+// Spanish copy. Natural, modern Castilian — leans neutral for client-facing
+// strings so it reads well in Spain and LATAM. "Atelier" kept as a loanword
+// (industry-standard in Spanish-speaking fashion).
+demoContent.es = {
+  liveDemo: 'Demo',
+
+  product: {
+    name: 'RhythmIQ Smart Order System',
+    subtitle: 'Calculadora de maillots para estudios de gimnasia rítmica',
+    calculatorName: 'Calculadora interactiva de maillots',
+  },
+
+  atelier: {
+    name: 'RG Leotards Studio',
+    logoPlaceholder: 'Aquí irá el logo de tu atelier',
+    genericNote: 'Esta demo usa una identidad genérica de atelier. Cada estudio recibe su propio logo, colores y fotos.',
+  },
+
+  features: [
+    'Estimación de precios',
+    'Comprensión de las preferencias del cliente',
+    'Solicitudes previas directamente a tu WhatsApp',
+    'Historial completo de cada cálculo de cliente',
+    'Personalizado para tu atelier',
+    'Cálculo rápido para la maestra',
+  ],
+  featuresNote: 'Cada cálculo de cliente te ayuda a entender mejor la demanda: qué modelos, elementos y opciones se eligen con más frecuencia.',
+
+  benefitsTitle: 'Por qué los estudios eligen RhythmIQ',
+  benefits: [
+    'Ahorra horas respondiendo las mismas preguntas que no llevan a un pedido',
+    'Te ayuda a entender la demanda y las preferencias del cliente',
+    'Te ayuda a hablar del presupuesto antes de empezar el trabajo',
+    'Las solicitudes previas llegan directamente a tu WhatsApp',
+    'Reduce el tiempo dedicado a conversaciones que no acaban en pedido',
+    'Le da al cliente un motivo para contactarte',
+  ],
+
+  testimonialsTitle: 'Lo que dicen los estudios',
+  testimonials: [
+    { quote: 'Los clientes llegan mejor preparados y dedico menos tiempo a explicar', author: 'Elena', studio: 'Dream Spark Atelier' },
+    { quote: 'Después de usar la calculadora, la gente da el paso más a menudo: escribe y hace el pedido', author: 'Sofía', studio: 'Grecia' },
+    { quote: 'Es más fácil hablar del presupuesto y sugerir opciones adecuadas', author: 'María', studio: 'España' },
+  ],
+
+  worksForYou: {
+    title: 'La calculadora trabaja para ti',
+    subtitle: 'Usa Smart Order System dentro del atelier',
+    items: [
+      'Calcula rápidamente el precio de los nuevos pedidos',
+      'Deja de tener los precios y los recargos en la cabeza',
+      'Todos los recargos por opciones adicionales se calculan automáticamente',
+      'Comprueba el precio de tu propio trabajo en segundos',
+      'Usa la calculadora durante las reuniones presenciales con la clienta',
+      'Un único sistema de cálculo para todo el atelier, especialmente cuando trabajan varias maestras',
+    ],
+    helperCard: {
+      title: 'Tu asistente personal de precios',
+      text: 'La calculadora no es solo para los clientes. Muchas maestras la usan a diario para calcular rápido el precio de un nuevo maillot, no olvidar nada y dar el precio con seguridad.',
+    },
+  },
+
+  moreThan: {
+    title: 'RhythmIQ — más que una calculadora',
+    text: 'Es una herramienta que ayuda al estudio a recibir consultas, entender las preferencias del cliente, calcular más rápido y convertir el interés por un maillot en una conversación real.',
+    cards: [
+      'Asistente para clientes',
+      'Fuente de estadísticas y análisis',
+      'Un motivo para el primer contacto',
+      'Herramienta de cálculo dentro del atelier',
+      'Ahorra tiempo en mensajes',
+    ],
+  },
+
+  infoCard: {
+    title: '¿Quieres tu propio Smart Order System?',
+    items: [
+      'tu logo',
+      'tus colores',
+      'tus fotos de Instagram',
+      'tu WhatsApp',
+      'tus precios y tus reglas de cálculo',
+      'configuración personalizada',
+      'configuración inicial incluida',
+      'actualizaciones y ampliaciones mensuales de la calculadora',
+      'una herramienta para tus clientes',
+      'una herramienta para usar dentro del atelier',
+    ],
+    button: 'Contáctanos',
+  },
+
+  finalSales: {
+    title: '¿Quieres un Smart Order System para tu atelier?',
+    subtitle: 'Incluye:',
+    includes: [
+      'tu logo',
+      'tus colores',
+      'tu WhatsApp',
+      'tu galería de Instagram',
+      'recogida automática de solicitudes',
+      'cálculo automático de todos los extras y recargos en el precio del maillot',
+      'historial de cada cálculo de cliente, incluso de quienes no enviaron solicitud',
+      'hosting y soporte',
+    ],
+    button: 'Solicitar información',
+    simpleConnect: {
+      title: 'Puesta en marcha sencilla',
+      intro: 'No requiere ninguna configuración compleja.',
+      text: 'Una vez activado tu sistema, recibirás un enlace personalizado, listo para usar, a tu Smart Order System.',
+      howTitle: 'Lo único que tienes que hacer:',
+      howItems: [
+        'añadir el enlace a tu bio de Instagram',
+        'colocarlo en Taplink o en tu web',
+        'compartirlo por WhatsApp o Telegram',
+        'usarlo en stories, Reels y anuncios',
+      ],
+      outcome: 'Los clientes hacen el cálculo por su cuenta y las solicitudes previas llegan directamente a ti.',
+      always: 'Todo funciona las 24 horas del día, incluso cuando estás ocupada cosiendo o no puedes responder al instante.',
+    },
+  },
+
+  demoBadge: {
+    title: 'Demo',
+    text: 'Una demo interactiva de RhythmIQ. Tu versión estará totalmente personalizada para tu atelier.',
+  },
+
+  tryDemo: 'Probar demo',
+  back: '← Atrás',
+  poweredBy: 'Funciona con',
+  sendRequest: '💬 Enviar mi solicitud',
+  onInstagram: 'en Instagram',
+  bridgeText: 'Esta es exactamente la solicitud que te enviaría tu cliente: completa y lista para gestionar.',
+  bridgeButton: '✨ Quiero esto para mi atelier',
+  restartDemo: '↺ Reiniciar demo',
+  contactWhatsApp: 'WhatsApp',
+  contactInstagram: 'Instagram',
+
+  mainColor: {
+    title: 'Elige el color principal del maillot',
+    hint: 'Toca un color',
+    selected: 'Color seleccionado',
+    dontKnow: 'Aún no lo sé',
+  },
+
+  fabric: {
+    title: 'Elige el tipo de tela para la base',
+    hint: 'Toca una tela (puedes elegir varias)',
+    trustMaster: 'Confío en la elección de tela de la maestra',
+    trustNote: 'Has confiado a la maestra la elección de la tela',
+    incompatible: {
+      title: 'El multicolor no es posible con esta tela',
+      text: 'Este tipo de tela no se puede teñir en varios colores. Por favor, elige otra tela, otro color o toca «Confío en la elección de la maestra».',
+      chooseOtherFabric: 'Elegir otra tela',
+      chooseOtherColor: 'Elegir otro color',
+      trustMaster: 'Confío en la elección de la maestra',
+    },
+    types: {
+      'velvet-smooth':   'Terciopelo liso',
+      'velvet-crushed':  'Terciopelo crash (arrugado)',
+      'biflex-glossy':   'Biflex brillante',
+      'biflex-matte':    'Biflex mate',
+      'biflex-hologram': 'Biflex con efecto holograma',
+      'biflex-silk':     'Biflex con efecto seda',
+      'mesh':            'Malla',
+      'biflex-print':    'Biflex estampado',
+      'velvet-embossed': 'Terciopelo liso con estampado en relieve',
+    },
+  },
+}
+
+// Pick the demo content for the active language (EN / RU / ES supported in the demo).
+export const getDemoContent = (language) => demoContent[language] || demoContent.en
 
 export default demoContent

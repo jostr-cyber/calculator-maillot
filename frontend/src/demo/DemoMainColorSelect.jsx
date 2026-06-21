@@ -53,7 +53,7 @@ function DemoMainColorSelect({ value, onColorChange, onContinue, onBack }) {
             color={c}
             selected={value === c.id}
             onClick={() => handlePick(c)}
-            label={c.name[language === 'ru' ? 'ru' : 'en']}
+            label={c.name[language] || c.name.en}
           />
         ))}
       </div>
@@ -61,7 +61,7 @@ function DemoMainColorSelect({ value, onColorChange, onContinue, onBack }) {
       {selectedColor && (
         <div className="mc-selected-row">
           <span className="mc-selected-label">{dc.mainColor.selected}:</span>
-          <span className="mc-selected-name">{selectedColor.name[language === 'ru' ? 'ru' : 'en']}</span>
+          <span className="mc-selected-name">{selectedColor.name[language] || selectedColor.name.en}</span>
         </div>
       )}
 

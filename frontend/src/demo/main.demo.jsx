@@ -4,9 +4,9 @@ import DemoApp from './DemoApp'
 import clientConfig from './clientConfig'
 import { LanguageProvider } from '../context/LanguageContext'
 
-// Demo supports EN + RU only. Seed the default the first time and coerce any
-// previously-stored unsupported language (e.g. 'es') to the demo default.
-const DEMO_LANGS = ['en', 'ru']
+// Demo supports EN + RU + ES. Seed the default the first time and coerce any
+// previously-stored unsupported language to the demo default.
+const DEMO_LANGS = ['en', 'ru', 'es']
 const stored = localStorage.getItem('language')
 if (!stored || !DEMO_LANGS.includes(stored)) {
   localStorage.setItem('language', clientConfig.defaultLanguage || 'en')

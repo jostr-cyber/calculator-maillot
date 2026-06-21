@@ -2,7 +2,7 @@ import React from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import '../components/LanguageSwitcher.css'
 
-// Demo restricts languages to English and Russian only (shared switcher untouched).
+// Demo supports English, Russian and Spanish (shared switcher untouched).
 const FLAGS = {
   en: (
     <svg className="flag-svg" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
@@ -20,9 +20,15 @@ const FLAGS = {
       <rect y="20" width="60" height="10" fill="#D52B1E" />
     </svg>
   ),
+  es: (
+    <svg className="flag-svg" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="30" fill="#AA151B" />
+      <rect y="7.5" width="60" height="15" fill="#F1BF00" />
+    </svg>
+  ),
 }
 
-const DEMO_LANGS = { en: 'English', ru: 'Русский' }
+const DEMO_LANGS = { en: 'English', ru: 'Русский', es: 'Español' }
 
 export const DemoLanguageSwitcher = () => {
   const { language, changeLanguage } = useTranslation()
