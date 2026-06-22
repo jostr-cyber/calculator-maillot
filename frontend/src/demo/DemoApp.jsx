@@ -122,19 +122,58 @@ function DemoApp() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sleeves, skirt, decorativeElements, aerography, combinaison, urgency, design, designSource, step, heightCategory, premiumStones, rhinestone])
 
-  // Demo-only heading override: replace the production "steps.budget" title with
-  // a more actionable phrasing on the budget step (production locales untouched).
+  // Demo-only text overrides for strings that come from the shared production
+  // locale (which we can't modify). One observer handles all step-specific
+  // tweaks (budget heading, height heading, design option, aerography option).
   useEffect(() => {
-    if (step !== 'budget') return
-    const overrides = {
-      ru: 'Укажите ваш желаемый бюджет',
-      en: "What's your desired budget?",
-      es: '¿Cuál es tu presupuesto deseado?',
+    const L = (en, ru, es) => (language === 'ru' ? ru : language === 'es' ? es : en)
+    const targets = []
+
+    if (step === 'budget') {
+      targets.push({
+        sel: '.demo-app .budget-slider h2',
+        text: L("What's your desired budget?", 'Укажите ваш желаемый бюджет', '¿Cuál es tu presupuesto deseado?'),
+      })
     }
-    const text = overrides[language] || overrides.en
+    if (step === 'height') {
+      targets.push({
+        sel: '.demo-app .height-slider h2',
+        text: L("Gymnast's height", "Рост гимнастки", "Estatura de la gimnasta"),
+      })
+    }
+    if (step === 'designSource') {
+      // Replace the third design option title — "I need a design" → friendlier phrasing
+      targets.push({
+        match: (el) => {
+          if (!el.matches?.('.demo-app .design-option-title')) return false
+          return /need a design|нужен дизайн|necesito un diseño|necesito diseño/i.test(el.textContent || '')
+        },
+        text: L('I need help creating a design', 'Мне нужна помощь с дизайном', 'Necesito ayuda para crear un diseño'),
+      })
+    }
+    if (step === 'aerography') {
+      // Shorten the "Hand-painted artwork (characters, objects, buildings, etc.)" label
+      targets.push({
+        match: (el) => {
+          if (!el.matches?.('.demo-app .aerography-label')) return false
+          return /hand-painted|роспись купальника|pintado a mano|pintura a mano/i.test(el.textContent || '')
+        },
+        text: L('Hand-painted artwork', 'Роспись купальника', 'Pintura a mano'),
+      })
+    }
+
+    if (targets.length === 0) return
+
     const apply = () => {
-      const h2 = document.querySelector('.demo-app .budget-slider h2')
-      if (h2 && h2.textContent !== text) h2.textContent = text
+      for (const t of targets) {
+        const els = t.sel
+          ? document.querySelectorAll(t.sel)
+          : document.querySelectorAll('.demo-app .design-option-title, .demo-app .aerography-label')
+        els.forEach((el) => {
+          if (t.match && !t.match(el)) return
+          if (el.textContent !== t.text) el.textContent = t.text
+        })
+      }
     }
     apply()
     const observer = new MutationObserver(apply)

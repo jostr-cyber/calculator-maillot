@@ -19,7 +19,7 @@ function DemoSales({ onRestart }) {
       <div className="rq-sales-card">
         <div className="rq-logo-mark">RIQ</div>
         <h1 className="rq-sales-title">{s.title}</h1>
-        <p className="rq-sales-sub">{s.subtitle}</p>
+        {s.subtitle && <p className="rq-sales-sub">{s.subtitle}</p>}
 
         <ul className="rq-sales-list">
           {s.includes.map((it, i) => (

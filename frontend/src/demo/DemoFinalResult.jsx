@@ -125,11 +125,11 @@ function DemoFinalResult({ priceResult, complexity, config, wheelDiscount, selec
       </div>
 
       <div className="result-actions">
-        <button className="btn-primary btn-action" onClick={handleReducePrice}>
-          {t('actionButtons.reducePrice.label') || '💰 Reduce the price'}
-        </button>
-        <button className="btn-secondary btn-action" onClick={handleDiscussDetails}>
+        <button className="btn-primary btn-action" onClick={handleDiscussDetails}>
           {dc.sendRequest}
+        </button>
+        <button className="btn-secondary btn-action" onClick={handleReducePrice}>
+          {t('actionButtons.reducePrice.label') || '💰 Reduce the price'}
         </button>
         <button className="btn-secondary btn-action" onClick={onCustomizeAgain}>
           {t('actionButtons.customize') || '🎨 Make new calculation'}

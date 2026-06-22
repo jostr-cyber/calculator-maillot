@@ -39,7 +39,7 @@ function DemoIntro({ onStart, onBack }) {
           <div className="demo-logo-placeholder">{c.atelier.logoPlaceholder}</div>
         )}
 
-        <p className="demo-intro-lead">{t('intro.description')}</p>
+        <p className="demo-intro-lead">{c.introDescription || t('intro.description')}</p>
 
         <button className="btn-start demo-start" onClick={onStart}>
           <span>{startLabel}</span>

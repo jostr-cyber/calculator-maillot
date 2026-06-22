@@ -5,17 +5,29 @@
   margin: -6px 0 22px;
 }
 
+/* Group header for each color category */
+.mc-group { margin-bottom: 22px; }
+.mc-group-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--demo-main-dark, #9E8350);
+  margin: 0 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(194, 163, 107, 0.25);
+}
+
 .mc-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
   justify-items: center;
-  margin-bottom: 22px;
 }
 
 .mc-swatch {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   border: 2px solid rgba(0, 0, 0, 0.08);
   cursor: pointer;
@@ -41,6 +53,35 @@
   outline: 3px solid var(--demo-main, #C2A36B);
   outline-offset: 3px;
   transform: scale(1.05);
+}
+
+/* Metallic finish — glossy highlight stripe + deeper shadow ring so the swatch
+   reads as actual metal, not a flat color chip. */
+.mc-swatch.mc-metallic {
+  position: relative;
+  box-shadow:
+    inset 0 -3px 6px rgba(0, 0, 0, 0.22),
+    inset 0 3px 6px rgba(255, 255, 255, 0.55),
+    0 4px 10px rgba(120, 95, 55, 0.28);
+  border-color: rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+.mc-swatch.mc-metallic::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: linear-gradient(
+    115deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0) 38%,
+    rgba(255,255,255,0.55) 47%,
+    rgba(255,255,255,0.85) 50%,
+    rgba(255,255,255,0.55) 53%,
+    rgba(255,255,255,0) 62%,
+    rgba(255,255,255,0) 100%
+  );
+  pointer-events: none;
 }
 
 .mc-check {
@@ -96,6 +137,7 @@
 }
 
 @media (max-width: 600px) {
-  .mc-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
-  .mc-swatch { width: 48px; height: 48px; }
+  .mc-grid { grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .mc-swatch { width: 56px; height: 56px; }
+  .mc-group-title { font-size: 12px; }
 }

@@ -23,11 +23,12 @@ export const demoContent = {
 
 
     features: [
-      'Clients calculate the preliminary price themselves',
-      'All calculations come to your WhatsApp automatically',
-      'You see the full history of requests and client statistics',
-      'The studio uses the calculator too — for quick in-house pricing',
+      'Clients calculate prices themselves',
+      'Requests arrive in your WhatsApp automatically',
+      'See demand and client statistics',
+      'Save hours answering the same questions',
     ],
+    introDescription: 'Design your custom leotard in a few simple steps',
 
     benefitsTitle: 'Why studios use RhythmIQ',
     benefits: [
@@ -93,19 +94,18 @@ export const demoContent = {
     },
 
     finalSales: {
-      title: 'Want a Smart Order System for your atelier?',
-      subtitle: 'Included:',
+      title: 'Want your own Smart Order System?',
+      subtitle: '',
       includes: [
-        'your logo',
-        'your colors',
-        'your WhatsApp',
-        'your Instagram gallery',
-        'automatic request collection',
-        "automatic calculation of all extras and surcharges in the leotard's price",
-        "history of every client calculation, including those who didn't submit a request",
-        'hosting and support',
+        'Your logo',
+        'Your colors',
+        'Your WhatsApp',
+        'Instagram gallery',
+        'Automatic requests',
+        'Client statistics',
+        'Hosting included',
       ],
-      button: 'Request information',
+      button: 'Get your own system',
       simpleConnect: {
         title: 'Easy setup',
         intro: 'No complex configuration required.',
@@ -187,11 +187,12 @@ export const demoContent = {
     },
 
     features: [
-      'Клиент самостоятельно рассчитывает предварительную стоимость',
-      'Все расчеты автоматически приходят вам в WhatsApp',
-      'Вы видите историю запросов и статистику по клиентам',
-      'Калькулятором удобно пользоваться и самой студии для быстрых расчетов',
+      'Клиенты самостоятельно рассчитывают стоимость',
+      'Заявки автоматически приходят вам в WhatsApp',
+      'Вы видите спрос и статистику по клиентам',
+      'Экономия часов на одинаковых вопросах',
     ],
+    introDescription: 'Создайте свой купальник за несколько простых шагов',
 
     benefitsTitle: 'Почему студии выбирают RhythmIQ',
     benefits: [
@@ -257,19 +258,18 @@ export const demoContent = {
     },
 
     finalSales: {
-      title: 'Хотите Smart Order System для вашего ателье?',
-      subtitle: 'Включено:',
+      title: 'Хотите свою Smart Order System?',
+      subtitle: '',
       includes: [
-        'ваш логотип',
-        'ваши цвета',
-        'ваш WhatsApp',
-        'ваша галерея Instagram',
-        'автоматический сбор заявок',
-        'автоматический расчет всех доплат и надбавок в стоимости купальника',
-        'история всех расчетов клиентов, даже тех, кто не отправил заявку',
-        'хостинг и поддержка',
+        'Ваш логотип',
+        'Ваши цвета',
+        'Ваш WhatsApp',
+        'Галерея Instagram',
+        'Автоматические заявки',
+        'Статистика по клиентам',
+        'Хостинг включен',
       ],
-      button: 'Запросить информацию',
+      button: 'Получить свою систему',
       simpleConnect: {
         title: 'Простое подключение',
         intro: 'Никаких сложных настроек не требуется.',
@@ -355,11 +355,12 @@ demoContent.es = {
   },
 
   features: [
-    'Los clientes calculan el precio preliminar por sí mismos',
-    'Todos los cálculos llegan automáticamente a tu WhatsApp',
-    'Ves el historial de solicitudes y las estadísticas de clientes',
-    'El estudio también usa la calculadora para calcular precios rápidamente',
+    'Los clientes calculan los precios por sí mismos',
+    'Las solicitudes llegan automáticamente a tu WhatsApp',
+    'Ves la demanda y las estadísticas de clientes',
+    'Ahorra horas respondiendo las mismas preguntas',
   ],
+  introDescription: 'Diseña tu maillot personalizado en unos pocos pasos',
 
   benefitsTitle: 'Por qué los estudios eligen RhythmIQ',
   benefits: [
@@ -425,19 +426,18 @@ demoContent.es = {
   },
 
   finalSales: {
-    title: '¿Quieres un Smart Order System para tu atelier?',
-    subtitle: 'Incluye:',
+    title: '¿Quieres tu propio Smart Order System?',
+    subtitle: '',
     includes: [
-      'tu logo',
-      'tus colores',
-      'tu WhatsApp',
-      'tu galería de Instagram',
-      'recogida automática de solicitudes',
-      'cálculo automático de todos los extras y recargos en el precio del maillot',
-      'historial de cada cálculo de cliente, incluso de quienes no enviaron solicitud',
-      'hosting y soporte',
+      'Tu logo',
+      'Tus colores',
+      'Tu WhatsApp',
+      'Galería de Instagram',
+      'Solicitudes automáticas',
+      'Estadísticas de clientes',
+      'Hosting incluido',
     ],
-    button: 'Solicitar información',
+    button: 'Conseguir mi sistema',
     simpleConnect: {
       title: 'Puesta en marcha sencilla',
       intro: 'No requiere ninguna configuración compleja.',

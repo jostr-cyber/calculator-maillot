@@ -8,11 +8,13 @@ import './DemoFabricSelect.css'
 // Cards show placeholder gradients now — real fabric photos will be swapped in
 // later (drop /demo-images/fabric-<id>.* and update the CSS overrides).
 
+// First row holds the most-used fabrics (atelier tip: smooth velvet, glossy
+// biflex, matte biflex are the bread-and-butter choices).
 const FABRICS = [
   { id: 'velvet-smooth'   },
-  { id: 'velvet-crushed'  },
   { id: 'biflex-glossy'   },
   { id: 'biflex-matte'    },
+  { id: 'velvet-crushed'  },
   { id: 'biflex-hologram' },
   { id: 'biflex-silk'     },
   { id: 'mesh'            },
