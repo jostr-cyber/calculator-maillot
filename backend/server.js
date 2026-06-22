@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { initializePrices, calculatePrice, getPrices } from './config/prices.js';
 import { initializeSurveyStorage, saveSurvey, getAllSurveys, getSurveysByDateRange, generateExportJSON, generateExportFilename, getLastUpdated } from './utils/surveyStorage.js';
+import { initializeCalculationsStorage, upsertCalculation, getAllCalculations, getCalculationsSummary } from './utils/calculationsStorage.js';
 
 dotenv.config();
 
@@ -171,6 +172,40 @@ app.get('/', (req, res) => {
   });
 });
 
+// --- Analytics: calculator usage tracking ---------------------------------
+// Every visitor who reaches the final-price screen sends their calculation
+// here, even without submitting a request. Used for owner-side analytics.
+// Admin key for viewing — set ANALYTICS_KEY in backend/.env (defaults to a
+// dev key so local viewing works without setup).
+const ANALYTICS_KEY = process.env.ANALYTICS_KEY || 'rg-analytics-dev'
+
+app.post('/api/analytics/calculation', (req, res) => {
+  try {
+    const record = req.body || {}
+    if (!record.id) {
+      return res.status(400).json({ error: 'id required' })
+    }
+    const meta = {
+      ip: req.headers['x-forwarded-for']?.toString().split(',')[0].trim() || req.socket.remoteAddress || null,
+      userAgent: req.headers['user-agent'] || null,
+      referer: req.headers['referer'] || null,
+    }
+    const result = upsertCalculation(record, meta)
+    res.json(result)
+  } catch (error) {
+    console.error('[Analytics] save error:', error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+app.get('/api/analytics/calculations', (req, res) => {
+  if ((req.query.key || req.headers['x-admin-key']) !== ANALYTICS_KEY) {
+    return res.status(401).json({ error: 'unauthorized' })
+  }
+  const list = getAllCalculations()
+  res.json({ summary: getCalculationsSummary(), calculations: list })
+})
+
 // Start server
 app.listen(PORT, async () => {
   try {
@@ -182,6 +217,10 @@ app.listen(PORT, async () => {
     // Initialize survey storage
     initializeSurveyStorage();
     console.log(`✓ Survey storage initialized`);
+
+    // Initialize analytics storage for calculator usage
+    initializeCalculationsStorage();
+    console.log(`✓ Calculations analytics storage initialized`);
 
     console.log(`✓ Server running on port ${PORT}`);
     console.log(`✓ API available at http://localhost:${PORT}`);

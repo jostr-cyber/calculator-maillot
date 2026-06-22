@@ -55,3 +55,20 @@ export const getCalculation = (id) => {
 
 // Retrieve all calculations (for a future admin list).
 export const getAllCalculations = () => readStore();
+
+// Send a calculation snapshot to the owner's backend so it shows up in the
+// analytics dashboard, even if the visitor never submits the WhatsApp request.
+// Failures are silent — analytics should never break the calculator UX.
+export const sendToAnalytics = async (record) => {
+  if (!record || !record.id) return;
+  try {
+    await fetch('/api/analytics/calculation', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(record),
+      keepalive: true, // lets the request complete even if the page is closing
+    });
+  } catch {
+    // backend offline or blocked → ignore; the calculator still works
+  }
+};

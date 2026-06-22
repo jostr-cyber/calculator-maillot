@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './App.css'
 import API_BASE_URL from './config/api'
 import AdminSurveys from './pages/AdminSurveys'
+import AdminAnalytics from './pages/AdminAnalytics'
 import Intro from './components/Intro'
 import BudgetSelector from './components/BudgetSelector'
 import BudgetSlider from './components/BudgetSlider'
@@ -400,6 +401,9 @@ function App() {
   // Check if admin route
   if (window.location.pathname === '/admin') {
     return <AdminSurveys />
+  }
+  if (window.location.pathname === '/admin/analytics' || window.location.pathname === '/analytics') {
+    return <AdminAnalytics />
   }
 
   const config = {

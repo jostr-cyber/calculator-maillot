@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import { formatConfigurationSummary, formatPrice, computeOptimizedPrice } from '../utilities/calculationUtils'
-import { saveCalculation, updateCalculation } from '../utilities/calculationStore'
+import { saveCalculation, updateCalculation, sendToAnalytics } from '../utilities/calculationStore'
 import { buildWhatsAppMessage } from '../utilities/whatsappMessage'
 import './FinalResult.css'
 
@@ -154,10 +154,14 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
     ...extra
   })
 
-  // Save the calculation as soon as the customer reaches the final screen (status: calculator_completed).
+  // Save the calculation as soon as the customer reaches the final screen
+  // (status: calculator_completed). Also send to owner's analytics backend so
+  // the calculation shows up in the dashboard even if no WhatsApp request is sent.
   useEffect(() => {
     if (calculationId) {
-      saveCalculation(buildRecord())
+      const record = buildRecord()
+      saveCalculation(record)
+      sendToAnalytics(record)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [calculationId])
@@ -167,11 +171,13 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
     if (!reduceModalOpened) {
       setReduceModalOpened(true)
       // Opening the modal counts as applying the recommendations
-      updateCalculation(calculationId, {
+      const patch = {
         reduceModalOpened: true,
         recommendationsApplied: recommendationKeys,
-        optimizedPrice
-      })
+        optimizedPrice,
+      }
+      updateCalculation(calculationId, patch)
+      sendToAnalytics({ ...buildRecord(), ...patch })
     }
   }
 
@@ -189,6 +195,7 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
     const message = buildWhatsAppMessage(record, { t, language, optimized })
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank')
     updateCalculation(calculationId, { status: 'whatsapp_clicked', whatsappMessage: message })
+    sendToAnalytics({ ...record, status: 'whatsapp_clicked', whatsappMessage: message })
   }
 
   // Main screen button: optimized only if the customer opened the reduce-cost modal
