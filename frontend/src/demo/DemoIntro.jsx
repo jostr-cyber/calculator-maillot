@@ -5,10 +5,17 @@ import clientConfig from './clientConfig'
 import { getDemoContent } from './demoContent'
 import './DemoIntro.css'
 
+const NAME_HINT = {
+  en: '(your atelier name will appear here)',
+  ru: '(здесь будет название вашего ателье)',
+  es: '(aquí irá el nombre de tu atelier)',
+}
+
 function DemoIntro({ onStart, onBack }) {
   const { t, language } = useTranslation()
   const c = getDemoContent(language)
   const startLabel = t('intro.startButton')
+  const hint = NAME_HINT[language] || NAME_HINT.en
 
   return (
     <div className="demo-intro">
@@ -20,20 +27,17 @@ function DemoIntro({ onStart, onBack }) {
         )}
 
         <div className="demo-brand">
-          {clientConfig.atelier?.logo ? (
-            <img src={clientConfig.atelier.logo} alt={c.atelier.name} className="demo-brand-logo" />
-          ) : (
-            <div className="demo-logo-placeholder">{c.atelier.logoPlaceholder}</div>
-          )}
           <div className="demo-brand-name">{c.atelier.name}</div>
+          <div className="demo-brand-hint">{hint}</div>
           <div className="demo-brand-tagline">{c.product.calculatorName}</div>
         </div>
 
-        <div className="demo-intro-art">
-          <div className="demo-intro-art-inner">
-            <span className="demo-intro-art-icon">✦</span>
-          </div>
-        </div>
+        {/* Logo placeholder (moved here, replacing the previous diamond decoration) */}
+        {clientConfig.atelier?.logo ? (
+          <img src={clientConfig.atelier.logo} alt={c.atelier.name} className="demo-brand-logo-main" />
+        ) : (
+          <div className="demo-logo-placeholder">{c.atelier.logoPlaceholder}</div>
+        )}
 
         <p className="demo-intro-lead">{t('intro.description')}</p>
 

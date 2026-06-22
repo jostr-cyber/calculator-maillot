@@ -63,21 +63,36 @@
   margin-bottom: 26px;
 }
 
+/* Plain info list — not buttons. Single column so the longer descriptive lines
+   read naturally; only icon + text, no background card. */
 .rq-features {
-  list-style: none; padding: 0; margin: 0 auto 30px;
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px; max-width: 560px; text-align: left;
+  list-style: none;
+  padding: 0;
+  margin: 8px auto 26px;
+  max-width: 580px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 .rq-features li {
-  display: flex; align-items: center; gap: 10px;
-  background: var(--demo-soft, #F3E9DA);
-  border: 1px solid rgba(194, 163, 107, 0.25);
-  border-radius: 14px;
-  padding: 14px 16px;
-  font-size: 15px; font-weight: 500;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
   color: var(--demo-text, #3A3026);
 }
-.rq-feat-icon { font-size: 16px; }
+.rq-feat-icon {
+  flex-shrink: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--demo-main, #C2A36B);
+}
 
 .rq-cta-primary {
   display: inline-flex; align-items: center; gap: 10px;
@@ -182,14 +197,11 @@
 
 .rq-bottom-cta { margin-top: 4px; }
 
-/* Short pop-up note under the features grid */
-.rq-features-note {
-  max-width: 560px;
-  margin: 0 auto 28px;
-  font-size: 14px;
-  line-height: 1.55;
-  color: #6b5c45;
-  text-align: center;
+/* Inline CTA placed between sections — centers the button with a bit of breathing room */
+.rq-inline-cta {
+  display: flex;
+  justify-content: center;
+  margin: -8px 0 8px;
 }
 
 /* Section subtitle / paragraph */

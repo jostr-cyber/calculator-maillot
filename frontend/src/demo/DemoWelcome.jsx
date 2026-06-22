@@ -9,6 +9,17 @@ function Stars({ n }) {
   return <span className="rq-stars">{'★'.repeat(n)}</span>
 }
 
+// Reusable inline CTA placed between sections.
+function TryDemoCta({ label, onClick }) {
+  return (
+    <div className="rq-inline-cta">
+      <button className="rq-cta-primary" onClick={onClick}>
+        {label} <span className="rq-arrow">→</span>
+      </button>
+    </div>
+  )
+}
+
 function DemoWelcome({ onTryDemo }) {
   const { language } = useTranslation()
   const c = getDemoContent(language)
@@ -34,11 +45,9 @@ function DemoWelcome({ onTryDemo }) {
 
         <ul className="rq-features">
           {c.features.map((f, i) => (
-            <li key={i}><span className="rq-feat-icon">✨</span>{f}</li>
+            <li key={i}><span className="rq-feat-icon">✨</span><span>{f}</span></li>
           ))}
         </ul>
-
-        <p className="rq-features-note">{c.featuresNote}</p>
 
         <button className="rq-cta-primary" onClick={onTryDemo}>
           {c.tryDemo} <span className="rq-arrow">→</span>
@@ -56,6 +65,7 @@ function DemoWelcome({ onTryDemo }) {
           ))}
         </div>
       </section>
+      <TryDemoCta label={c.tryDemo} onClick={onTryDemo} />
 
       {/* TESTIMONIALS */}
       <section className="rq-section">
@@ -70,6 +80,7 @@ function DemoWelcome({ onTryDemo }) {
           ))}
         </div>
       </section>
+      <TryDemoCta label={c.tryDemo} onClick={onTryDemo} />
 
       {/* WORKS-FOR-YOU (atelier use) */}
       <section className="rq-section rq-works-section">
@@ -89,6 +100,7 @@ function DemoWelcome({ onTryDemo }) {
           <p>{W.helperCard.text}</p>
         </div>
       </section>
+      <TryDemoCta label={c.tryDemo} onClick={onTryDemo} />
 
       {/* MORE THAN A CALCULATOR */}
       <section className="rq-section rq-more-section">
@@ -103,8 +115,9 @@ function DemoWelcome({ onTryDemo }) {
           ))}
         </div>
       </section>
+      <TryDemoCta label={c.tryDemo} onClick={onTryDemo} />
 
-      {/* INFO CARD */}
+      {/* INFO CARD (with own "Contact us" CTA) */}
       <section className="rq-info-card">
         <h2>{c.infoCard.title}</h2>
         <ul className="rq-info-list">
@@ -117,7 +130,7 @@ function DemoWelcome({ onTryDemo }) {
         </a>
       </section>
 
-      {/* SECONDARY TRY DEMO */}
+      {/* FINAL TRY DEMO */}
       <div className="rq-bottom-cta">
         <button className="rq-cta-primary" onClick={onTryDemo}>
           {c.tryDemo} <span className="rq-arrow">→</span>

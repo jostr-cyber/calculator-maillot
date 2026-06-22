@@ -160,6 +160,9 @@ function DemoFinalResult({ priceResult, complexity, config, wheelDiscount, selec
             {budgetExcess ? (
               <div className="budget-excess-info">
                 <p>{t('priceReduction.exceedInfo') || 'Your desired budget exceeded by'} <strong>{formatPrice(budgetExcess, language)}</strong></p>
+                <p className="budget-excess-recommendation">
+                  {t('priceReduction.recommendation') || 'To reduce the cost of the leotard, we recommend changing some of your selected parameters:'}
+                </p>
               </div>
             ) : (
               <div className="no-budget-info">

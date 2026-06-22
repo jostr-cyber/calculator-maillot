@@ -23,14 +23,11 @@ export const demoContent = {
 
 
     features: [
-      'Price estimation',
-      'Understanding client preferences',
-      'Pre-orders sent straight to your WhatsApp',
-      'Full history of every client calculation',
-      'Personalized for your atelier',
-      'Quick pricing for the master',
+      'Clients calculate the preliminary price themselves',
+      'All calculations come to your WhatsApp automatically',
+      'You see the full history of requests and client statistics',
+      'The studio uses the calculator too — for quick in-house pricing',
     ],
-    featuresNote: 'Every client calculation helps you better understand demand — which models, elements and options are chosen most often.',
 
     benefitsTitle: 'Why studios use RhythmIQ',
     benefits: [
@@ -130,7 +127,7 @@ export const demoContent = {
       text: 'An interactive demo of RhythmIQ. Your version will be fully personalized for your atelier.',
     },
 
-    tryDemo: 'Try Demo',
+    tryDemo: 'Try the demo calculator',
     back: '← Back',
     poweredBy: 'Powered by',
     sendRequest: '💬 Send my request',
@@ -190,14 +187,11 @@ export const demoContent = {
     },
 
     features: [
-      'Расчет стоимости',
-      'Понимание предпочтений клиентов',
-      'Предварительные заявки прямо в ваш WhatsApp',
-      'История всех расчетов клиентов',
-      'Персонализация под ваше ателье',
-      'Быстрый расчет для мастера',
+      'Клиент самостоятельно рассчитывает предварительную стоимость',
+      'Все расчеты автоматически приходят вам в WhatsApp',
+      'Вы видите историю запросов и статистику по клиентам',
+      'Калькулятором удобно пользоваться и самой студии для быстрых расчетов',
     ],
-    featuresNote: 'Каждый расчет клиента помогает вам лучше понимать спрос: какие модели, элементы и опции выбирают чаще всего.',
 
     benefitsTitle: 'Почему студии выбирают RhythmIQ',
     benefits: [
@@ -297,7 +291,7 @@ export const demoContent = {
       text: 'Это интерактивное демо RhythmIQ. Ваша версия полностью персонализируется под ваше ателье.',
     },
 
-    tryDemo: 'Попробовать демо',
+    tryDemo: 'Попробовать демо-калькулятор',
     back: '← Назад',
     poweredBy: 'Работает на',
     sendRequest: '💬 Отправить заявку',
@@ -361,14 +355,11 @@ demoContent.es = {
   },
 
   features: [
-    'Estimación de precios',
-    'Comprensión de las preferencias del cliente',
-    'Solicitudes previas directamente a tu WhatsApp',
-    'Historial completo de cada cálculo de cliente',
-    'Personalizado para tu atelier',
-    'Cálculo rápido para la maestra',
+    'Los clientes calculan el precio preliminar por sí mismos',
+    'Todos los cálculos llegan automáticamente a tu WhatsApp',
+    'Ves el historial de solicitudes y las estadísticas de clientes',
+    'El estudio también usa la calculadora para calcular precios rápidamente',
   ],
-  featuresNote: 'Cada cálculo de cliente te ayuda a entender mejor la demanda: qué modelos, elementos y opciones se eligen con más frecuencia.',
 
   benefitsTitle: 'Por qué los estudios eligen RhythmIQ',
   benefits: [
@@ -468,7 +459,7 @@ demoContent.es = {
     text: 'Una demo interactiva de RhythmIQ. Tu versión estará totalmente personalizada para tu atelier.',
   },
 
-  tryDemo: 'Probar demo',
+  tryDemo: 'Probar la calculadora demo',
   back: '← Atrás',
   poweredBy: 'Funciona con',
   sendRequest: '💬 Enviar mi solicitud',

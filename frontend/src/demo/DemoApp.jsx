@@ -122,6 +122,26 @@ function DemoApp() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sleeves, skirt, decorativeElements, aerography, combinaison, urgency, design, designSource, step, heightCategory, premiumStones, rhinestone])
 
+  // Demo-only heading override: replace the production "steps.budget" title with
+  // a more actionable phrasing on the budget step (production locales untouched).
+  useEffect(() => {
+    if (step !== 'budget') return
+    const overrides = {
+      ru: 'Укажите ваш желаемый бюджет',
+      en: "What's your desired budget?",
+      es: '¿Cuál es tu presupuesto deseado?',
+    }
+    const text = overrides[language] || overrides.en
+    const apply = () => {
+      const h2 = document.querySelector('.demo-app .budget-slider h2')
+      if (h2 && h2.textContent !== text) h2.textContent = text
+    }
+    apply()
+    const observer = new MutationObserver(apply)
+    observer.observe(document.body, { childList: true, subtree: true, characterData: true })
+    return () => observer.disconnect()
+  }, [step, language])
+
   const goNext = () => {
     const i = flow.indexOf(step)
     if (i >= 0 && i < flow.length - 1) setStep(flow[i + 1])

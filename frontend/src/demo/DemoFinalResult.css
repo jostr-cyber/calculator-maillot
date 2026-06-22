@@ -118,3 +118,32 @@
 .demo-final .reduction-priority {
   color: var(--demo-main-dark, #9E8350);
 }
+
+/* Demo: reduction items are information rows, not buttons — neutralize the
+   button-like styling (background card, hover effect) so they don't tempt
+   clicks. Production keeps its own clickable styling. */
+.demo-final .reduction-item {
+  background: none;
+  border: none;
+  border-bottom: 1px dashed rgba(194, 163, 107, 0.3);
+  border-radius: 0;
+  padding: 12px 4px;
+  transition: none;
+  cursor: default;
+}
+.demo-final .reduction-item:hover {
+  border-color: transparent;
+  border-bottom-color: rgba(194, 163, 107, 0.4);
+  background: none;
+  box-shadow: none;
+}
+.demo-final .reduction-item:last-of-type {
+  border-bottom: none;
+}
+.demo-final .reduction-priority {
+  background: var(--demo-soft, #F3E9DA);
+  color: var(--demo-main-dark, #9E8350);
+}
+
+/* Hide the "Discuss with designer" hint — not relevant in the demo product pitch */
+.demo-final .complexity-note { display: none; }
