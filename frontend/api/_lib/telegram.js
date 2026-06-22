@@ -23,6 +23,7 @@ function formatCalcMessage(rec, opts = {}) {
   const lang = ({ ru: '🇷🇺 ru', en: '🇬🇧 en', es: '🇪🇸 es' })[rec.language] || rec.language || '—'
 
   const opts2 = []
+  if (c.height) opts2.push(`📏 рост: <b>${esc(c.height)}</b>`)
   if (c.designSource) opts2.push(`✏️ дизайн: <b>${esc(c.designSource)}</b>`)
   if (c.sleeves) opts2.push(`👕 рукав×${c.sleeves}`)
   if (c.skirt) opts2.push(`👗 юбка: ${esc(c.skirt)}`)

@@ -261,13 +261,13 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
         )}
       </div>
 
-      {/* CTA Buttons - Multi-action */}
+      {/* CTA Buttons - "Send my request" is the primary action, then Reduce / Customize */}
       <div className="result-actions">
-        <button className="btn-primary btn-action" onClick={handleReducePrice}>
-          {t('actionButtons.reducePrice.label') || '💰 Reduce the price'}
+        <button className="btn-primary btn-action" onClick={handleDiscussDetails}>
+          {t('actionButtons.discuss') || '💬 Send my request'}
         </button>
-        <button className="btn-secondary btn-action" onClick={handleDiscussDetails}>
-          {t('actionButtons.discuss') || '💬 Discuss on WhatsApp'}
+        <button className="btn-secondary btn-action" onClick={handleReducePrice}>
+          {t('actionButtons.reducePrice.label') || '💰 Reduce the price'}
         </button>
         <button className="btn-secondary btn-action" onClick={onCustomizeAgain}>
           {t('actionButtons.customize') || '🎨 Make new calculation'}

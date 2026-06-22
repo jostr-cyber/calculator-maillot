@@ -70,18 +70,6 @@ function BudgetSlider({ value, onBudgetChange, onContinue, onBack, config, curre
           </div>
         </div>
 
-        <div className="budget-options">
-          {budgetSteps.map((step, index) => (
-            <button
-              key={step.value}
-              onClick={() => handleSliderChange(index)}
-              className={`budget-option ${selected === step.value ? 'selected' : ''}`}
-            >
-              {step.label === '800+' ? '800+' : `€${step.label}`}
-            </button>
-          ))}
-        </div>
-
         <button
           onClick={handleUndecided}
           className={`budget-undecided ${selected === 'undecided' ? 'selected' : ''}`}
