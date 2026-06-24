@@ -464,7 +464,7 @@
     "calculationId": "ID de cálculo",
     "saveCalc": {
       "title": "📌 ¿Todavía no estás segura? Te guardamos el cálculo",
-      "hint": "Déjanos tu WhatsApp, Telegram o Instagram — te responderemos con detalles",
+      "hint": "Déjanos tu WhatsApp, Telegram o Instagram — guardamos tu cálculo y te escribiremos si quieres aclarar algún detalle",
       "placeholder": "+34 600 000 000 o @username",
       "button": "Guardar",
       "thanks": "¡Guardado! Te escribiremos en breve"
