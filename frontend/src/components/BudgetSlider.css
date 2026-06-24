@@ -83,14 +83,14 @@
   margin-top: 8px;
 }
 
-.budget-options {
+.budget-slider .budget-options {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 8px;
   margin-bottom: 16px;
 }
 
-.budget-option {
+.budget-slider .budget-option {
   padding: 12px 8px;
   border: 2px solid #e0d5ff;
   border-radius: 8px;
@@ -107,14 +107,14 @@
   text-align: center;
 }
 
-.budget-option:hover {
+.budget-slider .budget-option:hover {
   border-color: #7c3aed;
   background-color: #f5f3ff;
   box-shadow: 0 2px 8px rgba(124, 58, 237, 0.1);
   transform: translateY(-1px);
 }
 
-.budget-option.selected {
+.budget-slider .budget-option.selected {
   border-color: #7c3aed;
   background-color: #f5f3ff;
   color: #7c3aed;
@@ -205,13 +205,13 @@
     font-size: 28px;
   }
 
-  .budget-options {
+  .budget-slider .budget-options {
     grid-template-columns: repeat(4, 1fr);
     gap: 6px;
     margin-bottom: 12px;
   }
 
-  .budget-option {
+  .budget-slider .budget-option {
     font-size: 12px;
     padding: 10px 6px;
     min-height: 40px;
@@ -244,13 +244,13 @@
     margin-bottom: 16px;
   }
 
-  .budget-options {
+  .budget-slider .budget-options {
     grid-template-columns: repeat(3, 1fr);
     gap: 6px;
     margin-bottom: 12px;
   }
 
-  .budget-option {
+  .budget-slider .budget-option {
     font-size: 11px;
     padding: 10px 4px;
     min-height: 38px;
