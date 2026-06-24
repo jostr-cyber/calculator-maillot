@@ -461,7 +461,14 @@
     "similarDesigns": "Diseños similares",
     "gallerySimilarityNote": "Las imágenes muestran diseños con complejidad y estilo similar",
     "personalizedEstimate": "Según tus elecciones, tu precio estimado es {price}.",
-    "calculationId": "ID de cálculo"
+    "calculationId": "ID de cálculo",
+    "saveCalc": {
+      "title": "📌 ¿Todavía no estás segura? Te guardamos el cálculo",
+      "hint": "Déjanos tu WhatsApp, Telegram o Instagram — te responderemos con detalles",
+      "placeholder": "+34 600 000 000 o @username",
+      "button": "Guardar",
+      "thanks": "¡Guardado! Te escribiremos en breve"
+    }
   },
   "actionButtons": {
     "order": "💚 Pedir este maillot",

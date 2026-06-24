@@ -41,10 +41,16 @@ export default async function handler(req, res) {
     const isNew = !existing
     const justClickedWhatsApp =
       existing && existing.status !== 'whatsapp_clicked' && record.status === 'whatsapp_clicked'
+    const justSavedContact =
+      record.status === 'contact_saved' &&
+      record.savedContact &&
+      (!existing || existing.savedContact !== record.savedContact)
     if (isNew) {
       notifyTelegram(record).catch(() => {})
     } else if (justClickedWhatsApp) {
       notifyTelegram(record, { isUpdate: true, statusChangedTo: 'whatsapp_clicked' }).catch(() => {})
+    } else if (justSavedContact) {
+      notifyTelegram(record, { isUpdate: true, statusChangedTo: 'contact_saved' }).catch(() => {})
     }
 
     res.json({ ok: true, isNew })

@@ -11,6 +11,8 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
   const { t, language } = useTranslation()
   const [showReducePriceModal, setShowReducePriceModal] = useState(false)
   const [reduceModalOpened, setReduceModalOpened] = useState(false)
+  const [contactInput, setContactInput] = useState('')
+  const [contactSaved, setContactSaved] = useState(false)
   const summary = formatConfigurationSummary(config)
 
   // Calculate budget excess against the actual selected budget value
@@ -198,6 +200,15 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
     sendToAnalytics({ ...record, status: 'whatsapp_clicked', whatsappMessage: message })
   }
 
+  const handleSaveContact = (e) => {
+    e?.preventDefault?.()
+    const value = contactInput.trim()
+    if (!value || contactSaved) return
+    setContactSaved(true)
+    updateCalculation(calculationId, { savedContact: value, status: 'contact_saved' })
+    sendToAnalytics({ ...buildRecord(), savedContact: value, status: 'contact_saved' })
+  }
+
   // Main screen button: optimized only if the customer opened the reduce-cost modal
   const handleDiscussDetails = () => openWhatsApp(reduceModalOpened)
 
@@ -246,6 +257,32 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
           <p className="price-disclaimer">
             {t('priceBreakdown.disclaimer') || '*This is a preliminary calculation. Final price may be clarified after discussing details.'}
           </p>
+        </div>
+
+        {/* Save Calculation — capture contact for follow-up when the visitor
+            isn't ready to click WhatsApp right away. */}
+        <div className="result-section save-calc-section">
+          {contactSaved ? (
+            <p className="save-calc-thanks">✓ {t('result.saveCalc.thanks') || "Saved! We'll be in touch shortly"}</p>
+          ) : (
+            <form className="save-calc-form" onSubmit={handleSaveContact}>
+              <p className="save-calc-title">{t('result.saveCalc.title') || "📌 Not sure yet? We'll save your calculation"}</p>
+              <p className="save-calc-hint">{t('result.saveCalc.hint') || "Leave your WhatsApp, Telegram or Instagram and we'll follow up"}</p>
+              <div className="save-calc-row">
+                <input
+                  type="text"
+                  className="save-calc-input"
+                  placeholder={t('result.saveCalc.placeholder') || '+34 600 000 000 or @username'}
+                  value={contactInput}
+                  onChange={(e) => setContactInput(e.target.value)}
+                  maxLength={120}
+                />
+                <button type="submit" className="save-calc-btn" disabled={!contactInput.trim()}>
+                  {t('result.saveCalc.button') || 'Save'}
+                </button>
+              </div>
+            </form>
+          )}
         </div>
 
         {/* Discount Info */}

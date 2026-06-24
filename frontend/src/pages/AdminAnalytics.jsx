@@ -18,6 +18,7 @@ function formatPrice(amount) {
 function statusBadge(status) {
   const map = {
     whatsapp_clicked: { label: '💬 WhatsApp', cls: 'badge-success' },
+    contact_saved: { label: '📱 Оставил контакт', cls: 'badge-contact' },
     calculator_completed: { label: 'Дошёл до цены', cls: 'badge-default' },
   }
   const cfg = map[status] || { label: status || '—', cls: 'badge-default' }
@@ -300,6 +301,11 @@ function AdminAnalytics() {
                   <td>
                     {statusBadge(c.status)}
                     {c.reduceModalOpened && <span className="adm-mini-flag" title="Открыл «Снизить цену»">💰</span>}
+                    {c.savedContact && (
+                      <div className="adm-saved-contact" title="Контакт, оставленный клиентом">
+                        📱 <strong>{c.savedContact}</strong>
+                      </div>
+                    )}
                   </td>
                   <td className="adm-cell-price">
                     {formatPrice(c.finalPrice)}

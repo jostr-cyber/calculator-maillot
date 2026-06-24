@@ -38,16 +38,25 @@ function formatCalcMessage(rec, opts = {}) {
   if (c.combinaison) opts2.push(`🧵 ${esc(c.combinaison)}`)
 
   let title
+  let contactLine = ''
   if (statusChangedTo === 'whatsapp_clicked') {
     title = `🔥 <b>Клиент написал в WhatsApp!</b>\n<code>${esc(rec.id)}</code>`
+  } else if (statusChangedTo === 'contact_saved') {
+    title = `🔔 <b>Клиент оставил контакт</b>\n<code>${esc(rec.id)}</code>`
+    contactLine = `\n📱 <b>Контакт:</b> <code>${esc(rec.savedContact || '')}</code>\n<i>Можно написать первой — клиент ждёт ответа</i>\n`
   } else if (rec.reduceModalOpened && isUpdate) {
     title = `💰 Открыл «снизить цену»\n<code>${esc(rec.id)}</code>`
   } else {
     title = `📊 <b>Новый расчёт</b>\n<code>${esc(rec.id)}</code>`
   }
+  // For regular new-calc messages: also show contact line if already present
+  if (!contactLine && rec.savedContact) {
+    contactLine = `\n📱 <b>Контакт:</b> <code>${esc(rec.savedContact)}</code>\n`
+  }
 
   return [
     title,
+    contactLine,
     '',
     `💰 Цена: <b>${esc(price)}</b>${esc(optimized)}`,
     `🎯 Бюджет: ${esc(budget)}`,

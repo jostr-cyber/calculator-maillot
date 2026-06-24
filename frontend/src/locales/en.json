@@ -461,7 +461,14 @@
     "similarDesigns": "Similar designs",
     "gallerySimilarityNote": "Images show designs with similar complexity and style",
     "personalizedEstimate": "Based on your choices, your estimated price is {price}.",
-    "calculationId": "Calculation ID"
+    "calculationId": "Calculation ID",
+    "saveCalc": {
+      "title": "📌 Not sure yet? We'll save your calculation",
+      "hint": "Leave your WhatsApp, Telegram or Instagram and we'll follow up with answers",
+      "placeholder": "+34 600 000 000 or @username",
+      "button": "Save",
+      "thanks": "Saved! We'll be in touch shortly"
+    }
   },
   "actionButtons": {
     "order": "💚 Order this leotard",
