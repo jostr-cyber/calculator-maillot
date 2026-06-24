@@ -52,12 +52,27 @@ export default async function handler(req, res) {
       await saveCalculation(incoming.id, record)
     } else {
       await saveCalculation(incoming.id, record)
-      const msgId = record.telegramMessageId
-      if (msgId && (justClickedWhatsApp || justSavedContact || justOpenedReduce)) {
+      const shouldNotify = justClickedWhatsApp || justSavedContact || justOpenedReduce
+      if (shouldNotify) {
         let statusChangedTo = null
         if (justClickedWhatsApp) statusChangedTo = 'whatsapp_clicked'
         else if (justSavedContact) statusChangedTo = 'contact_saved'
-        editTelegramMessage(msgId, record, { isUpdate: true, statusChangedTo }).catch(() => {})
+
+        const msgId = record.telegramMessageId
+        let edited = null
+        if (msgId) {
+          edited = await editTelegramMessage(msgId, record, { isUpdate: true, statusChangedTo }).catch(() => null)
+        }
+        // Fallback: if no message_id stored (e.g., record was created before
+        // edit-mode was deployed) or the edit call failed, send a fresh
+        // notification so the atelier doesn't miss the update.
+        if (!edited?.ok) {
+          const sent = await notifyTelegram(record, { isUpdate: true, statusChangedTo }).catch(() => null)
+          if (sent?.messageId) {
+            record.telegramMessageId = sent.messageId
+            await saveCalculation(incoming.id, record)
+          }
+        }
       }
     }
 
