@@ -3,7 +3,7 @@
 // state changes (first save, status flips to whatsapp_clicked).
 
 import { saveCalculation, getCalculation } from '../_lib/kv.js'
-import { notifyTelegram } from '../_lib/telegram.js'
+import { notifyTelegram, editTelegramMessage } from '../_lib/telegram.js'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -32,12 +32,10 @@ export default async function handler(req, res) {
       createdAt: existing?.createdAt || incoming.createdAt || now,
       serverMeta: { ...(existing?.serverMeta || {}), ...meta },
     }
-    await saveCalculation(incoming.id, record)
-
-    // Telegram notifications:
-    //   - first time we see a calculation     → "New calculation"
-    //   - subsequent status flip to WhatsApp  → "Client wrote in WhatsApp!"
-    //   - other intermediate updates          → silent (dashboard only)
+    // Telegram: one message per calculation. First save sends it; later
+    // updates (contact saved, WhatsApp clicked, reduce-cost opened) edit the
+    // SAME message in place so the atelier sees the full picture on one row
+    // instead of getting multiple bot pings per visitor.
     const isNew = !existing
     const justClickedWhatsApp =
       existing && existing.status !== 'whatsapp_clicked' && record.status === 'whatsapp_clicked'
@@ -45,12 +43,22 @@ export default async function handler(req, res) {
       record.status === 'contact_saved' &&
       record.savedContact &&
       (!existing || existing.savedContact !== record.savedContact)
+    const justOpenedReduce =
+      record.reduceModalOpened && !existing?.reduceModalOpened
+
     if (isNew) {
-      notifyTelegram(record).catch(() => {})
-    } else if (justClickedWhatsApp) {
-      notifyTelegram(record, { isUpdate: true, statusChangedTo: 'whatsapp_clicked' }).catch(() => {})
-    } else if (justSavedContact) {
-      notifyTelegram(record, { isUpdate: true, statusChangedTo: 'contact_saved' }).catch(() => {})
+      const sent = await notifyTelegram(record).catch(() => null)
+      if (sent?.messageId) record.telegramMessageId = sent.messageId
+      await saveCalculation(incoming.id, record)
+    } else {
+      await saveCalculation(incoming.id, record)
+      const msgId = record.telegramMessageId
+      if (msgId && (justClickedWhatsApp || justSavedContact || justOpenedReduce)) {
+        let statusChangedTo = null
+        if (justClickedWhatsApp) statusChangedTo = 'whatsapp_clicked'
+        else if (justSavedContact) statusChangedTo = 'contact_saved'
+        editTelegramMessage(msgId, record, { isUpdate: true, statusChangedTo }).catch(() => {})
+      }
     }
 
     res.json({ ok: true, isNew })

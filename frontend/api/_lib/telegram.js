@@ -82,6 +82,31 @@ export async function notifyTelegram(rec, opts = {}) {
         disable_web_page_preview: true,
       }),
     })
+    const data = await res.json().catch(() => ({}))
+    return { ok: res.ok, status: res.status, messageId: data?.result?.message_id || null }
+  } catch (e) {
+    return { ok: false, error: e.message }
+  }
+}
+
+// Edit an already-sent Telegram message in place. Used so that as the user
+// progresses (enters contact, clicks WhatsApp), the same message updates
+// instead of spamming a new one each time. Telegram allows edits up to ~48h.
+export async function editTelegramMessage(messageId, rec, opts = {}) {
+  if (!isConfigured() || !messageId) return { ok: false, skipped: true }
+  const text = formatCalcMessage(rec, opts)
+  try {
+    const res = await fetch(`https://api.telegram.org/bot${TOKEN}/editMessageText`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        message_id: messageId,
+        text,
+        parse_mode: 'HTML',
+        disable_web_page_preview: true,
+      }),
+    })
     return { ok: res.ok, status: res.status }
   } catch (e) {
     return { ok: false, error: e.message }
