@@ -7,7 +7,7 @@ import { notifyTelegram, editTelegramMessage } from '../_lib/telegram.js'
 import { sendEstimateEmail } from '../_lib/email.js'
 
 // Atelier-side contacts used inside the estimate email (CTA + footer link).
-const INSTAGRAM_URL = 'https://www.instagram.com/rgleotards/'
+const INSTAGRAM_URL = 'https://www.instagram.com/rgleotards_eu/'
 const WHATSAPP_NUMBER = '34670770024'
 
 export default async function handler(req, res) {
