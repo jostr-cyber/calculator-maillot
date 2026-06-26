@@ -1,0 +1,84 @@
+.email-intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.email-intro-card {
+  background: linear-gradient(135deg, #fdf8ff 0%, #f5edff 100%);
+  border: 1.5px solid #c4b5fd;
+  border-radius: 22px;
+  padding: 36px 32px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 28px rgba(124, 58, 237, 0.10);
+}
+.email-intro-icon {
+  font-size: 42px;
+  margin-bottom: 8px;
+}
+.email-intro-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #4c1d95;
+  margin: 0 0 10px;
+  line-height: 1.25;
+}
+.email-intro-subtitle {
+  font-size: 14px;
+  color: #6b6483;
+  line-height: 1.55;
+  margin: 0 0 24px;
+}
+.email-intro-form { display: flex; flex-direction: column; gap: 12px; }
+.email-intro-input {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 15px;
+  border: 1.5px solid #d8cdf0;
+  border-radius: 12px;
+  background: #fff;
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+.email-intro-input:focus { border-color: #7c3aed; }
+.email-intro-input.invalid { border-color: #ef4444; background: #fef2f2; }
+.email-intro-error {
+  font-size: 12.5px;
+  color: #b91c1c;
+  margin: -4px 0 0;
+  text-align: left;
+  padding-left: 4px;
+}
+.email-intro-continue {
+  background: #7c3aed;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .15s, transform .15s;
+}
+.email-intro-continue:hover:not(:disabled) { background: #6d28d9; transform: translateY(-1px); }
+.email-intro-continue:disabled { opacity: 0.45; cursor: not-allowed; }
+.email-intro-skip {
+  background: none;
+  border: none;
+  color: #6b6483;
+  font-size: 13.5px;
+  cursor: pointer;
+  margin-top: 4px;
+  text-decoration: underline;
+  font-family: inherit;
+}
+.email-intro-skip:hover { color: #4c1d95; }
+
+@media (max-width: 600px) {
+  .email-intro-card { padding: 28px 22px; border-radius: 18px; }
+  .email-intro-title { font-size: 20px; }
+}

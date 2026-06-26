@@ -464,10 +464,18 @@
     "calculationId": "Calculation ID",
     "saveCalc": {
       "title": "📌 Not sure yet? We'll save your calculation",
-      "hint": "Leave your WhatsApp, Telegram or Instagram — we'll save the calculation and reach out if you'd like to clarify any details",
-      "placeholder": "+34 600 000 000 or @username",
+      "hint": "Leave your email, WhatsApp, Telegram or Instagram — we'll save the calculation and reach out if you'd like to clarify any details",
+      "placeholder": "email or +34 600 000 000 / @username",
       "button": "Save",
       "thanks": "Saved! We'll be in touch shortly"
+    },
+    "emailIntro": {
+      "title": "Get your estimate by email",
+      "subtitle": "Enter your email and we'll send you the full calculation — you can come back to it any time",
+      "placeholder": "you@example.com",
+      "continue": "Continue",
+      "skip": "Skip and just calculate",
+      "invalid": "Please enter a valid email"
     }
   },
   "actionButtons": {

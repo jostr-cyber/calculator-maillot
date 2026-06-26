@@ -4,6 +4,11 @@
 
 import { saveCalculation, getCalculation } from '../_lib/kv.js'
 import { notifyTelegram, editTelegramMessage } from '../_lib/telegram.js'
+import { sendEstimateEmail } from '../_lib/email.js'
+
+// Atelier-side contacts used inside the estimate email (CTA + footer link).
+const INSTAGRAM_URL = 'https://www.instagram.com/rgleotards/'
+const WHATSAPP_NUMBER = '34670770024'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -43,8 +48,24 @@ export default async function handler(req, res) {
       record.status === 'contact_saved' &&
       record.savedContact &&
       (!existing || existing.savedContact !== record.savedContact)
+    const justGotEmail =
+      record.email && (!existing || existing.email !== record.email)
     const justOpenedReduce =
       record.reduceModalOpened && !existing?.reduceModalOpened
+
+    // Estimate email: send once per record as soon as we have an email address.
+    // If the visitor leaves an email later (saveCalc block), this fires then.
+    const shouldSendEmail = record.email && !record.emailSent
+    if (shouldSendEmail) {
+      const emailRes = await sendEstimateEmail(record, {
+        instagramUrl: INSTAGRAM_URL,
+        whatsappNumber: WHATSAPP_NUMBER,
+      }).catch(() => ({ ok: false }))
+      if (emailRes?.ok) {
+        record.emailSent = true
+        record.emailSentAt = new Date().toISOString()
+      }
+    }
 
     if (isNew) {
       const sent = await notifyTelegram(record).catch(() => null)
@@ -52,11 +73,12 @@ export default async function handler(req, res) {
       await saveCalculation(incoming.id, record)
     } else {
       await saveCalculation(incoming.id, record)
-      const shouldNotify = justClickedWhatsApp || justSavedContact || justOpenedReduce
+      const shouldNotify = justClickedWhatsApp || justSavedContact || justGotEmail || justOpenedReduce
       if (shouldNotify) {
         let statusChangedTo = null
         if (justClickedWhatsApp) statusChangedTo = 'whatsapp_clicked'
         else if (justSavedContact) statusChangedTo = 'contact_saved'
+        else if (justGotEmail) statusChangedTo = 'email_captured'
 
         const msgId = record.telegramMessageId
         let edited = null

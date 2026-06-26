@@ -464,10 +464,18 @@
     "calculationId": "ID de cálculo",
     "saveCalc": {
       "title": "📌 ¿Todavía no estás segura? Te guardamos el cálculo",
-      "hint": "Déjanos tu WhatsApp, Telegram o Instagram — guardamos tu cálculo y te escribiremos si quieres aclarar algún detalle",
-      "placeholder": "+34 600 000 000 o @username",
+      "hint": "Déjanos tu email, WhatsApp, Telegram o Instagram — guardamos tu cálculo y te escribiremos si quieres aclarar algún detalle",
+      "placeholder": "email o +34 600 000 000 / @username",
       "button": "Guardar",
       "thanks": "¡Guardado! Te escribiremos en breve"
+    },
+    "emailIntro": {
+      "title": "Recibe el presupuesto en tu email",
+      "subtitle": "Introduce tu email y te enviaremos el cálculo completo — podrás volver a él cuando quieras",
+      "placeholder": "tu@example.com",
+      "continue": "Continuar",
+      "skip": "Saltar y calcular sin email",
+      "invalid": "Introduce un email válido"
     }
   },
   "actionButtons": {

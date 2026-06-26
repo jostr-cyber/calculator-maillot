@@ -483,10 +483,18 @@
     "calculationId": "ID расчёта",
     "saveCalc": {
       "title": "📌 Не уверены? Сохраним расчет за вами",
-      "hint": "Оставьте WhatsApp, Telegram или Instagram — сохраним расчет и напишем вам, если что-то понадобится уточнить",
-      "placeholder": "+34 600 000 000 или @username",
+      "hint": "Оставьте email, WhatsApp, Telegram или Instagram — сохраним расчет и напишем вам, если что-то понадобится уточнить",
+      "placeholder": "email или +34 600 000 000 / @username",
       "button": "Сохранить",
       "thanks": "Сохранили! Мы напишем вам в ближайшее время"
+    },
+    "emailIntro": {
+      "title": "Получите расчет на свой email",
+      "subtitle": "Введите ваш email и мы пришлем полный расчет — сможете вернуться к нему когда удобно",
+      "placeholder": "вашemail@example.com",
+      "continue": "Продолжить",
+      "skip": "Пропустить и просто посчитать",
+      "invalid": "Введите корректный email"
     }
   },
   "actionButtons": {

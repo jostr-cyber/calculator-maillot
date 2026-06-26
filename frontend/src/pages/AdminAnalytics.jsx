@@ -89,13 +89,15 @@ function AdminAnalytics() {
     if (filter === 'whatsapp') list = list.filter((c) => c.status === 'whatsapp_clicked')
     if (filter === 'completed') list = list.filter((c) => c.status === 'calculator_completed')
     if (filter === 'reduce-opened') list = list.filter((c) => c.reduceModalOpened)
+    if (filter === 'email') list = list.filter((c) => c.email)
     if (search.trim()) {
       const q = search.trim().toLowerCase()
       list = list.filter((c) =>
         (c.id || '').toLowerCase().includes(q) ||
         (c.serverMeta?.ip || '').includes(q) ||
         (c.config?.designSource || '').toLowerCase().includes(q) ||
-        (c.language || '').includes(q)
+        (c.language || '').includes(q) ||
+        (c.email || '').toLowerCase().includes(q)
       )
     }
     return list
@@ -106,6 +108,8 @@ function AdminAnalytics() {
     const total = calcs.length
     const wa = calcs.filter((c) => c.status === 'whatsapp_clicked').length
     const reduce = calcs.filter((c) => c.reduceModalOpened).length
+    const emails = calcs.filter((c) => c.email).length
+    const emailsSent = calcs.filter((c) => c.emailSent).length
     const prices = calcs.map((c) => c.finalPrice).filter((p) => typeof p === 'number')
     const avgPrice = prices.length ? Math.round(prices.reduce((s, p) => s + p, 0) / prices.length) : 0
 
@@ -131,6 +135,8 @@ function AdminAnalytics() {
       total,
       wa,
       reduce,
+      emails,
+      emailsSent,
       avgPrice,
       convRate: total ? Math.round((wa / total) * 100) : 0,
       designSource: count('designSource'),
@@ -211,6 +217,10 @@ function AdminAnalytics() {
             <div className="adm-stat-lbl">Нажали WhatsApp · {stats.convRate}%</div>
           </div>
           <div className="adm-stat">
+            <div className="adm-stat-num">{stats.emails}</div>
+            <div className="adm-stat-lbl">Email собрано {stats.emailsSent ? `· ✉ ${stats.emailsSent}` : ''}</div>
+          </div>
+          <div className="adm-stat">
             <div className="adm-stat-num">{stats.reduce}</div>
             <div className="adm-stat-lbl">Открыли «снизить цену»</div>
           </div>
@@ -253,6 +263,7 @@ function AdminAnalytics() {
           {[
             { id: 'all', label: 'Все' },
             { id: 'whatsapp', label: '💬 WhatsApp' },
+            { id: 'email', label: '📧 С email' },
             { id: 'reduce-opened', label: '💰 Снижали цену' },
             { id: 'completed', label: 'Только дошёл до цены' },
           ].map((f) => (
@@ -285,6 +296,7 @@ function AdminAnalytics() {
                 <th>ID</th>
                 <th>🌐</th>
                 <th>Статус</th>
+                <th>📧 Email</th>
                 <th>Цена</th>
                 <th>Бюджет</th>
                 <th>Сложн.</th>
@@ -305,6 +317,16 @@ function AdminAnalytics() {
                       <div className="adm-saved-contact" title="Контакт, оставленный клиентом">
                         📱 <strong>{c.savedContact}</strong>
                       </div>
+                    )}
+                  </td>
+                  <td className="adm-cell-email">
+                    {c.email ? (
+                      <>
+                        <a href={`mailto:${c.email}`} className="adm-email-link">{c.email}</a>
+                        {c.emailSent && <span className="adm-email-sent" title={`Отправлено${c.emailSentAt ? ': ' + formatDate(c.emailSentAt) : ''}`}>✉ ✓</span>}
+                      </>
+                    ) : (
+                      <span className="adm-empty-cell">—</span>
                     )}
                   </td>
                   <td className="adm-cell-price">

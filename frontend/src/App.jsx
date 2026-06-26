@@ -4,6 +4,7 @@ import API_BASE_URL from './config/api'
 import AdminSurveys from './pages/AdminSurveys'
 import AdminAnalytics from './pages/AdminAnalytics'
 import Intro from './components/Intro'
+import EmailIntro from './components/EmailIntro'
 import BudgetSelector from './components/BudgetSelector'
 import BudgetSlider from './components/BudgetSlider'
 import HeightSlider from './components/HeightSlider'
@@ -99,12 +100,16 @@ function App() {
   const [wheelDiscount, setWheelDiscount] = useState(0)
   const [returnedFromResult, setReturnedFromResult] = useState(false)
   const [userEmail, setUserEmail] = useState('')
+  // Optional email captured up-front (before the calculator) — sent as part of
+  // the analytics record so the estimate email can be mailed automatically.
+  const [leadEmail, setLeadEmail] = useState('')
   const [contactMethod, setContactMethod] = useState('')
   const [contactValue, setContactValue] = useState('')
 
-  // Step order: intro -> height -> designSource -> sleeves -> skirt -> decorativeElements -> aerography -> combinaison -> urgency -> rhinestone -> budget (slider) -> result
+  // Step order: intro -> email -> height -> designSource -> sleeves -> skirt -> decorativeElements -> aerography -> combinaison -> urgency -> rhinestone -> budget (slider) -> result
   const steps = [
     'intro',
+    'email',
     'height',
     'designSource',
     'sleeves',
@@ -205,6 +210,13 @@ function App() {
   }
 
   const handleIntroStart = () => {
+    setStep('email')
+  }
+
+  const handleEmailContinue = () => {
+    setStep('height')
+  }
+  const handleEmailSkip = () => {
     setStep('height')
   }
 
@@ -390,6 +402,7 @@ function App() {
     setError(null)
     setReturnedFromResult(false)
     setUserEmail('')
+    setLeadEmail('')
     setContactMethod('')
     setContactValue('')
     setCurrentPrice(null)
@@ -425,6 +438,18 @@ function App() {
     <div className="app">
       {step === 'intro' ? (
         <Intro onStart={handleIntroStart} />
+      ) : step === 'email' ? (
+        <>
+          <LanguageSwitcher />
+          <div className="container">
+            <EmailIntro
+              value={leadEmail}
+              onChange={setLeadEmail}
+              onContinue={handleEmailContinue}
+              onSkip={handleEmailSkip}
+            />
+          </div>
+        </>
       ) : (
         <>
           <LanguageSwitcher />
@@ -562,6 +587,7 @@ function App() {
             wheelDiscount={wheelDiscount}
             selectedBudget={selectedBudget}
             calculationId={calculationId}
+            leadEmail={leadEmail}
             onCustomizeAgain={handleReset}
             onReducePrice={() => {
               alert(t('actionButtons.reducePrice.message') || 'Would you like to reduce your selection to lower the price? Click Customize again to adjust your options.');

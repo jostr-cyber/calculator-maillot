@@ -7,7 +7,7 @@ import './FinalResult.css'
 
 const WHATSAPP_NUMBER = '34670770024'
 
-function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheelDiscount, selectedBudget, calculationId, onCustomizeAgain, onReducePrice }) {
+function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheelDiscount, selectedBudget, calculationId, leadEmail, onCustomizeAgain, onReducePrice }) {
   const { t, language } = useTranslation()
   const [showReducePriceModal, setShowReducePriceModal] = useState(false)
   const [reduceModalOpened, setReduceModalOpened] = useState(false)
@@ -159,6 +159,8 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
     recommendationsApplied: [],
     optimizedPrice: null,
     whatsappMessage: null,
+    // Email captured up-front on the dedicated EmailIntro step (optional).
+    email: leadEmail || undefined,
     ...extra
   })
 
@@ -211,8 +213,14 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
     const value = contactInput.trim()
     if (!value || contactSaved) return
     setContactSaved(true)
-    updateCalculation(calculationId, { savedContact: value, status: 'contact_saved' })
-    sendToAnalytics({ ...buildRecord(), savedContact: value, status: 'contact_saved' })
+    // If the input looks like an email, route it as `email` so the server triggers
+    // the estimate-email send. Anything else (phone, @username) goes into `savedContact`.
+    const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+    const patch = isEmail
+      ? { email: value.toLowerCase(), status: 'contact_saved' }
+      : { savedContact: value, status: 'contact_saved' }
+    updateCalculation(calculationId, patch)
+    sendToAnalytics({ ...buildRecord(), ...patch })
   }
 
   // Main screen button: optimized only if the customer opened the reduce-cost modal

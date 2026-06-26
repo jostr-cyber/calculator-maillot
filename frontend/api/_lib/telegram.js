@@ -53,10 +53,17 @@ function formatCalcMessage(rec, opts = {}) {
   if (!contactLine && rec.savedContact) {
     contactLine = `\n📱 <b>Контакт:</b> <code>${esc(rec.savedContact)}</code>\n`
   }
+  // Email line (separate from contactLine so both can appear)
+  let emailLine = ''
+  if (rec.email) {
+    const sentMark = rec.emailSent ? ' ✉ отправлено' : ''
+    emailLine = `\n📧 <b>Email:</b> <code>${esc(rec.email)}</code>${sentMark}\n`
+  }
 
   return [
     title,
     contactLine,
+    emailLine,
     '',
     `💰 Цена: <b>${esc(price)}</b>${esc(optimized)}`,
     `🎯 Бюджет: ${esc(budget)}`,
