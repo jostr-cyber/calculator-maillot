@@ -54,6 +54,7 @@
     "aerography": "Painting & Airbrushing",
     "combinaison": "Leotard Type",
     "urgency": "Urgency",
+    "deadline": "By what date do you need the leotard?",
     "rhinestone": "Amount of rhinestones",
     "survey": "🎯 Survey",
     "wheel": "🎡 Wheel of Fortune",
@@ -190,6 +191,13 @@
       "price": "+10% extra"
     },
     "note": "💡 Urgency surcharges..."
+  },
+  "deadline": {
+    "title": "By what date do you need the finished leotard?",
+    "byDate": "Pick an exact date",
+    "bookSlot": "Book a production slot",
+    "unknown": "Not sure yet",
+    "bookSlotMessage": "I'd like to book a production slot."
   },
   "rhinestone": {
     "none": "No rhinestones",
@@ -503,6 +511,8 @@
     "selectedOptionsBefore": "Selected options before optimization",
     "appliedRecommendations": "Applied recommendations",
     "budgetAround": "My selected budget:",
+    "deadlineDate": "Needed by",
+    "deadlineBookSlot": "I'd like to book a production slot",
     "closing": "Please help me discuss the details.",
     "closingOptimized": "Please help me discuss the optimized version."
   }

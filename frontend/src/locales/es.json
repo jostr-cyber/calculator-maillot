@@ -54,6 +54,7 @@
     "aerography": "Aerografía y pintura",
     "combinaison": "Tipo de Maillot",
     "urgency": "Urgencia",
+    "deadline": "¿Para qué fecha necesita el maillot?",
     "rhinestone": "¿Cuánta pedrería necesita?",
     "survey": "🎯 Encuesta",
     "wheel": "🎡 Ruleta de la Fortuna",
@@ -190,6 +191,13 @@
       "price": "+10 % sobre el precio"
     },
     "note": "💡 Recargos por urgencia..."
+  },
+  "deadline": {
+    "title": "¿Para qué fecha necesita el maillot terminado?",
+    "byDate": "Indicar una fecha exacta",
+    "bookSlot": "Reservar un cupo de confección",
+    "unknown": "Aún no lo sé",
+    "bookSlotMessage": "Quiero reservar un cupo de confección."
   },
   "rhinestone": {
     "none": "Sin pedrería",
@@ -503,6 +511,8 @@
     "selectedOptionsBefore": "Opciones seleccionadas antes de optimizar",
     "appliedRecommendations": "Recomendaciones aplicadas",
     "budgetAround": "Mi presupuesto seleccionado:",
+    "deadlineDate": "Lo necesito para",
+    "deadlineBookSlot": "Quiero reservar un cupo de confección",
     "closing": "Por favor, ayúdenme a concretar los detalles.",
     "closingOptimized": "Por favor, ayúdenme a concretar la versión optimizada."
   }

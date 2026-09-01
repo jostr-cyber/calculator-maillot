@@ -13,7 +13,7 @@ import SkirtSelect from './components/SkirtSelect'
 import DecorativeElementsSelect from './components/DecorativeElementsSelect'
 import AerographySelect from './components/AerographySelect'
 import CombinaisionSelect from './components/CombinaisionSelect'
-import UrgencySelect from './components/UrgencySelect'
+import DeadlineSelect from './components/DeadlineSelect'
 import RhinestoneSelect from './components/RhinestoneSelect'
 import DesignSourceSelect from './components/DesignSourceSelect'
 import FinalResult from './components/FinalResult'
@@ -28,8 +28,12 @@ import {
   calculateEstimatedCrystals,
   calculateCurrentPrice,
   calculatePriceLocal,
-  getProductionTime
+  getProductionTime,
+  formatConfigurationSummary,
+  formatPrice
 } from './utilities/calculationUtils'
+
+const WHATSAPP_NUMBER = '34670770024'
 
 // Build a budget reference from the actual selected value (exact number, not a coarse tier)
 const getBudgetRef = (value) => {
@@ -68,7 +72,7 @@ const calculateBudgetComparison = (finalPrice, budgetRef) => {
 }
 
 function App() {
-  const { t } = useTranslation()
+  const { t, language } = useTranslation()
 
   // Main configuration state
   const [step, setStep] = useState('intro')
@@ -86,6 +90,8 @@ function App() {
   const [premiumStones, setPremiumStones] = useState('')
   const [urgency, setUrgency] = useState('')
   const [rhinestone, setRhinestone] = useState('')
+  const [deadlineType, setDeadlineType] = useState('')
+  const [deadlineDate, setDeadlineDate] = useState('')
 
   // Price and results state
   const [currentPrice, setCurrentPrice] = useState(null)
@@ -117,7 +123,7 @@ function App() {
     'decorativeElements',
     'aerography',
     'combinaison',
-    'urgency',
+    'deadline',
     'rhinestone',
     'budget',
     'result',
@@ -290,8 +296,38 @@ function App() {
     setCombinaison(comboValue)
   }
 
-  const handleUrgencyChange = (urgencyValue) => {
-    setUrgency(urgencyValue)
+  const handleDeadlineChange = ({ type, date }) => {
+    setDeadlineType(type)
+    setDeadlineDate(date || '')
+  }
+
+  const buildBookSlotMessage = () => {
+    const cfg = {
+      design: design || 'our-design',
+      sleeves: sleeves || 0,
+      skirt: skirt || '',
+      decorativeElements: decorativeElements || 'nothing',
+      aerography: aerography || 'nothing',
+      rhinestone: rhinestone || 'none',
+      urgency: 'none'
+    }
+    const optionsText = formatConfigurationSummary(cfg)
+      .map((item) => `• ${typeof item === 'string' ? item : t(item.key)}`)
+      .join('\n')
+
+    const lines = [t('whatsapp.greeting'), '', t('deadline.bookSlotMessage')]
+    if (currentPrice) {
+      lines.push('', `${t('whatsapp.estimatedPrice')}: ${formatPrice(currentPrice, language)}`)
+    }
+    if (optionsText) {
+      lines.push('', `${t('whatsapp.selectedOptions')}:`, optionsText)
+    }
+    return lines.join('\n')
+  }
+
+  const handleBookSlot = () => {
+    const message = buildBookSlotMessage()
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank')
   }
 
   const handleBack = () => {
@@ -367,6 +403,8 @@ function App() {
         combinaison,
         premiumStones,
         urgency,
+        deadlineType,
+        deadlineDate,
         design,
         designSource,
         priceResult,
@@ -397,6 +435,8 @@ function App() {
     setPremiumStones('')
     setUrgency('')
     setRhinestone('')
+    setDeadlineType('')
+    setDeadlineDate('')
     setPriceResult(null)
     setCalculationId(null)
     setError(null)
@@ -430,6 +470,8 @@ function App() {
     premiumStones,
     urgency,
     rhinestone,
+    deadlineType,
+    deadlineDate,
     design,
     designSource
   }
@@ -531,7 +573,7 @@ function App() {
             onCombinaisionChange={handleCombinaisionChange}
             onContinue={() => {
               setPremiumStones('none')
-              setStep('urgency')
+              setStep('deadline')
             }}
             onBack={handleBack}
             config={config}
@@ -540,9 +582,10 @@ function App() {
           />
         )}
 
-        {step === 'urgency' && (
-          <UrgencySelect
-            onUrgencyChange={handleUrgencyChange}
+        {step === 'deadline' && (
+          <DeadlineSelect
+            onDeadlineChange={handleDeadlineChange}
+            onBookSlot={handleBookSlot}
             onContinue={() => setStep('rhinestone')}
             onBack={handleBack}
             config={config}

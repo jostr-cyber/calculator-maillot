@@ -13,6 +13,17 @@ const buildBudgetLine = (budget, language, t) => {
   return `${t('whatsapp.budgetAround')} ${amount}`;
 };
 
+const buildDeadlineLine = (config, t) => {
+  if (!config) return null;
+  if (config.deadlineType === 'date' && config.deadlineDate) {
+    return `${t('whatsapp.deadlineDate')}: ${config.deadlineDate}`;
+  }
+  if (config.deadlineType === 'book_slot') {
+    return t('whatsapp.deadlineBookSlot');
+  }
+  return null;
+};
+
 const buildAppliedLines = (recommendationKeys, t) =>
   (recommendationKeys || []).map((key) => `• ${t(key)}`).join('\n');
 
@@ -26,6 +37,7 @@ export const buildWhatsAppMessage = (record, { t, language, optimized }) => {
 
   const optionsText = buildOptionLines(record.config, t);
   const budgetLine = buildBudgetLine(record.budget, language, t);
+  const deadlineLine = buildDeadlineLine(record.config, t);
 
   if (optimized && record.optimizedPrice != null) {
     lines.push(`${t('whatsapp.originalEstimate')}: ${formatPrice(record.originalPrice, language)}`);
@@ -43,6 +55,10 @@ export const buildWhatsAppMessage = (record, { t, language, optimized }) => {
       lines.push('');
       lines.push(budgetLine);
     }
+    if (deadlineLine) {
+      lines.push('');
+      lines.push(deadlineLine);
+    }
     lines.push('');
     lines.push(t('whatsapp.closingOptimized'));
   } else {
@@ -53,6 +69,10 @@ export const buildWhatsAppMessage = (record, { t, language, optimized }) => {
     if (budgetLine) {
       lines.push('');
       lines.push(budgetLine);
+    }
+    if (deadlineLine) {
+      lines.push('');
+      lines.push(deadlineLine);
     }
     lines.push('');
     lines.push(t('whatsapp.closing'));

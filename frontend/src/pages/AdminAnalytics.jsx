@@ -357,6 +357,15 @@ function AdminAnalytics() {
                     {c.config?.urgency && c.config.urgency !== 'none' && (
                       <span className="adm-chip adm-chip-warn">{c.config.urgency}</span>
                     )}
+                    {c.config?.deadlineType === 'date' && c.config.deadlineDate && (
+                      <span className="adm-chip">📅 к {c.config.deadlineDate}</span>
+                    )}
+                    {c.config?.deadlineType === 'book_slot' && (
+                      <span className="adm-chip adm-chip-warn">📅 забронировать окно</span>
+                    )}
+                    {c.config?.deadlineType === 'unknown' && (
+                      <span className="adm-chip">📅 дата неизвестна</span>
+                    )}
                   </td>
                   <td className="adm-cell-ip" title={c.serverMeta?.userAgent || ''}>{c.serverMeta?.ip || '—'}</td>
                 </tr>

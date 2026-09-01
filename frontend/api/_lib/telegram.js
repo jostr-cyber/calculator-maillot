@@ -36,6 +36,12 @@ function formatCalcMessage(rec, opts = {}) {
   if (c.urgency && c.urgency !== 'none')
     opts2.push(`⏱ ${esc(c.urgency)}`)
   if (c.combinaison) opts2.push(`🧵 ${esc(c.combinaison)}`)
+  if (c.deadlineType === 'date' && c.deadlineDate)
+    opts2.push(`📅 готовность к: <b>${esc(c.deadlineDate)}</b>`)
+  else if (c.deadlineType === 'book_slot')
+    opts2.push(`📅 <b>хочет забронировать окно на пошив</b>`)
+  else if (c.deadlineType === 'unknown')
+    opts2.push(`📅 дата пока не известна`)
 
   let title
   let contactLine = ''

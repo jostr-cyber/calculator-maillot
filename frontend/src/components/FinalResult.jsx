@@ -148,7 +148,9 @@ function FinalResult({ priceResult, complexity, estimatedCrystals, config, wheel
       decorativeElements: config.decorativeElements,
       aerography: config.aerography,
       rhinestone: config.rhinestone,
-      urgency: config.urgency
+      urgency: config.urgency,
+      deadlineType: config.deadlineType,
+      deadlineDate: config.deadlineDate
     },
     budget: selectedBudget,
     complexity: complexity ? { level: complexity.level, labelKey: complexity.labelKey } : null,
